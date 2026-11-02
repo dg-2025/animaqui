@@ -1,0 +1,42 @@
+/* O body da plataforma não rola: a página legal cuida da própria rolagem. */
+.pagina {
+  height: 100dvh;
+  padding: var(--espaco-5) var(--margem-lateral) var(--espaco-8);
+  overflow-y: auto;
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espaco-4);
+  width: min(100%, 68ch);
+  margin-inline: auto;
+
+  h2 {
+    margin-top: var(--espaco-5);
+    font-size: var(--titulo-3);
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-2);
+    margin: 0;
+    padding-left: var(--espaco-5);
+  }
+}
+
+.voltar {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  font-weight: var(--peso-forte);
+}
+
+.titulo { font-size: var(--titulo-1); }
+
+.data {
+  color: var(--cor-texto-3);
+  font-size: var(--texto-pequeno);
+}

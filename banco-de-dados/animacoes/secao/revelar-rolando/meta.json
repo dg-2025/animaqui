@@ -1,0 +1,7 @@
+{
+  "id": "revelar-rolando",
+  "nome": "Surgir ao rolar",
+  "tipo": "secao",
+  "descricao": "Cada elemento aparece acompanhando a rolagem: desce e surge, sobe e some. Em navegador sem suporte, fica parado e visível.",
+  "precisaRolar": true
+}

@@ -1,0 +1,207 @@
+.servicos04 {
+  padding: var(--espacamento-secao) var(--margem-lateral);
+  background: var(--cor-fundo-2);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+
+  .interno {
+    max-width: var(--largura-max);
+    margin-inline: auto;
+  }
+
+  .cabecalho {
+    margin-bottom: var(--espaco-7);
+    text-align: center;
+  }
+
+  .etiqueta {
+    margin: 0 0 var(--espaco-2);
+    color: var(--cor-destaque-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+  }
+
+  .titulo {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-2);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+  }
+
+  .passos {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-6);
+    max-width: var(--largura-texto);
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .passos::before {
+    content: "";
+    position: absolute;
+    top: var(--espaco-5);
+    bottom: var(--espaco-5);
+    left: calc(var(--espaco-5) - 1px);
+    width: var(--espessura-linha);
+    background: linear-gradient(to bottom, var(--cor-destaque-2), var(--cor-destaque-3));
+    transform-origin: top;
+  }
+
+  .passo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-4);
+  }
+
+  .marcador {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--espaco-7);
+    height: var(--espaco-7);
+    border: 1px solid var(--vidro-borda);
+    border-radius: var(--raio-m);
+    background: var(--cor-superficie);
+    box-shadow: 0 0 var(--espaco-5) color-mix(in srgb, var(--cor-destaque-2) 25%, transparent);
+
+    svg {
+      width: var(--espaco-5);
+      height: var(--espaco-5);
+    }
+  }
+
+  .numero {
+    position: absolute;
+    top: calc(var(--espaco-2) * -1);
+    right: calc(var(--espaco-2) * -1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--espaco-5);
+    height: var(--espaco-5);
+    border-radius: var(--raio-total);
+    background: linear-gradient(135deg, var(--cor-destaque-2), var(--cor-destaque-3));
+    color: var(--cor-destaque-contraste);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-titulo);
+  }
+
+  .tituloPasso {
+    margin: 0 0 var(--espaco-1);
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+  }
+
+  .descricao {
+    margin: 0;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+    line-height: var(--altura-linha);
+  }
+
+  &.preparado {
+    .passos::before {
+      transform: scaleY(0);
+    }
+
+    .passo {
+      opacity: 0;
+      transform: translateX(calc(var(--espaco-4) * -1));
+    }
+  }
+
+  &.preparado.visivel {
+    .passos::before {
+      transform: scaleY(1);
+      transition: transform calc(var(--duracao-lenta) * 2) var(--curva-entrada);
+    }
+
+    .passo {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity var(--duracao-lenta) var(--curva-entrada),
+        transform var(--duracao-lenta) var(--curva-entrada);
+      transition-delay: calc(var(--i) * var(--duracao-media));
+    }
+  }
+
+  @media (min-width: 768px) {
+    .passos {
+      flex-direction: row;
+      gap: var(--espaco-6);
+      max-width: none;
+    }
+
+    .passos::before {
+      top: calc(var(--espaco-6) - 1px);
+      right: 16%;
+      bottom: auto;
+      left: 16%;
+      width: auto;
+      height: var(--espessura-linha);
+      background: linear-gradient(to right, var(--cor-destaque-2), var(--cor-destaque-3));
+      transform-origin: left;
+    }
+
+    .passo {
+      flex: 1;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .marcador {
+      width: var(--espaco-8);
+      height: var(--espaco-8);
+
+      svg {
+        width: var(--espaco-6);
+        height: var(--espaco-6);
+      }
+    }
+
+    .descricao {
+      font-size: var(--texto-base);
+    }
+
+    &.preparado {
+      .passos::before {
+        transform: scaleX(0);
+      }
+
+      .passo {
+        transform: translateY(var(--espaco-4));
+      }
+    }
+
+    &.preparado.visivel {
+      .passos::before {
+        transform: scaleX(1);
+      }
+
+      .passo {
+        transform: none;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .passos::before,
+    .passo {
+      transition: none;
+    }
+  }
+}

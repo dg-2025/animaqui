@@ -1,0 +1,6 @@
+{
+  "id": "planos-02",
+  "nome": "Tabela de planos com dois seletores",
+  "categoria": "planos",
+  "descricao": "Dois seletores trocam os preços de cinco faixas, com etapa inicial em destaque, serviços extras e regras no fim."
+}

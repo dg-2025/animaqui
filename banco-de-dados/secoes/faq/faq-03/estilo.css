@@ -1,0 +1,185 @@
+.faq03 {
+  padding: var(--espacamento-secao) var(--margem-lateral);
+  background: var(--cor-fundo-2);
+
+  .conteudo {
+    max-width: calc(var(--espaco-9) * 8.5);
+    margin-inline: auto;
+  }
+
+  .cabecalho {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-2);
+    margin-bottom: var(--espaco-6);
+    text-align: center;
+  }
+
+  .etiqueta {
+    color: var(--cor-alerta);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-titulo);
+    text-transform: uppercase;
+    letter-spacing: var(--espaco-letra-rotulo);
+  }
+
+  .titulo {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-2);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+    color: var(--cor-texto);
+    text-transform: uppercase;
+  }
+
+  .subtitulo {
+    margin: 0;
+    color: var(--cor-texto-2);
+  }
+
+  .lista {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-3);
+    margin-bottom: var(--espaco-6);
+  }
+
+  .item {
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-m);
+    background: var(--cor-superficie);
+    overflow: hidden;
+    transition: border-color var(--duracao-media) var(--curva-padrao);
+
+    &:hover, &.aberto {
+      border-color: color-mix(in srgb, var(--cor-alerta) 45%, transparent);
+    }
+  }
+
+  .pergunta {
+    margin: 0;
+    font-size: var(--texto-base);
+  }
+
+  .botaoPergunta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-3);
+    width: 100%;
+    min-height: var(--alvo-toque);
+    padding: var(--espaco-4) var(--espaco-3);
+    border: 0;
+    background: transparent;
+    color: var(--cor-texto);
+    font: inherit;
+    font-weight: var(--peso-titulo);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .textoBotao {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-3);
+  }
+
+  .iconePergunta, .seta {
+    flex-shrink: 0;
+    color: var(--cor-alerta);
+  }
+
+  .seta { transition: transform var(--duracao-media) var(--curva-entrada); }
+
+  .aberto .seta { transform: rotate(180deg); }
+
+  /* Fechado em 0fr, aberto em 1fr: a altura acompanha o tamanho real do texto */
+  .corpo {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows var(--duracao-media) var(--curva-entrada),
+      visibility var(--duracao-media);
+  }
+
+  .aberto .corpo {
+    grid-template-rows: 1fr;
+    visibility: visible;
+  }
+
+  .resposta {
+    min-height: 0;
+    overflow: hidden;
+
+    p {
+      margin: 0;
+      padding: 0 var(--espaco-4) var(--espaco-4) var(--espaco-7);
+      color: var(--cor-texto-2);
+      font-size: var(--texto-pequeno);
+      line-height: var(--altura-linha);
+      opacity: 0;
+      transition: opacity var(--duracao-media) var(--curva-padrao);
+    }
+  }
+
+  .aberto .resposta p { opacity: 1; }
+
+  .chamadaFinal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaco-3);
+    padding: var(--espaco-4);
+    border: 1px solid color-mix(in srgb, var(--cor-alerta) 22%, transparent);
+    border-radius: var(--raio-m);
+    background: color-mix(in srgb, var(--cor-alerta) 6%, transparent);
+    color: var(--cor-texto);
+    font-size: var(--texto-pequeno);
+    text-align: center;
+
+    p { margin: 0; }
+  }
+
+  .botaoChamada {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    min-height: var(--alvo-toque);
+    padding: 0 var(--espaco-4);
+    border-radius: var(--raio-p);
+    background: var(--cor-destaque);
+    color: var(--cor-destaque-contraste);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform var(--duracao-rapida) var(--curva-mola);
+
+    &:hover { transform: translateY(calc(var(--espaco-1) * -0.5)); }
+    &:active { transform: scale(0.97); }
+  }
+
+  @media (min-width: 768px) {
+    .botaoPergunta { padding: var(--espaco-4) var(--espaco-5); }
+
+    .resposta p {
+      padding: 0 var(--espaco-5) var(--espaco-5) calc(var(--espaco-7) + var(--espaco-3));
+      font-size: var(--texto-base);
+    }
+
+    .chamadaFinal {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: var(--espaco-4) var(--espaco-5);
+      font-size: var(--texto-base);
+      text-align: left;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .item, .seta, .corpo, .resposta p, .botaoChamada { transition: none; }
+  }
+}

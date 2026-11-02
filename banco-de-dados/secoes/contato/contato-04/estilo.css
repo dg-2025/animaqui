@@ -1,0 +1,548 @@
+.contato04 {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --progresso: 0.3333;
+
+  padding: var(--espacamento-secao) var(--margem-lateral);
+  overflow-x: clip;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+
+  .grade {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--espaco-6);
+    max-width: var(--largura-max);
+    margin-inline: auto;
+  }
+
+  /* ---------- Texto em cascata ---------- */
+  .colunaTextos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaco-4);
+    text-align: center;
+  }
+
+  .titulo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-1);
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-1);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+  }
+
+  .linha { display: block; }
+
+  &.animar .linha {
+    opacity: 0;
+    transform: translateY(var(--espaco-5));
+    transition:
+      opacity var(--duracao-lenta) var(--curva-entrada),
+      transform var(--duracao-lenta) var(--curva-entrada);
+    transition-delay: calc(var(--duracao-rapida) * var(--ordem, 0));
+  }
+
+  &.animar.visivel .linha {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Uma faixa de luz corre dentro do trecho em destaque */
+  .destaque {
+    display: inline-block;
+    background: linear-gradient(105deg, var(--cor-destaque-2) 0%, var(--cor-destaque-2) 30%, var(--cor-brilho) 50%, var(--cor-destaque-2) 70%, var(--cor-destaque-2) 100%);
+    background-size: 240% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: contato04Luz calc(var(--duracao-ciclo) * 1.5) linear infinite;
+  }
+
+  .descricao {
+    max-width: 46ch;
+    margin: 0;
+    color: var(--cor-texto-2);
+    line-height: var(--altura-linha);
+  }
+
+  .beneficios {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .beneficio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+  }
+
+  .marcaCheck {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--espaco-4) + var(--espaco-1));
+    height: calc(var(--espaco-4) + var(--espaco-1));
+    border-radius: var(--raio-total);
+    background: var(--cor-destaque-2);
+    color: var(--cor-destaque-contraste);
+
+    svg {
+      width: var(--espaco-3);
+      height: var(--espaco-3);
+    }
+  }
+
+  .marcaCheck::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--cor-destaque-2);
+    z-index: -1;
+    animation: contato04Radar calc(var(--duracao-ciclo) * 0.6) var(--curva-saida) infinite;
+  }
+
+  .beneficio { isolation: isolate; }
+
+  /* ---------- Cartão com feixe de luz e holofote ---------- */
+  .colunaFormulario {
+    position: relative;
+    width: 100%;
+    max-width: calc(var(--largura-max) * 0.45);
+    margin-inline: auto;
+  }
+
+  .aura {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(ellipse at center, color-mix(in srgb, var(--cor-destaque-2) 24%, transparent), transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: contato04Aura calc(var(--duracao-ciclo) * 1.25) ease-in-out infinite alternate;
+  }
+
+  .cartao {
+    position: relative;
+    isolation: isolate;
+    border-radius: var(--raio-g);
+    box-shadow: var(--sombra-3);
+  }
+
+  /* O recorte fica aqui, e não no cartão: assim as listas de opções podem sair da borda. */
+  .caixaFeixe {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    border-radius: inherit;
+    background: var(--cor-borda);
+  }
+
+  .feixe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 260%;
+    aspect-ratio: 1;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg 280deg,
+      color-mix(in srgb, var(--cor-destaque-2) 25%, transparent) 320deg,
+      color-mix(in srgb, var(--cor-destaque-2) 90%, transparent) 350deg,
+      var(--cor-brilho) 360deg
+    );
+    transform: translate(-50%, -50%);
+    animation: contato04Giro calc(var(--duracao-ciclo) * 1.75) linear infinite;
+  }
+
+  .cartao::before {
+    content: "";
+    position: absolute;
+    inset: var(--espessura-linha);
+    z-index: -1;
+    border-radius: calc(var(--raio-g) - var(--espessura-linha));
+    background: linear-gradient(155deg, var(--cor-superficie), var(--cor-fundo-2));
+  }
+
+  .holofote {
+    position: absolute;
+    inset: var(--espessura-linha);
+    z-index: -1;
+    border-radius: calc(var(--raio-g) - var(--espessura-linha));
+    background: radial-gradient(calc(var(--espaco-9) * 3.3) circle at var(--mouse-x) var(--mouse-y), color-mix(in srgb, var(--cor-destaque-2) 14%, transparent), transparent 80%);
+    pointer-events: none;
+  }
+
+  /* ---------- Formulário ---------- */
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-3);
+    padding: var(--espaco-5) var(--espaco-4);
+  }
+
+  .topoFormulario {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--espaco-3);
+  }
+
+  .rotuloFormulario {
+    color: var(--cor-destaque-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+  }
+
+  .contador {
+    flex-shrink: 0;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+  }
+
+  .progresso {
+    height: var(--espaco-1);
+    overflow: hidden;
+    border-radius: var(--raio-total);
+    background: var(--cor-preenchimento);
+  }
+
+  .barra {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--cor-destaque-2);
+    transform: scaleX(var(--progresso));
+    transform-origin: left;
+    transition: transform var(--duracao-media) var(--curva-entrada);
+  }
+
+  .passos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .passo {
+    color: var(--cor-texto-3);
+    font-size: var(--texto-pequeno);
+    transition: color var(--duracao-media) var(--curva-padrao);
+  }
+
+  .passo:nth-child(2) { text-align: center; }
+  .passo:nth-child(3) { text-align: right; }
+
+  .passo.atual {
+    color: var(--cor-texto);
+    font-weight: var(--peso-forte);
+  }
+
+  .passo.feito { color: var(--cor-destaque-2); }
+
+  .etapa {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-3);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  legend {
+    margin-bottom: var(--espaco-3);
+    padding: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-titulo);
+  }
+
+  .campo,
+  .gatilho {
+    width: 100%;
+    min-height: var(--alvo-toque);
+    padding: var(--espaco-3) var(--espaco-4);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-p);
+    background: var(--cor-preenchimento);
+    color: var(--cor-texto);
+    font: inherit;
+    font-size: var(--texto-base);
+    outline: 0;
+    transition:
+      border-color var(--duracao-rapida) var(--curva-padrao),
+      box-shadow var(--duracao-rapida) var(--curva-padrao);
+  }
+
+  .campo { resize: none; }
+  .campo::placeholder { color: var(--cor-texto-2); }
+
+  .campo:focus,
+  .gatilho:focus-visible,
+  .gatilho[aria-expanded="true"] {
+    border-color: var(--cor-destaque-2);
+    box-shadow: 0 0 0 var(--espaco-1) color-mix(in srgb, var(--cor-destaque-2) 25%, transparent);
+  }
+
+  .campo[aria-invalid="true"],
+  .gatilho[aria-invalid="true"] { border-color: var(--cor-erro); }
+
+  .seletor { position: relative; }
+
+  .gatilho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-3);
+    text-align: left;
+    cursor: pointer;
+
+    svg {
+      flex-shrink: 0;
+      width: var(--espaco-4);
+      height: var(--espaco-4);
+      transition: transform var(--duracao-media) var(--curva-padrao);
+    }
+  }
+
+  .gatilho[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .valor { color: var(--cor-texto-2); }
+  .seletor[data-preenchido] .valor { color: var(--cor-texto); }
+
+  .menu {
+    position: absolute;
+    top: calc(100% + var(--espaco-1));
+    left: 0;
+    z-index: var(--z-flutuante);
+    width: 100%;
+    max-height: calc(var(--espaco-9) * 2.2);
+    margin: 0;
+    padding: var(--espaco-1);
+    overflow-y: auto;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-p);
+    background: var(--cor-superficie-2);
+    box-shadow: var(--sombra-3);
+    list-style: none;
+  }
+
+  .opcao {
+    display: flex;
+    align-items: center;
+    min-height: var(--alvo-toque);
+    padding: var(--espaco-2) var(--espaco-3);
+    border-radius: var(--raio-p);
+    color: var(--cor-texto-2);
+    cursor: pointer;
+    outline: 0;
+  }
+
+  .opcao:hover,
+  .opcao:focus {
+    background: color-mix(in srgb, var(--cor-destaque-2) 22%, transparent);
+    color: var(--cor-texto);
+  }
+
+  .opcao[aria-selected="true"] {
+    color: var(--cor-texto);
+    font-weight: var(--peso-forte);
+  }
+
+  .erro {
+    margin: 0;
+    color: var(--cor-erro);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+  }
+
+  .navegacao {
+    display: flex;
+    gap: var(--espaco-2);
+  }
+
+  .botaoVoltar,
+  .botaoNovo {
+    min-height: var(--alvo-toque);
+    padding: var(--espaco-2) var(--espaco-5);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-p);
+    background: var(--cor-preenchimento);
+    color: var(--cor-texto);
+    font: inherit;
+    font-weight: var(--peso-forte);
+    cursor: pointer;
+  }
+
+  .botaoAvancar {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    min-height: calc(var(--alvo-toque) + var(--espaco-1));
+    padding: var(--espaco-2) var(--espaco-4);
+    overflow: hidden;
+    border: 0;
+    border-radius: var(--raio-p);
+    background: var(--cor-destaque-2);
+    color: var(--cor-destaque-contraste);
+    font: inherit;
+    font-weight: var(--peso-titulo);
+    cursor: pointer;
+    box-shadow: 0 var(--espaco-2) var(--espaco-5) color-mix(in srgb, var(--cor-destaque-2) 35%, transparent);
+    transition: transform var(--duracao-rapida) var(--curva-padrao);
+  }
+
+  .botaoAvancar:hover:not(:disabled) { transform: translateY(calc(var(--espaco-1) / -2)); }
+  .botaoAvancar:disabled { cursor: not-allowed; }
+
+  .brilho {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(105deg, transparent 30%, color-mix(in srgb, var(--cor-brilho) 45%, transparent) 50%, transparent 70%);
+    pointer-events: none;
+    transform: translate3d(-120%, 0, 0);
+    animation: contato04Brilho var(--duracao-ciclo) var(--curva-padrao) infinite;
+  }
+
+  .girando {
+    display: none;
+    width: var(--espaco-4);
+    height: var(--espaco-4);
+    animation: contato04Spin var(--duracao-lenta) linear infinite;
+  }
+
+  .formulario[data-enviando] .girando { display: block; }
+
+  .caixaSucesso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaco-3);
+    padding: var(--espaco-7) var(--espaco-4);
+    text-align: center;
+    outline: 0;
+
+    svg {
+      width: var(--espaco-8);
+      height: var(--espaco-8);
+      color: var(--cor-sucesso);
+    }
+
+    h3 {
+      margin: 0;
+      font-family: var(--fonte-titulo);
+      font-size: var(--titulo-3);
+    }
+
+    p {
+      margin: 0;
+      color: var(--cor-texto-2);
+    }
+  }
+
+  /* Pausa os loops fora da tela */
+  &[data-pausado] {
+    .destaque,
+    .marcaCheck::after,
+    .aura,
+    .feixe,
+    .brilho { animation-play-state: paused; }
+  }
+
+  /* Vem por último para ganhar de qualquer display acima */
+  [hidden] { display: none; }
+
+  @media (min-width: 768px) {
+    .formulario { padding: var(--espaco-6); }
+  }
+
+  @media (min-width: 1024px) {
+    .grade {
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: var(--espaco-7);
+      align-items: center;
+    }
+
+    .colunaTextos {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .beneficio { justify-content: flex-start; font-size: var(--texto-base); }
+    .colunaFormulario { max-width: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .destaque,
+    .marcaCheck::after,
+    .aura,
+    .feixe,
+    .girando { animation: none; }
+
+    .marcaCheck::after { opacity: 0; }
+    .brilho { display: none; }
+    .feixe { transform: translate(-50%, -50%) rotate(35deg); }
+
+    .barra,
+    .passo,
+    .campo,
+    .gatilho,
+    .gatilho svg,
+    .botaoAvancar { transition: none; }
+  }
+}
+
+@keyframes contato04Luz {
+  from { background-position: 0% center; }
+  to { background-position: 240% center; }
+}
+
+@keyframes contato04Radar {
+  0% { transform: scale(1); opacity: 0.7; }
+  70%, 100% { transform: scale(1.9); opacity: 0; }
+}
+
+@keyframes contato04Aura {
+  from { opacity: 0.55; transform: translate(-50%, -50%) scale(0.95); }
+  to { opacity: 0.95; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+@keyframes contato04Giro {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes contato04Brilho {
+  0% { transform: translate3d(-120%, 0, 0); }
+  35%, 100% { transform: translate3d(120%, 0, 0); }
+}
+
+@keyframes contato04Spin {
+  to { transform: rotate(360deg); }
+}

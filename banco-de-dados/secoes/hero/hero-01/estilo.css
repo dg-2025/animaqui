@@ -1,0 +1,63 @@
+.hero01 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-5);
+  min-height: 80vh;
+  padding: var(--espaco-8) var(--margem-lateral);
+  text-align: center;
+  background: var(--cor-fundo);
+
+  .etiqueta {
+    padding: var(--espaco-2) var(--espaco-4);
+    color: var(--cor-destaque);
+    font-size: var(--texto-pequeno);
+    font-weight: 700;
+    border: 1px solid var(--cor-destaque);
+    border-radius: var(--raio-total);
+  }
+
+  .titulo {
+    max-width: 16ch;
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-display);
+    line-height: 1.05;
+  }
+
+  .subtitulo {
+    max-width: 52ch;
+    margin: 0;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-grande);
+  }
+
+  .acoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--espaco-3);
+  }
+
+  .botao {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--alvo-toque);
+    padding-inline: var(--espaco-5);
+    color: var(--cor-texto);
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-total);
+    transition: transform var(--duracao-rapida);
+  }
+
+  .botao:hover { transform: translateY(-2px); }
+
+  .botaoPrincipal {
+    color: var(--cor-destaque-contraste);
+    background: var(--cor-destaque);
+    border-color: var(--cor-destaque);
+  }
+}

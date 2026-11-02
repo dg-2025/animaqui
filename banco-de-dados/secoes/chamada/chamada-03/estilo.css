@@ -1,0 +1,157 @@
+.chamada03 {
+  --lado: 260%;
+
+  padding: var(--espacamento-secao) var(--margem-lateral);
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+
+  /* O gradiente gira atrás do miolo; só o contorno de padding fica à mostra. */
+  .moldura {
+    position: relative;
+    isolation: isolate;
+    max-width: var(--largura-max);
+    margin-inline: auto;
+    padding: var(--espessura-linha);
+    overflow: hidden;
+    border-radius: var(--raio-g);
+    background: var(--cor-borda);
+    box-shadow: var(--sombra-3);
+  }
+
+  .moldura::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    width: var(--lado);
+    aspect-ratio: 1;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg 250deg,
+      color-mix(in srgb, var(--cor-destaque-2) 15%, transparent) 290deg,
+      color-mix(in srgb, var(--cor-destaque-2) 90%, transparent) 340deg,
+      var(--cor-brilho) 352deg,
+      transparent 360deg
+    );
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation:
+      chamada03Ligar var(--duracao-lenta) var(--curva-padrao) var(--duracao-lenta) forwards,
+      chamada03Girar calc(var(--duracao-lenta) * 10) linear var(--duracao-lenta) infinite;
+    will-change: transform;
+  }
+
+  &[data-pausado] .moldura::before { animation-play-state: paused; }
+
+  .miolo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--espaco-6);
+    padding: var(--espaco-7) var(--espaco-5);
+    border-radius: calc(var(--raio-g) - var(--espessura-linha));
+    background: linear-gradient(160deg, var(--cor-superficie), var(--cor-fundo-2) 60%);
+  }
+
+  .titulo {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-display);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+    text-wrap: balance;
+  }
+
+  .lado {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-5);
+  }
+
+  .texto {
+    margin: 0;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-grande);
+    line-height: var(--altura-linha);
+  }
+
+  .acoes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-3);
+  }
+
+  .botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    min-height: calc(var(--alvo-toque) + var(--espaco-1));
+    padding: var(--espaco-3) var(--espaco-5);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-total);
+    color: var(--cor-texto);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    transition:
+      border-color var(--duracao-rapida) var(--curva-padrao),
+      transform var(--duracao-rapida) var(--curva-padrao);
+
+    svg {
+      flex-shrink: 0;
+      width: var(--espaco-5);
+      height: var(--espaco-5);
+      transition: transform var(--duracao-media) var(--curva-entrada);
+    }
+  }
+
+  .botao:hover {
+    border-color: var(--cor-texto-2);
+    transform: translateY(calc(var(--espaco-1) / -2));
+
+    svg { transform: translateX(var(--espaco-1)); }
+  }
+
+  .botaoPrincipal {
+    border-color: var(--cor-destaque);
+    background: var(--cor-destaque);
+    color: var(--cor-destaque-contraste);
+  }
+
+  @media (min-width: 768px) {
+    .miolo { padding: var(--espaco-8) var(--espaco-7); }
+    .acoes { flex-direction: row; flex-wrap: wrap; }
+  }
+
+  @media (min-width: 1024px) {
+    --lado: 142%;
+
+    .miolo {
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      align-items: end;
+      gap: var(--espaco-7);
+      padding: var(--espaco-9) var(--espaco-8);
+    }
+  }
+
+  /* A luz fica parada num canto da moldura */
+  @media (prefers-reduced-motion: reduce) {
+    .moldura::before {
+      animation: none;
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(35deg);
+    }
+
+    .botao,
+    .botao svg { transition: none; }
+  }
+}
+
+@keyframes chamada03Ligar {
+  to { opacity: 1; }
+}
+
+@keyframes chamada03Girar {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}

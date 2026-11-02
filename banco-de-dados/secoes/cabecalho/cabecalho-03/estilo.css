@@ -1,0 +1,264 @@
+/* A raiz não tem altura: a barra é fixa e flutua sobre a primeira seção.
+   Nunca recebe transform, senão o menu fixo ficaria preso a ela. */
+.cabecalho03 {
+  --alturaBarra: calc(var(--alvo-toque) + var(--espaco-5));
+  position: relative;
+  z-index: var(--z-flutuante);
+  height: 0;
+  background: none;
+
+  .barra {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-4);
+    height: var(--alturaBarra);
+    padding-inline: max(var(--margem-lateral), calc((100% - var(--largura-max)) / 2));
+    isolation: isolate;
+    /* Vidro desde o topo, com borda para aparecer até sobre fundo liso */
+    background: var(--vidro-fundo);
+    border-bottom: 1px solid var(--vidro-borda);
+    -webkit-backdrop-filter: blur(var(--vidro-blur)) saturate(var(--vidro-saturacao));
+    backdrop-filter: blur(var(--vidro-blur)) saturate(var(--vidro-saturacao));
+    transform: translate3d(0, 0, 0);
+    transition: transform var(--duracao-media) var(--curva-entrada);
+    animation: cabecalho03Descer var(--duracao-lenta) var(--curva-entrada);
+  }
+
+  /* Depois de rolar, a camada quase sólida acende por cima do vidro */
+  .barra::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: color-mix(in srgb, var(--cor-fundo) 94%, transparent);
+    box-shadow: var(--sombra-2);
+    opacity: 0;
+    transition: opacity var(--duracao-media) var(--curva-padrao);
+  }
+
+  .barra.comFundo::before {
+    opacity: 1;
+  }
+
+  /* Vai um pouco além de 100% para levar a sombra junto */
+  .barra.oculto {
+    pointer-events: none;
+    transform: translate3d(0, calc(-100% - var(--espaco-6)), 0);
+    transition-timing-function: var(--curva-saida);
+  }
+
+  .marca {
+    display: flex;
+    align-items: center;
+    min-height: var(--alvo-toque);
+    color: var(--cor-texto);
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+    text-decoration: none;
+  }
+
+  .navDesktop {
+    display: none;
+  }
+
+  .link {
+    position: relative;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-medio);
+    text-decoration: none;
+    transition: color var(--duracao-rapida) var(--curva-padrao);
+  }
+
+  .link:hover {
+    color: var(--cor-texto);
+  }
+
+  /* Sublinhado entra pela esquerda e sai pela direita */
+  .link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: calc(-1 * var(--espaco-2));
+    left: 0;
+    height: var(--espessura-linha);
+    background: var(--cor-destaque);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--duracao-media) var(--curva-entrada);
+  }
+
+  .link:hover::after,
+  .link:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .acoes {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-2);
+  }
+
+  .botaoAcao {
+    display: none;
+    align-items: center;
+    min-height: var(--alvo-toque);
+    padding: 0 var(--espaco-4);
+    color: var(--cor-destaque-contraste);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    white-space: nowrap;
+    background: var(--cor-destaque);
+    border-radius: var(--raio-p);
+    transition: opacity var(--duracao-rapida) var(--curva-padrao), transform var(--duracao-rapida) var(--curva-mola);
+  }
+
+  .botaoAcao:hover {
+    opacity: 0.9;
+  }
+
+  .botaoAcao:active {
+    transform: scale(0.97);
+  }
+
+  .botaoMenu {
+    display: grid;
+    place-items: center;
+    width: var(--alvo-toque);
+    height: var(--alvo-toque);
+    padding: 0;
+    color: var(--cor-texto);
+    cursor: pointer;
+    background: none;
+    border: 0;
+    border-radius: var(--raio-p);
+  }
+
+  .iconeFechar {
+    display: none;
+  }
+
+  .botaoMenu[aria-expanded="true"] .iconeAbrir {
+    display: none;
+  }
+
+  .botaoMenu[aria-expanded="true"] .iconeFechar {
+    display: block;
+  }
+
+  /* Menu do celular: logo abaixo da barra, que continua visível com o X */
+  .menuCelular {
+    position: fixed;
+    top: var(--alturaBarra);
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: calc(100dvh - var(--alturaBarra));
+    overflow-y: auto;
+    background: var(--cor-fundo);
+    animation: cabecalho03Surgir var(--duracao-media) var(--curva-entrada);
+  }
+
+  .menuCelular[hidden] {
+    display: none;
+  }
+
+  .listaCelular {
+    margin: 0;
+    padding: var(--espaco-2) var(--margem-lateral) var(--espaco-6);
+    list-style: none;
+  }
+
+  /* Cascata: cada link entra um pouco depois do anterior */
+  .itemCelular {
+    animation: cabecalho03Link var(--duracao-lenta) var(--curva-entrada) calc((var(--i) + 1) * var(--duracao-rapida) / 3) both;
+  }
+
+  .linkCelular {
+    display: block;
+    padding: var(--espaco-4) 0;
+    color: var(--cor-texto);
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    border-bottom: 1px solid var(--cor-borda);
+  }
+
+  .linkCelular:active {
+    color: var(--cor-destaque-2);
+  }
+
+  .acaoCelular {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--alvo-toque);
+    margin-top: var(--espaco-5);
+    color: var(--cor-destaque-contraste);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    background: var(--cor-destaque);
+    border-radius: var(--raio-p);
+  }
+
+  @media (min-width: 768px) {
+    .navDesktop {
+      display: flex;
+      align-items: center;
+      gap: var(--espaco-5);
+    }
+
+    .botaoAcao {
+      display: inline-flex;
+    }
+
+    .botaoMenu,
+    .menuCelular {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .navDesktop {
+      gap: var(--espaco-6);
+    }
+  }
+
+  /* Continua sumindo e voltando, mas sem deslizar */
+  @media (prefers-reduced-motion: reduce) {
+    .barra,
+    .barra::before,
+    .link,
+    .link::after,
+    .botaoAcao {
+      transition: none;
+    }
+
+    .barra,
+    .menuCelular,
+    .itemCelular {
+      animation: none;
+    }
+  }
+}
+
+@keyframes cabecalho03Descer {
+  from { opacity: 0; transform: translate3d(0, -100%, 0); }
+}
+
+@keyframes cabecalho03Surgir {
+  from { opacity: 0; transform: translate3d(0, calc(-1 * var(--espaco-3)), 0); }
+}
+
+@keyframes cabecalho03Link {
+  from { opacity: 0; transform: translate3d(calc(-1 * var(--espaco-4)), 0, 0); }
+}

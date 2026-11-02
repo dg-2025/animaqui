@@ -1,0 +1,374 @@
+.hero04 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 90svh;
+  padding: var(--espaco-9) var(--margem-lateral) var(--espaco-8);
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+
+  /* Placeholder do vídeo de fundo: um disco de luz com o centro vazio, sempre girando */
+  .disco {
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    z-index: -1;
+    width: 170%;
+    aspect-ratio: 1;
+    border-radius: var(--raio-total);
+    background: conic-gradient(var(--cor-destaque-3), transparent 30%, var(--cor-destaque-2) 55%, transparent 80%, var(--cor-destaque-3));
+    opacity: 0.4;
+    filter: blur(var(--espaco-6));
+    translate: -50% 0;
+    -webkit-mask-image: radial-gradient(closest-side, transparent 32%, var(--cor-fundo) 40%, var(--cor-fundo) 62%, transparent 100%);
+    mask-image: radial-gradient(closest-side, transparent 32%, var(--cor-fundo) 40%, var(--cor-fundo) 62%, transparent 100%);
+    animation: hero04Giro calc(var(--duracao-ciclo) * 10) linear infinite;
+  }
+
+  .conteudo {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding-right: calc(var(--espaco-8) + var(--espaco-4));
+  }
+
+  /* Coreografia de entrada */
+  .entra {
+    display: block;
+    animation: hero04Surge var(--duracao-lenta) var(--curva-entrada) calc(var(--i) * var(--duracao-media)) both;
+  }
+
+  .selo {
+    position: relative;
+    margin-bottom: var(--espaco-4);
+    padding: var(--espaco-2) var(--espaco-4);
+    color: var(--cor-texto);
+    font-size: var(--texto-pequeno);
+    background: color-mix(in srgb, var(--cor-brilho) 5%, transparent);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-total);
+    box-shadow: var(--sombra-1);
+    -webkit-backdrop-filter: blur(var(--vidro-blur));
+    backdrop-filter: blur(var(--vidro-blur));
+  }
+
+  .selo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    box-shadow: 0 0 var(--espaco-4) color-mix(in srgb, var(--cor-destaque-3) 60%, transparent);
+    animation: hero04Pulso var(--duracao-ciclo) ease-in-out infinite;
+  }
+
+  .titulo {
+    margin: 0 0 var(--espaco-4);
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-display);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+    transition: translate var(--duracao-lenta) var(--curva-entrada);
+  }
+
+  /* Gradiente líquido correndo por dentro das letras */
+  .metalico {
+    display: inline-block;
+    color: transparent;
+    background: linear-gradient(135deg, var(--cor-brilho) 0%, var(--cor-destaque-2) 25%, var(--cor-destaque-3) 50%, var(--cor-brilho) 75%, var(--cor-destaque-2) 100%);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: hero04Liquido calc(var(--duracao-ciclo) * 2) linear infinite;
+  }
+
+  .subtitulo {
+    max-width: 56ch;
+    margin: 0 0 var(--espaco-6);
+    color: var(--cor-texto-2);
+    font-size: var(--texto-base);
+    line-height: var(--altura-linha);
+    transition: translate var(--duracao-lenta) var(--curva-entrada);
+  }
+
+  .realce {
+    padding-inline: var(--espaco-1);
+    color: var(--cor-texto);
+    font-weight: var(--peso-medio);
+    white-space: nowrap;
+    background: color-mix(in srgb, var(--cor-destaque-3) 18%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cor-destaque-3) 25%, transparent);
+    border-radius: var(--raio-p);
+  }
+
+  .acoes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--espaco-3);
+  }
+
+  .botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    min-height: var(--alvo-toque);
+    padding: var(--espaco-3) var(--espaco-6);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    border-radius: var(--raio-total);
+    transition: transform var(--duracao-media) var(--curva-mola);
+    animation: hero04Surge var(--duracao-lenta) var(--curva-entrada) calc(var(--i) * var(--duracao-media)) both;
+  }
+
+  .botao:hover {
+    transform: translateY(calc(-1 * var(--espaco-1))) scale(1.05);
+  }
+
+  .botaoBrilho {
+    color: var(--cor-destaque-contraste);
+    background: linear-gradient(92deg, var(--cor-destaque-3), var(--cor-destaque-2), var(--cor-destaque-3));
+    background-size: 200% auto;
+    box-shadow: 0 0 var(--espaco-4) color-mix(in srgb, var(--cor-destaque-3) 50%, transparent);
+    animation:
+      hero04Surge var(--duracao-lenta) var(--curva-entrada) calc(var(--i) * var(--duracao-media)) both,
+      hero04Corrida calc(var(--duracao-ciclo) * 1.25) ease infinite;
+  }
+
+  .botaoVidro {
+    color: var(--cor-texto);
+    background: color-mix(in srgb, var(--cor-brilho) 8%, transparent);
+    border: 1px solid var(--cor-borda);
+    -webkit-backdrop-filter: blur(var(--espaco-2));
+    backdrop-filter: blur(var(--espaco-2));
+  }
+
+  /* Celular: os ícones descem em uma coluna na borda direita. Computador: viram órbita. */
+  .visual {
+    position: absolute;
+    top: var(--espaco-8);
+    right: 0;
+    bottom: var(--espaco-8);
+    z-index: 1;
+    width: calc(var(--espaco-8) + var(--espaco-4));
+    pointer-events: none;
+    container-type: inline-size;
+  }
+
+  .camadaEspiral {
+    display: none;
+  }
+
+  .camadaIcones {
+    position: absolute;
+    inset: 0;
+  }
+
+  .icone {
+    --neon: var(--cor-destaque-3);
+    --tam: var(--espaco-7);
+    position: absolute;
+    top: var(--topo);
+    right: var(--direita);
+    display: grid;
+    place-items: center;
+    width: var(--tam);
+    height: var(--tam);
+    color: var(--neon);
+    background: color-mix(in srgb, var(--cor-fundo) 50%, transparent);
+    border: 1px solid color-mix(in srgb, var(--neon) 45%, transparent);
+    border-radius: var(--raio-total);
+    animation:
+      hero04IconeSurge var(--duracao-lenta) var(--curva-mola) calc(var(--i) * var(--duracao-rapida) * 0.7 + var(--duracao-lenta)) both,
+      hero04Flutua var(--duracao-ciclo) ease-in-out calc(var(--i) * var(--duracao-media)) infinite alternate;
+  }
+
+  .icone svg {
+    width: 55%;
+    height: 55%;
+  }
+
+  /* O brilho neon pulsa por opacidade, numa camada própria */
+  .icone::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    box-shadow: 0 0 var(--espaco-4) var(--neon), inset 0 0 var(--espaco-2) var(--neon);
+    animation: hero04Pulso calc(var(--duracao-ciclo) * 0.75) ease-in-out infinite alternate;
+  }
+
+  .icone:nth-child(1) { --neon: var(--cor-sucesso); --topo: 2%; --direita: var(--espaco-2); }
+  .icone:nth-child(2) { --neon: var(--cor-alerta); --topo: 19%; --direita: var(--espaco-5); }
+  .icone:nth-child(3) { --neon: var(--cor-brilho); --topo: 36%; --direita: var(--espaco-2); }
+  .icone:nth-child(4) { --neon: var(--cor-destaque-3); --topo: 53%; --direita: var(--espaco-5); }
+  .icone:nth-child(5) { --neon: var(--cor-destaque-2); --topo: 70%; --direita: var(--espaco-2); }
+  .icone:nth-child(6) { --neon: var(--cor-erro); --topo: 87%; --direita: var(--espaco-5); }
+
+  .linhaRolagem {
+    position: absolute;
+    bottom: var(--espaco-3);
+    left: 50%;
+    width: 1px;
+    height: var(--espaco-7);
+    background: linear-gradient(to bottom, var(--cor-texto-2), color-mix(in srgb, var(--cor-destaque-3) 50%, transparent), transparent);
+    transform-origin: top;
+    animation: hero04Linha calc(var(--duracao-ciclo) / 2) ease-in-out infinite;
+  }
+
+  &.foraDaTela .disco,
+  &.foraDaTela .selo::before,
+  &.foraDaTela .metalico,
+  &.foraDaTela .botaoBrilho,
+  &.foraDaTela .espiral,
+  &.foraDaTela .icone,
+  &.foraDaTela .icone::after,
+  &.foraDaTela .linhaRolagem {
+    animation-play-state: paused;
+  }
+
+  @media (min-width: 768px) {
+    .subtitulo {
+      font-size: var(--texto-grande);
+    }
+
+    .acoes {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .botao {
+      font-size: var(--texto-base);
+    }
+
+    .disco {
+      top: -70%;
+      width: 110%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .conteudo {
+      max-width: 58%;
+      padding-right: 0;
+    }
+
+    .visual {
+      top: 50%;
+      right: var(--margem-lateral);
+      bottom: auto;
+      width: 38%;
+      aspect-ratio: 1;
+      transform: translateY(-50%);
+    }
+
+    .camadaEspiral {
+      position: absolute;
+      inset: 0;
+      display: block;
+      transition: translate var(--duracao-lenta) var(--curva-entrada);
+    }
+
+    .espiral {
+      display: block;
+      width: 100%;
+      height: 100%;
+      animation: hero04Giro calc(var(--duracao-ciclo) * 30) linear infinite;
+    }
+
+    .traco {
+      stroke: var(--cor-destaque-3);
+      stroke-width: 2;
+    }
+
+    .tracoDois {
+      stroke: var(--cor-destaque-2);
+      opacity: 0.6;
+    }
+
+    .guia {
+      stroke: var(--cor-borda);
+      stroke-width: 1;
+    }
+
+    .camadaIcones {
+      transition: translate var(--duracao-lenta) var(--curva-entrada);
+    }
+
+    .icone {
+      --tam: var(--espaco-8);
+      top: 50%;
+      right: auto;
+      left: 50%;
+      margin: calc(var(--tam) / -2) 0 0 calc(var(--tam) / -2);
+      transform: rotate(calc(var(--i) * 60deg)) translateX(32cqw) rotate(calc(var(--i) * -60deg));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .disco,
+    .entra,
+    .selo::before,
+    .metalico,
+    .botao,
+    .botaoBrilho,
+    .espiral,
+    .icone,
+    .icone::after,
+    .linhaRolagem {
+      animation: none;
+    }
+
+    .titulo,
+    .subtitulo,
+    .botao,
+    .camadaEspiral,
+    .camadaIcones {
+      transition: none;
+    }
+  }
+}
+
+@keyframes hero04Giro {
+  to { rotate: 360deg; }
+}
+
+@keyframes hero04Surge {
+  from { opacity: 0; transform: translateY(var(--espaco-7)); filter: blur(var(--espaco-2)); }
+}
+
+@keyframes hero04IconeSurge {
+  from { opacity: 0; scale: 0; }
+}
+
+@keyframes hero04Flutua {
+  from { translate: 0 calc(-1 * var(--espaco-2)); }
+  to { translate: calc(var(--espaco-1)) var(--espaco-2); }
+}
+
+@keyframes hero04Pulso {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+@keyframes hero04Liquido {
+  to { background-position: 300% center; }
+}
+
+@keyframes hero04Corrida {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes hero04Linha {
+  0%, 100% { transform: translateY(0) scaleY(0.8); opacity: 0.4; }
+  50% { transform: translateY(var(--espaco-2)) scaleY(1); opacity: 0.8; }
+}

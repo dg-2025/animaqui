@@ -1,0 +1,14 @@
+# animaqui
+
+> Laboratório visual de componentes web: navegue, teste e copie seções prontas de sites em HTML, CSS e JS puros.
+
+## Módulos
+
+- [Seções](/secoes): catálogo por categoria, com visualização em celular e computador, animações e cópia do código
+- [Tipografia](/tipografia): teste de frases com fontes do Google Fonts e animações de texto
+- [Montador](/montador): empilhe blocos, veja a página completa e copie o site inteiro
+
+## Informações legais
+
+- [Política de Privacidade](/privacidade)
+- [Termos de Uso](/termos)

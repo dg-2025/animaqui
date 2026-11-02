@@ -1,0 +1,7 @@
+{
+  "id": "reflexo-de-luz",
+  "nome": "Reflexo de luz",
+  "tipo": "secao",
+  "descricao": "Uma luz diagonal passa de tempos em tempos sobre os cartões e botões; se a seção não tiver nenhum, passa sobre ela inteira.",
+  "precisaRolar": false
+}

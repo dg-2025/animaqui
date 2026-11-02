@@ -1,0 +1,83 @@
+.barra {
+  display: flex;
+  flex: 1 1 100%;
+  align-items: center;
+  gap: var(--espaco-2);
+}
+
+.acaoPrincipal {
+  display: flex;
+  flex: 1;
+}
+
+.acaoPrincipal > button { width: 100%; }
+
+.dispositivos {
+  position: relative;
+  display: none;
+  grid-template-columns: repeat(2, var(--alvo-toque));
+  padding: var(--espaco-1);
+  background: var(--cor-fundo-2);
+  border-radius: var(--raio-total);
+  box-shadow: var(--sombra-clay-afundada);
+}
+
+.indicador {
+  position: absolute;
+  top: var(--espaco-1);
+  left: var(--espaco-1);
+  width: var(--alvo-toque);
+  height: var(--alvo-toque);
+  background: var(--cor-superficie-2);
+  border-radius: var(--raio-total);
+  box-shadow: var(--sombra-clay);
+  transform: translateX(calc(var(--indice) * 100%));
+  transition: transform var(--duracao-media) var(--curva-mola);
+}
+
+.dispositivo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: var(--alvo-toque);
+  background: none;
+  border: 0;
+  border-radius: var(--raio-total);
+}
+
+.repetirTexto { display: none; }
+
+.repetir {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--espaco-2);
+  min-height: var(--alvo-toque);
+  padding-inline: var(--espaco-4);
+  font-weight: var(--peso-forte);
+  background: var(--cor-superficie);
+  border: 0;
+  border-radius: var(--raio-total);
+  box-shadow: var(--sombra-clay);
+  transition: transform var(--duracao-rapida) var(--curva-mola);
+}
+
+.repetir:hover { transform: translateY(-2px); }
+
+.repetir:active { transform: scale(0.95); }
+
+.iconeRepetir {
+  transform: rotate(calc(var(--giros) * -360deg));
+  transition: transform var(--duracao-lenta) var(--curva-entrada);
+}
+
+/* No celular a pessoa já está vendo a largura real: o seletor só faz sentido em telas maiores. */
+@media (min-width: 768px) {
+  .barra { flex: 0 1 auto; }
+
+  .acaoPrincipal { flex: 0 1 auto; }
+
+  .dispositivos { display: grid; }
+
+  .repetirTexto { display: inline; }
+}

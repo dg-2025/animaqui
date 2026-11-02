@@ -1,0 +1,46 @@
+/* Cópia decorativa sobre o texto: mesma caixa e mesma tipografia, logo a mesma quebra de linha. */
+[data-animacao="faixa-de-luz"] .faixaLuzHospedeiro {
+  position: relative;
+}
+
+[data-animacao="faixa-de-luz"] .faixaLuzCopia {
+  position: absolute;
+  inset: 0;
+  display: block;
+  padding: inherit;
+  pointer-events: none;
+  user-select: none;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    transparent 43%,
+    color-mix(in srgb, var(--cor-brilho) 50%, transparent) 47%,
+    var(--cor-brilho) 50%,
+    color-mix(in srgb, var(--cor-brilho) 50%, transparent) 53%,
+    transparent 57%,
+    transparent 100%
+  );
+  background-size: 320% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 0 var(--espaco-1) color-mix(in srgb, var(--cor-brilho) 90%, transparent))
+    drop-shadow(0 0 var(--espaco-3) color-mix(in srgb, var(--cor-brilho) 55%, transparent));
+  animation: faixaLuzPassa calc(var(--duracao-lenta) * 8) var(--curva-padrao) var(--duracao-lenta) infinite;
+}
+
+[data-animacao="faixa-de-luz"][data-pausado] .faixaLuzCopia {
+  animation-play-state: paused;
+}
+
+/* Passa em 45% do ciclo e descansa o resto */
+@keyframes faixaLuzPassa {
+  0% { background-position: 100% 0; }
+  45%, 100% { background-position: 0% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animacao="faixa-de-luz"] .faixaLuzCopia { display: none; }
+}

@@ -1,0 +1,179 @@
+@keyframes servicos03Correr {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.servicos03 {
+  --largura-cartao: min(82vw, calc(var(--espaco-9) * 5));
+  --folga: var(--espaco-3);
+
+  padding: var(--espacamento-secao) var(--margem-lateral);
+  overflow-x: clip;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+
+  .cabecalho {
+    max-width: var(--largura-max);
+    margin: 0 auto var(--espaco-6);
+    text-align: center;
+  }
+
+  .etiqueta {
+    margin: 0 0 var(--espaco-2);
+    color: var(--cor-destaque-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+  }
+
+  .titulo {
+    max-width: 22em;
+    margin: 0 auto;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-2);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+  }
+
+  .faixa {
+    margin-inline: calc(var(--margem-lateral) * -1);
+    padding: var(--espaco-2) var(--margem-lateral) var(--espaco-5);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .trilho {
+    display: flex;
+    gap: var(--folga);
+    width: max-content;
+  }
+
+  .cartao {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: flex-end;
+    gap: var(--espaco-2);
+    width: var(--largura-cartao);
+    aspect-ratio: 700 / 460;
+    padding: var(--espaco-5);
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--cor-destaque-2) 30%, transparent);
+    border-radius: var(--raio-m);
+    background:
+      radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--cor-destaque-2) 40%, transparent), transparent 55%),
+      linear-gradient(135deg, var(--cor-superficie), var(--cor-fundo-2));
+    box-shadow: var(--sombra-2);
+    scroll-snap-align: center;
+  }
+
+  .cartao:nth-child(even) {
+    background:
+      radial-gradient(circle at 15% 15%, color-mix(in srgb, var(--cor-destaque-3) 40%, transparent), transparent 55%),
+      linear-gradient(225deg, var(--cor-superficie), var(--cor-fundo-2));
+    border-color: color-mix(in srgb, var(--cor-destaque-3) 30%, transparent);
+  }
+
+  .cartao[aria-hidden] {
+    display: none;
+  }
+
+  .numero {
+    position: absolute;
+    top: var(--espaco-3);
+    right: var(--espaco-4);
+    color: color-mix(in srgb, var(--cor-texto) 16%, transparent);
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-1);
+    line-height: 1;
+  }
+
+  .icone {
+    width: var(--espaco-6);
+    height: var(--espaco-6);
+    color: var(--cor-destaque-2);
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .cartao:nth-child(even) .icone {
+    color: var(--cor-destaque-3);
+  }
+
+  .tituloCartao {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+  }
+
+  .textoCartao {
+    margin: 0;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+    line-height: var(--altura-linha);
+  }
+
+  @media (min-width: 768px) {
+    --folga: var(--espaco-5);
+
+    .cabecalho {
+      margin-bottom: var(--espaco-7);
+    }
+
+    .textoCartao {
+      font-size: var(--texto-base);
+    }
+
+    .cartao {
+      padding: var(--espaco-6);
+    }
+
+    &.emLoop {
+      .faixa {
+        padding-inline: 0;
+        overflow: hidden;
+        scroll-snap-type: none;
+      }
+
+      .trilho {
+        padding-right: var(--folga);
+        animation: servicos03Correr calc(var(--duracao-ciclo) * 10) linear infinite;
+      }
+
+      .faixa:hover .trilho,
+      .faixa:focus-within .trilho {
+        animation-play-state: paused;
+      }
+
+      &.foraDeTela .trilho {
+        animation-play-state: paused;
+      }
+
+      .cartao[aria-hidden] {
+        display: flex;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &.emLoop .trilho {
+      animation: none;
+    }
+  }
+}

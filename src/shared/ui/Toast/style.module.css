@@ -1,0 +1,32 @@
+.area {
+  position: fixed;
+  right: 0;
+  bottom: var(--espaco-8);
+  left: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espaco-2);
+  pointer-events: none;
+}
+
+.aviso {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  padding: var(--espaco-3) var(--espaco-5);
+  color: var(--cor-superficie-2);
+  font-weight: var(--peso-forte);
+  background: var(--cor-sucesso);
+  border-radius: var(--raio-total);
+  box-shadow: var(--sombra-2);
+  animation: avisoEntra var(--duracao-media) var(--curva-mola) both;
+}
+
+.avisoErro { background: var(--cor-erro); }
+
+@keyframes avisoEntra {
+  from { opacity: 0; transform: translateY(16px) scale(0.85); }
+  to { opacity: 1; transform: none; }
+}

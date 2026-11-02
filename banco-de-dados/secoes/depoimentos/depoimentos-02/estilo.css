@@ -1,0 +1,356 @@
+.depoimentos02 {
+  /* Largura da carta; a altura sai da proporção 2:3 */
+  --largura-carta: calc(var(--espaco-9) * 2.7);
+  position: relative;
+  padding: var(--espacamento-secao) var(--margem-lateral);
+  background: var(--cor-fundo);
+  overflow-x: clip;
+
+  .cabecalho {
+    margin-bottom: var(--espaco-5);
+    text-align: center;
+  }
+
+  .rotulo {
+    display: block;
+    margin-bottom: var(--espaco-2);
+    color: var(--cor-destaque-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-transform: uppercase;
+    letter-spacing: var(--espaco-letra-rotulo);
+  }
+
+  .titulo {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-2);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+    color: var(--cor-texto);
+    text-wrap: balance;
+  }
+
+  .descricao {
+    max-width: 56ch;
+    margin: var(--espaco-3) auto 0;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-base);
+    line-height: var(--altura-linha);
+  }
+
+  /* Dica que pulsa até a primeira interação; guarda a altura para o layout não pular */
+  .dica {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    min-height: var(--espaco-5);
+    color: var(--cor-destaque-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    animation: depoimentos02Pulsar calc(var(--duracao-lenta) * 3) var(--curva-padrao) infinite;
+  }
+
+  .mao {
+    animation: depoimentos02Balancar calc(var(--duracao-lenta) * 2) var(--curva-padrao) infinite;
+  }
+
+  .dica.oculta {
+    animation: none;
+    visibility: hidden;
+  }
+
+  .palco {
+    display: flex;
+    justify-content: center;
+    padding: var(--espaco-6) 0 var(--espaco-7);
+  }
+
+  .deck {
+    position: relative;
+    width: var(--largura-carta);
+    aspect-ratio: 2 / 3;
+    cursor: pointer;
+    touch-action: pan-y;
+  }
+
+  /* As poses (posição, giro, escala, opacidade) são escritas pelo script */
+  .carta {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    padding: var(--espaco-5) var(--espaco-4);
+    text-align: center;
+    border-radius: var(--raio-g);
+    border: 1px solid color-mix(in srgb, var(--cor-destaque) 40%, transparent);
+    background: radial-gradient(130% 130% at 50% 10%, var(--cor-superficie-2) 0%, var(--cor-superficie) 100%);
+    box-shadow: var(--sombra-2);
+    opacity: 0;
+    transform-origin: 50% 100%; /* gira pela base, como cartas na mão */
+    will-change: transform;
+    backface-visibility: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    transition:
+      border-color var(--duracao-media) var(--curva-entrada),
+      box-shadow var(--duracao-media) var(--curva-entrada);
+  }
+
+  .ativa {
+    border-color: var(--cor-destaque);
+    box-shadow: var(--sombra-3), 0 0 var(--espaco-5) color-mix(in srgb, var(--cor-destaque) 40%, transparent);
+  }
+
+  .foto {
+    flex-shrink: 0;
+    width: var(--espaco-9);
+    aspect-ratio: 1;
+    border-radius: var(--raio-total);
+    background: linear-gradient(135deg, var(--cor-destaque-2), var(--cor-destaque-3));
+  }
+
+  .tituloCarta {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    color: var(--cor-texto);
+  }
+
+  .textoCarta {
+    margin: 0;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-base);
+    line-height: var(--altura-linha);
+  }
+
+  .metricas {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-1);
+    width: 100%;
+    margin: 0;
+  }
+
+  .metrica {
+    display: flex;
+    justify-content: center;
+    gap: var(--espaco-2);
+    font-size: var(--texto-pequeno);
+  }
+
+  dt {
+    color: var(--cor-texto-2);
+    font-weight: var(--peso-medio);
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--cor-texto);
+    font-weight: var(--peso-forte);
+  }
+
+  .rodapeCarta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaco-2);
+    width: 100%;
+    margin-top: var(--espaco-2);
+  }
+
+  .selo {
+    padding: var(--espaco-1) var(--espaco-4);
+    border-radius: var(--raio-p);
+    border: 1px solid color-mix(in srgb, var(--cor-destaque) 40%, transparent);
+    background: color-mix(in srgb, var(--cor-destaque) 15%, transparent);
+    color: var(--cor-texto);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+  }
+
+  .ativa .selo {
+    border-color: var(--cor-destaque);
+  }
+
+  .nota {
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-transform: uppercase;
+    line-height: var(--altura-linha-titulo);
+  }
+
+  /* Carta de chamada: fica no centro quando o leque abre */
+  .brilhoAtras {
+    position: absolute;
+    inset: -35%;
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--cor-destaque) 32%, transparent) 0%,
+      color-mix(in srgb, var(--cor-destaque) 15%, transparent) 30%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: -1;
+    animation: depoimentos02Respirar calc(var(--duracao-lenta) * 6) var(--curva-padrao) infinite;
+  }
+
+  .conteudoCta {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaco-3);
+  }
+
+  .tituloCta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+
+  /* A linha sobe por trás desta máscara */
+  .mascara {
+    display: block;
+    overflow: hidden;
+    padding: 1px 0;
+  }
+
+  .linhaTexto {
+    display: block;
+    font-family: var(--fonte-titulo);
+    font-size: calc(var(--titulo-3) * 1.4);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    color: var(--cor-texto);
+    text-transform: uppercase;
+  }
+
+  .textoCta {
+    max-width: 92%;
+    margin: 0;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+    line-height: var(--altura-linha);
+  }
+
+  .botaoCta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    min-height: var(--alvo-toque);
+    margin-top: var(--espaco-1);
+    padding: 0 var(--espaco-4);
+    border-radius: var(--raio-m);
+    background: var(--cor-destaque);
+    color: var(--cor-destaque-contraste);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: var(--sombra-2);
+    transition: transform var(--duracao-rapida) var(--curva-mola);
+
+    &:hover { transform: translateY(calc(var(--espaco-1) * -0.5)); }
+    &:active { transform: scale(0.97); }
+  }
+
+  .controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-3);
+  }
+
+  .botaoNavegar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--alvo-toque);
+    height: var(--alvo-toque);
+    padding: 0;
+    border-radius: var(--raio-total);
+    border: 1px solid var(--vidro-borda);
+    background: var(--vidro-fundo);
+    color: var(--cor-texto);
+    cursor: pointer;
+    transition: opacity var(--duracao-rapida) var(--curva-padrao);
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
+  .pontos {
+    display: flex;
+    align-items: center;
+  }
+
+  /* A área de toque tem a altura do alvo; o ponto visível é o ::before */
+  .ponto {
+    position: relative;
+    width: calc(var(--alvo-toque) * 0.6);
+    height: var(--alvo-toque);
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: var(--espaco-2);
+      height: var(--espaco-2);
+      margin: calc(var(--espaco-2) / -2);
+      border-radius: var(--raio-total);
+      background: var(--cor-texto-3);
+      transition:
+        transform var(--duracao-media) var(--curva-padrao),
+        background-color var(--duracao-media) var(--curva-padrao);
+    }
+  }
+
+  .pontoAtivo::before {
+    background: var(--cor-destaque);
+    transform: scaleX(2.5);
+  }
+
+  /* Loops decorativos param quando a seção sai da tela */
+  &.foraDaTela {
+    .dica, .mao, .brilhoAtras { animation-play-state: paused; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dica, .mao, .brilhoAtras { animation: none; }
+  }
+}
+
+@keyframes depoimentos02Pulsar {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes depoimentos02Balancar {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(calc(var(--espaco-1) * -0.75)) rotate(-8deg); }
+}
+
+@keyframes depoimentos02Respirar {
+  0%, 100% { opacity: 0.5; transform: scale(0.97); }
+  50% { opacity: 0.85; transform: scale(1.03); }
+}

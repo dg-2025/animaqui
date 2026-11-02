@@ -1,0 +1,39 @@
+.palcoColuna {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  height: 100%;
+  min-height: 0;
+}
+
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-2) var(--espaco-4);
+}
+
+.titulo {
+  font-size: var(--titulo-2);
+  animation: tituloEntra var(--duracao-media) var(--curva-mola) both;
+}
+
+.colunaPainel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-5);
+}
+
+@keyframes tituloEntra {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+.tituloOculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}

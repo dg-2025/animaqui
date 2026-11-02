@@ -1,0 +1,27 @@
+/* A caixa recorta a palavra; o padding com margem negativa dá espaço para acentos e descendentes. */
+[data-animacao="palavras-subindo"] .textoPalavraCaixa {
+  display: inline-block;
+  overflow: clip;
+  padding: 0.14em 0.06em;
+  margin: -0.14em -0.06em;
+}
+
+[data-animacao="palavras-subindo"] .textoPalavra {
+  display: inline-block;
+  transform-origin: 0 100%;
+  animation: textoPalavraSobe var(--duracao-lenta) var(--curva-entrada) backwards;
+  animation-delay: calc(var(--i, 0) * var(--duracao-rapida) * 0.6);
+  animation-play-state: paused;
+}
+
+[data-animacao="palavras-subindo"] .visivel .textoPalavra {
+  animation-play-state: running;
+}
+
+@keyframes textoPalavraSobe {
+  from { translate: 0 125%; rotate: 4deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animacao="palavras-subindo"] .textoPalavra { animation: none; }
+}

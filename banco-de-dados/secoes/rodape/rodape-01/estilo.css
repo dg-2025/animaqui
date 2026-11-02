@@ -1,0 +1,48 @@
+.rodape01 {
+  .coluna a {
+    position: relative;
+  }
+
+  .coluna a::after {
+    content: "";
+    position: absolute;
+    inset: -10px 0;
+  }
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--espaco-5);
+  padding: var(--espaco-7) var(--margem-lateral) var(--espaco-5);
+  background: var(--cor-fundo-2);
+  border-top: 1px solid var(--cor-borda);
+
+  .marca {
+    grid-column: 1 / -1;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-2);
+  }
+
+  .coluna {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--espaco-2);
+  }
+
+  a {
+    color: var(--cor-texto-2);
+    overflow-wrap: anywhere;
+  }
+
+  .direitos {
+    grid-column: 1 / -1;
+    color: var(--cor-texto-3);
+    font-size: var(--texto-pequeno);
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 2fr 1fr 1fr;
+
+    .marca { grid-column: auto; }
+  }
+}

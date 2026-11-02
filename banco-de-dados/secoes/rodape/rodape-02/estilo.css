@@ -1,0 +1,182 @@
+.rodape02 {
+  padding: var(--espaco-8) var(--margem-lateral) var(--espaco-6);
+  border-top: 1px solid color-mix(in srgb, var(--cor-destaque-2) 35%, transparent);
+  background: var(--cor-fundo);
+  color: var(--cor-texto-2);
+
+  .conteudo {
+    max-width: var(--largura-max);
+    margin-inline: auto;
+  }
+
+  .grade {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espaco-6) var(--espaco-5);
+    margin-bottom: var(--espaco-7);
+  }
+
+  .apresentacao {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-3);
+    min-height: var(--alvo-toque);
+    margin-bottom: var(--espaco-4);
+    color: var(--cor-texto);
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-titulo);
+    text-decoration: none;
+    transition: color var(--duracao-media) var(--curva-padrao);
+
+    svg {
+      flex-shrink: 0;
+      width: var(--espaco-7);
+      height: var(--espaco-7);
+    }
+  }
+
+  .logo:hover,
+  .logo:focus-visible { color: var(--cor-destaque-2); }
+
+  .descricao {
+    max-width: 44ch;
+    margin: 0 0 var(--espaco-5);
+    line-height: var(--altura-linha);
+  }
+
+  .filete {
+    width: var(--espaco-8);
+    height: var(--espaco-1);
+    border-radius: var(--raio-p);
+    background: linear-gradient(90deg, var(--cor-destaque-2), transparent);
+  }
+
+  .coluna { min-width: 0; }
+
+  .tituloColuna {
+    display: block;
+    margin-bottom: var(--espaco-3);
+    color: var(--cor-texto);
+    font-family: var(--fonte-titulo);
+    font-size: var(--texto-base);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+  }
+
+  .links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--espaco-3);
+      min-height: var(--alvo-toque);
+      color: var(--cor-texto-2);
+      text-decoration: none;
+      transition:
+        color var(--duracao-rapida) var(--curva-padrao),
+        transform var(--duracao-rapida) var(--curva-padrao);
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: var(--cor-destaque-2);
+      transform: translateX(var(--espaco-1));
+    }
+  }
+
+  .linksContato {
+    a {
+      align-items: flex-start;
+      padding-block: var(--espaco-2);
+      overflow-wrap: anywhere;
+    }
+
+    svg {
+      flex-shrink: 0;
+      width: var(--espaco-4);
+      height: var(--espaco-4);
+      margin-top: var(--espaco-1);
+      color: var(--cor-destaque-2);
+    }
+  }
+
+  .barraFinal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaco-3);
+    padding-top: var(--espaco-5);
+    border-top: 1px solid var(--cor-borda);
+    font-size: var(--texto-pequeno);
+    text-align: center;
+  }
+
+  .selo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-2);
+    color: var(--cor-texto);
+  }
+
+  .ponto {
+    position: relative;
+    flex-shrink: 0;
+    width: var(--espaco-2);
+    height: var(--espaco-2);
+    border-radius: var(--raio-total);
+    background: var(--cor-destaque-2);
+  }
+
+  .ponto::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--cor-destaque-2);
+    animation: rodape02Pulso calc(var(--duracao-ciclo) / 2) var(--curva-saida) infinite;
+  }
+
+  &[data-pausado] .ponto::after { animation-play-state: paused; }
+
+  @media (min-width: 768px) {
+    .barraFinal {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grade {
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: var(--espaco-8);
+    }
+
+    .apresentacao { grid-column: auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ponto::after { animation: none; opacity: 0; }
+    .logo,
+    .links a { transition: none; }
+    .links a:hover,
+    .links a:focus-visible { transform: none; }
+  }
+}
+
+@keyframes rodape02Pulso {
+  0% { transform: scale(1); opacity: 0.7; }
+  70%, 100% { transform: scale(2.5); opacity: 0; }
+}

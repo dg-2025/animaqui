@@ -1,0 +1,241 @@
+<section class="galeria04">
+  <svg class="filtroEscondido" aria-hidden="true">
+    <defs>
+      <filter id="galeria04Distorcao" color-interpolation-filters="sRGB" x="-6%" y="-6%" width="112%" height="112%">
+        <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="ruido" seed="1" />
+        <feOffset in="ruido" dx="0" dy="0" result="deslocado1">
+          <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+        </feOffset>
+        <feOffset in="ruido" dx="0" dy="0" result="deslocado2">
+          <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
+        </feOffset>
+        <feComposite in="deslocado1" in2="deslocado2" result="parte" />
+        <feBlend in="parte" mode="color-dodge" result="ruidoFinal" />
+        <feDisplacementMap in="SourceGraphic" in2="ruidoFinal" scale="15" xChannelSelector="R" yChannelSelector="B" />
+      </filter>
+    </defs>
+  </svg>
+  <div class="conteudo">
+    <header class="cabecalho" data-anima>
+      <span class="rotulo">Trabalhos</span>
+      <h2 class="titulo">O que já entregamos</h2>
+      <p class="texto">Abra um cartão para ler a história completa de cada projeto.</p>
+    </header>
+      <div class="grupo" data-grupo>
+        <div class="cabecalhoGrupo" data-anima>
+          <h3 class="tituloGrupo">Sistemas</h3>
+          <span class="selo">com painel</span>
+        </div>
+        <ul class="grade">
+          <li class="celula" style="--i: 0">
+            <article class="cartao">
+              <span class="bordaEletrica" aria-hidden="true"></span>
+              <div class="corpo">
+                <div class="imagem" data-tom="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></div>
+                <div class="info">
+                  <h4 class="tituloCartao">Projeto 1</h4>
+                  <div class="descricao"><p>Resuma aqui o problema que o cliente trouxe. Ao abrir o cartão, o texto completo aparece: o que foi feito, o que foi entregue e o resultado medido no final do trabalho.</p></div>
+                  <button class="verMais" type="button" aria-expanded="false">
+                    <span class="rotuloBotao">Ver mais</span>
+                    <span class="setaBotao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </button>
+                  <ul class="etiquetas">
+                    <li class="etiqueta">Categoria</li>
+                    <li class="etiqueta">Entrega</li>
+                    <li class="etiqueta">Resultado</li>
+                  </ul>
+                  <div class="acoes">
+                    <a class="acao acaoPrincipal" href="#">Ver online</a>
+                    <a class="acao acaoSecundaria" href="#">Detalhes</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="celula destaque" style="--i: 1">
+            <article class="cartao">
+              <span class="bordaEletrica" aria-hidden="true"></span>
+              <div class="corpo">
+                <div class="imagem" data-tom="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></div>
+                <div class="info">
+                  <h4 class="tituloCartao">Projeto 2<span class="estrela" role="img" aria-label="Destaque"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9Z"/></svg></span></h4>
+                  <div class="descricao"><p>Use este espaço para contar a história de outro trabalho, com um texto mais longo que o espaço fechado do cartão, para mostrar o corte em três linhas e o botão funcionando.</p></div>
+                  <button class="verMais" type="button" aria-expanded="false">
+                    <span class="rotuloBotao">Ver mais</span>
+                    <span class="setaBotao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </button>
+                  <ul class="etiquetas">
+                    <li class="etiqueta">Categoria</li>
+                    <li class="etiqueta">Entrega</li>
+                    <li class="etiqueta">Resultado</li>
+                  </ul>
+                  <div class="acoes">
+                    <a class="acao acaoPrincipal" href="#">Ver online</a>
+                    <a class="acao acaoSecundaria" href="#">Detalhes</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="celula" style="--i: 2">
+            <article class="cartao">
+              <span class="bordaEletrica" aria-hidden="true"></span>
+              <div class="corpo">
+                <div class="imagem" data-tom="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></div>
+                <div class="info">
+                  <h4 class="tituloCartao">Projeto 3</h4>
+                  <div class="descricao"><p>Mais um exemplo de descrição: em que situação o trabalho começou, quais escolhas fizeram diferença e o que mudou para quem contratou depois da entrega.</p></div>
+                  <button class="verMais" type="button" aria-expanded="false">
+                    <span class="rotuloBotao">Ver mais</span>
+                    <span class="setaBotao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </button>
+                  <ul class="etiquetas">
+                    <li class="etiqueta">Categoria</li>
+                    <li class="etiqueta">Entrega</li>
+                    <li class="etiqueta">Resultado</li>
+                  </ul>
+                  <div class="acoes">
+                    <a class="acao acaoPrincipal" href="#">Ver online</a>
+                    <a class="acao acaoSecundaria" href="#">Detalhes</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="celula" style="--i: 3">
+            <article class="cartao">
+              <span class="bordaEletrica" aria-hidden="true"></span>
+              <div class="corpo">
+                <div class="imagem" data-tom="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></div>
+                <div class="info">
+                  <h4 class="tituloCartao">Projeto 4</h4>
+                  <div class="descricao"><p>Fale de um trabalho recente em poucas linhas. Quem se interessar abre o cartão e lê o resto, sem que a página fique carregada de texto para quem só está olhando.</p></div>
+                  <button class="verMais" type="button" aria-expanded="false">
+                    <span class="rotuloBotao">Ver mais</span>
+                    <span class="setaBotao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </button>
+                  <ul class="etiquetas">
+                    <li class="etiqueta">Categoria</li>
+                    <li class="etiqueta">Entrega</li>
+                    <li class="etiqueta">Resultado</li>
+                  </ul>
+                  <div class="acoes">
+                    <a class="acao acaoPrincipal" href="#">Ver online</a>
+                    <a class="acao acaoSecundaria" href="#">Detalhes</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+      <div class="grupo" data-grupo>
+        <div class="cabecalhoGrupo" data-anima>
+          <h3 class="tituloGrupo">Sites</h3>
+          <span class="selo">alta conversão</span>
+        </div>
+        <ul class="grade">
+          <li class="celula destaque" style="--i: 4">
+            <article class="cartao">
+              <span class="bordaEletrica" aria-hidden="true"></span>
+              <div class="corpo">
+                <div class="imagem" data-tom="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></div>
+                <div class="info">
+                  <h4 class="tituloCartao">Projeto 5<span class="estrela" role="img" aria-label="Destaque"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9Z"/></svg></span></h4>
+                  <div class="descricao"><p>Resuma aqui o problema que o cliente trouxe. Ao abrir o cartão, o texto completo aparece: o que foi feito, o que foi entregue e o resultado medido no final do trabalho.</p></div>
+                  <button class="verMais" type="button" aria-expanded="false">
+                    <span class="rotuloBotao">Ver mais</span>
+                    <span class="setaBotao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </button>
+                  <ul class="etiquetas">
+                    <li class="etiqueta">Categoria</li>
+                    <li class="etiqueta">Entrega</li>
+                    <li class="etiqueta">Resultado</li>
+                  </ul>
+                  <div class="acoes">
+                    <a class="acao acaoPrincipal" href="#">Ver online</a>
+                    <a class="acao acaoSecundaria" href="#">Detalhes</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="celula" style="--i: 5">
+            <article class="cartao">
+              <span class="bordaEletrica" aria-hidden="true"></span>
+              <div class="corpo">
+                <div class="imagem" data-tom="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></div>
+                <div class="info">
+                  <h4 class="tituloCartao">Projeto 6</h4>
+                  <div class="descricao"><p>Use este espaço para contar a história de outro trabalho, com um texto mais longo que o espaço fechado do cartão, para mostrar o corte em três linhas e o botão funcionando.</p></div>
+                  <button class="verMais" type="button" aria-expanded="false">
+                    <span class="rotuloBotao">Ver mais</span>
+                    <span class="setaBotao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </button>
+                  <ul class="etiquetas">
+                    <li class="etiqueta">Categoria</li>
+                    <li class="etiqueta">Entrega</li>
+                    <li class="etiqueta">Resultado</li>
+                  </ul>
+                  <div class="acoes">
+                    <a class="acao acaoPrincipal" href="#">Ver online</a>
+                    <a class="acao acaoSecundaria" href="#">Detalhes</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="celula" style="--i: 6">
+            <article class="cartao">
+              <span class="bordaEletrica" aria-hidden="true"></span>
+              <div class="corpo">
+                <div class="imagem" data-tom="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></div>
+                <div class="info">
+                  <h4 class="tituloCartao">Projeto 7</h4>
+                  <div class="descricao"><p>Mais um exemplo de descrição: em que situação o trabalho começou, quais escolhas fizeram diferença e o que mudou para quem contratou depois da entrega.</p></div>
+                  <button class="verMais" type="button" aria-expanded="false">
+                    <span class="rotuloBotao">Ver mais</span>
+                    <span class="setaBotao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </button>
+                  <ul class="etiquetas">
+                    <li class="etiqueta">Categoria</li>
+                    <li class="etiqueta">Entrega</li>
+                    <li class="etiqueta">Resultado</li>
+                  </ul>
+                  <div class="acoes">
+                    <a class="acao acaoPrincipal" href="#">Ver online</a>
+                    <a class="acao acaoSecundaria" href="#">Detalhes</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="celula destaque" style="--i: 7">
+            <article class="cartao">
+              <span class="bordaEletrica" aria-hidden="true"></span>
+              <div class="corpo">
+                <div class="imagem" data-tom="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></div>
+                <div class="info">
+                  <h4 class="tituloCartao">Projeto 8<span class="estrela" role="img" aria-label="Destaque"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9Z"/></svg></span></h4>
+                  <div class="descricao"><p>Fale de um trabalho recente em poucas linhas. Quem se interessar abre o cartão e lê o resto, sem que a página fique carregada de texto para quem só está olhando.</p></div>
+                  <button class="verMais" type="button" aria-expanded="false">
+                    <span class="rotuloBotao">Ver mais</span>
+                    <span class="setaBotao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </button>
+                  <ul class="etiquetas">
+                    <li class="etiqueta">Categoria</li>
+                    <li class="etiqueta">Entrega</li>
+                    <li class="etiqueta">Resultado</li>
+                  </ul>
+                  <div class="acoes">
+                    <a class="acao acaoPrincipal" href="#">Ver online</a>
+                    <a class="acao acaoSecundaria" href="#">Detalhes</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+  </div>
+</section>

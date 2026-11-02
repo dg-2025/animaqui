@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Conteúdo exportado para sites de terceiros, não é código da plataforma.
+    "banco-de-dados/**",
   ]),
 ]);
 

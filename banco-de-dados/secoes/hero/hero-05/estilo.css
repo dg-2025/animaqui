@@ -1,0 +1,530 @@
+.hero05 {
+  --duracaoSlide: calc(var(--duracao-ciclo) * 1.5);
+  position: relative;
+  padding: var(--espaco-9) var(--margem-lateral) var(--espaco-7);
+  overflow: hidden;
+  color: var(--cor-texto);
+  background:
+    radial-gradient(60% 40% at 80% 30%, color-mix(in srgb, var(--cor-destaque-2) 8%, transparent), transparent 70%),
+    var(--cor-fundo);
+
+  .grade {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--espaco-6);
+    align-items: center;
+    max-width: var(--largura-max);
+    margin-inline: auto;
+  }
+
+  .conteudo {
+    min-width: 0;
+  }
+
+  .etiqueta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-2);
+    margin: 0 0 var(--espaco-4);
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+  }
+
+  .ponto {
+    position: relative;
+    width: var(--espaco-2);
+    height: var(--espaco-2);
+    background: var(--cor-destaque-2);
+    border-radius: var(--raio-total);
+  }
+
+  .pulso {
+    position: absolute;
+    inset: 0;
+    background: var(--cor-destaque-2);
+    border-radius: var(--raio-total);
+    animation: hero05Pulso calc(var(--duracao-ciclo) * 0.6) var(--curva-padrao) infinite;
+  }
+
+  .blocoTitulo {
+    position: relative;
+    margin-bottom: var(--espaco-4);
+  }
+
+  .titulo {
+    display: block;
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-1);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+  }
+
+  /* Máscara por palavra: cada uma sobe de dentro da própria linha */
+  .mascara {
+    display: inline-block;
+    padding-bottom: 0.1em;
+    margin-bottom: -0.1em;
+    overflow: hidden;
+    vertical-align: top;
+  }
+
+  .palavra {
+    display: inline-block;
+    animation: hero05Palavra var(--duracao-lenta) var(--curva-entrada) calc(var(--duracao-media) + var(--i) * var(--duracao-rapida) * 0.3) both;
+  }
+
+  .destaque {
+    color: var(--cor-destaque-2);
+    text-shadow: 0 0 var(--espaco-4) color-mix(in srgb, var(--cor-destaque-2) 35%, transparent);
+  }
+
+  /* Faixa de luz: cópia do título com fundo recortado pelas letras, invisível fora da faixa */
+  .luzTitulo {
+    position: absolute;
+    inset: 0 0 auto;
+    color: transparent;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+    background: linear-gradient(100deg, transparent 43%, color-mix(in srgb, var(--cor-brilho) 50%, transparent) 47%, var(--cor-brilho) 50%, color-mix(in srgb, var(--cor-brilho) 50%, transparent) 53%, transparent 57%);
+    background-position: 100% 0;
+    background-size: 320% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: hero05FaixaLuz calc(var(--duracao-ciclo) * 1.25) var(--curva-padrao) calc(var(--duracao-lenta) * 2.5) infinite;
+  }
+
+  .subtitulo {
+    max-width: 48ch;
+    margin: 0 0 var(--espaco-5);
+    color: var(--cor-texto-2);
+    font-size: var(--texto-base);
+    line-height: var(--altura-linha);
+  }
+
+  .botoes {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--espaco-3);
+  }
+
+  .botaoPrincipal {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    min-height: var(--alvo-toque);
+    padding: var(--espaco-3) var(--espaco-5);
+    overflow: hidden;
+    isolation: isolate;
+    color: var(--cor-destaque-contraste);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    background: var(--cor-destaque);
+    border-radius: var(--raio-p);
+  }
+
+  /* Brilho que atravessa o botão de tempos em tempos */
+  .botaoPrincipal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(105deg, transparent 30%, color-mix(in srgb, var(--cor-destaque-2) 40%, transparent) 50%, transparent 70%);
+    transform: translate3d(-120%, 0, 0);
+    animation: hero05BrilhoBotao calc(var(--duracao-ciclo) * 1.2) ease-in-out calc(var(--duracao-ciclo) * 0.6) infinite;
+  }
+
+  .linkSeta {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: var(--espaco-2);
+    min-height: var(--alvo-toque);
+    color: var(--cor-texto);
+    font-weight: var(--peso-medio);
+    text-decoration: none;
+  }
+
+  .linkSeta svg {
+    transition: transform var(--duracao-media) var(--curva-mola);
+  }
+
+  .linkSeta:hover svg {
+    transform: translateX(var(--espaco-1));
+  }
+
+  .carrossel {
+    position: relative;
+    min-width: 0;
+  }
+
+  /* Moldura de luz: um cometa gira atrás da foto e só aparece no contorno fino */
+  .moldura {
+    position: relative;
+    padding: var(--espessura-linha);
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--cor-preenchimento);
+    border-radius: var(--raio-m);
+    box-shadow: 0 var(--espaco-6) var(--espaco-8) calc(-1 * var(--espaco-6)) color-mix(in srgb, var(--cor-destaque-2) 40%, transparent);
+  }
+
+  .moldura::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    z-index: -1;
+    background: conic-gradient(transparent 0deg 250deg, color-mix(in srgb, var(--cor-destaque-2) 15%, transparent) 290deg, var(--cor-destaque-2) 340deg, var(--cor-brilho) 352deg, transparent 360deg);
+    animation: hero05Girar calc(var(--duracao-ciclo) * 1.75) linear infinite;
+  }
+
+  .quadro {
+    position: relative;
+    aspect-ratio: 5 / 4;
+    overflow: hidden;
+    background: var(--cor-fundo-2);
+    border-radius: calc(var(--raio-m) - var(--espessura-linha));
+    animation: hero05Cortina calc(var(--duracao-lenta) * 1.9) var(--curva-entrada) var(--duracao-rapida) both;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity calc(var(--duracao-lenta) * 1.5) var(--curva-padrao), visibility 0s linear calc(var(--duracao-lenta) * 1.5);
+  }
+
+  .slideAtivo {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity calc(var(--duracao-lenta) * 1.5) var(--curva-padrao), visibility 0s;
+  }
+
+  .imagemSlide {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: color-mix(in srgb, var(--cor-texto) 35%, transparent);
+    transform: scale(1.07);
+    transition: transform calc(var(--duracao-ciclo) * 2) var(--curva-padrao);
+  }
+
+  .slideAtivo .imagemSlide {
+    transform: scale(1);
+  }
+
+  .tomUm .imagemSlide {
+    background: linear-gradient(145deg, var(--cor-superficie-2), var(--cor-fundo-2));
+  }
+
+  .tomDois .imagemSlide {
+    background: linear-gradient(145deg, color-mix(in srgb, var(--cor-destaque-2) 45%, var(--cor-fundo)), var(--cor-superficie));
+  }
+
+  .tomTres .imagemSlide {
+    background: linear-gradient(145deg, color-mix(in srgb, var(--cor-destaque-3) 45%, var(--cor-fundo)), var(--cor-fundo-2));
+  }
+
+  .tomQuatro .imagemSlide {
+    background: linear-gradient(145deg, var(--cor-superficie), color-mix(in srgb, var(--cor-alerta) 35%, var(--cor-fundo)));
+  }
+
+  /* Luz passando pela foto, como reflexo em superfície polida */
+  .reflexo {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(105deg, transparent 35%, color-mix(in srgb, var(--cor-brilho) 18%, transparent) 50%, transparent 65%);
+    transform: translate3d(-100%, 0, 0);
+    animation: hero05Reflexo calc(var(--duracao-ciclo) * 1.75) var(--curva-padrao) infinite;
+  }
+
+  .legendaTexto {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-1);
+    padding: var(--espaco-8) var(--espaco-9) var(--espaco-4) var(--espaco-4);
+    background: linear-gradient(to top, color-mix(in srgb, var(--cor-fundo) 90%, transparent), color-mix(in srgb, var(--cor-fundo) 45%, transparent) 60%, transparent);
+  }
+
+  .slideAtivo .legendaTexto > * {
+    animation: hero05Legenda var(--duracao-lenta) var(--curva-entrada) both;
+  }
+
+  .legendaTexto strong {
+    font-size: var(--texto-base);
+    font-weight: var(--peso-forte);
+    line-height: var(--altura-linha-titulo);
+  }
+
+  .legendaTexto span {
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+  }
+
+  .contador {
+    position: absolute;
+    right: var(--espaco-4);
+    bottom: var(--espaco-4);
+    z-index: 2;
+    display: inline-flex;
+    align-items: baseline;
+    font-weight: var(--peso-forte);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .contadorAtual {
+    display: inline-block;
+    font-size: var(--titulo-3);
+    animation: hero05Legenda var(--duracao-lenta) var(--curva-entrada) both;
+  }
+
+  .contadorTotal {
+    margin-left: var(--espaco-1);
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+  }
+
+  .controles {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-2);
+  }
+
+  .trilhas {
+    display: flex;
+    flex: 1;
+    gap: var(--espaco-2);
+  }
+
+  .trilha {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    min-height: var(--alvo-toque);
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    border: 0;
+  }
+
+  .trilhaBase {
+    position: relative;
+    width: 100%;
+    height: var(--espessura-linha);
+    overflow: hidden;
+    background: var(--cor-borda);
+    transition: background-color var(--duracao-rapida) var(--curva-padrao);
+  }
+
+  .trilha:hover .trilhaBase {
+    background: var(--cor-texto-3);
+  }
+
+  .trilhaCheia {
+    position: absolute;
+    inset: 0;
+    background: var(--cor-texto-2);
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  .trilha.concluida .trilhaCheia {
+    transform: scaleX(1);
+  }
+
+  .trilha[aria-current="true"] .trilhaCheia {
+    background: var(--cor-destaque-2);
+    animation: hero05Progresso var(--duracaoSlide) linear both;
+  }
+
+  .botaoPausa {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: var(--alvo-toque);
+    height: var(--alvo-toque);
+    color: var(--cor-texto-2);
+    cursor: pointer;
+    background: none;
+    border: 0;
+    transition: color var(--duracao-rapida) var(--curva-padrao);
+  }
+
+  .botaoPausa:hover {
+    color: var(--cor-texto);
+  }
+
+  .iconePlay {
+    display: none;
+  }
+
+  .carrossel.pausado .iconePausa {
+    display: none;
+  }
+
+  .carrossel.pausado .iconePlay {
+    display: block;
+  }
+
+  .carrossel.parado .trilhaCheia,
+  &.foraDaTela .trilhaCheia {
+    animation-play-state: paused;
+  }
+
+  &.foraDaTela .pulso,
+  &.foraDaTela .luzTitulo,
+  &.foraDaTela .moldura::before,
+  &.foraDaTela .reflexo,
+  &.foraDaTela .botaoPrincipal::after {
+    animation-play-state: paused;
+  }
+
+  @media (min-width: 768px) {
+    .botoes {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--espaco-6);
+    }
+
+    .linkSeta {
+      align-self: center;
+    }
+
+    .quadro {
+      aspect-ratio: 16 / 10;
+    }
+
+    .subtitulo {
+      font-size: var(--texto-grande);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+    min-height: 100svh;
+
+    .grade {
+      flex: 1;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: var(--espaco-8);
+    }
+
+    /* Largura derivada da altura útil, para o quadro 4:5 nunca passar da dobra */
+    .carrossel {
+      justify-self: end;
+      width: min(100%, calc((100svh - var(--espaco-9) * 2 - var(--espaco-7)) * 0.8));
+      min-width: min(100%, calc(var(--largura-max) * 0.3));
+    }
+
+    .quadro {
+      aspect-ratio: 4 / 5;
+    }
+
+    .legendaTexto strong {
+      font-size: var(--texto-grande);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulso,
+    .palavra,
+    .luzTitulo,
+    .botaoPrincipal::after,
+    .moldura::before,
+    .quadro,
+    .reflexo,
+    .contadorAtual,
+    .slideAtivo .legendaTexto > * {
+      animation: none;
+    }
+
+    .pulso,
+    .luzTitulo,
+    .botaoPrincipal::after,
+    .reflexo {
+      display: none;
+    }
+
+    .slide,
+    .slideAtivo,
+    .imagemSlide,
+    .linkSeta svg {
+      transition: none;
+    }
+
+    .imagemSlide {
+      transform: none;
+    }
+
+    /* Sem troca automática: o carrossel só muda pelas trilhas */
+    .trilha[aria-current="true"] .trilhaCheia {
+      transform: scaleX(1);
+      animation: none;
+    }
+
+    .botaoPausa {
+      display: none;
+    }
+  }
+}
+
+@keyframes hero05Pulso {
+  from { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(3.4); opacity: 0; }
+}
+
+@keyframes hero05Palavra {
+  from { opacity: 0; transform: translateY(105%); filter: blur(var(--espaco-1)); }
+}
+
+@keyframes hero05FaixaLuz {
+  0% { background-position: 100% 0; }
+  45%, 100% { background-position: 0% 0; }
+}
+
+@keyframes hero05BrilhoBotao {
+  0% { transform: translate3d(-120%, 0, 0); }
+  30%, 100% { transform: translate3d(120%, 0, 0); }
+}
+
+@keyframes hero05Girar {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes hero05Cortina {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes hero05Reflexo {
+  0% { transform: translate3d(-100%, 0, 0); }
+  28%, 100% { transform: translate3d(100%, 0, 0); }
+}
+
+@keyframes hero05Legenda {
+  from { opacity: 0; transform: translate3d(0, var(--espaco-2), 0); }
+}
+
+@keyframes hero05Progresso {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}

@@ -1,0 +1,176 @@
+.chamada02 {
+  --cta-fundo: var(--cor-destaque-2);
+  --cta-texto: var(--cor-destaque-contraste);
+  --ciclo: calc(var(--duracao-lenta) * 3.5);
+
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--espacamento-secao) var(--margem-lateral) calc(var(--espacamento-secao) + var(--alvo-toque) + var(--espaco-5));
+  background:
+    radial-gradient(60% 70% at 100% 100%, color-mix(in srgb, var(--cor-destaque-2) 26%, transparent), transparent 70%),
+    var(--cor-fundo-2);
+  color: var(--cor-texto);
+
+  .texto {
+    width: 100%;
+    max-width: var(--largura-max);
+    margin-inline: auto;
+  }
+
+  .etiqueta {
+    display: block;
+    margin-bottom: var(--espaco-3);
+    color: var(--cor-destaque-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+  }
+
+  .titulo {
+    max-width: 16ch;
+    margin: 0 0 var(--espaco-4);
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-display);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+    text-wrap: balance;
+  }
+
+  .descricao {
+    max-width: 48ch;
+    margin: 0;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-grande);
+  }
+
+  /* Canto inferior direito, na zona do polegar, acima da barra de gestos do celular */
+  .flutuante {
+    position: fixed;
+    right: var(--espaco-4);
+    bottom: calc(var(--espaco-4) + env(safe-area-inset-bottom, 0px));
+    z-index: var(--z-flutuante);
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-3);
+  }
+
+  .botao {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--alvo-toque) + var(--espaco-4));
+    height: calc(var(--alvo-toque) + var(--espaco-4));
+    border-radius: var(--raio-total);
+    color: var(--cta-texto);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    animation: chamada02Pulso var(--ciclo) var(--curva-padrao) infinite;
+  }
+
+  .botao:focus-visible {
+    outline: var(--espessura-linha) solid var(--cor-destaque);
+    outline-offset: var(--espaco-1);
+  }
+
+  .onda,
+  .disco {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .onda {
+    background: var(--cta-fundo);
+    opacity: 0;
+    animation: chamada02Onda var(--ciclo) var(--curva-entrada) infinite;
+  }
+
+  /* Recorta a faixa de luz sem cortar a onda */
+  .disco {
+    overflow: hidden;
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--cta-fundo) 80%, var(--cor-brilho)) 0%,
+      var(--cta-fundo) 60%,
+      color-mix(in srgb, var(--cta-fundo) 70%, var(--cor-fundo)) 100%
+    );
+    box-shadow: var(--sombra-2);
+    transition: transform var(--duracao-rapida) var(--curva-mola);
+  }
+
+  /* O transform do botão já é do pulso: o toque encolhe só o disco */
+  .botao:active .disco { transform: scale(0.94); }
+
+  .faixaLuz {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--cor-brilho) 60%, transparent), transparent);
+    transform: translate3d(-120%, 0, 0) skewX(-20deg);
+    animation: chamada02Faixa calc(var(--duracao-lenta) * 4) var(--curva-padrao) infinite;
+  }
+
+  .icone {
+    position: relative;
+    display: flex;
+    width: var(--espaco-6);
+    height: var(--espaco-6);
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .balao {
+    display: none;
+    padding: var(--espaco-2) var(--espaco-4);
+    border: 1px solid var(--cor-destaque-2);
+    border-radius: var(--raio-total);
+    background: var(--cor-superficie-2);
+    color: var(--cor-texto);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    white-space: nowrap;
+    box-shadow: var(--sombra-2);
+  }
+
+  @media (min-width: 768px) {
+    .flutuante {
+      right: var(--espaco-5);
+      bottom: calc(var(--espaco-5) + env(safe-area-inset-bottom, 0px));
+    }
+
+    .balao { display: block; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .botao,
+    .onda,
+    .faixaLuz { animation: none; }
+
+    .onda,
+    .faixaLuz { display: none; }
+
+    .disco { transition: none; }
+  }
+}
+
+@keyframes chamada02Pulso {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes chamada02Onda {
+  0% { transform: scale(1); opacity: 0.85; }
+  70%, 100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes chamada02Faixa {
+  0% { transform: translate3d(-120%, 0, 0) skewX(-20deg); }
+  100% { transform: translate3d(240%, 0, 0) skewX(-20deg); }
+}

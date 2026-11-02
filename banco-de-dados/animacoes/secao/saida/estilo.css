@@ -1,0 +1,4 @@
+.animaSaida {
+  transition: opacity var(--duracao-media) linear, transform var(--duracao-media) linear;
+  transform-origin: 50% 0;
+}

@@ -1,0 +1,7 @@
+{
+  "id": "gradiente",
+  "nome": "Gradiente",
+  "tipo": "texto",
+  "descricao": "As cores deslizam por dentro das letras.",
+  "precisaRolar": false
+}

@@ -1,0 +1,28 @@
+.aplicacao {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+.conteudo {
+  flex: 1;
+  min-height: 0;
+}
+
+.rodape {
+  display: flex;
+  justify-content: center;
+  gap: var(--espaco-4);
+  padding: 0 var(--margem-lateral) var(--espaco-1);
+}
+
+.linkRodape {
+  display: inline-flex;
+  align-items: center;
+  color: var(--cor-texto-2);
+  font-size: var(--texto-pequeno);
+}
+
+@media (pointer: coarse) {
+  .linkRodape { min-height: var(--alvo-toque); }
+}

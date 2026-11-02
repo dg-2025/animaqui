@@ -1,0 +1,24 @@
+.campo {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  min-height: var(--alvo-toque);
+  padding-inline: var(--espaco-4);
+  color: var(--cor-texto-2);
+  background: var(--cor-fundo);
+  border-radius: var(--raio-total);
+  box-shadow: var(--sombra-clay-afundada);
+}
+
+.campo:focus-within { outline: var(--espessura-linha) solid var(--cor-destaque); }
+
+.entrada {
+  flex: 1;
+  min-width: 0;
+  font-size: 1rem;
+  background: none;
+  border: 0;
+  outline: 0;
+}
+
+.entrada::placeholder { color: var(--cor-texto-3); }

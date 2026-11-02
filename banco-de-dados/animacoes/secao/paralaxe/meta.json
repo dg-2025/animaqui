@@ -1,0 +1,7 @@
+{
+  "id": "paralaxe",
+  "nome": "Paralaxe",
+  "tipo": "secao",
+  "descricao": "Os elementos andam em velocidades diferentes conforme a rolagem.",
+  "precisaRolar": true
+}

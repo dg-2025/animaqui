@@ -1,0 +1,18 @@
+/* Sem valor final no keyframe: cada elemento termina no próprio estado natural. */
+.animaZoom [data-anima] {
+  animation: zoomSuaveCresce var(--duracao-lenta) var(--curva-entrada) backwards;
+  animation-delay: calc(min(var(--i, 0), 10) * var(--duracao-rapida) * 0.6);
+  animation-play-state: paused;
+}
+
+.animaZoom.visivel [data-anima] {
+  animation-play-state: running;
+}
+
+@keyframes zoomSuaveCresce {
+  from { opacity: 0; scale: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animaZoom [data-anima] { animation: none; }
+}

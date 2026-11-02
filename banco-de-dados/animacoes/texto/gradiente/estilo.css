@@ -1,0 +1,17 @@
+[data-animacao="gradiente"] [data-texto] {
+  color: transparent;
+  background: linear-gradient(90deg, var(--cor-destaque-2), var(--cor-destaque-3), var(--cor-destaque-2));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textoGradienteDesliza var(--duracao-ciclo) linear infinite;
+}
+
+@keyframes textoGradienteDesliza {
+  from { background-position: 0 0; }
+  to { background-position: 200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animacao="gradiente"] [data-texto] { animation: none; }
+}

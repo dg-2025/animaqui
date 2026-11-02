@@ -1,0 +1,15 @@
+/* O progresso é a própria rolagem. --folga vem do script: nunca pede mais rolagem do que a página tem,
+   para o último elemento sempre terminar visível. Sem suporte, o conteúdo fica pronto e parado. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-animacao="revelar-rolando"] [data-anima] {
+      animation: revelarRolandoSurge linear backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry calc(100% + var(--folga, 0px));
+    }
+  }
+}
+
+@keyframes revelarRolandoSurge {
+  from { opacity: 0; translate: 0 var(--espaco-7); }
+}

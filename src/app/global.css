@@ -1,0 +1,154 @@
+:root {
+  color-scheme: light;
+
+  /* Cor: a interface é monocromática; a cor mora só nos detalhes (--cor-acento-*). */
+  --cor-fundo: #ececec;
+  --cor-fundo-2: #dedede;
+  --cor-superficie: #f7f7f7;
+  --cor-superficie-2: #ffffff;
+  --cor-texto: #141414;
+  --cor-texto-2: #4f4f4f;
+  --cor-texto-3: #6a6a6a;
+  --cor-borda: rgba(20, 20, 20, 0.14);
+  --cor-destaque: #141414;
+  --cor-destaque-contraste: #ffffff;
+  --cor-destaque-2: #6a6a6a;
+  --cor-brilho: #ffffff;
+  --cor-sucesso: #12805c;
+  --cor-alerta: #b86e00;
+  --cor-erro: #c0272d;
+  --cor-sobreposicao: rgba(20, 20, 20, 0.5);
+  --cor-preenchimento: rgba(20, 20, 20, 0.07);
+  --cor-acento-1: #ff5a3c;
+  --cor-acento-2: #ffc42e;
+  --cor-acento-3: #20c384;
+  --cor-acento-4: #4d8dff;
+  --cor-acento-5: #ff6fae;
+  --cor-sobre-acento: #141414;
+
+  /* Tipografia */
+  --fonte-titulo: var(--font-titulo), "Arial Black", sans-serif;
+  --fonte-texto: var(--font-texto), system-ui, sans-serif;
+  --fonte-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --texto-pequeno: 0.8125rem;
+  --texto-base: 0.9375rem;
+  --texto-grande: 1.125rem;
+  --titulo-3: clamp(1.25rem, 1.15rem + 0.5vw, 1.6rem);
+  --titulo-2: clamp(1.6rem, 1.4rem + 1vw, 2.25rem);
+  --titulo-1: clamp(2.25rem, 1.6rem + 3vw, 4rem);
+  --titulo-display: clamp(3rem, 2rem + 6vw, 7rem);
+  --peso-normal: 500;
+  --peso-medio: 700;
+  --peso-forte: 800;
+  --peso-titulo: 400; /* A Jaro só tem peso 400: mais que isso vira negrito falso. */
+  --altura-linha: 1.5;
+  --altura-linha-titulo: 1;
+  --espaco-letra-titulo: 0.01em;
+  --espaco-letra-rotulo: 0.1em;
+
+  /* Espaço e layout */
+  --espaco-1: 4px;
+  --espaco-2: 8px;
+  --espaco-3: 12px;
+  --espaco-4: 16px;
+  --espaco-5: 24px;
+  --espaco-6: 32px;
+  --espaco-7: 48px;
+  --espaco-8: 64px;
+  --espaco-9: 96px;
+  --margem-lateral: 5px;
+  --alvo-toque: 44px;
+  --largura-coluna-menu: 280px;
+  --largura-coluna-painel: 320px;
+  --largura-celular: 390px;
+
+  /* Forma, profundidade e material */
+  --raio-p: 12px;
+  --raio-m: 18px;
+  --raio-g: 28px;
+  --raio-total: 9999px;
+  --sombra-1: 0 2px 6px rgba(20, 20, 20, 0.1);
+  --sombra-2: 0 8px 24px rgba(20, 20, 20, 0.16);
+  --sombra-3: 0 24px 56px rgba(20, 20, 20, 0.28);
+  --sombra-clay:
+    inset 3px 3px 6px rgba(255, 255, 255, 0.95),
+    inset -4px -4px 8px rgba(20, 20, 20, 0.08),
+    5px 7px 14px rgba(20, 20, 20, 0.13);
+  --sombra-clay-destaque:
+    inset 3px 3px 6px rgba(255, 255, 255, 0.28),
+    inset -4px -5px 9px rgba(0, 0, 0, 0.6),
+    5px 7px 16px rgba(20, 20, 20, 0.32);
+  --sombra-clay-cor:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.55),
+    inset -2px -3px 6px rgba(0, 0, 0, 0.2),
+    2px 4px 8px rgba(20, 20, 20, 0.18);
+  --sombra-clay-afundada:
+    inset 4px 4px 9px rgba(20, 20, 20, 0.14),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.8);
+  --espessura-linha: 3px;
+
+  /* Movimento */
+  --duracao-rapida: 150ms;
+  --duracao-media: 300ms;
+  --duracao-lenta: 700ms;
+  --duracao-ciclo: 4s;
+  --curva-padrao: cubic-bezier(0.4, 0, 0.2, 1);
+  --curva-entrada: cubic-bezier(0.16, 1, 0.3, 1);
+  --curva-saida: cubic-bezier(0.4, 0, 1, 1);
+  --curva-mola: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Camadas */
+  --z-cabecalho: 50;
+  --z-flutuante: 60;
+  --z-menu: 70;
+  --z-modal: 100;
+}
+
+@media (min-width: 768px) {
+  :root { --margem-lateral: 1rem; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  font-size: var(--texto-base);
+  font-weight: var(--peso-normal);
+  line-height: var(--altura-linha);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--fonte-titulo);
+  font-weight: var(--peso-titulo);
+  line-height: var(--altura-linha-titulo);
+  letter-spacing: var(--espaco-letra-titulo);
+}
+
+p { margin: 0; }
+
+button, input, textarea { font: inherit; color: inherit; }
+
+button { cursor: pointer; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: var(--espessura-linha) solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

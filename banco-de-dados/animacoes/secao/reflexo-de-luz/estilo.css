@@ -1,0 +1,45 @@
+[data-animacao="reflexo-de-luz"] .reflexoHospedeiro {
+  position: relative;
+}
+
+/* A camada recorta a si mesma: o elemento não precisa de overflow: hidden */
+[data-animacao="reflexo-de-luz"] .reflexoCamada {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+[data-animacao="reflexo-de-luz"] .reflexoCamada::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    color-mix(in srgb, var(--cor-brilho) calc(var(--forca, 24%) / 4), transparent) 42%,
+    color-mix(in srgb, var(--cor-brilho) var(--forca, 24%), transparent) 50%,
+    color-mix(in srgb, var(--cor-brilho) calc(var(--forca, 24%) / 4), transparent) 58%,
+    transparent 65%
+  );
+  transform: translate3d(-100%, 0, 0);
+  animation: reflexoDeLuzPassa calc(var(--duracao-lenta) * 8) var(--curva-padrao) infinite;
+  animation-delay: calc(var(--duracao-media) + var(--i, 0) * var(--duracao-media));
+  will-change: transform;
+}
+
+[data-animacao="reflexo-de-luz"][data-pausado] .reflexoCamada::before {
+  animation-play-state: paused;
+}
+
+/* Passa em 28% do ciclo e fica fora o resto */
+@keyframes reflexoDeLuzPassa {
+  0% { transform: translate3d(-100%, 0, 0); }
+  28%, 100% { transform: translate3d(100%, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animacao="reflexo-de-luz"] .reflexoCamada { display: none; }
+}

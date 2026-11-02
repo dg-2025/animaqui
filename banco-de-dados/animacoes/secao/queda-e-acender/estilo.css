@@ -1,0 +1,38 @@
+/* A animação já nasce pausada: nenhum valor declarado muda, então uma transition do próprio elemento não interfere.
+   translate e scale são separados de transform: não apagam o transform que o elemento já tenha. */
+.animaQueda [data-anima] {
+  --passo: calc(var(--duracao-rapida) * min(1, 8 / var(--total, 1)));
+  --inicio: calc(var(--duracao-media) * 1.5);
+  --atraso-queda: calc(var(--inicio) + var(--i, 0) * var(--passo));
+  --fim-queda: calc(var(--inicio) + (var(--total, 1) - 1) * var(--passo) + var(--duracao-lenta));
+  --atraso-acender: calc(var(--fim-queda) + var(--i, 0) * var(--passo));
+  animation:
+    quedaCai var(--duracao-lenta) var(--atraso-queda) both,
+    quedaAcende var(--duracao-lenta) var(--curva-padrao) var(--atraso-acender) forwards;
+  animation-play-state: paused;
+}
+
+.animaQueda.visivel [data-anima] {
+  animation-play-state: running;
+}
+
+@keyframes quedaCai {
+  0% { opacity: 0; translate: 0 calc(var(--espaco-7) * -1); animation-timing-function: var(--curva-saida); }
+  36% { opacity: 0.35; translate: 0 0; animation-timing-function: var(--curva-entrada); }
+  54% { translate: 0 calc(var(--espaco-3) * -1); animation-timing-function: var(--curva-saida); }
+  73% { translate: 0 0; animation-timing-function: var(--curva-entrada); }
+  82% { translate: 0 calc(var(--espaco-1) * -0.75); animation-timing-function: var(--curva-saida); }
+  91% { translate: 0 0; animation-timing-function: var(--curva-entrada); }
+  95% { translate: 0 calc(var(--espaco-1) * -0.25); animation-timing-function: var(--curva-saida); }
+  100% { opacity: 0.35; translate: 0 0; }
+}
+
+@keyframes quedaAcende {
+  0% { opacity: 0.35; translate: 0 0; scale: 1; }
+  45% { opacity: var(--opacidade-final, 1); translate: 0 calc(var(--espaco-2) * -1); scale: 1.03; }
+  100% { opacity: var(--opacidade-final, 1); translate: 0 0; scale: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animaQueda [data-anima] { animation: none; }
+}

@@ -1,0 +1,273 @@
+.contato01 {
+  padding: var(--espacamento-secao) var(--margem-lateral);
+  border-top: 1px solid var(--cor-borda);
+  background:
+    radial-gradient(70% 60% at 0% 100%, color-mix(in srgb, var(--cor-destaque-2) 12%, transparent), transparent 70%),
+    var(--cor-fundo);
+  color: var(--cor-texto);
+
+  .grade {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "chamada" "mapa" "dados";
+    gap: var(--espaco-6);
+    max-width: var(--largura-max);
+    margin-inline: auto;
+  }
+
+  .chamada { grid-area: chamada; }
+
+  .rotulo {
+    display: block;
+    margin-bottom: var(--espaco-2);
+    color: var(--cor-destaque-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+  }
+
+  .titulo {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-2);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+    text-wrap: balance;
+  }
+
+  .texto {
+    max-width: 52ch;
+    margin: var(--espaco-3) 0 0;
+    color: var(--cor-texto-2);
+    line-height: var(--altura-linha);
+  }
+
+  .botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    width: 100%;
+    min-height: var(--alvo-toque);
+    margin-top: var(--espaco-5);
+    padding: var(--espaco-3) var(--espaco-5);
+    border-radius: var(--raio-p);
+    background: var(--cor-destaque);
+    color: var(--cor-destaque-contraste);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    box-shadow: var(--sombra-1);
+    transition: transform var(--duracao-rapida) var(--curva-padrao);
+  }
+
+  .botao:hover { transform: translateY(calc(var(--espaco-1) / -2)); }
+  .botao:active { transform: scale(0.98); }
+
+  .botao svg,
+  .linkSublinhado svg {
+    flex-shrink: 0;
+    width: var(--espaco-4);
+    height: var(--espaco-4);
+  }
+
+  .mapa {
+    grid-area: mapa;
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-m);
+    background: var(--cor-superficie);
+  }
+
+  .ruas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: color-mix(in srgb, var(--cor-texto) 16%, transparent);
+    stroke: currentColor;
+    stroke-width: 7;
+  }
+
+  .ruaFina { stroke-width: 3; }
+
+  .parque {
+    fill: color-mix(in srgb, var(--cor-sucesso) 16%, transparent);
+    stroke: none;
+  }
+
+  .rio {
+    stroke: color-mix(in srgb, var(--cor-destaque-3) 30%, transparent);
+    stroke-width: 16;
+  }
+
+  .pino {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--espaco-7);
+    height: var(--espaco-7);
+    color: var(--cor-destaque-2);
+    transform: translate(-50%, -100%);
+
+    svg {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  /* O centro da onda fica na ponta do pino */
+  .onda {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: var(--espaco-8);
+    height: var(--espaco-8);
+    margin: 0 0 calc(var(--espaco-8) / -2) calc(var(--espaco-8) / -2);
+    border-radius: var(--raio-total);
+    background: color-mix(in srgb, var(--cor-destaque-2) 45%, transparent);
+    animation: contato01Onda calc(var(--duracao-lenta) * 3.5) var(--curva-entrada) infinite;
+  }
+
+  &[data-pausado] .onda { animation-play-state: paused; }
+
+  .legendaMapa {
+    position: absolute;
+    left: var(--espaco-3);
+    bottom: var(--espaco-3);
+    padding: var(--espaco-1) var(--espaco-3);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-total);
+    background: var(--cor-fundo-2);
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+  }
+
+  .dados {
+    grid-area: dados;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .dado {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--espaco-2);
+    padding: var(--espaco-4) 0;
+    border-top: 1px solid var(--cor-borda);
+    color: var(--cor-texto-2);
+    line-height: var(--altura-linha);
+
+    p { margin: 0; }
+  }
+
+  .rotuloDado {
+    color: var(--cor-texto-3);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+  }
+
+  .area { margin-top: var(--espaco-3); }
+
+  .linksMapa {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--espaco-5);
+  }
+
+  .linkSublinhado {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-2);
+    min-height: var(--alvo-toque);
+    color: var(--cor-texto);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+  }
+
+  .linkSublinhado::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: var(--espaco-2);
+    height: var(--espessura-linha);
+    background: var(--cor-destaque-2);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duracao-media) var(--curva-entrada);
+  }
+
+  .linkSublinhado:hover::after,
+  .linkSublinhado:focus-visible::after { transform: scaleX(1); }
+
+  .horarios {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--espaco-2);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .cartaoDia {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-1);
+    padding: var(--espaco-3) var(--espaco-2);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-p);
+    background: var(--cor-superficie);
+    font-size: var(--texto-pequeno);
+
+    strong {
+      color: var(--cor-texto);
+      font-weight: var(--peso-forte);
+    }
+  }
+
+  .diaNome { color: var(--cor-texto-2); }
+
+  @media (min-width: 768px) {
+    .botao { width: auto; }
+    .mapa { aspect-ratio: 16 / 9; }
+    .cartaoDia { padding: var(--espaco-3); }
+  }
+
+  @media (min-width: 1024px) {
+    .grade {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-areas: "chamada mapa" "dados mapa";
+      gap: var(--espaco-6) var(--espaco-7);
+    }
+
+    .mapa {
+      aspect-ratio: auto;
+      min-height: calc(var(--espaco-9) * 4.5);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .onda { animation: none; opacity: 0; }
+    .botao,
+    .linkSublinhado::after { transition: none; }
+  }
+}
+
+@keyframes contato01Onda {
+  0% { transform: scale(0.3); opacity: 0.9; }
+  70%, 100% { transform: scale(1.6); opacity: 0; }
+}

@@ -1,0 +1,421 @@
+.planos02 {
+  /* Lidos pelo script */
+  --tempoTroca: var(--duracao-media);
+  --curvaTroca: var(--curva-entrada);
+  padding: var(--espacamento-secao) var(--margem-lateral);
+  background: radial-gradient(110% 90% at 50% 100%, var(--cor-superficie) 0%, var(--cor-fundo) 100%);
+  border-bottom: 1px solid var(--cor-borda);
+
+  > * {
+    max-width: var(--largura-max);
+    margin-inline: auto;
+  }
+
+  .cabecalho {
+    max-width: var(--largura-texto);
+    margin-bottom: var(--espaco-5);
+    text-align: center;
+  }
+
+  .tag {
+    display: block;
+    margin-bottom: var(--espaco-1);
+    color: var(--cor-destaque-2);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-transform: uppercase;
+    letter-spacing: var(--espaco-letra-rotulo);
+  }
+
+  .titulo {
+    margin: 0 0 var(--espaco-2);
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-2);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+    color: var(--cor-texto);
+    text-wrap: balance;
+  }
+
+  .descricao {
+    margin: 0;
+    color: var(--cor-texto-2);
+  }
+
+  /* Etapa inicial: a primeira coisa depois do título */
+  .cartaoInicial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaco-3);
+    margin-bottom: var(--espaco-5);
+    padding: var(--espaco-4);
+    border: var(--espessura-linha) solid var(--cor-alerta);
+    border-radius: var(--raio-g);
+    background: var(--cor-superficie);
+    box-shadow: var(--sombra-2);
+    text-align: center;
+  }
+
+  .tagInicial {
+    padding: var(--espaco-1) var(--espaco-3);
+    border-radius: var(--raio-total);
+    background: var(--cor-alerta);
+    color: var(--cor-destaque-contraste);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-titulo);
+    text-transform: uppercase;
+  }
+
+  .tituloInicial {
+    margin: var(--espaco-2) 0 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-titulo);
+    color: var(--cor-texto);
+    text-wrap: balance;
+  }
+
+  .textoInicial {
+    max-width: 56ch;
+    margin: var(--espaco-1) 0 0;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+    line-height: var(--altura-linha);
+  }
+
+  .acaoInicial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaco-2);
+  }
+
+  .precoInicial {
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-2);
+    font-weight: var(--peso-titulo);
+    color: var(--cor-texto);
+    white-space: nowrap;
+  }
+
+  .botaoInicial {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--alvo-toque);
+    padding: 0 var(--espaco-5);
+    border-radius: var(--raio-total);
+    background: var(--cor-destaque);
+    color: var(--cor-destaque-contraste);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform var(--duracao-rapida) var(--curva-padrao);
+
+    &:active { transform: scale(0.97); }
+  }
+
+  .controles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaco-2);
+    margin-bottom: var(--espaco-5);
+  }
+
+  /* O marcador desliza entre as duas opções */
+  .seletorPerfil {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: calc(var(--espaco-9) * 4.4);
+    padding: var(--espaco-1);
+    border-radius: var(--raio-total);
+    background: var(--cor-preenchimento);
+
+    &[data-ativo="1"] .marcador { transform: translateX(100%); }
+  }
+
+  .marcador {
+    position: absolute;
+    top: var(--espaco-1);
+    bottom: var(--espaco-1);
+    left: var(--espaco-1);
+    width: calc(50% - var(--espaco-1));
+    border-radius: var(--raio-total);
+    background: var(--cor-destaque);
+    transition: transform var(--duracao-media) var(--curva-entrada);
+  }
+
+  .botaoPerfil {
+    position: relative;
+    z-index: 1;
+    min-height: var(--alvo-toque);
+    padding: 0 var(--espaco-2);
+    border: 0;
+    border-radius: var(--raio-total);
+    background: transparent;
+    color: var(--cor-texto-2);
+    font: inherit;
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    cursor: pointer;
+    transition: color var(--duracao-media) var(--curva-padrao);
+
+    &.botaoAtivo { color: var(--cor-destaque-contraste); }
+  }
+
+  .seletorFormato {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--espaco-2);
+    width: 100%;
+    max-width: calc(var(--espaco-9) * 4.4);
+  }
+
+  .botaoFormato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--espaco-7);
+    padding: var(--espaco-1) var(--espaco-3);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-m);
+    background: transparent;
+    color: var(--cor-texto-2);
+    font: inherit;
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    line-height: var(--altura-linha-titulo);
+    cursor: pointer;
+    transition:
+      background-color var(--duracao-rapida) var(--curva-padrao),
+      color var(--duracao-rapida) var(--curva-padrao);
+
+    small {
+      font-size: var(--texto-pequeno);
+      font-weight: var(--peso-normal);
+    }
+
+    &.botaoAtivo {
+      border-color: var(--cor-texto);
+      background: var(--cor-superficie-2);
+      color: var(--cor-texto);
+    }
+  }
+
+  /* Celular: duas colunas, com o último cartão ocupando a linha inteira */
+  .grade {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espaco-2);
+    margin-block: 0 var(--espaco-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  .cartaoPlano {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--espaco-3);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-m);
+    background: var(--cor-superficie);
+    box-shadow: var(--sombra-1);
+    opacity: 0;
+    transform: translateY(var(--espaco-4));
+    transition:
+      opacity var(--duracao-lenta) var(--curva-entrada),
+      transform var(--duracao-lenta) var(--curva-entrada);
+    transition-delay: calc(var(--i, 0) * var(--duracao-rapida));
+
+    &:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  }
+
+  &.revelada .cartaoPlano {
+    opacity: 1;
+    transform: none;
+  }
+
+  .cartaoPopular { border: var(--espessura-linha) solid var(--cor-destaque-2); }
+
+  .etiquetaPopular {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    padding: 1px var(--espaco-2);
+    border-radius: var(--raio-total);
+    background: var(--cor-destaque-2);
+    color: var(--cor-destaque-contraste);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-titulo);
+    text-transform: uppercase;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+  }
+
+  .faixaPlano {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-titulo);
+    color: var(--cor-texto);
+  }
+
+  .frequencia {
+    margin: 0 0 var(--espaco-2);
+    color: var(--cor-texto-3);
+    font-size: var(--texto-pequeno);
+  }
+
+  .preco {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 1px;
+    margin: 0 0 var(--espaco-1);
+  }
+
+  .valorMensal {
+    display: inline-block;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-titulo);
+    color: var(--cor-texto);
+    white-space: nowrap;
+  }
+
+  .porMes {
+    color: var(--cor-texto-3);
+    font-size: var(--texto-pequeno);
+  }
+
+  .ciclos {
+    margin-top: var(--espaco-2);
+    padding-top: var(--espaco-2);
+    border-top: 1px solid var(--cor-borda);
+
+    p {
+      margin: 0 0 1px;
+      color: var(--cor-texto-2);
+      font-size: var(--texto-pequeno);
+    }
+
+    strong { white-space: nowrap; }
+  }
+
+  .botaoEscolher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: var(--alvo-toque);
+    margin-top: var(--espaco-2);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-total);
+    color: var(--cor-texto);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    transition:
+      background-color var(--duracao-rapida) var(--curva-padrao),
+      color var(--duracao-rapida) var(--curva-padrao);
+
+    &:hover, &:active {
+      background: var(--cor-destaque);
+      color: var(--cor-destaque-contraste);
+    }
+  }
+
+  .extras {
+    display: grid;
+    gap: var(--espaco-3);
+    margin-bottom: var(--espaco-5);
+  }
+
+  .cartaoExtra {
+    padding: var(--espaco-4);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-m);
+    background: var(--cor-superficie);
+    box-shadow: var(--sombra-1);
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+
+    p { margin: 0 0 var(--espaco-2); }
+
+    ul {
+      margin: 0;
+      padding-left: var(--espaco-4);
+      color: var(--cor-texto);
+    }
+  }
+
+  .tituloExtra {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-2);
+    margin: 0 0 var(--espaco-2);
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-titulo);
+    color: var(--cor-texto);
+
+    svg { color: var(--cor-destaque-3); }
+  }
+
+  .regras {
+    padding: var(--espaco-3);
+    border: 1px dashed var(--cor-borda);
+    border-radius: var(--raio-m);
+    background: var(--cor-preenchimento);
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+    line-height: var(--altura-linha);
+    margin-block: 0;
+  }
+
+  @media (min-width: 768px) {
+    .cartaoInicial {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: var(--espaco-5);
+      text-align: start;
+    }
+
+    /* Três em cima e dois centralizados embaixo */
+    .grade {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: var(--espaco-3);
+    }
+
+    .cartaoPlano, .cartaoPlano:last-child:nth-child(odd) { grid-column: span 2; }
+    .cartaoPlano:nth-child(4) { grid-column: 2 / span 2; }
+    .cartaoPlano { padding: var(--espaco-4); }
+
+    .extras { grid-template-columns: 1fr 1fr; }
+    .regras { padding: var(--espaco-4); }
+  }
+
+  @media (min-width: 1024px) {
+    .grade { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .cartaoPlano, .cartaoPlano:nth-child(4), .cartaoPlano:last-child:nth-child(odd) { grid-column: auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cartaoPlano {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .marcador, .botaoPerfil, .botaoFormato, .botaoEscolher, .botaoInicial { transition: none; }
+  }
+}

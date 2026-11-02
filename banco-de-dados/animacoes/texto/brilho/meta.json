@@ -1,0 +1,7 @@
+{
+  "id": "brilho",
+  "nome": "Brilho",
+  "tipo": "texto",
+  "descricao": "Uma faixa de luz atravessa as letras sem parar.",
+  "precisaRolar": false
+}

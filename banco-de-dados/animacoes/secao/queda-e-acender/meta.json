@@ -1,0 +1,7 @@
+{
+  "id": "queda-e-acender",
+  "nome": "Queda e acender",
+  "tipo": "secao",
+  "descricao": "Os elementos caem quicando, ainda apagados, e acendem na mesma ordem depois que o último pousa.",
+  "precisaRolar": false
+}

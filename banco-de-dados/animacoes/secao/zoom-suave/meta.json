@@ -1,0 +1,7 @@
+{
+  "id": "zoom-suave",
+  "nome": "Zoom macio",
+  "tipo": "secao",
+  "descricao": "Os elementos crescem de leve até o tamanho certo e aparecem, em cascata, quando a seção entra na tela.",
+  "precisaRolar": false
+}

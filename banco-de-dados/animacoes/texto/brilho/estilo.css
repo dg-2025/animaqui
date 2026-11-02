@@ -1,0 +1,17 @@
+[data-animacao="brilho"] [data-texto] {
+  color: transparent;
+  background: linear-gradient(100deg, var(--cor-texto-3) 40%, var(--cor-destaque) 50%, var(--cor-texto-3) 60%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textoBrilhoPassa var(--duracao-ciclo) linear infinite;
+}
+
+@keyframes textoBrilhoPassa {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animacao="brilho"] [data-texto] { animation: none; }
+}

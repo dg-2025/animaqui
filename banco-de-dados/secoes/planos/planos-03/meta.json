@@ -1,0 +1,6 @@
+{
+  "id": "planos-03",
+  "nome": "Planos em abas com gráfico",
+  "categoria": "planos",
+  "descricao": "Texto de um lado e, do outro, um painel em que cada aba redesenha a curva do gráfico e troca os números."
+}

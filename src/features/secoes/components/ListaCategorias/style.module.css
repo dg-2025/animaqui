@@ -1,0 +1,79 @@
+.lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--espaco-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:global(html:not([data-ja-entrou])) .item {
+  animation: itemEntra var(--duracao-media) var(--curva-mola) both;
+  animation-delay: calc(var(--i) * 50ms);
+}
+
+.categoria {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-2);
+  min-height: 52px;
+  padding: var(--espaco-2) var(--espaco-2) var(--espaco-2) var(--espaco-4);
+  text-decoration: none;
+  background: var(--cor-superficie);
+  border-radius: var(--raio-m);
+  box-shadow: var(--sombra-clay);
+  transition: transform var(--duracao-rapida) var(--curva-mola), box-shadow var(--duracao-rapida);
+}
+
+.categoria:hover { transform: translateY(-2px) rotate(-1deg); }
+
+.categoria:active { transform: scale(0.97); }
+
+.categoriaAtiva,
+.categoriaAtiva:hover {
+  color: var(--cor-destaque-contraste);
+  background: var(--cor-destaque);
+  box-shadow: var(--sombra-clay-destaque);
+  transform: none;
+}
+
+.nome {
+  min-width: 0;
+  overflow: hidden;
+  font-family: var(--fonte-titulo);
+  font-size: var(--titulo-3);
+  line-height: 1.1;
+  text-overflow: ellipsis;
+}
+
+.contador {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  min-width: 32px;
+  height: 32px;
+  padding-inline: var(--espaco-2);
+  color: var(--cor-sobre-acento);
+  font-size: var(--texto-pequeno);
+  font-weight: var(--peso-forte);
+  border-radius: var(--raio-total);
+  box-shadow: var(--sombra-clay-cor);
+}
+
+.vazio { color: var(--cor-texto-2); }
+
+@media (min-width: 1024px) {
+  .lista { grid-template-columns: 1fr; }
+}
+
+@keyframes itemEntra {
+  from { opacity: 0; transform: translateX(-12px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+.item:nth-child(5n + 1) .contador { background: var(--cor-acento-1); }
+.item:nth-child(5n + 2) .contador { background: var(--cor-acento-2); }
+.item:nth-child(5n + 3) .contador { background: var(--cor-acento-3); }
+.item:nth-child(5n + 4) .contador { background: var(--cor-acento-4); }
+.item:nth-child(5n + 5) .contador { background: var(--cor-acento-5); }

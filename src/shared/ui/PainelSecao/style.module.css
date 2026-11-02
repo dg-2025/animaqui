@@ -1,0 +1,12 @@
+.painel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+}
+
+.titulo {
+  align-self: flex-start;
+  padding-right: var(--espaco-5);
+  font-size: var(--titulo-2);
+  background: linear-gradient(transparent 68%, var(--cor-fundo-2) 68%, var(--cor-fundo-2) 92%, transparent 92%);
+}

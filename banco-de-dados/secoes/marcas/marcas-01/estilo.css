@@ -1,0 +1,272 @@
+.marcas01 {
+  --tamanho-icone: var(--espaco-7);
+  --total: 15;
+  position: relative;
+  padding: var(--espacamento-secao) var(--margem-lateral);
+  overflow-x: clip;
+  background: var(--cor-fundo);
+  background-image: radial-gradient(ellipse at center, color-mix(in srgb, var(--cor-destaque-3) 12%, transparent) 0%, transparent 70%);
+
+  .conteudo {
+    max-width: var(--largura-max);
+    margin-inline: auto;
+  }
+
+  .cabecalho {
+    margin-bottom: var(--espaco-8);
+    text-align: center;
+  }
+
+  .rotulo {
+    display: block;
+    margin-bottom: var(--espaco-2);
+    color: var(--cor-destaque);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+  }
+
+  .titulo {
+    margin: 0;
+    color: var(--cor-texto);
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-2);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+    text-wrap: balance;
+  }
+
+  .estante {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-8);
+    max-width: calc(var(--largura-max) * 0.85);
+    margin-inline: auto;
+  }
+
+  .prateleira {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Nome do grupo: deitado na lateral, só a partir do tablet */
+  .nomePrateleira {
+    position: absolute;
+    top: 50%;
+    left: calc(var(--espaco-4) * -1);
+    display: none;
+    margin: 0;
+    color: var(--cor-texto-3);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-medio);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+    white-space: nowrap;
+    transform: translateY(-50%) rotate(-90deg);
+  }
+
+  .fileira {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--espaco-5);
+    margin: 0;
+    padding: 0 var(--espaco-2) var(--espaco-4);
+    list-style: none;
+  }
+
+  /* Cor acesa de cada logo: troque pela cor da marca real */
+  .celula {
+    --cor-item: var(--cor-destaque-2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:nth-child(5n + 2) { --cor-item: var(--cor-destaque-3); }
+    &:nth-child(5n + 3) { --cor-item: var(--cor-sucesso); }
+    &:nth-child(5n + 4) { --cor-item: var(--cor-alerta); }
+    &:nth-child(5n + 5) { --cor-item: var(--cor-destaque); }
+  }
+
+  /* Ritmo: um item cai a cada --duracao-rapida ÷ 3; quando o último pousa, acendem em ordem */
+  .item {
+    --inicio-queda: calc(var(--duracao-media) * 1.5);
+    --atraso-queda: calc(var(--inicio-queda) + var(--i, 0) * var(--duracao-rapida) / 3);
+    --fim-queda: calc(var(--inicio-queda) + (var(--total) - 1) * var(--duracao-rapida) / 3 + var(--duracao-lenta));
+    --atraso-acender: calc(var(--fim-queda) + var(--i, 0) * var(--duracao-rapida) * 0.66);
+    position: relative;
+    display: inline-flex;
+  }
+
+  .elevar {
+    display: grid;
+    transform: translateY(calc(var(--espaco-3) * -1)) scale(1.15);
+    transition: transform var(--duracao-lenta) var(--curva-padrao);
+  }
+
+  /* Inclinação 3D que segue o mouse (variáveis gravadas pelo script) */
+  .giro {
+    display: grid;
+    width: var(--tamanho-icone);
+    height: var(--tamanho-icone);
+    transform: perspective(calc(var(--espaco-9) * 4)) rotateX(var(--giro-x, 0deg)) rotateY(var(--giro-y, 0deg));
+    transition: transform var(--duracao-media) var(--curva-mola);
+  }
+
+  .apagado,
+  .aceso {
+    display: flex;
+    grid-area: 1 / 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .apagado {
+    color: var(--cor-texto-3);
+  }
+
+  .aceso {
+    color: var(--cor-item);
+    filter: drop-shadow(0 0 var(--espaco-3) color-mix(in srgb, var(--cor-item) 70%, transparent));
+    transition: opacity var(--duracao-lenta) var(--curva-padrao);
+  }
+
+  .logo {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Estado inicial da sequência: logo some, sem elevação e apagado */
+  &.animar .item { opacity: 0; }
+  &.animar .elevar { transform: none; }
+  &.animar .aceso { opacity: 0; }
+
+  &.animar.visivel .item { animation: marcas01Cair var(--duracao-lenta) var(--atraso-queda) both; }
+
+  &.animar.visivel .elevar,
+  &.animar.visivel .aceso { transition-delay: var(--atraso-acender); }
+
+  &.animar.visivel .elevar { transform: translateY(calc(var(--espaco-3) * -1)) scale(1.15); }
+  &.animar.visivel .aceso { opacity: 1; }
+
+  /* Passar o mouse acende na hora, sem esperar a sequência */
+  &.animar .celula:hover .elevar {
+    transform: translateY(calc(var(--espaco-3) * -1)) scale(1.15);
+    transition-delay: 0s;
+  }
+
+  &.animar .celula:hover .aceso {
+    opacity: 1;
+    transition-delay: 0s;
+  }
+
+  /* Nome do item: aparece acima no hover */
+  .nome {
+    position: absolute;
+    bottom: calc(100% + var(--espaco-4));
+    z-index: 1;
+    padding: var(--espaco-1) var(--espaco-3);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-p);
+    color: var(--cor-item);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    white-space: nowrap;
+    background: var(--cor-superficie-2);
+    box-shadow: var(--sombra-2);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(var(--espaco-2));
+    transition:
+      opacity var(--duracao-media) var(--curva-padrao),
+      transform var(--duracao-media) var(--curva-padrao);
+  }
+
+  .celula:hover .nome {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* A linha estica do centro e uma energia corre por ela */
+  .linha {
+    position: relative;
+    width: 100%;
+    height: var(--espaco-1);
+    margin-top: var(--espaco-2);
+    overflow: hidden;
+    border-radius: var(--raio-total);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--cor-destaque-3) 30%, transparent) 20%,
+      var(--cor-destaque-3) 50%,
+      color-mix(in srgb, var(--cor-destaque-3) 30%, transparent) 80%,
+      transparent 100%
+    );
+    box-shadow: 0 0 var(--espaco-4) color-mix(in srgb, var(--cor-destaque-3) 60%, transparent);
+    transition:
+      transform calc(var(--duracao-lenta) * 2) var(--curva-padrao),
+      opacity calc(var(--duracao-lenta) * 2) var(--curva-padrao);
+    transition-delay: calc(var(--p, 0) * var(--duracao-rapida));
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 20%;
+      background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--cor-brilho) 70%, transparent), transparent);
+      animation: marcas01Energia calc(var(--duracao-lenta) * (4 + var(--p, 0) * 0.7)) var(--curva-padrao) infinite alternate;
+    }
+  }
+
+  &.animar .linha {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  &.animar.visivel .linha {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  &.foraDaTela .linha::after { animation-play-state: paused; }
+
+  @media (min-width: 768px) {
+    --tamanho-icone: var(--espaco-8);
+
+    .nomePrateleira { display: block; }
+    .fileira { gap: var(--espaco-7); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .elevar,
+    .giro,
+    .aceso,
+    .nome,
+    .linha { transition: none; }
+
+    .linha::after { animation: none; }
+  }
+}
+
+@keyframes marcas01Cair {
+  0% { opacity: 0; transform: translateY(calc(var(--espaco-7) * -1)); animation-timing-function: var(--curva-saida); }
+  36% { opacity: 1; transform: translateY(0); animation-timing-function: var(--curva-entrada); }
+  54% { transform: translateY(calc(var(--espaco-3) * -1)); animation-timing-function: var(--curva-saida); }
+  73% { transform: translateY(0); animation-timing-function: var(--curva-entrada); }
+  82% { transform: translateY(calc(var(--espaco-1) * -0.75)); animation-timing-function: var(--curva-saida); }
+  91% { transform: translateY(0); animation-timing-function: var(--curva-entrada); }
+  95% { transform: translateY(calc(var(--espaco-1) * -0.25)); animation-timing-function: var(--curva-saida); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marcas01Energia {
+  from { transform: translateX(0); }
+  to { transform: translateX(400%); }
+}

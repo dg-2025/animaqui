@@ -1,0 +1,105 @@
+.barra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espaco-2);
+  padding: var(--espaco-2) var(--margem-lateral);
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  font-family: var(--fonte-titulo);
+  font-size: var(--titulo-2);
+  line-height: 1;
+  text-decoration: none;
+}
+
+.bola {
+  width: 0.55em;
+  height: 0.55em;
+  margin-right: 0.3em;
+  background: var(--cor-acento-4);
+  border-radius: var(--raio-total);
+  box-shadow: var(--sombra-clay-cor);
+  animation: quicar calc(var(--duracao-ciclo) / 3) var(--curva-padrao) infinite alternate;
+}
+
+.letra {
+  display: inline-block;
+  animation: letraEntra var(--duracao-lenta) var(--curva-mola) both;
+  animation-delay: calc(var(--i) * 45ms);
+  transition: transform var(--duracao-rapida) var(--curva-mola);
+}
+
+.letra:nth-of-type(7) { color: var(--cor-acento-1); }
+
+.letra:nth-of-type(8) { color: var(--cor-acento-2); }
+
+.letra:nth-of-type(9) { color: var(--cor-acento-3); }
+
+.marca:hover .letra { transform: translateY(-4px) rotate(-4deg); }
+
+.modulos {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  max-width: 480px;
+  padding: var(--espaco-1);
+  background: var(--cor-fundo-2);
+  border-radius: var(--raio-total);
+  box-shadow: var(--sombra-clay-afundada);
+}
+
+.indicador {
+  position: absolute;
+  top: var(--espaco-1);
+  bottom: var(--espaco-1);
+  left: var(--espaco-1);
+  width: calc((100% - var(--espaco-2)) / 3);
+  background: var(--cor-destaque);
+  border-radius: var(--raio-total);
+  box-shadow: var(--sombra-clay-destaque);
+  transform: translateX(calc(var(--indice) * 100%));
+  transition: transform var(--duracao-media) var(--curva-mola);
+}
+
+.modulo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-2);
+  min-height: var(--alvo-toque);
+  font-size: var(--texto-pequeno);
+  font-weight: var(--peso-forte);
+  text-decoration: none;
+  border-radius: var(--raio-total);
+  transition: color var(--duracao-rapida), transform var(--duracao-rapida) var(--curva-mola);
+}
+
+.modulo:active { transform: scale(0.95); }
+
+.moduloAtivo { color: var(--cor-destaque-contraste); }
+
+@media (min-width: 768px) {
+  .barra {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-block: var(--espaco-3);
+  }
+
+  .modulo { font-size: var(--texto-base); }
+}
+
+@keyframes letraEntra {
+  from { opacity: 0; transform: translateY(0.6em) scale(0.6); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes quicar {
+  from { transform: translateY(-6px) scale(0.92, 1.06); }
+  to { transform: translateY(6px) scale(1.08, 0.92); }
+}

@@ -1,0 +1,60 @@
+<section class="contato02">
+  <header class="cabecalho">
+    <span class="etiqueta" data-anima>Contato</span>
+    <h2 class="titulo" data-anima>Peça seu atendimento</h2>
+    <p class="subtitulo" data-anima>Preencha os dados abaixo e receba uma resposta pensada para o seu caso.</p>
+  </header>
+
+  <div class="painel">
+    <div class="blocoDados" data-anima>
+      <div class="blocoTopo">
+        <h3>Sua marca</h3>
+        <p>Conte em uma frase quem você atende e em qual região.</p>
+      </div>
+      <div class="itens">
+        <a class="item" href="#">
+          <span class="caixaIcone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5a7 7 0 1 0-14 0C5 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <span class="itemTexto"><span class="itemRotulo">Área de atendimento</span><span class="itemValor">Sua cidade e região</span></span>
+        </a>
+        <a class="item" href="#">
+          <span class="caixaIcone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.5v3a2 2 0 0 1-2.2 2A18 18 0 0 1 2.5 5.2 2 2 0 0 1 4.5 3h3A1.5 1.5 0 0 1 9 4.3c.1 1 .4 2 .7 2.9a1.5 1.5 0 0 1-.3 1.6L8 10a15 15 0 0 0 6 6l1.2-1.4a1.5 1.5 0 0 1 1.6-.3c.9.3 1.9.6 2.9.7a1.5 1.5 0 0 1 1.3 1.5Z"/></svg></span>
+          <span class="itemTexto"><span class="itemRotulo">Telefone</span><span class="itemValor">(00) 00000-0000</span></span>
+        </a>
+        <a class="item" href="#">
+          <span class="caixaIcone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span class="itemTexto"><span class="itemRotulo">E-mail</span><span class="itemValor">contato@seusite.com</span></span>
+        </a>
+        <div class="item">
+          <span class="caixaIcone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <span class="itemTexto"><span class="itemRotulo">Funcionamento</span><span class="itemValor">Segunda a sexta, das 08h às 18h</span></span>
+        </div>
+      </div>
+      <!-- Troque este bloco pelo mapa incorporado do seu endereço. -->
+      <div class="mapa" role="img" aria-label="Mapa ilustrativo da região de atendimento">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5a8 8 0 0 0-8 8c0 5.6 6.7 12 7.4 12.7a.9.9 0 0 0 1.2 0C13.3 21.5 20 15.1 20 9.5a8 8 0 0 0-8-8Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/></svg>
+      </div>
+    </div>
+
+    <div class="blocoFormulario" data-anima>
+      <h3>Fale com um especialista</h3>
+      <p>Respondemos sua mensagem em até um dia útil.</p>
+      <form class="formulario">
+        <input class="campo" type="text" name="nome" placeholder="Seu nome completo" aria-label="Seu nome completo" autocomplete="name" required>
+        <input class="campo" type="email" name="email" placeholder="Seu melhor e-mail" aria-label="Seu melhor e-mail" autocomplete="email" required>
+        <input class="campo" type="tel" name="telefone" placeholder="Telefone com DDD" aria-label="Telefone com DDD" autocomplete="tel" required>
+        <textarea class="campo" name="mensagem" rows="4" placeholder="Conte em poucas linhas o que você precisa" aria-label="Conte em poucas linhas o que você precisa" required></textarea>
+        <button class="enviar" type="submit">
+          <span class="estadoPronto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10.5 13.5M21 3l-6.5 18-4-7.5L3 9.5 21 3Z"/></svg>
+            Enviar solicitação
+          </span>
+          <span class="estadoEnviando">
+            <svg class="girando" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"/></svg>
+            Processando...
+          </span>
+        </button>
+        <p class="sucesso" role="status" hidden>Mensagem recebida! Nossa equipe entra em contato em breve.</p>
+      </form>
+    </div>
+  </div>
+</section>

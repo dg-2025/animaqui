@@ -1,0 +1,7 @@
+{
+  "id": "maquina-de-escrever",
+  "nome": "Máquina de escrever",
+  "tipo": "texto",
+  "descricao": "As letras aparecem uma a uma, com o cursor piscando.",
+  "precisaRolar": false
+}

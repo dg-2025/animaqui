@@ -1,0 +1,118 @@
+.marcas02 {
+  --tempo-faixa: calc(var(--duracao-ciclo) * 5);
+  --espaco-logos: var(--espaco-5);
+  --altura-logo: var(--espaco-6);
+  padding: var(--espaco-6) var(--margem-lateral);
+  overflow: hidden;
+  border-top: 1px solid var(--cor-borda);
+  border-bottom: 1px solid var(--cor-borda);
+  background: linear-gradient(180deg, var(--cor-fundo) 0%, var(--cor-superficie) 100%);
+
+  .titulo {
+    margin: 0 0 var(--espaco-5);
+    color: var(--cor-texto-2);
+    font-family: var(--fonte-texto);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  /* De borda a borda, com as laterais esmaecidas por máscara, em qualquer fundo */
+  .marquee {
+    margin-inline: calc(var(--margem-lateral) * -1);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, var(--cor-texto) var(--espaco-7), var(--cor-texto) calc(100% - var(--espaco-7)), transparent);
+    mask-image: linear-gradient(90deg, transparent, var(--cor-texto) var(--espaco-7), var(--cor-texto) calc(100% - var(--espaco-7)), transparent);
+  }
+
+  /* Três cópias iguais: a faixa anda um terço e recomeça sem emenda */
+  .trilha {
+    display: flex;
+    width: max-content;
+    animation: marcas02Correr var(--tempo-faixa) linear infinite;
+  }
+
+  .grupo {
+    display: flex;
+    flex-shrink: 0;
+    gap: var(--espaco-logos);
+    margin: 0;
+    padding: 0 var(--espaco-logos) 0 0;
+    list-style: none;
+  }
+
+  .itemMarca {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: var(--espaco-2);
+    min-height: var(--espaco-8);
+    color: var(--cor-texto-3);
+    transition:
+      color var(--duracao-media) var(--curva-padrao),
+      transform var(--duracao-media) var(--curva-padrao);
+  }
+
+  .logo {
+    width: var(--altura-logo);
+    height: var(--altura-logo);
+  }
+
+  .nomeMarca {
+    font-family: var(--fonte-titulo);
+    font-size: var(--texto-base);
+    font-weight: var(--peso-titulo);
+    white-space: nowrap;
+  }
+
+  @media (hover: hover) {
+    .marquee:hover .trilha { animation-play-state: paused; }
+
+    .itemMarca:hover {
+      color: var(--cor-texto);
+      transform: scale(1.1);
+    }
+  }
+
+  /* Fora da tela o loop não gasta bateria */
+  &.foraDaTela .trilha { animation-play-state: paused; }
+
+  @media (min-width: 768px) {
+    --tempo-faixa: calc(var(--duracao-ciclo) * 7.5);
+    --espaco-logos: var(--espaco-7);
+    --altura-logo: var(--espaco-7);
+
+    .nomeMarca { font-size: var(--texto-grande); }
+  }
+
+  /* Sem movimento: uma cópia só, centralizada e quebrando linha */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      -webkit-mask-image: none;
+      mask-image: none;
+      padding-inline: var(--margem-lateral);
+    }
+
+    .trilha {
+      width: auto;
+      animation: none;
+    }
+
+    .grupo {
+      flex-shrink: 1;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      padding: 0;
+    }
+
+    .grupo[aria-hidden="true"] { display: none; }
+    .itemMarca { transition: none; }
+  }
+}
+
+@keyframes marcas02Correr {
+  to { transform: translate3d(calc(100% / -3), 0, 0); }
+}

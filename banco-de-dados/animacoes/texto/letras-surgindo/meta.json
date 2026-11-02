@@ -1,0 +1,7 @@
+{
+  "id": "letras-surgindo",
+  "nome": "Letras surgindo",
+  "tipo": "texto",
+  "descricao": "Cada letra sobe e aparece, em sequência.",
+  "precisaRolar": false
+}

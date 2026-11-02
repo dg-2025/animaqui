@@ -1,0 +1,7 @@
+{
+  "id": "faixa-de-luz",
+  "nome": "Faixa de luz",
+  "tipo": "texto",
+  "descricao": "O texto fica na cor normal e, de tempos em tempos, uma faixa acende as letras com um halo e some.",
+  "precisaRolar": false
+}

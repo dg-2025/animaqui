@@ -1,0 +1,7 @@
+{
+  "id": "saida",
+  "nome": "Saída",
+  "tipo": "secao",
+  "descricao": "A seção encolhe e some enquanto sai da tela ao rolar.",
+  "precisaRolar": true
+}

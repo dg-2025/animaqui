@@ -1,0 +1,7 @@
+{
+  "id": "entrada",
+  "nome": "Entrada",
+  "tipo": "secao",
+  "descricao": "Os elementos sobem e aparecem, um depois do outro, quando a seção entra na tela.",
+  "precisaRolar": false
+}

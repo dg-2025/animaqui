@@ -1,0 +1,14 @@
+.campo {
+  flex: 1 1 280px;
+  min-width: 0;
+  min-height: 52px;
+  padding-inline: var(--espaco-5);
+  font-size: 1.125rem;
+  font-weight: var(--peso-medio);
+  background: var(--cor-superficie);
+  border: 0;
+  border-radius: var(--raio-total);
+  box-shadow: var(--sombra-clay-afundada);
+}
+
+.campo::placeholder { color: var(--cor-texto-3); }

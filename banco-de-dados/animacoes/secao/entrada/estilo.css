@@ -1,0 +1,11 @@
+.animaEntrada [data-anima] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity var(--duracao-lenta) var(--curva-entrada), transform var(--duracao-lenta) var(--curva-entrada);
+  transition-delay: calc(var(--i, 0) * 110ms);
+}
+
+.animaEntrada.visivel [data-anima] {
+  opacity: 1;
+  transform: none;
+}

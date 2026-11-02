@@ -1,0 +1,238 @@
+.hero07 {
+  position: relative;
+  padding: var(--espaco-9) 0 var(--espaco-6);
+  overflow: hidden;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+
+  .gradeConteudo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-4);
+    max-width: var(--largura-max);
+    margin-inline: auto;
+    padding-inline: var(--margem-lateral);
+  }
+
+  .colunaTexto {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-3);
+  }
+
+  .simbolo {
+    display: flex;
+    color: var(--cor-destaque-2);
+  }
+
+  .titulo {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-1);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: var(--espaco-letra-titulo);
+    text-transform: uppercase;
+  }
+
+  .destaque {
+    color: var(--cor-destaque-2);
+  }
+
+  .subtitulo {
+    margin: 0;
+    color: var(--cor-texto-2);
+    font-size: var(--texto-base);
+    line-height: var(--altura-linha);
+  }
+
+  .botaoAcao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    min-height: var(--alvo-toque);
+    padding: var(--espaco-3) var(--espaco-4);
+    color: var(--cor-destaque-contraste);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-decoration: none;
+    text-transform: uppercase;
+    background: var(--cor-destaque-2);
+    border-radius: var(--raio-p);
+    box-shadow: 0 var(--espaco-2) var(--espaco-5) color-mix(in srgb, var(--cor-destaque-2) 35%, transparent);
+  }
+
+  .botaoAcao svg {
+    transition: transform var(--duracao-media) var(--curva-mola);
+  }
+
+  .botaoAcao:hover svg {
+    transform: translate(var(--espaco-1), calc(-1 * var(--espaco-1)));
+  }
+
+  .colunaImagem {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    animation: hero07Imagem calc(var(--duracao-lenta) * 1.7) var(--curva-entrada) both;
+  }
+
+  /* A foto se funde ao fundo pela esquerda */
+  .envolturaImagem {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(to top, color-mix(in srgb, var(--cor-destaque-2) 22%, transparent), transparent 75%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, var(--cor-fundo) 22%);
+    mask-image: linear-gradient(to right, transparent 0%, var(--cor-fundo) 22%);
+  }
+
+  .silhueta {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: var(--cor-superficie-2);
+  }
+
+  /* Duas faixas inclinadas que se cruzam em X, rolando em sentidos opostos */
+  .areaFaixas {
+    position: relative;
+    height: var(--espaco-8);
+    margin-top: var(--espaco-3);
+    overflow: hidden;
+  }
+
+  .faixa {
+    position: absolute;
+    left: -8%;
+    width: 116%;
+    padding: var(--espaco-2) 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .faixaClara {
+    top: var(--espaco-5);
+    z-index: 1;
+    color: var(--cor-destaque-contraste);
+    background: var(--cor-destaque);
+    transform: rotate(-1.5deg);
+  }
+
+  .faixaDestaque {
+    top: var(--espaco-2);
+    z-index: 2;
+    color: var(--cor-destaque-contraste);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--cor-destaque-2) 80%, var(--cor-fundo)), var(--cor-destaque-2), color-mix(in srgb, var(--cor-destaque-2) 80%, var(--cor-fundo)));
+    transform: rotate(1.8deg);
+  }
+
+  /* --copias é preenchida pelo script: o trilho anda exatamente a largura de um grupo */
+  .trilho {
+    --copias: 1;
+    display: flex;
+    width: max-content;
+    animation: hero07Rolar calc(var(--duracao-ciclo) * 5 * var(--copias) / 2) linear infinite;
+  }
+
+  .faixaClara .trilho {
+    animation-direction: reverse;
+  }
+
+  .grupo {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: var(--espaco-4);
+    padding-right: var(--espaco-4);
+  }
+
+  .item {
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+  }
+
+  .separador {
+    width: var(--espaco-1);
+    height: var(--espaco-1);
+    background: currentColor;
+    border-radius: var(--raio-total);
+  }
+
+  &.foraDaTela .trilho {
+    animation-play-state: paused;
+  }
+
+  @media (min-width: 768px) {
+    .botaoAcao {
+      align-self: flex-start;
+      padding: var(--espaco-4) var(--espaco-6);
+      font-size: var(--texto-base);
+    }
+
+    .subtitulo {
+      font-size: var(--texto-grande);
+    }
+
+    .areaFaixas {
+      height: var(--espaco-9);
+      margin-top: var(--espaco-6);
+    }
+
+    .faixa {
+      padding: var(--espaco-3) 0;
+    }
+
+    .faixaClara {
+      top: var(--espaco-7);
+    }
+
+    .faixaDestaque {
+      top: var(--espaco-4);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gradeConteudo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--espaco-5);
+      align-items: center;
+    }
+
+    .colunaTexto {
+      gap: var(--espaco-5);
+    }
+
+    .titulo {
+      font-size: var(--titulo-display);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .colunaImagem,
+    .trilho {
+      animation: none;
+    }
+
+    .botaoAcao svg {
+      transition: none;
+    }
+  }
+}
+
+@keyframes hero07Imagem {
+  from { opacity: 0; transform: translateY(var(--espaco-7)); }
+}
+
+@keyframes hero07Rolar {
+  to { transform: translateX(calc(-100% / var(--copias))); }
+}

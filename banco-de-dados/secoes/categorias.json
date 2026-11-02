@@ -1,0 +1,14 @@
+[
+  {"id": "cabecalho", "nome": "Cabeçalho"},
+  {"id": "hero", "nome": "Hero"},
+  {"id": "servicos", "nome": "Serviços"},
+  {"id": "sobre", "nome": "Sobre"},
+  {"id": "depoimentos", "nome": "Depoimentos"},
+  {"id": "planos", "nome": "Planos"},
+  {"id": "galeria", "nome": "Galeria"},
+  {"id": "marcas", "nome": "Marcas"},
+  {"id": "faq", "nome": "FAQ"},
+  {"id": "chamada", "nome": "Chamada"},
+  {"id": "contato", "nome": "Contato"},
+  {"id": "rodape", "nome": "Rodapé"}
+]

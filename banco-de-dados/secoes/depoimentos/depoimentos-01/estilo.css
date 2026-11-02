@@ -1,0 +1,41 @@
+.depoimentos01 {
+  padding: var(--espaco-8) var(--margem-lateral);
+  background: var(--cor-fundo-2);
+
+  .titulo {
+    margin: 0 0 var(--espaco-6);
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-2);
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .grade {
+    display: grid;
+    gap: var(--espaco-4);
+    max-width: var(--largura-max);
+    margin-inline: auto;
+  }
+
+  .cartao {
+    margin: 0;
+    padding: var(--espaco-5);
+    background: var(--cor-superficie);
+    border-radius: var(--raio-g);
+  }
+
+  blockquote {
+    margin: 0 0 var(--espaco-4);
+    font-size: var(--texto-grande);
+  }
+
+  figcaption {
+    color: var(--cor-destaque);
+    font-size: var(--texto-pequeno);
+    font-weight: 700;
+  }
+
+  @media (min-width: 768px) {
+    .grade { grid-template-columns: repeat(3, 1fr); }
+  }
+}

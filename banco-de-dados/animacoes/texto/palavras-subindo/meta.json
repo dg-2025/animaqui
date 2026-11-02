@@ -1,0 +1,7 @@
+{
+  "id": "palavras-subindo",
+  "nome": "Subida em cascata",
+  "tipo": "texto",
+  "descricao": "Cada palavra sobe de trás de uma linha invisível, uma depois da outra, quando o texto entra na tela.",
+  "precisaRolar": false
+}

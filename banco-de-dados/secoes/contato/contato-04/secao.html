@@ -1,0 +1,106 @@
+<section class="contato04">
+  <div class="grade">
+    <div class="colunaTextos">
+      <h2 class="titulo">
+        <span class="linha" style="--ordem: 0">Seu negócio</span>
+        <span class="linha" style="--ordem: 1"><span class="destaque">vendendo mais</span></span>
+        <span class="linha" style="--ordem: 2">sem complicação</span>
+      </h2>
+      <p class="descricao linha" style="--ordem: 3">Responda três perguntas rápidas e receba uma primeira análise, sem compromisso.</p>
+      <ul class="beneficios">
+        <li class="beneficio linha" style="--ordem: 4">
+          <span class="marcaCheck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>
+          Conte aqui o seu primeiro benefício
+        </li>
+        <li class="beneficio linha" style="--ordem: 5">
+          <span class="marcaCheck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>
+          E aqui o seu segundo diferencial
+        </li>
+      </ul>
+    </div>
+
+    <div class="colunaFormulario" data-anima>
+      <span class="aura" aria-hidden="true"></span>
+      <div class="cartao">
+        <span class="caixaFeixe" aria-hidden="true"><span class="feixe"></span></span>
+        <span class="holofote" aria-hidden="true"></span>
+
+        <form class="formulario" novalidate>
+          <div class="topoFormulario">
+            <span class="rotuloFormulario">Diagnóstico gratuito</span>
+            <span class="contador" aria-live="polite">Etapa 1 de 3</span>
+          </div>
+
+          <div class="progresso" role="progressbar" aria-label="Progresso do formulário" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1">
+            <span class="barra"></span>
+          </div>
+          <ol class="passos" aria-hidden="true">
+            <li class="passo atual">Você</li>
+            <li class="passo">Negócio</li>
+            <li class="passo">Objetivo</li>
+          </ol>
+
+          <fieldset class="etapa">
+            <legend>Como podemos chamar você?</legend>
+            <input class="campo" type="text" name="nome" placeholder="Seu nome completo" aria-label="Seu nome completo" autocomplete="name" maxlength="80" data-aviso="Digite seu nome.">
+            <input class="campo" type="tel" name="telefone" placeholder="(00) 00000-0000" aria-label="Telefone com DDD" autocomplete="tel" inputmode="numeric" data-aviso="Digite um telefone com DDD.">
+          </fieldset>
+
+          <fieldset class="etapa" hidden>
+            <legend>Fale do seu negócio</legend>
+            <input class="campo" type="text" name="empresa" placeholder="Nome da empresa" aria-label="Nome da empresa" autocomplete="organization" maxlength="100" data-aviso="Digite o nome da empresa.">
+            <div class="seletor" data-nome="Segmento" data-aviso="Selecione um segmento.">
+              <button class="gatilho" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Segmento: nenhum selecionado">
+                <span class="valor">Selecionar segmento</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <ul class="menu" role="listbox" aria-label="Segmento" hidden>
+                <li class="opcao" role="option" aria-selected="false" tabindex="-1">Comércio</li>
+                <li class="opcao" role="option" aria-selected="false" tabindex="-1">Serviços</li>
+                <li class="opcao" role="option" aria-selected="false" tabindex="-1">Alimentação</li>
+                <li class="opcao" role="option" aria-selected="false" tabindex="-1">Saúde e bem-estar</li>
+                <li class="opcao" role="option" aria-selected="false" tabindex="-1">Educação</li>
+                <li class="opcao" role="option" aria-selected="false" tabindex="-1">Outro</li>
+              </ul>
+            </div>
+          </fieldset>
+
+          <fieldset class="etapa" hidden>
+            <legend>Qual é o tamanho do desafio?</legend>
+            <div class="seletor" data-nome="Faturamento mensal" data-aviso="Selecione uma faixa de faturamento.">
+              <button class="gatilho" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Faturamento mensal: nenhum selecionado">
+                <span class="valor">Faturamento mensal aproximado</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <ul class="menu" role="listbox" aria-label="Faturamento mensal" hidden>
+                <li class="opcao" role="option" aria-selected="false" tabindex="-1">Até R$ 30 mil</li>
+                <li class="opcao" role="option" aria-selected="false" tabindex="-1">De R$ 30 mil a R$ 80 mil</li>
+                <li class="opcao" role="option" aria-selected="false" tabindex="-1">De R$ 80 mil a R$ 150 mil</li>
+                <li class="opcao" role="option" aria-selected="false" tabindex="-1">Mais de R$ 150 mil</li>
+              </ul>
+            </div>
+            <textarea class="campo" name="objetivo" rows="3" placeholder="O que você quer melhorar primeiro? (opcional)" aria-label="O que você quer melhorar primeiro? Opcional."></textarea>
+          </fieldset>
+
+          <p class="erro" role="alert" hidden></p>
+
+          <div class="navegacao">
+            <button class="botaoVoltar" type="button" hidden>Voltar</button>
+            <button class="botaoAvancar" type="submit">
+              <span class="brilho" aria-hidden="true"></span>
+              <svg class="girando" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"/></svg>
+              <span class="textoAvancar">Continuar</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="caixaSucesso" tabindex="-1" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/></svg>
+          <h3>Solicitação recebida!</h3>
+          <p>Em breve alguém da nossa equipe fala com você pelo telefone informado.</p>
+          <button class="botaoNovo" type="button">Enviar outra resposta</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

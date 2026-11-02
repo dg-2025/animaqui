@@ -1,0 +1,11 @@
+.textoLetra {
+  display: inline-block;
+  white-space: pre;
+  animation: textoLetraSurge var(--duracao-lenta) var(--curva-entrada) both;
+  animation-delay: calc(var(--i) * 35ms);
+}
+
+@keyframes textoLetraSurge {
+  from { opacity: 0; transform: translateY(0.6em) rotate(6deg); }
+  to { opacity: 1; transform: none; }
+}
