@@ -2,10 +2,10 @@
 
 | Campo | Valor |
 |---|---|
-| **Versão do documento** | 0.12 |
+| **Versão do documento** | 0.13 |
 | **Data** | 16/11/2026 |
 | **Autor(es)** | Daniel (responsável), Claude (redação) |
-| **Status** | Em revisão: E-02 (e-commerce) com S09 e S10 entregues; S08 na fila (dados legais e publicação) |
+| **Status** | Em revisão: E-02 (e-commerce) com S09 a S11 entregues; S08 na fila (dados legais e publicação) |
 | **Aprovado por** | Pendente |
 
 ## Histórico de Revisões
@@ -23,6 +23,7 @@
 | 0.10 | 02/11/2026 | Claude | E-01/S08 parcial, a pedido do Daniel ("obrigações do site"): `robots`, `sitemap`, canonical, Open Graph, ícones, JSON-LD, `llms.txt`, `/privacidade`, `/termos`, rodapé com os links e headers de segurança. README refeito. Testado: `tsc`, `eslint`, `build`, `npm audit` e CT-500 a CT-505 no Edge em produção. A bateria completa dos CT não foi repetida. SQL: nenhum |
 | 0.11 | 16/11/2026 | Claude | E-02 planejado (front-end de e-commerce, aprovado pelo Daniel) e S09 entregue: tema claro de loja em `tema-padrao.css` (D-25), `montarDocumento()` só leva a variação de tema quando alguma seção usa, 4 categorias novas (Cardápio, Produto, Ofertas, Carrinho) e 6 seções do pacote Lanche e comida. Testado: `tsc`, `eslint`, `build`, páginas e APIs novas com 200 no build de produção, documento do palco com e sem o tema claro e CT-600 a CT-603 no Edge, em 390 px e 1280 px. A bateria completa dos CT anteriores não foi repetida. SQL: nenhum |
 | 0.12 | 16/11/2026 | Claude | E-02/S10: pacote Roupa e tênis com fotos reais do Pixabay embutidas em WebP (D-28, decisão do Daniel): categoria Vitrine nova e 7 seções (`vitrine-01` a `03`, `produto-03`, `carrinho-02`, `chamada-04`). Origem das 21 fotos na seção 10. Testado: `tsc`, `eslint`, `build`, páginas e APIs com 200 no build de produção, CSP aceitando `data:` e CT-604 a CT-606 no Edge, em 390 px e 1280 px. O arrastar para excluir do `carrinho-02` não foi testado com o dedo, só o botão da lixeira. SQL: nenhum |
+| 0.13 | 16/11/2026 | Claude | E-02/S11: pacote Mercado e nicho com fotos do Pixabay: `vitrine-04` hortifruti, `vitrine-05` plantas, `vitrine-06` joalheria, `vitrine-07` luminárias editorial, `produto-04` anel com aro e `produto-05` suplemento (tema escuro). Testado: `tsc`, `eslint`, `build` e CT-607 no Edge, em 390 px e 1280 px. Snacks (531–535) e relógio (468–471) ficaram de fora: os padrões já estão cobertos pelas outras seções. SQL: nenhum |
 
 ---
 
@@ -105,7 +106,7 @@ Não publicado.
 
 ### 2.2 In Scope (Dentro do escopo)
 
-Os três módulos, o motor de palco e exportação e 65 seções em 17 categorias, mais 14 animações, em `banco-de-dados/`. O E-02 acrescenta seções de loja (2.8).
+Os três módulos, o motor de palco e exportação e 71 seções em 17 categorias, mais 14 animações, em `banco-de-dados/`. O E-02 acrescenta seções de loja (2.8).
 
 ### 2.3 Out of Scope (Fora do escopo)
 
@@ -138,7 +139,7 @@ Levantados na análise de 02/11/2026; aguardam a avaliação do Daniel.
 
 ### 2.8 Evoluções planejadas
 
-**Em andamento:** E-02, próxima é a S11. S09 e S10 entregues. S01 a S07 entregues; S08 parcial (faltam P-05, P-07 e a bateria completa dos CT), na fila.
+**Em andamento:** E-02, próxima é a S12. S09 a S11 entregues. S01 a S07 entregues; S08 parcial (faltam P-05, P-07 e a bateria completa dos CT), na fila.
 
 #### E-01 — Esqueleto e versão inicial (árvore e nomes aprovados em 02/11/2026)
 
@@ -210,7 +211,7 @@ Seções de loja (lanche, roupa, mercado e nicho) e o fluxo de compra, primeiro 
 |---|---|---|---|---|
 | S09 | Tema claro (D-25) e pacote **Lanche e comida**: categorias Cardápio, Produto, Ofertas e Carrinho, com 6 seções (`cardapio-01` cafeteria, `cardapio-02` hamburgueria, `produto-01` pizza, `produto-02` bowl, `oferta-01` delivery com cupom, `carrinho-01` sacola) | — | CT-600 a CT-603 | entregue |
 | S10 | Pacote **Roupa e tênis** com fotos (D-28): categoria Vitrine e 7 seções (`vitrine-01` moda jeans, `vitrine-02` loja com categorias, `vitrine-03` cards com degradê, `produto-03` tênis, `carrinho-02` carrinho com arrastar para excluir, `chamada-04` newsletter) | S09 | CT-604 a CT-606 | entregue |
-| S11 | Pacote **Mercado e nicho** | S09 | A definir | planejado |
+| S11 | Pacote **Mercado e nicho** com fotos (D-28): `vitrine-04` hortifruti com contagem regressiva, `vitrine-05` plantas com cuidados, `vitrine-06` joalheria, `vitrine-07` luminárias editorial, `produto-04` anel com aro, `produto-05` suplemento com assinatura | S09 | CT-607 | entregue |
 | S12 | **Fluxo de compra:** checkout, conta e rastreio do pedido | S09 | A definir | planejado |
 | S13 | Módulo **Lojas prontas:** várias páginas ligadas e carrinho entre elas. Detalhar antes de começar | S10 a S12 | A definir | planejado |
 
@@ -300,7 +301,7 @@ animaqui/
         └── shared/                 # NotFound, PaginaLegal
 ```
 
-Acervo atual: 65 seções em 17 categorias (`categorias.json`) e 14 animações.
+Acervo atual: 71 seções em 17 categorias (`categorias.json`) e 14 animações.
 
 **Como crescer depois:**
 
@@ -511,7 +512,7 @@ Aplicado conforme a D-11 (ver P-02). Há dois conjuntos de tokens que não se mi
 
 ### 7.2 Casos de Teste
 
-CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-401 passaram em 02/11/2026. CT-001, CT-101 e CT-402 ainda não foram executados. A cópia foi conferida pelo texto enviado ao navegador; o teste não usou a área de transferência real, que o navegador automatizado bloqueia. CT-500 a CT-505 passaram em 02/11/2026, no Edge, com o build de produção. CT-600 a CT-606 passaram em 16/11/2026, no Edge (cliques simulados por script e prints em 390 px e 1280 px). Os CT anteriores não foram repetidos depois da CSP e do rodapé; o CT-505 cobre uma seção com script, a Tipografia e a abertura do Montador.
+CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-401 passaram em 02/11/2026. CT-001, CT-101 e CT-402 ainda não foram executados. A cópia foi conferida pelo texto enviado ao navegador; o teste não usou a área de transferência real, que o navegador automatizado bloqueia. CT-500 a CT-505 passaram em 02/11/2026, no Edge, com o build de produção. CT-600 a CT-607 passaram em 16/11/2026, no Edge (cliques simulados por script e prints em 390 px e 1280 px). Os CT anteriores não foram repetidos depois da CSP e do rodapé; o CT-505 cobre uma seção com script, a Tipografia e a abertura do Montador.
 
 | ID | Ref. | Cenário | Passos | Resultado Esperado |
 |---|---|---|---|---|
@@ -549,6 +550,7 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | CT-604 | RF-300, D-28 | Fotos embutidas | Abrir `vitrine-01` e copiar o código | As fotos aparecem no palco e no arquivo copiado, sem endereço externo |
 | CT-605 | RF-300 | Vitrine e produto de roupa | Filtrar categorias, somar na sacola, trocar cor e numeração do tênis | Filtro e aviso de categoria vazia; contagem da sacola; cor leva a galeria à foto; 41 esgotado; sem número o botão não compra |
 | CT-606 | RF-300 | Carrinho de roupa e newsletter | Somar item, cupom `ALMA10`, excluir; e-mail inválido e válido | Total com 10% de desconto; item sai; erro no e-mail incompleto e confirmação no válido |
+| CT-607 | RF-300 | Mercado e nicho | Somar e tirar no hortifruti, filtrar plantas e joias, aro do anel, plano do suplemento, e-mail da carta | + vira contador e volta ao zerar; contagem regressiva; cartão de cuidados muda com o filtro; aro 18 esgotado e sem aro não compra; preço da assinatura e da compra única |
 | CT-603 | RF-300 | Sacola e cupom | Cupom inválido, `RAIZ10`, e zerar os itens | Aviso de erro; 10% de desconto no total; item some ao zerar e a sacola vazia esconde o botão de pagar |
 
 ---
@@ -575,7 +577,7 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | RNF-03 | Toque e teclado | CT-202 | `shared/ui` | Implementado |
 | RNF-04 | Crescer sem mudar código | CT-001 | `banco-de-dados/secoes` | Implementado |
 | RF-152, RN-154 | Tema claro de loja | CT-600 | `banco-de-dados/tema-padrao.css`, `shared/utils/montarDocumento.ts` | Implementado |
-| RF-300, RN-155, D-28 | Seções de loja | CT-601 a CT-606 | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine` | Implementado |
+| RF-300, RN-155, D-28 | Seções de loja | CT-601 a CT-607 | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine` | Implementado |
 
 ---
 
@@ -628,6 +630,35 @@ Licença Pixabay (uso comercial, sem crédito obrigatório). Ver R-04.
 | 9476524 | https://pixabay.com/photos/woman-young-fashion-sneakers-9476524/ |
 | 7082417 | https://pixabay.com/photos/woman-beauty-fashion-makeup-7082417/ |
 | 4643410 | https://pixabay.com/photos/lady-parisienne-woman-business-4643410/ |
+| 2786684 | https://pixabay.com/photos/peppers-red-orange-yellow-2786684/ |
+| 214170 | https://pixabay.com/photos/nice-apples-green-eating-healthy-214170/ |
+| 421087 | https://pixabay.com/photos/bell-peppers-vegetables-food-421087/ |
+| 4183225 | https://pixabay.com/photos/bread-baked-loaf-bakery-4183225/ |
+| 272812 | https://pixabay.com/photos/strawberries-cute-red-yummy-ripe-272812/ |
+| 1834639 | https://pixabay.com/photos/apple-red-fruit-food-fresh-ripe-1834639/ |
+| 1239236 | https://pixabay.com/photos/food-fresh-fruit-lemon-lime-1239236/ |
+| 272810 | https://pixabay.com/photos/strawberry-fruit-yummy-red-cute-272810/ |
+| 1287100 | https://pixabay.com/photos/avocado-sliced-avocado-slice-1287100/ |
+| 5521590 | https://pixabay.com/photos/background-cactus-plant-pot-5521590/ |
+| 3698820 | https://pixabay.com/photos/plant-succulent-plant-background-3698820/ |
+| 1867373 | https://pixabay.com/photos/airy-plant-plant-pot-succulent-1867373/ |
+| 1842095 | https://pixabay.com/photos/cactus-minimalism-plant-pot-white-1842095/ |
+| 7389356 | https://pixabay.com/photos/jewel-diamond-ring-fashion-jewelry-7389356/ |
+| 518268 | https://pixabay.com/photos/necklace-jewelry-fashion-stylish-518268/ |
+| 3611277 | https://pixabay.com/photos/wedding-rings-engagement-rings-3611277/ |
+| 2416039 | https://pixabay.com/photos/bindi-asian-jewellery-beauty-2416039/ |
+| 1839031 | https://pixabay.com/photos/diamond-jewelry-macro-ring-1839031/ |
+| 2867205 | https://pixabay.com/photos/pendant-heart-crown-rhinestones-2867205/ |
+| 2306831 | https://pixabay.com/photos/girl-face-portrait-bust-skin-2306831/ |
+| 465350 | https://pixabay.com/photos/light-lamp-bedside-lamp-465350/ |
+| 1603766 | https://pixabay.com/photos/light-bulbs-lights-lamps-1603766/ |
+| 4122767 | https://pixabay.com/photos/poster-frame-lamp-fruits-basket-4122767/ |
+| 3389937 | https://pixabay.com/photos/loft-design-replacement-lamp-piece-3389937/ |
+| 4048225 | https://pixabay.com/photos/ikea-table-dining-chair-lamp-4048225/ |
+| 453783 | https://pixabay.com/photos/glowing-lamps-lampshades-decoration-453783/ |
+| 4670893 | https://pixabay.com/photos/pear-light-energy-lightbulb-4670893/ |
+| 4243898 | https://pixabay.com/photos/plant-design-home-house-lamp-4243898/ |
+| 1079838 | https://pixabay.com/photos/capsules-pills-health-medicine-1079838/ |
 
 ### Achados
 
