@@ -37,3 +37,5 @@ Aplicada em `src/app/global.css`: interface monocromática, com cores variadas s
 - **Sem Supabase, auth e Server Actions** na v1: não há banco nem mutação no servidor. Mantém `app`, `features`, `shared` e `views` de [[saas]]; os services leem arquivos em vez do banco, e só eles mudam se vier banco.
 - **`banco-de-dados/` fora das regras de componente React** de [[base-frontend]]: são HTML, CSS e JS puros para serem exportados. As classes continuam em português e camelCase, e todo valor vem de token.
 - **Duas camadas de tokens:** `src/app/global.css` (plataforma) e `banco-de-dados/tema-padrao.css` (seções e código copiado).
+- **Tema claro de loja (D-25):** `tema-padrao.css` tem o bloco `[data-tema="claro"]` e a seção de loja liga com `data-tema="claro"` na raiz. Exceção ao contrato de [[tokens]] ("o bloco não sabe qual tema está ativo"), escolhida pelo Daniel em 16/11/2026.
+- **Seção de loja é celular primeiro (D-24):** CSS base do celular, computador por `min-width`.

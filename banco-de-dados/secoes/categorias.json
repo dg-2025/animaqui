@@ -10,5 +10,9 @@
   {"id": "faq", "nome": "FAQ"},
   {"id": "chamada", "nome": "Chamada"},
   {"id": "contato", "nome": "Contato"},
-  {"id": "rodape", "nome": "Rodapé"}
+  {"id": "rodape", "nome": "Rodapé"},
+  {"id": "cardapio", "nome": "Cardápio"},
+  {"id": "produto", "nome": "Produto"},
+  {"id": "oferta", "nome": "Ofertas"},
+  {"id": "carrinho", "nome": "Carrinho"}
 ]

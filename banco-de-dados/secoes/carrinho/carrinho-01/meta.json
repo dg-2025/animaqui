@@ -1,0 +1,6 @@
+{
+  "id": "carrinho-01",
+  "nome": "Sacola com cupom e pontos",
+  "categoria": "carrinho",
+  "descricao": "Sacola de comida com quantidade sobre a foto, aviso de pontos para o próximo prêmio, campo de cupom que dá desconto e subtotal que se atualiza sozinho."
+}

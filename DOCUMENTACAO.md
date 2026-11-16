@@ -2,10 +2,10 @@
 
 | Campo | Valor |
 |---|---|
-| **Versão do documento** | 0.10 |
-| **Data** | 02/11/2026 |
+| **Versão do documento** | 0.11 |
+| **Data** | 16/11/2026 |
 | **Autor(es)** | Daniel (responsável), Claude (redação) |
-| **Status** | Em revisão: obrigações do site feitas, faltam os dados legais e a publicação |
+| **Status** | Em revisão: E-02 (e-commerce) com a S09 entregue; S08 na fila (dados legais e publicação) |
 | **Aprovado por** | Pendente |
 
 ## Histórico de Revisões
@@ -21,6 +21,7 @@
 | 0.8 | 02/11/2026 | Claude | E-01/S07: acervo vindo das landing pages e do cofre, sem dados de cliente: 52 seções em 12 categorias e 14 animações. Testado: 832 combinações (seção, largura e animação) no Edge, sem erro de script nem rolagem lateral. SQL: nenhum |
 | 0.9 | 02/11/2026 | Claude | Otimização sem mudança visual e erro do modo dev corrigido. Palco troca sem recarga dupla nem tela vazia, palcos escondidos param, cópia só com tudo carregado, rotas GET sem `generateStaticParams`, com cache HTTP. Testado: `tsc`, `eslint`, `build` e 3 partidas a frio do modo dev. A rodada final no navegador foi interrompida por falta de memória na máquina e ainda precisa ser repetida. SQL: nenhum |
 | 0.10 | 02/11/2026 | Claude | E-01/S08 parcial, a pedido do Daniel ("obrigações do site"): `robots`, `sitemap`, canonical, Open Graph, ícones, JSON-LD, `llms.txt`, `/privacidade`, `/termos`, rodapé com os links e headers de segurança. README refeito. Testado: `tsc`, `eslint`, `build`, `npm audit` e CT-500 a CT-505 no Edge em produção. A bateria completa dos CT não foi repetida. SQL: nenhum |
+| 0.11 | 16/11/2026 | Claude | E-02 planejado (front-end de e-commerce, aprovado pelo Daniel) e S09 entregue: tema claro de loja em `tema-padrao.css` (D-25), `montarDocumento()` só leva a variação de tema quando alguma seção usa, 4 categorias novas (Cardápio, Produto, Ofertas, Carrinho) e 6 seções do pacote Lanche e comida. Testado: `tsc`, `eslint`, `build`, páginas e APIs novas com 200 no build de produção, documento do palco com e sem o tema claro e CT-600 a CT-603 no Edge, em 390 px e 1280 px. A bateria completa dos CT anteriores não foi repetida. SQL: nenhum |
 
 ---
 
@@ -103,7 +104,7 @@ Não publicado.
 
 ### 2.2 In Scope (Dentro do escopo)
 
-Os três módulos, o motor de palco e exportação e 52 seções em 12 categorias, mais 14 animações, em `banco-de-dados/`.
+Os três módulos, o motor de palco e exportação e 58 seções em 16 categorias, mais 14 animações, em `banco-de-dados/`. O E-02 acrescenta seções de loja (2.8).
 
 ### 2.3 Out of Scope (Fora do escopo)
 
@@ -135,7 +136,7 @@ Levantados na análise de 02/11/2026; aguardam a avaliação do Daniel.
 
 ### 2.8 Evoluções planejadas
 
-**Em andamento:** S08 parcial. S01 a S07 entregues. Falta na S08: P-05, P-07 e a bateria completa dos CT.
+**Em andamento:** E-02, próxima é a S10. S09 entregue. S01 a S07 entregues; S08 parcial (faltam P-05, P-07 e a bateria completa dos CT), na fila.
 
 #### E-01 — Esqueleto e versão inicial (árvore e nomes aprovados em 02/11/2026)
 
@@ -180,6 +181,36 @@ Montar a base estruturada e escalável e entregar os três módulos, com acervo 
 | Sprint | Entrega | Depende de | Testes | Status |
 |---|---|---|---|---|
 | S08 | **Validação e obrigações do site:** SEO, `robots.ts`, `sitemap.ts`, 404, privacidade, termos, headers: feitos. Responsividade e acessibilidade na bateria completa e publicação: pendentes | S05, S06, S07, P-05, P-07 | Todos os CT | parcial |
+
+#### E-02 — Front-end de e-commerce (aprovado pelo Daniel em 16/11/2026)
+
+Seções de loja (lanche, roupa, mercado e nicho) e o fluxo de compra, primeiro como categorias do Catálogo e depois como módulo de lojas prontas. Referência: 688 imagens que o Daniel separou de posts de designers; cerca de 1/3 é loja e foi triado abaixo. O resto (finanças, saúde, viagem, paletas, fontes) fica para a ideia de componentes de SaaS.
+
+| ID | Decisão / Pendência | Bloqueia |
+|---|---|---|
+| D-23 | As imagens são **referência adaptada**, não cópia: estrutura e cara parecidas, com nome de loja, texto e marca nossos. Textos em português e preços em R$ (decisão do Daniel, 16/11/2026, pelo mesmo motivo do R-01) | — |
+| D-24 | **Celular primeiro:** a referência é a tela de celular, fiel no botão Celular; o CSS base é o do celular e o computador é expansão por `min-width` (mais colunas, sacola ao lado). Pedido do Daniel, 16/11/2026 | — |
+| D-25 | **Tema claro de loja:** `tema-padrao.css` ganha o bloco `[data-tema="claro"]`, que redefine os mesmos tokens (cores, sombras, fonte de título); a seção de loja liga com `data-tema="claro"` na raiz. É exceção ao contrato do Guia ("o bloco não sabe qual tema está ativo"), escolhida pelo Daniel em 16/11/2026 e registrada no `CLAUDE.md`. `montarDocumento()` só leva esse bloco quando alguma seção usa | — |
+| D-26 | Foto de produto vira ilustração em SVG embutido (RN-151), no lugar onde a pessoa põe a foto dela | — |
+| D-27 | Interação dentro da própria seção (filtro por categoria, quantidade, tamanho, adicionais, cupom). Carrinho que atravessa páginas só no módulo da S13 | — |
+| P-11 | Fotos reais: hoje são ilustrações. Usar banco de imagens livre no futuro? | — |
+
+**Triagem das referências** (número do arquivo `foto-trabalho-N.jpg`):
+
+| Pacote | Referências |
+|---|---|
+| Lanche e comida | 262–269 cafeteria, 310–317 delivery, 525–530 pizzaria, 584–590 hamburgueria, 619–623 bowls |
+| Roupa e tênis | 142–149 e 597–599 moda, 190–197 página de tênis, 502–509 site de tênis (computador), 494–501 e 662–667 cards de produto, 616–618 newsletter |
+| Mercado e nicho | 94–101 hortifruti, 531–535 snacks, 382/386/574 mercado, 278–285 plantas, 476–485 suplementos, 648–649 joias, 438–445 luminárias (computador), 468–471 relógio |
+| Fluxo de compra | 41–48 checkout, 182–189 conta com pontos, 1–8 rastreio do pedido |
+
+| Sprint | Entrega | Depende de | Testes | Status |
+|---|---|---|---|---|
+| S09 | Tema claro (D-25) e pacote **Lanche e comida**: categorias Cardápio, Produto, Ofertas e Carrinho, com 6 seções (`cardapio-01` cafeteria, `cardapio-02` hamburgueria, `produto-01` pizza, `produto-02` bowl, `oferta-01` delivery com cupom, `carrinho-01` sacola) | — | CT-600 a CT-603 | entregue |
+| S10 | Pacote **Roupa e tênis** (categoria Vitrine e novas variações) | S09 | A definir | planejado |
+| S11 | Pacote **Mercado e nicho** | S09 | A definir | planejado |
+| S12 | **Fluxo de compra:** checkout, conta e rastreio do pedido | S09 | A definir | planejado |
+| S13 | Módulo **Lojas prontas:** várias páginas ligadas e carrinho entre elas. Detalhar antes de começar | S10 a S12 | A definir | planejado |
 
 #### Ideias soltas (ainda sem conversa)
 
@@ -267,7 +298,7 @@ animaqui/
         └── shared/                 # NotFound, PaginaLegal
 ```
 
-Acervo atual: 52 seções em 12 categorias (`categorias.json`) e 14 animações.
+Acervo atual: 58 seções em 16 categorias (`categorias.json`) e 14 animações.
 
 **Como crescer depois:**
 
@@ -311,6 +342,8 @@ Prioridade: todos A confirmar. RF-51 está limitado às 40 fontes padrão até e
 | RF-202 | Buscar a lista de fontes no Google Fonts pelo servidor, com cache | A confirmar | `src/features/tipografia/services/fontesService.ts:24` | Implementado |
 | RF-250 | Expor `robots.txt`, `sitemap.xml` e `llms.txt`; cada página com título, descrição, canonical e imagem de compartilhamento | A confirmar | `src/app/sitemap.ts:8`, `src/shared/lib/site.ts:17` | Implementado |
 | RF-251 | Páginas `/privacidade` e `/termos`, com links no rodapé | A confirmar | `src/app/(legal)/privacidade/page.tsx:10`, `src/app/(publico)/layout.tsx:13` | Implementado |
+| RF-152 | Seção com tema claro: `data-tema="claro"` na raiz liga a variação clara dos tokens, no palco e no código copiado | A confirmar | `banco-de-dados/tema-padrao.css:75`, `src/shared/utils/montarDocumento.ts:46` | Implementado |
+| RF-300 | Seções de loja (Lanche e comida): cardápio com filtro, quantidade e sacola, produto com tamanho e adicionais, ofertas com cupom e sacola com cupom de desconto, cada uma com a conta feita na própria seção | A confirmar | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho` | Implementado |
 
 ### 3.2 Detalhamento de Requisito
 
@@ -381,6 +414,8 @@ Todas com Status `Implementado` (fonte na matriz da seção 8).
 | RN-151 | O código copiado não depende de React, de biblioteca nem de arquivo da plataforma. Ícone é SVG embutido; imagem é SVG ou URI de dados. A única exceção é o `<link>` do Google Fonts | RF-151 |
 | RN-152 | O código copiado leva só os tokens, as animações e as fontes em uso | RF-151 |
 | RN-153 | Toda animação respeita `prefers-reduced-motion` e não usa biblioteca (Guia D-004) | RF-07, RF-53 |
+| RN-154 | A variação de tema só entra no documento se alguma seção a ligar, e só com os tokens que o CSS usa | RF-151, RF-152 |
+| RN-155 | Seção de loja é celular primeiro: o CSS base é o do celular e o computador entra por `min-width` (D-24) | RF-300 |
 | RN-200 | Item inválido no acervo interrompe o build e o erro diz qual arquivo corrigir | RF-201 |
 | RN-201 | Todo CSS fica sob a classe raiz do item, inclusive os `@media`; keyframes levam a classe como prefixo e o JS recebe a raiz. O mesmo bloco pode entrar duas vezes no Montador sem conflito | RF-102, RF-201 |
 | RN-202 | O acervo precisa de ao menos uma variação publicada: exigência do `generateStaticParams` com `cacheComponents` | RF-201 |
@@ -474,7 +509,7 @@ Aplicado conforme a D-11 (ver P-02). Há dois conjuntos de tokens que não se mi
 
 ### 7.2 Casos de Teste
 
-CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-401 passaram em 02/11/2026. CT-001, CT-101 e CT-402 ainda não foram executados. A cópia foi conferida pelo texto enviado ao navegador; o teste não usou a área de transferência real, que o navegador automatizado bloqueia. CT-500 a CT-505 passaram em 02/11/2026, no Edge, com o build de produção. Os CT anteriores não foram repetidos depois da CSP e do rodapé; o CT-505 cobre uma seção com script, a Tipografia e a abertura do Montador.
+CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-401 passaram em 02/11/2026. CT-001, CT-101 e CT-402 ainda não foram executados. A cópia foi conferida pelo texto enviado ao navegador; o teste não usou a área de transferência real, que o navegador automatizado bloqueia. CT-500 a CT-505 passaram em 02/11/2026, no Edge, com o build de produção. CT-600 a CT-603 passaram em 16/11/2026, no Edge (cliques simulados por script e prints em 390 px e 1280 px). Os CT anteriores não foram repetidos depois da CSP e do rodapé; o CT-505 cobre uma seção com script, a Tipografia e a abertura do Montador.
 
 | ID | Ref. | Cenário | Passos | Resultado Esperado |
 |---|---|---|---|---|
@@ -506,6 +541,10 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | CT-503 | D-22 | Página inexistente | Abrir `/nao-existe` e `/secoes/hero/nao-existe` | Tela 404 nas duas; status 404 na primeira; status 200 com `noindex` na segunda |
 | CT-504 | RNF-05 | Headers | Inspecionar a resposta de uma página | CSP, HSTS, `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy` e `Permissions-Policy` presentes |
 | CT-505 | RNF-05, RF-150 | Palco com CSP | Acionar o script de uma seção e trocar a fonte na Tipografia | O script roda, a fonte carrega e o console não mostra bloqueio de CSP |
+| CT-600 | RF-152, RN-154 | Tema claro só quando usado | Abrir `cardapio-01` e `hero-01` e inspecionar o documento do palco | No cardápio, o bloco `[data-tema="claro"]` aparece só com os tokens usados; no hero, não aparece |
+| CT-601 | RF-300, RN-155 | Celular e computador | Abrir as 6 seções de loja em 390 px e em 1280 px | No celular, o layout da referência, sem rolagem lateral; no computador, a expansão em colunas |
+| CT-602 | RF-300 | Contas do cardápio e do produto | Filtrar, somar itens, trocar tamanho e adicionais | Filtro esconde o que não é da categoria; sacola, barra e preço batem com a soma (ex.: pizza G + frango + queijo = R$ 72,90) |
+| CT-603 | RF-300 | Sacola e cupom | Cupom inválido, `RAIZ10`, e zerar os itens | Aviso de erro; 10% de desconto no total; item some ao zerar e a sacola vazia esconde o botão de pagar |
 
 ---
 
@@ -530,6 +569,8 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | RNF-01 | Código sob demanda | CT-002 | `features/secoes/hooks/useSecoes.ts` | Implementado |
 | RNF-03 | Toque e teclado | CT-202 | `shared/ui` | Implementado |
 | RNF-04 | Crescer sem mudar código | CT-001 | `banco-de-dados/secoes` | Implementado |
+| RF-152, RN-154 | Tema claro de loja | CT-600 | `banco-de-dados/tema-padrao.css`, `shared/utils/montarDocumento.ts` | Implementado |
+| RF-300, RN-155 | Seções de loja | CT-601 a CT-603 | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho` | Implementado |
 
 ---
 

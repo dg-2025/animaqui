@@ -1,0 +1,145 @@
+<section class="cardapio01" data-tema="claro">
+  <div class="conteudo">
+    <div class="colunaInfo">
+      <header class="topo" data-anima>
+        <div>
+          <p class="apoio">Peça antes e pule a fila</p>
+          <h2 class="saudacao">Bom dia, Léo</h2>
+        </div>
+        <button class="botaoSino" type="button" aria-label="Notificações, 1 nova">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          <span class="ponto" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <div class="retirada" data-anima>
+        <span class="iconeLocal" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <div class="retiradaTexto">
+          <strong>Retirada no Centro</strong>
+          <span>450 m · Aberto até 21h</span>
+        </div>
+        <button class="linkAcao" type="button">Trocar</button>
+      </div>
+
+      <div class="fidelidade" data-anima>
+        <div class="fidelidadeTopo">
+          <span class="fidelidadeRotulo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+            Fidelidade
+          </span>
+          <span class="fidelidadePontos">1.250 pontos</span>
+        </div>
+        <p class="fidelidadeTitulo">Faltam 250 pontos para um café grátis</p>
+        <div class="barra" role="progressbar" aria-label="Pontos de fidelidade" aria-valuemin="0" aria-valuemax="1500" aria-valuenow="1250">
+          <span class="barraCheia"></span>
+        </div>
+        <p class="fidelidadeNota">Café grátis com 1.500 pontos</p>
+      </div>
+    </div>
+
+    <div class="colunaMenu">
+      <div class="filtros" role="group" aria-label="Filtrar cardápio" data-anima>
+        <button class="filtro" type="button" data-filtro="todos" aria-pressed="true">Todos</button>
+        <button class="filtro" type="button" data-filtro="cafes" aria-pressed="false">Cafés</button>
+        <button class="filtro" type="button" data-filtro="gelados" aria-pressed="false">Gelados</button>
+        <button class="filtro" type="button" data-filtro="padaria" aria-pressed="false">Padaria</button>
+      </div>
+
+      <div class="tituloLista" data-anima>
+        <h3>Mais pedidos</h3>
+        <a href="#">Cardápio completo</a>
+      </div>
+
+      <ul class="lista" data-anima>
+        <li class="item" data-categoria="cafes">
+          <div class="foto" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><path class="iVidro" d="M18 14h26l-3 40a4 4 0 0 1-4 4H25a4 4 0 0 1-4-4z"/><path class="iCafe" d="M19.5 30h23l-1.9 24a2.5 2.5 0 0 1-2.5 2.2H24a2.5 2.5 0 0 1-2.5-2.2z"/><path class="iLeite" d="M18.6 22h24.8l-.6 8H19.2z"/><path class="iAlca" d="M44 24h4a5 5 0 0 1 0 10h-5"/></svg>
+          </div>
+          <div class="itemTexto">
+            <strong class="itemNome">Café latte</strong>
+            <span class="itemDescricao">Espresso e leite vaporizado</span>
+            <span class="itemPreco" data-preco="12.9">R$ 12,90</span>
+          </div>
+          <button class="adicionar" type="button" aria-label="Adicionar Café latte">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </li>
+        <li class="item" data-categoria="cafes">
+          <div class="foto" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><path class="iVidro" d="M16 20h30l-3 32a5 5 0 0 1-5 4.5H24a5 5 0 0 1-5-4.5z"/><path class="iCafe" d="M17.4 30h27.2l-2.1 22a3 3 0 0 1-3 2.6H22.5a3 3 0 0 1-3-2.6z"/><ellipse class="iLeite" cx="31" cy="27" rx="14" ry="4"/><path class="iCafe" d="M26 26.5c3-2 7 1 10-.5" fill="none" stroke-width="1.5"/><path class="iAlca" d="M46 26h3a5 5 0 0 1 0 10h-4"/></svg>
+          </div>
+          <div class="itemTexto">
+            <strong class="itemNome">Flat white</strong>
+            <span class="itemDescricao">Dose dupla com leite aveludado</span>
+            <span class="itemPreco" data-preco="13.5">R$ 13,50</span>
+          </div>
+          <button class="adicionar" type="button" aria-label="Adicionar Flat white">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </li>
+        <li class="item" data-categoria="padaria">
+          <div class="foto" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><path class="iPao" d="M6 38c2-10 10-16 14-16l4 18z"/><path class="iPao" d="M58 38c-2-10-10-16-14-16l-4 18z"/><path class="iPaoClaro" d="M18 22c4-6 9-8 14-8s10 2 14 8l-6 20H24z"/><path class="iPaoEscuro" d="M26 18l2 22M38 18l-2 22M32 14v26" fill="none" stroke-width="1.6" stroke-linecap="round"/><path class="iPaoEscuro" d="M12 30l8 9M52 30l-8 9" fill="none" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div class="itemTexto">
+            <strong class="itemNome">Croissant de manteiga</strong>
+            <span class="itemDescricao">Assado aqui toda manhã</span>
+            <span class="itemPreco" data-preco="9.9">R$ 9,90</span>
+          </div>
+          <button class="adicionar" type="button" aria-label="Adicionar Croissant de manteiga">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </li>
+        <li class="item" data-categoria="gelados">
+          <div class="foto" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><path class="iCanudo" d="M36 4l-4 18" fill="none" stroke-width="3" stroke-linecap="round"/><path class="iVidro" d="M17 18h30l-4 38a3 3 0 0 1-3 2.7H24a3 3 0 0 1-3-2.7z"/><path class="iCafe" d="M18.6 28h26.8l-3.1 28a2 2 0 0 1-2 1.8H23.7a2 2 0 0 1-2-1.8z"/><rect class="iGelo" x="24" y="32" width="8" height="8" rx="2"/><rect class="iGelo" x="33" y="38" width="8" height="8" rx="2"/><rect class="iGelo" x="25" y="44" width="7" height="7" rx="2"/></svg>
+          </div>
+          <div class="itemTexto">
+            <strong class="itemNome">Cold brew</strong>
+            <span class="itemDescricao">Extraído a frio por 18 horas</span>
+            <span class="itemPreco" data-preco="14">R$ 14,00</span>
+          </div>
+          <button class="adicionar" type="button" aria-label="Adicionar Cold brew">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </li>
+        <li class="item" data-categoria="padaria">
+          <div class="foto" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><circle class="iPaoClaro" cx="22" cy="38" r="12"/><circle class="iPaoClaro" cx="42" cy="38" r="12"/><circle class="iPaoClaro" cx="32" cy="24" r="12"/><circle class="iPaoEscuro" cx="28" cy="20" r="1.4"/><circle class="iPaoEscuro" cx="36" cy="27" r="1.2"/><circle class="iPaoEscuro" cx="18" cy="36" r="1.3"/><circle class="iPaoEscuro" cx="45" cy="41" r="1.3"/><circle class="iPaoEscuro" cx="40" cy="34" r="1"/></svg>
+          </div>
+          <div class="itemTexto">
+            <strong class="itemNome">Pão de queijo</strong>
+            <span class="itemDescricao">Porção com 4, saindo do forno</span>
+            <span class="itemPreco" data-preco="7.5">R$ 7,50</span>
+          </div>
+          <button class="adicionar" type="button" aria-label="Adicionar Pão de queijo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </li>
+        <li class="item" data-categoria="gelados">
+          <div class="foto" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><path class="iLeite" d="M18 18c0-7 6-11 14-11s14 4 14 11z"/><path class="iCaramelo" d="M22 12c4 3 8-2 12 1s6-1 8 1" fill="none" stroke-width="2" stroke-linecap="round"/><path class="iVidro" d="M17 18h30l-4 38a3 3 0 0 1-3 2.7H24a3 3 0 0 1-3-2.7z"/><path class="iCaramelo" d="M18 22h28l-3.6 34a2 2 0 0 1-2 1.8H23.6a2 2 0 0 1-2-1.8z"/><path class="iLeite" d="M19.5 34h25l-.5 5h-24z"/></svg>
+          </div>
+          <div class="itemTexto">
+            <strong class="itemNome">Frappé de caramelo</strong>
+            <span class="itemDescricao">Batido com gelo e chantilly</span>
+            <span class="itemPreco" data-preco="16.9">R$ 16,90</span>
+          </div>
+          <button class="adicionar" type="button" aria-label="Adicionar Frappé de caramelo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </li>
+      </ul>
+
+      <div class="sacola" hidden>
+        <div class="sacolaTexto" aria-live="polite">
+          <span class="sacolaQtd">1 item</span>
+          <strong class="sacolaTotal">R$ 0,00</strong>
+        </div>
+        <a class="sacolaBotao" href="#">Ver sacola</a>
+      </div>
+    </div>
+  </div>
+</section>

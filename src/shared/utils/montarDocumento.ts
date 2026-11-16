@@ -42,8 +42,20 @@ function semRepetir(secoes: PecaSecao[]): PecaSecao[] {
   return secoes.filter((secao, indice) => secoes.findIndex((s) => s.id === secao.id) === indice);
 }
 
+// Variação de tema (D-25): só entra se alguma seção liga com data-tema, e só com os tokens em uso.
+function reduzirVariacoesDeTema(css: string, html: string, usados: Set<string>): string {
+  return css.replace(/\[data-tema="([\w-]+)"\]\s*\{([^}]*)\}\s*/g, (_bloco, nome: string, corpo: string) => {
+    if (!html.includes(`data-tema="${nome}"`)) return '';
+    const linhas = corpo
+      .split(';')
+      .map((linha) => linha.replace(/\/\*[\s\S]*?\*\//g, '').trim())
+      .filter((linha) => linha && (!linha.startsWith('--') || usados.has(linha.split(':')[0].trim())));
+    return `[data-tema="${nome}"] {\n${linhas.map((linha) => `  ${linha};`).join('\n')}\n}\n\n`;
+  });
+}
+
 // Leva só os tokens em uso, seguindo também os tokens citados por outros tokens.
-function reduzirTema(tema: string, cssUsado: string): string {
+function reduzirTema(tema: string, cssUsado: string, htmlUsado: string): string {
   const bloco = tema.match(/:root\s*\{([\s\S]*?)\}/);
   if (!bloco) return tema;
 
@@ -52,9 +64,9 @@ function reduzirTema(tema: string, cssUsado: string): string {
     declaracoes.set(nome, valor.trim());
   }
 
-  const restante = tema.replace(bloco[0], '').trim();
+  const semRoot = tema.replace(bloco[0], '').trim();
   const usados = new Set<string>();
-  const pendentes = [`${cssUsado}\n${restante}`];
+  const pendentes = [`${cssUsado}\n${semRoot}`];
 
   while (pendentes.length > 0) {
     const trecho = pendentes.pop() ?? '';
@@ -72,6 +84,7 @@ function reduzirTema(tema: string, cssUsado: string): string {
     .map(([nome, valor]) => `  ${nome}: ${valor};`)
     .join('\n');
 
+  const restante = reduzirVariacoesDeTema(semRoot, htmlUsado, usados).trim();
   return `:root {\n${tokens}\n}\n\n${restante}`;
 }
 
@@ -80,8 +93,9 @@ function montarEstilo(entrada: EntradaDocumento): string {
     ...semRepetir(entrada.secoes).map((secao) => secao.css.trim()),
     entrada.animacao?.css.trim() ?? '',
   ].filter(Boolean).join('\n\n');
+  const html = entrada.secoes.map((secao) => secao.html).join('\n');
 
-  return `${reduzirTema(entrada.tema, css)}\n\n${css}`;
+  return `${reduzirTema(entrada.tema, css, html)}\n\n${css}`;
 }
 
 function montarScript(entrada: EntradaDocumento): string {

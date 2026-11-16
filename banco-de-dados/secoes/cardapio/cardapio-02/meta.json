@@ -1,0 +1,6 @@
+{
+  "id": "cardapio-02",
+  "nome": "Hamburgueria com quantidade",
+  "categoria": "cardapio",
+  "descricao": "Lista de lanches com filtro por tipo, preço avulso e de combo e botões de menos e mais que montam o pedido na barra de baixo."
+}

@@ -1,0 +1,6 @@
+{
+  "id": "produto-01",
+  "nome": "Pizza com tamanho e adicionais",
+  "categoria": "produto",
+  "descricao": "Página de produto de pizzaria com selo, avaliação, escolha de tamanho, adicionais que se acendem ao tocar e barra de baixo que recalcula o preço."
+}
