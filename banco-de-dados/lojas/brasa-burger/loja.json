@@ -1,0 +1,13 @@
+{
+  "id": "brasa-burger",
+  "nome": "Brasa Burger",
+  "segmento": "Lanchonete e delivery",
+  "descricao": "Delivery de lanches com cupom do dia, cardápio com quantidade, sacola com cupom, pagamento em etapas e Pix.",
+  "paginas": [
+    { "id": "inicio", "nome": "Início", "secoes": ["oferta/oferta-01"] },
+    { "id": "cardapio", "nome": "Cardápio", "secoes": ["cardapio/cardapio-02"] },
+    { "id": "carrinho", "nome": "Sacola", "secoes": ["carrinho/carrinho-01"] },
+    { "id": "pagamento", "nome": "Pagamento", "secoes": ["checkout/checkout-01"] },
+    { "id": "pedido", "nome": "Pedido", "secoes": ["pedido/pedido-02"] }
+  ]
+}

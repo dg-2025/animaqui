@@ -1,0 +1,74 @@
+.lista {
+  display: grid;
+  gap: var(--espaco-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:global(html:not([data-ja-entrou])) .item {
+  animation: itemEntra var(--duracao-media) var(--curva-mola) both;
+  animation-delay: calc(var(--i) * 60ms);
+}
+
+.cartao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-1);
+  padding: var(--espaco-3) var(--espaco-4);
+  text-decoration: none;
+  background: var(--cor-superficie);
+  border-radius: var(--raio-m);
+  box-shadow: var(--sombra-clay);
+  transition: transform var(--duracao-rapida) var(--curva-mola);
+}
+
+.cartao:hover { transform: translateY(-2px); }
+
+.cartao:active { transform: scale(0.98); }
+
+.cartaoAtivo {
+  color: var(--cor-destaque-contraste);
+  background: var(--cor-destaque);
+  box-shadow: var(--sombra-clay-destaque);
+}
+
+.segmento {
+  align-self: flex-start;
+  padding: 2px var(--espaco-2);
+  color: var(--cor-sobre-acento);
+  font-size: var(--texto-pequeno);
+  font-weight: var(--peso-forte);
+  border-radius: var(--raio-p);
+  box-shadow: var(--sombra-clay-cor);
+}
+
+.item:nth-child(5n + 1) .segmento { background: var(--cor-acento-1); }
+.item:nth-child(5n + 2) .segmento { background: var(--cor-acento-2); }
+.item:nth-child(5n + 3) .segmento { background: var(--cor-acento-3); }
+.item:nth-child(5n + 4) .segmento { background: var(--cor-acento-4); }
+.item:nth-child(5n + 5) .segmento { background: var(--cor-acento-5); }
+
+.nome {
+  font-family: var(--fonte-titulo);
+  font-size: var(--titulo-3);
+  font-weight: var(--peso-titulo);
+}
+
+.descricao {
+  color: var(--cor-texto-2);
+  font-size: var(--texto-pequeno);
+  line-height: 1.35;
+}
+
+.cartaoAtivo .descricao { color: var(--cor-destaque-contraste); }
+
+@keyframes itemEntra {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cartao { transition: none; }
+  :global(html:not([data-ja-entrou])) .item { animation: none; }
+}

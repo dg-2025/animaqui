@@ -1,3 +1,4 @@
+const avisarLoja = (quantidade) => raiz.dispatchEvent(new CustomEvent('loja:item', { bubbles: true, detail: { quantidade } }));
 const formulario = raiz.querySelector('.info');
 const comprar = raiz.querySelector('.comprar');
 const texto = raiz.querySelector('.comprarTexto');
@@ -16,6 +17,7 @@ formulario.addEventListener('change', atualizar);
 formulario.addEventListener('submit', (evento) => {
   evento.preventDefault();
   clearTimeout(espera);
+  avisarLoja(1);
   comprar.classList.add('feito');
   texto.textContent = 'Adicionado ao carrinho';
   espera = setTimeout(() => {

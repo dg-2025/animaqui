@@ -1,3 +1,4 @@
+const avisarLoja = (quantidade) => raiz.dispatchEvent(new CustomEvent('loja:item', { bubbles: true, detail: { quantidade } }));
 const chips = raiz.querySelectorAll('.chip');
 const produtos = raiz.querySelectorAll('.produto');
 const vazio = raiz.querySelector('.vazio');
@@ -37,7 +38,9 @@ function contar() {
 
 raiz.querySelectorAll('.levar').forEach((botao) => {
   botao.addEventListener('click', () => {
-    botao.setAttribute('aria-pressed', String(botao.getAttribute('aria-pressed') !== 'true'));
+    const ligado = botao.getAttribute('aria-pressed') !== 'true';
+    botao.setAttribute('aria-pressed', String(ligado));
+    avisarLoja(ligado ? 1 : -1);
     contar();
   });
 });

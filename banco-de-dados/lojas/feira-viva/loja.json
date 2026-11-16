@@ -1,0 +1,13 @@
+{
+  "id": "feira-viva",
+  "nome": "Feira Viva",
+  "segmento": "Mercado e hortifruti",
+  "descricao": "Mercado com entrega rápida: ofertas do dia, plantas, suplemento com assinatura, sacola, pagamento com Pix e confirmação.",
+  "paginas": [
+    { "id": "inicio", "nome": "Início", "secoes": ["vitrine/vitrine-04", "vitrine/vitrine-05"] },
+    { "id": "produto", "nome": "Suplemento", "secoes": ["produto/produto-05"] },
+    { "id": "carrinho", "nome": "Sacola", "secoes": ["carrinho/carrinho-01"] },
+    { "id": "pagamento", "nome": "Pagamento", "secoes": ["checkout/checkout-01"] },
+    { "id": "pedido", "nome": "Pedido", "secoes": ["pedido/pedido-02"] }
+  ]
+}

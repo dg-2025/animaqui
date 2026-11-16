@@ -1,3 +1,4 @@
+const avisarLoja = (quantidade) => raiz.dispatchEvent(new CustomEvent('loja:item', { bubbles: true, detail: { quantidade } }));
 const formulario = raiz.querySelector('.colunaOpcoes');
 const favorito = raiz.querySelector('.favorito');
 const porcao = raiz.querySelector('.porcao');
@@ -30,5 +31,8 @@ function atualizar() {
 }
 
 formulario.addEventListener('change', atualizar);
-formulario.addEventListener('submit', (evento) => evento.preventDefault());
+formulario.addEventListener('submit', (evento) => {
+  evento.preventDefault();
+  avisarLoja(1);
+});
 atualizar();

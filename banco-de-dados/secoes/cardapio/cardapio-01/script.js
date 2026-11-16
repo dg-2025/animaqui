@@ -1,3 +1,4 @@
+const avisarLoja = (quantidade) => raiz.dispatchEvent(new CustomEvent('loja:item', { bubbles: true, detail: { quantidade } }));
 const filtros = raiz.querySelectorAll('.filtro');
 const itens = raiz.querySelectorAll('.item');
 const sacola = raiz.querySelector('.sacola');
@@ -24,6 +25,7 @@ itens.forEach((item) => {
   const preco = parseFloat(item.querySelector('.itemPreco').dataset.preco);
   botao.addEventListener('click', () => {
     quantidade += 1;
+    avisarLoja(1);
     soma += preco;
     qtd.textContent = quantidade === 1 ? '1 item' : quantidade + ' itens';
     total.textContent = real.format(soma);

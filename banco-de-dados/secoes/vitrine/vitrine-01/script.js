@@ -1,3 +1,4 @@
+const avisarLoja = (quantidade) => raiz.dispatchEvent(new CustomEvent('loja:item', { bubbles: true, detail: { quantidade } }));
 const abas = raiz.querySelectorAll('.aba');
 const contagem = raiz.querySelector('.contagem');
 const sacola = raiz.querySelector('.sacola');
@@ -32,6 +33,7 @@ raiz.querySelectorAll('.somar').forEach((botao) => {
   let espera;
   botao.addEventListener('click', () => {
     naSacola += 1;
+    avisarLoja(1);
     contagem.textContent = String(naSacola);
     sacola.setAttribute('aria-label', 'Sacola com ' + naSacola + ' itens');
     contagem.classList.remove('pulou');

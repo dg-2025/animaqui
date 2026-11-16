@@ -12,11 +12,23 @@ export interface PecaAnimacao {
   precisaRolar: boolean;
 }
 
+export interface PaginaDocumento {
+  id: string;
+  secoes: PecaSecao[];
+}
+
 export interface EntradaDocumento {
   tema: string;
   secoes: PecaSecao[];
   animacao?: PecaAnimacao | null;
   fontes?: string[];
+  // Loja pronta (D-31): as seções de `secoes` ficam fixas e as de cada página trocam pelo `#`.
+  paginas?: PaginaDocumento[];
+  paginaInicial?: string;
+}
+
+function todasAsSecoes(entrada: EntradaDocumento): PecaSecao[] {
+  return [...entrada.secoes, ...(entrada.paginas ?? []).flatMap((pagina) => pagina.secoes)];
 }
 
 export function classeDaSecao(id: string): string {
@@ -89,17 +101,18 @@ function reduzirTema(tema: string, cssUsado: string, htmlUsado: string): string 
 }
 
 function montarEstilo(entrada: EntradaDocumento): string {
+  const secoes = todasAsSecoes(entrada);
   const css = [
-    ...semRepetir(entrada.secoes).map((secao) => secao.css.trim()),
+    ...semRepetir(secoes).map((secao) => secao.css.trim()),
     entrada.animacao?.css.trim() ?? '',
   ].filter(Boolean).join('\n\n');
-  const html = entrada.secoes.map((secao) => secao.html).join('\n');
+  const html = secoes.map((secao) => secao.html).join('\n');
 
   return `${reduzirTema(entrada.tema, css, html)}\n\n${css}`;
 }
 
 function montarScript(entrada: EntradaDocumento): string {
-  const trechos = semRepetir(entrada.secoes)
+  const trechos = semRepetir(todasAsSecoes(entrada))
     .filter((secao) => secao.js.trim())
     .map((secao) => `  document.querySelectorAll('.${classeDaSecao(secao.id)}').forEach(function (raiz) {\n${secao.js.trim()}\n  });`);
 
@@ -110,13 +123,26 @@ function montarScript(entrada: EntradaDocumento): string {
   return trechos.length > 0 ? `(function () {\n${trechos.join('\n')}\n})();` : '';
 }
 
-function montarCorpo(entrada: EntradaDocumento): string {
-  const script = montarScript(entrada);
-  const html = entrada.secoes
-    .map((secao) => (entrada.animacao
-      ? `<div data-animacao="${entrada.animacao.id}">\n${secao.html.trim()}\n</div>`
+function montarHtml(secoes: PecaSecao[], animacao: PecaAnimacao | null | undefined): string {
+  return secoes
+    .map((secao) => (animacao
+      ? `<div data-animacao="${animacao.id}">\n${secao.html.trim()}\n</div>`
       : secao.html.trim()))
     .join('\n\n');
+}
+
+// Cada página vira um bloco; só a inicial começa visível e a navegação da loja troca as outras.
+function montarPaginas(entrada: EntradaDocumento): string {
+  const paginas = entrada.paginas ?? [];
+  const inicial = paginas.some((pagina) => pagina.id === entrada.paginaInicial) ? entrada.paginaInicial : paginas[0]?.id;
+  return paginas
+    .map((pagina) => `<div class="lojaPagina" data-pagina="${escaparTexto(pagina.id)}"${pagina.id === inicial ? '' : ' hidden'}>\n${montarHtml(pagina.secoes, entrada.animacao)}\n</div>`)
+    .join('\n\n');
+}
+
+function montarCorpo(entrada: EntradaDocumento): string {
+  const script = montarScript(entrada);
+  const html = [montarHtml(entrada.secoes, entrada.animacao), montarPaginas(entrada)].filter(Boolean).join('\n\n');
 
   return script ? `${html}\n\n<script>\n${script}\n</script>` : html;
 }

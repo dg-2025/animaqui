@@ -452,6 +452,18 @@
     }
   }
 
+  .acompanhar {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--alvo-toque);
+    padding: 0 var(--espaco-6);
+    border-radius: var(--raio-total);
+    color: var(--cor-destaque-contraste);
+    background: var(--acento);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+  }
+
   .recomecar {
     min-height: var(--alvo-toque);
     padding: 0 var(--espaco-5);

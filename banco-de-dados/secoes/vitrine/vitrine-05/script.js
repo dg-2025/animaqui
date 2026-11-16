@@ -1,3 +1,4 @@
+const avisarLoja = (quantidade) => raiz.dispatchEvent(new CustomEvent('loja:item', { bubbles: true, detail: { quantidade } }));
 const filtros = raiz.querySelectorAll('.filtro');
 const plantas = raiz.querySelectorAll('.grade .planta');
 const cuidados = raiz.querySelector('.cuidados');
@@ -33,6 +34,7 @@ let noCarrinho = Number(selo.textContent);
 raiz.querySelectorAll('.somar').forEach((botao) => {
   botao.addEventListener('click', () => {
     noCarrinho += 1;
+    avisarLoja(1);
     selo.textContent = String(noCarrinho);
     carrinho.setAttribute('aria-label', 'Carrinho com ' + noCarrinho + ' itens');
     selo.classList.remove('pulou');

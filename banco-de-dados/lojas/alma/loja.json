@@ -1,0 +1,14 @@
+{
+  "id": "alma",
+  "nome": "ALMA",
+  "segmento": "Moda e tênis",
+  "descricao": "Loja de roupas com vitrine editorial, coleção cápsula, página de tênis com cor e numeração, carrinho, pagamento e rastreio.",
+  "paginas": [
+    { "id": "inicio", "nome": "Início", "secoes": ["vitrine/vitrine-01", "vitrine/vitrine-03", "chamada/chamada-04"] },
+    { "id": "produto", "nome": "Tênis", "secoes": ["produto/produto-03"] },
+    { "id": "carrinho", "nome": "Carrinho", "secoes": ["carrinho/carrinho-02"] },
+    { "id": "pagamento", "nome": "Pagamento", "secoes": ["checkout/checkout-01"] },
+    { "id": "pedido", "nome": "Rastreio", "secoes": ["pedido/pedido-01"] },
+    { "id": "conta", "nome": "Conta", "secoes": ["conta/conta-01"] }
+  ]
+}

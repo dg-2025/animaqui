@@ -2,10 +2,10 @@
 
 | Campo | Valor |
 |---|---|
-| **Versão do documento** | 0.14 |
+| **Versão do documento** | 0.15 |
 | **Data** | 16/11/2026 |
 | **Autor(es)** | Daniel (responsável), Claude (redação) |
-| **Status** | Em revisão: E-02 (e-commerce) com S09 a S12 entregues; S08 na fila (dados legais e publicação) |
+| **Status** | Em revisão: E-02 (e-commerce) concluída (S09 a S13); S08 na fila (dados legais e publicação) |
 | **Aprovado por** | Pendente |
 
 ## Histórico de Revisões
@@ -25,6 +25,7 @@
 | 0.12 | 16/11/2026 | Claude | E-02/S10: pacote Roupa e tênis com fotos reais do Pixabay embutidas em WebP (D-28, decisão do Daniel): categoria Vitrine nova e 7 seções (`vitrine-01` a `03`, `produto-03`, `carrinho-02`, `chamada-04`). Origem das 21 fotos na seção 10. Testado: `tsc`, `eslint`, `build`, páginas e APIs com 200 no build de produção, CSP aceitando `data:` e CT-604 a CT-606 no Edge, em 390 px e 1280 px. O arrastar para excluir do `carrinho-02` não foi testado com o dedo, só o botão da lixeira. SQL: nenhum |
 | 0.13 | 16/11/2026 | Claude | E-02/S11: pacote Mercado e nicho com fotos do Pixabay: `vitrine-04` hortifruti, `vitrine-05` plantas, `vitrine-06` joalheria, `vitrine-07` luminárias editorial, `produto-04` anel com aro e `produto-05` suplemento (tema escuro). Testado: `tsc`, `eslint`, `build` e CT-607 no Edge, em 390 px e 1280 px. Snacks (531–535) e relógio (468–471) ficaram de fora: os padrões já estão cobertos pelas outras seções. SQL: nenhum |
 | 0.14 | 16/11/2026 | Claude | E-02/S12: fluxo de compra com 3 categorias novas (Checkout, Pedido, Conta) e 4 seções: `checkout-01` em três etapas com CEP, frete e Pix/cartão/boleto, `pedido-01` rastreio com linha do tempo, `pedido-02` Pix com QR de exemplo e prazo, `conta-01` perfil com clube de pontos. Seções com `id` geram sufixo único no script, para o mesmo bloco poder entrar duas vezes (RN-201). Testado: `tsc`, `eslint`, `build` e CT-608 no Edge, em 390 px e 1280 px. SQL: nenhum |
+| 0.15 | 16/11/2026 | Claude | E-02/S13: módulo **Lojas** (`/lojas/[loja]`) com 3 lojas prontas (Brasa Burger, ALMA, Feira Viva) em `banco-de-dados/lojas/`. `montarDocumento()` ganhou a opção `paginas` (D-31); a barra da loja troca de página pelo `#` e soma o carrinho de todas as páginas pelo evento `loja:item` (D-32), disparado pelas seções de loja; botões principais ganharam `data-ir`. Barra de módulos com 4 itens, sitemap e `llms.txt` com as lojas. Testado: `tsc`, `eslint`, `build`, rotas com 200 (loja inexistente: tela 404 com `noindex`, como na D-22), CT-609 a CT-611 no documento real de cada loja e no palco da plataforma, e o hero do Catálogo sem mudança. SQL: nenhum |
 
 ---
 
@@ -71,6 +72,7 @@ Laboratório visual de componentes web: a pessoa navega, testa e copia seções 
 | Catálogo de Seções | Visitante | Ver seções por categoria, testar variações e animações, copiar o código |
 | Laboratório de Tipografia | Visitante | Digitar uma frase, trocar a fonte (Google Fonts) e aplicar animações de texto |
 | Montador de Páginas | Visitante | Empilhar blocos, ver a página completa e copiar o site inteiro |
+| Lojas prontas | Visitante | Navegar por lojas virtuais com várias páginas, carrinho e pagamento, e copiar a loja inteira num HTML só |
 | Acervo | Daniel | Alimentar seções, fontes e animações por arquivos locais |
 
 #### Dor que resolve
@@ -140,7 +142,7 @@ Levantados na análise de 02/11/2026; aguardam a avaliação do Daniel.
 
 ### 2.8 Evoluções planejadas
 
-**Em andamento:** E-02, próxima é a S13. S09 a S12 entregues. S01 a S07 entregues; S08 parcial (faltam P-05, P-07 e a bateria completa dos CT), na fila.
+**Em andamento:** nada. E-02 concluída (S09 a S13). Na fila: S08 (P-05, P-07 e a bateria completa dos CT). S01 a S07 entregues; S08 parcial (faltam P-05, P-07 e a bateria completa dos CT), na fila.
 
 #### E-01 — Esqueleto e versão inicial (árvore e nomes aprovados em 02/11/2026)
 
@@ -214,7 +216,14 @@ Seções de loja (lanche, roupa, mercado e nicho) e o fluxo de compra, primeiro 
 | S10 | Pacote **Roupa e tênis** com fotos (D-28): categoria Vitrine e 7 seções (`vitrine-01` moda jeans, `vitrine-02` loja com categorias, `vitrine-03` cards com degradê, `produto-03` tênis, `carrinho-02` carrinho com arrastar para excluir, `chamada-04` newsletter) | S09 | CT-604 a CT-606 | entregue |
 | S11 | Pacote **Mercado e nicho** com fotos (D-28): `vitrine-04` hortifruti com contagem regressiva, `vitrine-05` plantas com cuidados, `vitrine-06` joalheria, `vitrine-07` luminárias editorial, `produto-04` anel com aro, `produto-05` suplemento com assinatura | S09 | CT-607 | entregue |
 | S12 | **Fluxo de compra:** categorias Checkout, Pedido e Conta; `checkout-01` em etapas com Pix, `pedido-01` rastreio, `pedido-02` Pix com QR e prazo, `conta-01` perfil com clube | S09 | CT-608 | entregue |
-| S13 | Módulo **Lojas prontas:** várias páginas ligadas e carrinho entre elas. Detalhar antes de começar | S10 a S12 | A definir | planejado |
+| S13 | Módulo **Lojas prontas** (detalhe em D-29 a D-32): rota `/lojas/[loja]`, 3 lojas (Brasa Burger, Alma, Feira Viva), navegação entre páginas e carrinho que conta em todas | S10 a S12 | CT-609 a CT-611 | entregue |
+
+| ID | Decisão da S13 | Bloqueia |
+|---|---|---|
+| D-29 | Loja é arquivo: `banco-de-dados/lojas/<id>/loja.json` com nome, segmento, descrição e páginas (cada página lista seções `categoria/id`). Seção inexistente quebra o build citando o arquivo (RN-200). Loja nova não muda código | — |
+| D-30 | A barra de navegação da loja fica em `banco-de-dados/lojas/navegacao/` (HTML, CSS e JS puros). O service preenche o nome e os links de cada loja, com texto escapado | — |
+| D-31 | `montarDocumento()` continua a única função de palco e cópia: ganha a opção `paginas`, que agrupa as seções em `<div class="lojaPagina" data-pagina>`. A troca de página é por `#` dentro do próprio documento, então "Copiar Loja" entrega um único HTML com todas as páginas funcionando | — |
+| D-32 | Carrinho entre páginas: as seções de loja disparam `loja:item` (com a quantidade) ao somar, e a navegação mostra o total. Botões que levam a outra página usam `data-ir="<pagina>"`. Fora de uma loja, o evento não faz nada | — |
 
 #### Ideias soltas (ainda sem conversa)
 
@@ -240,7 +249,9 @@ animaqui/
 │   │   └── script.js               # opcional
 │   ├── animacoes/secao/<id>/       # entrada, saida, paralaxe
 │   ├── animacoes/texto/<id>/       # maquina-de-escrever, letras-surgindo, brilho, gradiente
-│   └── tema-padrao.css             # acompanha as seções no código copiado
+│   ├── lojas/<id>/loja.json        # nome, segmento, páginas e as seções de cada uma (E-02/S13)
+│   ├── lojas/navegacao/            # barra da loja: secao.html (modelo), estilo.css, script.js
+│   └── tema-padrao.css             # acompanha as seções no código copiado; tem o bloco [data-tema="claro"]
 ├── public/
 │   ├── essenciais/                 # icone.png, icone-apple.png, compartilhamento.jpg
 │   └── llms.txt
@@ -250,13 +261,15 @@ animaqui/
     │   ├── robots.ts
     │   ├── sitemap.ts
     │   ├── (publico)/
-    │   │   ├── layout.tsx          # barra dos 3 módulos
+    │   │   ├── layout.tsx          # barra dos 4 módulos
     │   │   ├── style.module.css
     │   │   ├── page.tsx            # redireciona para /secoes
     │   │   ├── secoes/page.tsx     # abre a primeira categoria
     │   │   ├── secoes/[categoria]/[variacao]/page.tsx
     │   │   ├── tipografia/page.tsx
-    │   │   └── montador/page.tsx
+    │   │   ├── montador/page.tsx
+    │   │   ├── lojas/page.tsx      # abre a primeira loja
+    │   │   └── lojas/[loja]/page.tsx
     │   ├── api/
     │   │   ├── secoes/[categoria]/[variacao]/route.ts
     │   │   ├── animacoes/[tipo]/[id]/route.ts
@@ -286,7 +299,12 @@ animaqui/
     │   │   ├── hooks/useMontador.ts  # adicionar, mover, remover da pilha
     │   │   ├── components/         # SeletorBlocos, PilhaBlocos
     │   │   └── types/index.ts
-    │   └── motor/                  # usado pelos três módulos
+    │   ├── lojas/
+    │   │   ├── services/lojasService.ts  # lê e valida banco-de-dados/lojas, preenche a navegação
+    │   │   ├── hooks/useLoja.ts
+    │   │   ├── components/         # ListaLojas, ListaPaginas
+    │   │   └── types/index.ts
+    │   └── motor/                  # usado por todos os módulos
     │       ├── hooks/usePalco.ts
     │       ├── components/         # Palco (iframe), BarraPalco
     │       └── types/index.ts
@@ -298,7 +316,7 @@ animaqui/
     │   └── utils/                  # errors.ts, copiarTexto.ts, montarDocumento.ts
     │
     └── views/                      # compõe, sem regra
-        ├── client/                 # Catalogo, Tipografia, Montador
+        ├── client/                 # Catalogo, Tipografia, Montador, Lojas
         └── shared/                 # NotFound, PaginaLegal
 ```
 
@@ -311,6 +329,7 @@ Acervo atual: 75 seções em 20 categorias (`categorias.json`) e 14 animações.
 | Nova seção ou variação | Criar uma pasta em `banco-de-dados/secoes/<categoria>/` | Não; o contador sobe sozinho |
 | Nova categoria | Linha em `categorias.json` + pasta da categoria em `banco-de-dados/secoes/` | Não |
 | Nova animação | Criar uma pasta em `banco-de-dados/animacoes/` | Não |
+| Nova loja pronta | Criar `banco-de-dados/lojas/<id>/loja.json` apontando para seções existentes | Não |
 | Novo módulo | Rota + view + `features/<modulo>`, reaproveitando o motor | Só o módulo |
 | Banco, login ou admin no futuro | Trocar o interior dos services; acrescentar auth | Só nesse ponto |
 
@@ -347,6 +366,8 @@ Prioridade: todos A confirmar. RF-51 está limitado às 40 fontes padrão até e
 | RF-250 | Expor `robots.txt`, `sitemap.xml` e `llms.txt`; cada página com título, descrição, canonical e imagem de compartilhamento | A confirmar | `src/app/sitemap.ts:8`, `src/shared/lib/site.ts:17` | Implementado |
 | RF-251 | Páginas `/privacidade` e `/termos`, com links no rodapé | A confirmar | `src/app/(legal)/privacidade/page.tsx:10`, `src/app/(publico)/layout.tsx:13` | Implementado |
 | RF-152 | Seção com tema claro: `data-tema="claro"` na raiz liga a variação clara dos tokens, no palco e no código copiado | A confirmar | `banco-de-dados/tema-padrao.css:75`, `src/shared/utils/montarDocumento.ts:46` | Implementado |
+| RF-350 | Módulo Lojas: escolher uma loja pronta, ver as páginas no palco, navegar e copiar a loja inteira num HTML só | A confirmar | `src/views/client/Lojas/index.tsx:22`, `src/features/lojas/services/lojasService.ts:90` | Implementado |
+| RF-351 | Carrinho e navegação entre as páginas da loja, no palco e no código copiado | A confirmar | `banco-de-dados/lojas/navegacao/script.js:1`, `src/shared/utils/montarDocumento.ts:135` | Implementado |
 | RF-300 | Seções de loja (Lanche e comida; Roupa e tênis com vitrine, cores, numeração, carrinho com arrastar e newsletter): cardápio com filtro, quantidade e sacola, produto com tamanho e adicionais, ofertas com cupom e sacola com cupom de desconto, cada uma com a conta feita na própria seção | A confirmar | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine`, `checkout`, `pedido`, `conta` | Implementado |
 
 ### 3.2 Detalhamento de Requisito
@@ -420,6 +441,8 @@ Todas com Status `Implementado` (fonte na matriz da seção 8).
 | RN-153 | Toda animação respeita `prefers-reduced-motion` e não usa biblioteca (Guia D-004) | RF-07, RF-53 |
 | RN-154 | A variação de tema só entra no documento se alguma seção a ligar, e só com os tokens que o CSS usa | RF-151, RF-152 |
 | RN-156 | Seção com `id` (abas, rótulos) gera um sufixo único no script, para o mesmo bloco poder aparecer duas vezes na página sem `id` repetido | RF-102, RF-300 |
+| RN-157 | Loja aponta só para seções existentes; senão o build para citando o `loja.json` | RF-350 |
+| RN-158 | Seção de loja que põe algo no carrinho dispara `loja:item` com a quantidade (negativa ao tirar); fora de uma loja o evento é ignorado | RF-351 |
 | RN-155 | Seção de loja é celular primeiro: o CSS base é o do celular e o computador entra por `min-width` (D-24) | RF-300 |
 | RN-200 | Item inválido no acervo interrompe o build e o erro diz qual arquivo corrigir | RF-201 |
 | RN-201 | Todo CSS fica sob a classe raiz do item, inclusive os `@media`; keyframes levam a classe como prefixo e o JS recebe a raiz. O mesmo bloco pode entrar duas vezes no Montador sem conflito | RF-102, RF-201 |
@@ -442,7 +465,7 @@ flowchart TD
     E --> F["page.tsx → View"]
     E --> R["app/api/.../route.ts (GET)"]
     R --> G["Hooks SWR (sob demanda)"]
-    F --> H["Catálogo, Tipografia, Montador"]
+    F --> H["Catálogo, Tipografia, Montador, Lojas"]
     G --> H
     H --> I["montarDocumento()"]
     I --> J["Palco (iframe sandbox)"]
@@ -481,10 +504,10 @@ Sem banco. Contrato do `meta.json` de uma seção:
 *Estado real hoje: a mesma árvore da 2.8.*
 
 ```text
-/banco-de-dados  # secoes, animacoes, tema-padrao.css
+/banco-de-dados  # secoes, animacoes, lojas, tema-padrao.css
 /public
 /src/app        # (publico), (legal), api, robots.ts, sitemap.ts
-/src/features   # secoes, animacoes, tipografia, montador, motor
+/src/features   # secoes, animacoes, tipografia, montador, lojas, motor
 /src/shared     # hooks, lib, ui, utils
 /src/views      # client, shared
 ```
@@ -514,7 +537,7 @@ Aplicado conforme a D-11 (ver P-02). Há dois conjuntos de tokens que não se mi
 
 ### 7.2 Casos de Teste
 
-CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-401 passaram em 02/11/2026. CT-001, CT-101 e CT-402 ainda não foram executados. A cópia foi conferida pelo texto enviado ao navegador; o teste não usou a área de transferência real, que o navegador automatizado bloqueia. CT-500 a CT-505 passaram em 02/11/2026, no Edge, com o build de produção. CT-600 a CT-608 passaram em 16/11/2026, no Edge (cliques simulados por script e prints em 390 px e 1280 px). Os CT anteriores não foram repetidos depois da CSP e do rodapé; o CT-505 cobre uma seção com script, a Tipografia e a abertura do Montador.
+CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-401 passaram em 02/11/2026. CT-001, CT-101 e CT-402 ainda não foram executados. A cópia foi conferida pelo texto enviado ao navegador; o teste não usou a área de transferência real, que o navegador automatizado bloqueia. CT-500 a CT-505 passaram em 02/11/2026, no Edge, com o build de produção. CT-600 a CT-611 passaram em 16/11/2026 (o CT-609 sem a quebra proposital do build, que segue a mesma validação do CT-400), no Edge (cliques simulados por script e prints em 390 px e 1280 px). Os CT anteriores não foram repetidos depois da CSP e do rodapé; o CT-505 cobre uma seção com script, a Tipografia e a abertura do Montador.
 
 | ID | Ref. | Cenário | Passos | Resultado Esperado |
 |---|---|---|---|---|
@@ -554,6 +577,9 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | CT-606 | RF-300 | Carrinho de roupa e newsletter | Somar item, cupom `ALMA10`, excluir; e-mail inválido e válido | Total com 10% de desconto; item sai; erro no e-mail incompleto e confirmação no válido |
 | CT-607 | RF-300 | Mercado e nicho | Somar e tirar no hortifruti, filtrar plantas e joias, aro do anel, plano do suplemento, e-mail da carta | + vira contador e volta ao zerar; contagem regressiva; cartão de cuidados muda com o filtro; aro 18 esgotado e sem aro não compra; preço da assinatura e da compra única |
 | CT-608 | RF-300 | Fluxo de compra | Checkout vazio, CEP 01310-100, frete expresso, Pix e cartão; rastreio com código errado e certo; Pix copiar e "Já paguei"; interruptor da conta | Erro de CEP; endereço preenchido; total 609,70 com expressa e 580,21 com Pix; máscara do cartão; tela de sucesso; erro e sucesso no rastreio; código copiado e tela de pago |
+| CT-609 | RF-350, RN-157 | Rotas e build | Abrir `/lojas`, as 3 lojas e `/lojas/nao-existe`; apontar uma loja para seção inexistente e rodar o build | `/lojas` leva à primeira; lojas com 200; tela 404 com `noindex`; build para citando o arquivo |
+| CT-610 | RF-351, RN-158 | Navegação e carrinho | Na Brasa: restaurante, cardápio, somar 2, Ver pedido, Finalizar, pagar com Pix, Ver o pedido, Já paguei, Voltar para a loja. Na Feira e na ALMA: somar em várias páginas | As páginas trocam na ordem; o número do carrinho na barra soma e subtrai entre páginas; `#/produto` abre direto a página |
+| CT-611 | RF-350, RN-150 | Mesma origem | Comparar o documento do palco com "Copiar Loja" e abrir o copiado como `.html` | Iguais; a loja copiada navega e conta o carrinho fora da plataforma |
 | CT-603 | RF-300 | Sacola e cupom | Cupom inválido, `RAIZ10`, e zerar os itens | Aviso de erro; 10% de desconto no total; item some ao zerar e a sacola vazia esconde o botão de pagar |
 
 ---
@@ -580,6 +606,7 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | RNF-03 | Toque e teclado | CT-202 | `shared/ui` | Implementado |
 | RNF-04 | Crescer sem mudar código | CT-001 | `banco-de-dados/secoes` | Implementado |
 | RF-152, RN-154 | Tema claro de loja | CT-600 | `banco-de-dados/tema-padrao.css`, `shared/utils/montarDocumento.ts` | Implementado |
+| RF-350, RF-351, RN-157, RN-158 | Lojas prontas | CT-609 a CT-611 | `features/lojas`, `banco-de-dados/lojas`, `shared/utils/montarDocumento.ts` | Implementado |
 | RF-300, RN-155, D-28 | Seções de loja | CT-601 a CT-608 | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine`, `checkout`, `pedido`, `conta` | Implementado |
 
 ---

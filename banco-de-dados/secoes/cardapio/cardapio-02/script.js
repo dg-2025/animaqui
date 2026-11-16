@@ -1,3 +1,4 @@
+const avisarLoja = (quantidade) => raiz.dispatchEvent(new CustomEvent('loja:item', { bubbles: true, detail: { quantidade } }));
 const filtros = raiz.querySelectorAll('.filtro');
 const itens = raiz.querySelectorAll('.item');
 const pedido = raiz.querySelector('.pedido');
@@ -36,6 +37,7 @@ itens.forEach((item) => {
 
   function mudar(passo) {
     const novo = Math.max(0, Math.min(20, Number(numero.value) + passo));
+    avisarLoja(novo - Number(numero.value));
     numero.value = String(novo);
     menos.disabled = novo === 0;
     mais.disabled = novo === 20;

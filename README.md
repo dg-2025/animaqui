@@ -37,6 +37,10 @@ Digite sua frase, troque a fonte com um clique usando o Google Fonts e experimen
 
 Empilhe blocos, reordene arrastando ou pelo teclado, veja a página inteira funcionando e copie o site completo.
 
+### 🛍️ Lojas prontas
+
+Três lojas virtuais completas (lanchonete, moda e mercado), cada uma com várias páginas: vitrine, produto, carrinho, pagamento com Pix e pedido. Navegue dentro do palco, veja o carrinho somar entre as páginas e copie a loja inteira num único HTML.
+
 ## O acervo
 
 | Categoria | Variações | | Categoria | Variações |

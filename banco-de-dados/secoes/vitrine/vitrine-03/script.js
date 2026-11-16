@@ -1,3 +1,4 @@
+const avisarLoja = (quantidade) => raiz.dispatchEvent(new CustomEvent('loja:item', { bubbles: true, detail: { quantidade } }));
 const reduzir = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const temPonteiroFino = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
@@ -22,6 +23,7 @@ raiz.querySelectorAll('.comprar').forEach((botao) => {
   botao.addEventListener('click', () => {
     const ligado = botao.getAttribute('aria-pressed') !== 'true';
     botao.setAttribute('aria-pressed', String(ligado));
+    avisarLoja(ligado ? 1 : -1);
     botao.textContent = ligado ? 'Na sacola' : 'Comprar';
   });
 });

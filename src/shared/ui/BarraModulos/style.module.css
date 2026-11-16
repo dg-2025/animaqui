@@ -44,9 +44,9 @@
 .modulos {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   width: 100%;
-  max-width: 480px;
+  max-width: 600px;
   padding: var(--espaco-1);
   background: var(--cor-fundo-2);
   border-radius: var(--raio-total);
@@ -58,7 +58,7 @@
   top: var(--espaco-1);
   bottom: var(--espaco-1);
   left: var(--espaco-1);
-  width: calc((100% - var(--espaco-2)) / 3);
+  width: calc((100% - var(--espaco-2)) / 4);
   background: var(--cor-destaque);
   border-radius: var(--raio-total);
   box-shadow: var(--sombra-clay-destaque);
@@ -81,6 +81,13 @@
 }
 
 .modulo:active { transform: scale(0.95); }
+
+/* Quatro módulos não cabem com ícone em tela estreita */
+.modulo svg { display: none; }
+
+@media (min-width: 480px) {
+  .modulo svg { display: block; }
+}
 
 .moduloAtivo { color: var(--cor-destaque-contraste); }
 

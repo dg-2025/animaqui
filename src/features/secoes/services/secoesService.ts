@@ -27,7 +27,7 @@ async function lerJson(arquivo: string): Promise<unknown> {
 }
 
 // Sem isso, o CSS de uma seção vaza para as outras quando o Montador junta tudo.
-function validarEscopoDoCss(css: string, classe: string, arquivo: string): void {
+export function validarEscopoDoCss(css: string, classe: string, arquivo: string): void {
   const limpo = css.replace(/\/\*[\s\S]*?\*\//g, '');
   let profundidade = 0;
   let cabecalho = '';

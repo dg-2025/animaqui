@@ -1,3 +1,4 @@
+const avisarLoja = (quantidade) => raiz.dispatchEvent(new CustomEvent('loja:item', { bubbles: true, detail: { quantidade } }));
 const tempo = raiz.querySelector('.tempo');
 const selo = raiz.querySelector('.selo');
 const carrinho = raiz.querySelector('.carrinho');
@@ -37,6 +38,7 @@ raiz.querySelectorAll('.oferta').forEach((oferta) => {
   const numero = oferta.querySelector('.numero');
 
   function mudar(valor) {
+    avisarLoja(valor - Number(numero.value));
     numero.value = String(valor);
     somar.hidden = valor > 0;
     contador.hidden = valor === 0;

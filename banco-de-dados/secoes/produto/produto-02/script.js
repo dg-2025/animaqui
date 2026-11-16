@@ -1,3 +1,4 @@
+const avisarLoja = (quantidade) => raiz.dispatchEvent(new CustomEvent('loja:item', { bubbles: true, detail: { quantidade } }));
 const numero = raiz.querySelector('.numero');
 const menos = raiz.querySelector('.menos');
 const mais = raiz.querySelector('.mais');
@@ -24,6 +25,7 @@ mais.addEventListener('click', () => mudar(1));
 // Confirmação curta no próprio botão, sem tirar a pessoa da página
 adicionar.addEventListener('click', () => {
   clearTimeout(espera);
+  avisarLoja(quantidade);
   adicionar.classList.add('feito');
   texto.textContent = quantidade === 1 ? 'Na sacola' : quantidade + ' na sacola';
   espera = setTimeout(() => {

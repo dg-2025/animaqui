@@ -7,6 +7,7 @@
 - [Seções](/secoes): catálogo por categoria, com visualização em celular e computador, animações e cópia do código
 - [Tipografia](/tipografia): teste de frases com fontes do Google Fonts e animações de texto
 - [Montador](/montador): empilhe blocos, veja a página completa e copie o site inteiro
+- [Lojas](/lojas): lojas virtuais prontas, com várias páginas, carrinho e pagamento, para copiar inteiras
 
 ## Informações legais
 
