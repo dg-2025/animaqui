@@ -1,0 +1,6 @@
+{
+  "id": "pedido-01",
+  "nome": "Rastreio com linha do tempo",
+  "categoria": "pedido",
+  "descricao": "Acompanhamento de pedido com busca pelo código, mapa com o trajeto, linha do tempo das etapas, entregador e ações de reagendar ou relatar problema."
+}

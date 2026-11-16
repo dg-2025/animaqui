@@ -1,0 +1,62 @@
+<section class="pedido01" data-tema="claro">
+  <div class="conteudo">
+    <header class="topo" data-anima>
+      <h2 class="titulo">Rastrear pedido</h2>
+      <form class="busca" action="#">
+        <label class="buscaCampo">
+          <span class="somenteLeitor">Código de rastreio</span>
+          <input class="codigo" value="BR2K-884-1207" autocomplete="off" spellcheck="false">
+        </label>
+        <button class="rastrear" type="submit">Rastrear</button>
+      </form>
+      <p class="buscaAviso" aria-live="polite"></p>
+    </header>
+
+    <div class="mapa" data-anima>
+      <svg viewBox="0 0 360 170" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect class="mFundo" width="360" height="170"/>
+        <g class="mQuadra">
+          <rect x="8" y="8" width="62" height="40" rx="4"/><rect x="80" y="8" width="70" height="40" rx="4"/><rect x="160" y="8" width="56" height="40" rx="4"/><rect x="226" y="8" width="58" height="40" rx="4"/><rect x="294" y="8" width="58" height="40" rx="4"/>
+          <rect x="8" y="60" width="62" height="46" rx="4"/><rect x="80" y="60" width="44" height="46" rx="4"/><rect x="134" y="60" width="82" height="46" rx="4"/><rect x="226" y="60" width="58" height="46" rx="4"/><rect x="294" y="60" width="58" height="46" rx="4"/>
+          <rect x="8" y="118" width="62" height="44" rx="4"/><rect x="80" y="118" width="70" height="44" rx="4"/><rect x="160" y="118" width="56" height="44" rx="4"/><rect x="226" y="118" width="58" height="44" rx="4"/><rect x="294" y="118" width="58" height="44" rx="4"/>
+        </g>
+        <rect class="mParque" x="134" y="60" width="82" height="46" rx="4"/>
+        <path class="mRotaFundo" d="M75 160V112H221V54H289V30"/>
+        <path class="mRota" pathLength="1" d="M75 160V112H221V54H289V30"/>
+        <circle class="mOrigem" cx="75" cy="160" r="6"/>
+        <g class="mDestino"><path d="M289 30c0-7 5-12 11-12s11 5 11 12c0 8-11 18-11 18s-11-10-11-18Z" transform="translate(-11 -18)"/><circle cx="289" cy="23" r="3.5"/></g>
+        <g class="mMoto"><circle cx="221" cy="84" r="9"/></g>
+      </svg>
+      <p class="status"><span class="statusPonto" aria-hidden="true"></span><strong>Saiu para entrega</strong> · atualizado hoje, 13h12</p>
+    </div>
+
+    <ol class="linha" data-anima>
+      <li class="feito atual"><time>Hoje, 13h12</time><strong>Saiu para entrega</strong><span>São Paulo, SP</span></li>
+      <li class="feito"><time>Hoje, 07h45</time><strong>Chegou ao centro local</strong><span>São Paulo, SP</span></li>
+      <li class="feito"><time>Ontem, 23h30</time><strong>Saiu do centro de distribuição</strong><span>Cajamar, SP</span></li>
+      <li class="feito"><time>Ontem, 18h20</time><strong>Chegou ao centro de distribuição</strong><span>Cajamar, SP</span></li>
+      <li class="feito"><time>02/11, 16h02</time><strong>Coletado pela transportadora</strong><span>Curitiba, PR</span></li>
+      <li class="feito"><time>02/11, 09h30</time><strong>Pedido separado</strong><span>Curitiba, PR</span></li>
+    </ol>
+
+    <div class="lateral">
+      <div class="entregador" data-anima>
+        <span class="avatar" aria-hidden="true">LM</span>
+        <div class="entregadorTexto"><strong>Luís M.</strong><span>Entregador · Rápido Express</span></div>
+        <a class="acaoRedonda" href="#" aria-label="Ligar para o entregador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></a>
+        <a class="acaoRedonda" href="#" aria-label="Mandar mensagem ao entregador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+      </div>
+
+      <div class="produto" data-anima>
+        <img src="data:image/webp;base64,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" alt="" width="120" height="120" loading="lazy">
+        <div><strong>Jaqueta jeans escura · M · 1 un.</strong><span>Pedido #1207 · Rápido Express</span></div>
+      </div>
+
+      <ul class="acoes" data-anima>
+        <li><a href="#"><span>Entregar em: Rua das Flores, 24, apto 4B</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></li>
+        <li><a href="#"><span>Reagendar entrega</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></li>
+        <li><a href="#"><span>Relatar um problema</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></li>
+      </ul>
+    </div>
+  </div>
+</section>

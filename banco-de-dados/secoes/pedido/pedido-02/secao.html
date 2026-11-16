@@ -1,0 +1,52 @@
+<section class="pedido02" data-tema="claro">
+  <div class="cartao">
+    <div class="aguardando">
+      <header class="cabecalho" data-anima>
+        <span class="selo">Pedido #1207 feito</span>
+        <h2 class="titulo">Pague com Pix para confirmar</h2>
+        <p class="prazo">O código vence em <time class="tempo">30:00</time></p>
+      </header>
+
+      <div class="qr" data-anima>
+        <svg class="qrDesenho" viewBox="0 0 29 29" role="img" aria-label="QR Code do Pix (exemplo)" shape-rendering="crispEdges"></svg>
+        <span class="qrNota">QR Code de exemplo</span>
+      </div>
+
+      <ol class="passos" data-anima>
+        <li>Abra o app do seu banco e escolha <strong>Pix</strong></li>
+        <li>Escaneie o QR Code ou cole o código abaixo</li>
+        <li>Confirme o valor de <strong>R$ 560,31</strong></li>
+      </ol>
+
+      <div class="copia" data-anima>
+        <code class="codigoPix">00020126580014BR.GOV.BCB.PIX0136exemplo-animaqui-0000-loja5204000053039865406560.315802BR</code>
+        <button class="copiar" type="button">Copiar código</button>
+      </div>
+
+      <details class="resumo" data-anima>
+        <summary>Resumo do pedido <span>R$ 560,31</span></summary>
+        <ul>
+          <li><span>Jaqueta jeans lavada × 1</span><span>R$ 189,90</span></li>
+          <li><span>Tênis Corrida Leve 2 × 1</span><span>R$ 399,90</span></li>
+          <li><span>Entrega normal</span><span>Grátis</span></li>
+          <li class="desconto"><span>Desconto Pix (5%)</span><span>− R$ 29,49</span></li>
+        </ul>
+      </details>
+
+      <button class="jaPaguei" type="button" data-anima>Já paguei</button>
+    </div>
+
+    <div class="pago" hidden tabindex="-1">
+      <span class="pagoIcone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <h2 class="titulo">Pagamento confirmado!</h2>
+      <p>Seu pedido #1207 já está sendo separado. Você recebe o código de rastreio por e-mail.</p>
+      <a class="rastrear" href="#">Acompanhar pedido</a>
+    </div>
+
+    <div class="vencido" hidden>
+      <h2 class="titulo">O código venceu</h2>
+      <p>Sem problema: gere um novo e pague em até 30 minutos.</p>
+      <button class="novo" type="button">Gerar novo código</button>
+    </div>
+  </div>
+</section>

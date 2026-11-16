@@ -11,7 +11,7 @@ Laboratório visual de componentes web: seções prontas de sites para ver funci
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-000000?style=for-the-badge&logo=typescript&logoColor=white)
 [![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-000000?style=for-the-badge)](./LICENSE)
 
-**71 seções** · **17 categorias** · **14 animações** · **0 bibliotecas no código copiado**
+**75 seções** · **20 categorias** · **14 animações** · **0 bibliotecas no código copiado**
 
 </div>
 

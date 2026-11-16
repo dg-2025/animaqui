@@ -1,0 +1,6 @@
+{
+  "id": "pedido-02",
+  "nome": "Pedido confirmado com Pix",
+  "categoria": "pedido",
+  "descricao": "Tela de pedido feito com QR Code do Pix, código copia e cola, prazo de pagamento correndo e resumo do pedido; ao confirmar o pagamento, a tela vira sucesso."
+}

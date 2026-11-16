@@ -15,5 +15,8 @@
   {"id": "cardapio", "nome": "Cardápio"},
   {"id": "produto", "nome": "Produto"},
   {"id": "oferta", "nome": "Ofertas"},
-  {"id": "carrinho", "nome": "Carrinho"}
+  {"id": "carrinho", "nome": "Carrinho"},
+  {"id": "checkout", "nome": "Checkout"},
+  {"id": "pedido", "nome": "Pedido"},
+  {"id": "conta", "nome": "Conta"}
 ]

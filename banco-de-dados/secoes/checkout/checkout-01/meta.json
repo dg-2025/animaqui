@@ -1,0 +1,6 @@
+{
+  "id": "checkout-01",
+  "nome": "Checkout em três etapas com Pix",
+  "categoria": "checkout",
+  "descricao": "Finalização de compra em etapas (endereço, entrega e pagamento) com indicador de progresso, CEP que preenche o endereço, frete que muda o total e Pix, cartão com máscara ou boleto."
+}

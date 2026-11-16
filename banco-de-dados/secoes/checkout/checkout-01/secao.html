@@ -1,0 +1,143 @@
+<section class="checkout01" data-tema="claro">
+  <div class="conteudo">
+    <header class="topo" data-anima>
+      <button class="voltar" type="button" aria-label="Voltar uma etapa">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <h2 class="titulo">Finalizar compra</h2>
+      <span class="seguro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Seguro
+      </span>
+    </header>
+
+    <ol class="etapas" data-anima>
+      <li class="etapa atual" aria-current="step"><span class="bolinha">1</span><span>Endereço</span></li>
+      <li class="etapa"><span class="bolinha">2</span><span>Entrega</span></li>
+      <li class="etapa"><span class="bolinha">3</span><span>Pagamento</span></li>
+    </ol>
+
+    <form class="formulario" action="#" novalidate>
+      <fieldset class="passo" data-passo="1">
+        <legend class="somenteLeitor">Endereço de entrega</legend>
+        <div class="campos">
+          <label class="campo metade">
+            <span>CEP</span>
+            <input name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" required>
+            <small class="dica">Digite 01310-100 para testar</small>
+          </label>
+          <label class="campo metade">
+            <span>Número</span>
+            <input name="numero" inputmode="numeric" autocomplete="address-line2" placeholder="123" required>
+          </label>
+          <label class="campo">
+            <span>Rua</span>
+            <input name="rua" autocomplete="address-line1" placeholder="Nome da rua" required>
+          </label>
+          <label class="campo metade">
+            <span>Bairro</span>
+            <input name="bairro" placeholder="Bairro" required>
+          </label>
+          <label class="campo metade">
+            <span>Cidade / UF</span>
+            <input name="cidade" autocomplete="address-level2" placeholder="Cidade" required>
+          </label>
+          <label class="campo">
+            <span>Complemento <em>(opcional)</em></span>
+            <input name="complemento" placeholder="Apto, bloco, referência">
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="passo" data-passo="2" hidden>
+        <legend class="somenteLeitor">Forma de entrega</legend>
+        <div class="opcoes">
+          <label class="opcao">
+            <input type="radio" name="frete" value="0" data-nome="Normal" checked>
+            <span class="radio" aria-hidden="true"></span>
+            <span class="opcaoTexto"><strong>Normal</strong><span>5 a 8 dias úteis</span></span>
+            <span class="opcaoPreco">Grátis</span>
+          </label>
+          <label class="opcao">
+            <input type="radio" name="frete" value="19.9" data-nome="Expressa">
+            <span class="radio" aria-hidden="true"></span>
+            <span class="opcaoTexto"><strong>Expressa</strong><span>2 a 3 dias úteis</span></span>
+            <span class="opcaoPreco">R$ 19,90</span>
+          </label>
+          <label class="opcao">
+            <input type="radio" name="frete" value="34.9" data-nome="No mesmo dia">
+            <span class="radio" aria-hidden="true"></span>
+            <span class="opcaoTexto"><strong>No mesmo dia</strong><span>Pedidos até 14h</span></span>
+            <span class="opcaoPreco">R$ 34,90</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="passo" data-passo="3" hidden>
+        <legend class="somenteLeitor">Forma de pagamento</legend>
+        <div class="abas" role="tablist" aria-label="Forma de pagamento">
+          <button class="aba" type="button" role="tab" id="checkout01-aba-pix" aria-controls="checkout01-pix" aria-selected="true">Pix</button>
+          <button class="aba" type="button" role="tab" id="checkout01-aba-cartao" aria-controls="checkout01-cartao" aria-selected="false" tabindex="-1">Cartão</button>
+          <button class="aba" type="button" role="tab" id="checkout01-aba-boleto" aria-controls="checkout01-boleto" aria-selected="false" tabindex="-1">Boleto</button>
+        </div>
+        <div class="painel" role="tabpanel" id="checkout01-pix" aria-labelledby="checkout01-aba-pix">
+          <p class="destaque">5% de desconto no Pix</p>
+          <p class="apoio">O código aparece na próxima tela e vale por 30 minutos.</p>
+        </div>
+        <div class="painel" role="tabpanel" id="checkout01-cartao" aria-labelledby="checkout01-aba-cartao" hidden>
+          <div class="campos">
+            <label class="campo">
+              <span>Número do cartão</span>
+              <input name="cartao" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="19">
+            </label>
+            <label class="campo metade">
+              <span>Validade</span>
+              <input name="validade" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA" maxlength="5">
+            </label>
+            <label class="campo metade">
+              <span>CVV</span>
+              <input name="cvv" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4">
+            </label>
+            <label class="campo">
+              <span>Parcelas</span>
+              <select name="parcelas">
+                <option value="1">1x sem juros</option>
+                <option value="3">3x sem juros</option>
+                <option value="6">6x sem juros</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="painel" role="tabpanel" id="checkout01-boleto" aria-labelledby="checkout01-aba-boleto" hidden>
+          <p class="destaque">Vence em 3 dias úteis</p>
+          <p class="apoio">O pedido é separado depois que o banco confirma o pagamento, em até 2 dias úteis.</p>
+        </div>
+      </fieldset>
+
+      <p class="erro" aria-live="polite"></p>
+
+      <aside class="resumo" aria-label="Resumo do pedido">
+        <h3>Resumo</h3>
+        <ul class="itens">
+          <li><span>Jaqueta jeans lavada × 1</span><span>R$ 189,90</span></li>
+          <li><span>Tênis Corrida Leve 2 × 1</span><span>R$ 399,90</span></li>
+        </ul>
+        <dl class="contas">
+          <div><dt>Subtotal</dt><dd class="subtotal">R$ 589,80</dd></div>
+          <div><dt>Entrega <span class="freteNome">Normal</span></dt><dd class="freteValor">Grátis</dd></div>
+          <div class="linhaPix" hidden><dt>Desconto Pix</dt><dd class="pixValor">− R$ 0,00</dd></div>
+          <div class="linhaTotal"><dt>Total</dt><dd class="total" aria-live="polite">R$ 589,80</dd></div>
+        </dl>
+      </aside>
+
+      <button class="avancar" type="submit">Continuar para entrega</button>
+    </form>
+
+    <div class="sucesso" hidden tabindex="-1">
+      <span class="sucessoIcone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <h3>Pedido feito!</h3>
+      <p class="sucessoTexto">Você vai receber a confirmação por e-mail.</p>
+      <button class="recomecar" type="button">Fazer outro pedido</button>
+    </div>
+  </div>
+</section>

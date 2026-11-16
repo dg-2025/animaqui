@@ -2,10 +2,10 @@
 
 | Campo | Valor |
 |---|---|
-| **Versão do documento** | 0.13 |
+| **Versão do documento** | 0.14 |
 | **Data** | 16/11/2026 |
 | **Autor(es)** | Daniel (responsável), Claude (redação) |
-| **Status** | Em revisão: E-02 (e-commerce) com S09 a S11 entregues; S08 na fila (dados legais e publicação) |
+| **Status** | Em revisão: E-02 (e-commerce) com S09 a S12 entregues; S08 na fila (dados legais e publicação) |
 | **Aprovado por** | Pendente |
 
 ## Histórico de Revisões
@@ -24,6 +24,7 @@
 | 0.11 | 16/11/2026 | Claude | E-02 planejado (front-end de e-commerce, aprovado pelo Daniel) e S09 entregue: tema claro de loja em `tema-padrao.css` (D-25), `montarDocumento()` só leva a variação de tema quando alguma seção usa, 4 categorias novas (Cardápio, Produto, Ofertas, Carrinho) e 6 seções do pacote Lanche e comida. Testado: `tsc`, `eslint`, `build`, páginas e APIs novas com 200 no build de produção, documento do palco com e sem o tema claro e CT-600 a CT-603 no Edge, em 390 px e 1280 px. A bateria completa dos CT anteriores não foi repetida. SQL: nenhum |
 | 0.12 | 16/11/2026 | Claude | E-02/S10: pacote Roupa e tênis com fotos reais do Pixabay embutidas em WebP (D-28, decisão do Daniel): categoria Vitrine nova e 7 seções (`vitrine-01` a `03`, `produto-03`, `carrinho-02`, `chamada-04`). Origem das 21 fotos na seção 10. Testado: `tsc`, `eslint`, `build`, páginas e APIs com 200 no build de produção, CSP aceitando `data:` e CT-604 a CT-606 no Edge, em 390 px e 1280 px. O arrastar para excluir do `carrinho-02` não foi testado com o dedo, só o botão da lixeira. SQL: nenhum |
 | 0.13 | 16/11/2026 | Claude | E-02/S11: pacote Mercado e nicho com fotos do Pixabay: `vitrine-04` hortifruti, `vitrine-05` plantas, `vitrine-06` joalheria, `vitrine-07` luminárias editorial, `produto-04` anel com aro e `produto-05` suplemento (tema escuro). Testado: `tsc`, `eslint`, `build` e CT-607 no Edge, em 390 px e 1280 px. Snacks (531–535) e relógio (468–471) ficaram de fora: os padrões já estão cobertos pelas outras seções. SQL: nenhum |
+| 0.14 | 16/11/2026 | Claude | E-02/S12: fluxo de compra com 3 categorias novas (Checkout, Pedido, Conta) e 4 seções: `checkout-01` em três etapas com CEP, frete e Pix/cartão/boleto, `pedido-01` rastreio com linha do tempo, `pedido-02` Pix com QR de exemplo e prazo, `conta-01` perfil com clube de pontos. Seções com `id` geram sufixo único no script, para o mesmo bloco poder entrar duas vezes (RN-201). Testado: `tsc`, `eslint`, `build` e CT-608 no Edge, em 390 px e 1280 px. SQL: nenhum |
 
 ---
 
@@ -106,7 +107,7 @@ Não publicado.
 
 ### 2.2 In Scope (Dentro do escopo)
 
-Os três módulos, o motor de palco e exportação e 71 seções em 17 categorias, mais 14 animações, em `banco-de-dados/`. O E-02 acrescenta seções de loja (2.8).
+Os três módulos, o motor de palco e exportação e 75 seções em 20 categorias, mais 14 animações, em `banco-de-dados/`. O E-02 acrescenta seções de loja (2.8).
 
 ### 2.3 Out of Scope (Fora do escopo)
 
@@ -139,7 +140,7 @@ Levantados na análise de 02/11/2026; aguardam a avaliação do Daniel.
 
 ### 2.8 Evoluções planejadas
 
-**Em andamento:** E-02, próxima é a S12. S09 a S11 entregues. S01 a S07 entregues; S08 parcial (faltam P-05, P-07 e a bateria completa dos CT), na fila.
+**Em andamento:** E-02, próxima é a S13. S09 a S12 entregues. S01 a S07 entregues; S08 parcial (faltam P-05, P-07 e a bateria completa dos CT), na fila.
 
 #### E-01 — Esqueleto e versão inicial (árvore e nomes aprovados em 02/11/2026)
 
@@ -212,7 +213,7 @@ Seções de loja (lanche, roupa, mercado e nicho) e o fluxo de compra, primeiro 
 | S09 | Tema claro (D-25) e pacote **Lanche e comida**: categorias Cardápio, Produto, Ofertas e Carrinho, com 6 seções (`cardapio-01` cafeteria, `cardapio-02` hamburgueria, `produto-01` pizza, `produto-02` bowl, `oferta-01` delivery com cupom, `carrinho-01` sacola) | — | CT-600 a CT-603 | entregue |
 | S10 | Pacote **Roupa e tênis** com fotos (D-28): categoria Vitrine e 7 seções (`vitrine-01` moda jeans, `vitrine-02` loja com categorias, `vitrine-03` cards com degradê, `produto-03` tênis, `carrinho-02` carrinho com arrastar para excluir, `chamada-04` newsletter) | S09 | CT-604 a CT-606 | entregue |
 | S11 | Pacote **Mercado e nicho** com fotos (D-28): `vitrine-04` hortifruti com contagem regressiva, `vitrine-05` plantas com cuidados, `vitrine-06` joalheria, `vitrine-07` luminárias editorial, `produto-04` anel com aro, `produto-05` suplemento com assinatura | S09 | CT-607 | entregue |
-| S12 | **Fluxo de compra:** checkout, conta e rastreio do pedido | S09 | A definir | planejado |
+| S12 | **Fluxo de compra:** categorias Checkout, Pedido e Conta; `checkout-01` em etapas com Pix, `pedido-01` rastreio, `pedido-02` Pix com QR e prazo, `conta-01` perfil com clube | S09 | CT-608 | entregue |
 | S13 | Módulo **Lojas prontas:** várias páginas ligadas e carrinho entre elas. Detalhar antes de começar | S10 a S12 | A definir | planejado |
 
 #### Ideias soltas (ainda sem conversa)
@@ -301,7 +302,7 @@ animaqui/
         └── shared/                 # NotFound, PaginaLegal
 ```
 
-Acervo atual: 71 seções em 17 categorias (`categorias.json`) e 14 animações.
+Acervo atual: 75 seções em 20 categorias (`categorias.json`) e 14 animações.
 
 **Como crescer depois:**
 
@@ -346,7 +347,7 @@ Prioridade: todos A confirmar. RF-51 está limitado às 40 fontes padrão até e
 | RF-250 | Expor `robots.txt`, `sitemap.xml` e `llms.txt`; cada página com título, descrição, canonical e imagem de compartilhamento | A confirmar | `src/app/sitemap.ts:8`, `src/shared/lib/site.ts:17` | Implementado |
 | RF-251 | Páginas `/privacidade` e `/termos`, com links no rodapé | A confirmar | `src/app/(legal)/privacidade/page.tsx:10`, `src/app/(publico)/layout.tsx:13` | Implementado |
 | RF-152 | Seção com tema claro: `data-tema="claro"` na raiz liga a variação clara dos tokens, no palco e no código copiado | A confirmar | `banco-de-dados/tema-padrao.css:75`, `src/shared/utils/montarDocumento.ts:46` | Implementado |
-| RF-300 | Seções de loja (Lanche e comida; Roupa e tênis com vitrine, cores, numeração, carrinho com arrastar e newsletter): cardápio com filtro, quantidade e sacola, produto com tamanho e adicionais, ofertas com cupom e sacola com cupom de desconto, cada uma com a conta feita na própria seção | A confirmar | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine` | Implementado |
+| RF-300 | Seções de loja (Lanche e comida; Roupa e tênis com vitrine, cores, numeração, carrinho com arrastar e newsletter): cardápio com filtro, quantidade e sacola, produto com tamanho e adicionais, ofertas com cupom e sacola com cupom de desconto, cada uma com a conta feita na própria seção | A confirmar | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine`, `checkout`, `pedido`, `conta` | Implementado |
 
 ### 3.2 Detalhamento de Requisito
 
@@ -418,6 +419,7 @@ Todas com Status `Implementado` (fonte na matriz da seção 8).
 | RN-152 | O código copiado leva só os tokens, as animações e as fontes em uso | RF-151 |
 | RN-153 | Toda animação respeita `prefers-reduced-motion` e não usa biblioteca (Guia D-004) | RF-07, RF-53 |
 | RN-154 | A variação de tema só entra no documento se alguma seção a ligar, e só com os tokens que o CSS usa | RF-151, RF-152 |
+| RN-156 | Seção com `id` (abas, rótulos) gera um sufixo único no script, para o mesmo bloco poder aparecer duas vezes na página sem `id` repetido | RF-102, RF-300 |
 | RN-155 | Seção de loja é celular primeiro: o CSS base é o do celular e o computador entra por `min-width` (D-24) | RF-300 |
 | RN-200 | Item inválido no acervo interrompe o build e o erro diz qual arquivo corrigir | RF-201 |
 | RN-201 | Todo CSS fica sob a classe raiz do item, inclusive os `@media`; keyframes levam a classe como prefixo e o JS recebe a raiz. O mesmo bloco pode entrar duas vezes no Montador sem conflito | RF-102, RF-201 |
@@ -512,7 +514,7 @@ Aplicado conforme a D-11 (ver P-02). Há dois conjuntos de tokens que não se mi
 
 ### 7.2 Casos de Teste
 
-CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-401 passaram em 02/11/2026. CT-001, CT-101 e CT-402 ainda não foram executados. A cópia foi conferida pelo texto enviado ao navegador; o teste não usou a área de transferência real, que o navegador automatizado bloqueia. CT-500 a CT-505 passaram em 02/11/2026, no Edge, com o build de produção. CT-600 a CT-607 passaram em 16/11/2026, no Edge (cliques simulados por script e prints em 390 px e 1280 px). Os CT anteriores não foram repetidos depois da CSP e do rodapé; o CT-505 cobre uma seção com script, a Tipografia e a abertura do Montador.
+CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-401 passaram em 02/11/2026. CT-001, CT-101 e CT-402 ainda não foram executados. A cópia foi conferida pelo texto enviado ao navegador; o teste não usou a área de transferência real, que o navegador automatizado bloqueia. CT-500 a CT-505 passaram em 02/11/2026, no Edge, com o build de produção. CT-600 a CT-608 passaram em 16/11/2026, no Edge (cliques simulados por script e prints em 390 px e 1280 px). Os CT anteriores não foram repetidos depois da CSP e do rodapé; o CT-505 cobre uma seção com script, a Tipografia e a abertura do Montador.
 
 | ID | Ref. | Cenário | Passos | Resultado Esperado |
 |---|---|---|---|---|
@@ -551,6 +553,7 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | CT-605 | RF-300 | Vitrine e produto de roupa | Filtrar categorias, somar na sacola, trocar cor e numeração do tênis | Filtro e aviso de categoria vazia; contagem da sacola; cor leva a galeria à foto; 41 esgotado; sem número o botão não compra |
 | CT-606 | RF-300 | Carrinho de roupa e newsletter | Somar item, cupom `ALMA10`, excluir; e-mail inválido e válido | Total com 10% de desconto; item sai; erro no e-mail incompleto e confirmação no válido |
 | CT-607 | RF-300 | Mercado e nicho | Somar e tirar no hortifruti, filtrar plantas e joias, aro do anel, plano do suplemento, e-mail da carta | + vira contador e volta ao zerar; contagem regressiva; cartão de cuidados muda com o filtro; aro 18 esgotado e sem aro não compra; preço da assinatura e da compra única |
+| CT-608 | RF-300 | Fluxo de compra | Checkout vazio, CEP 01310-100, frete expresso, Pix e cartão; rastreio com código errado e certo; Pix copiar e "Já paguei"; interruptor da conta | Erro de CEP; endereço preenchido; total 609,70 com expressa e 580,21 com Pix; máscara do cartão; tela de sucesso; erro e sucesso no rastreio; código copiado e tela de pago |
 | CT-603 | RF-300 | Sacola e cupom | Cupom inválido, `RAIZ10`, e zerar os itens | Aviso de erro; 10% de desconto no total; item some ao zerar e a sacola vazia esconde o botão de pagar |
 
 ---
@@ -577,7 +580,7 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | RNF-03 | Toque e teclado | CT-202 | `shared/ui` | Implementado |
 | RNF-04 | Crescer sem mudar código | CT-001 | `banco-de-dados/secoes` | Implementado |
 | RF-152, RN-154 | Tema claro de loja | CT-600 | `banco-de-dados/tema-padrao.css`, `shared/utils/montarDocumento.ts` | Implementado |
-| RF-300, RN-155, D-28 | Seções de loja | CT-601 a CT-607 | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine` | Implementado |
+| RF-300, RN-155, D-28 | Seções de loja | CT-601 a CT-608 | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine`, `checkout`, `pedido`, `conta` | Implementado |
 
 ---
 
