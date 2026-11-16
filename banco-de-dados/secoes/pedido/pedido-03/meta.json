@@ -1,0 +1,6 @@
+{
+  "id": "pedido-03",
+  "nome": "Minhas compras com status",
+  "categoria": "pedido",
+  "descricao": "Lista de pedidos de joalheria com filtro e contagem, etiquetas de status (aguardando, em separação, enviado, entregue, cancelado), detalhes que abrem com linha do tempo e rastreio para copiar, pagar com Pix e comprar de novo."
+}

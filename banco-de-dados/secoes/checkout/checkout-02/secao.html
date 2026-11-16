@@ -1,0 +1,148 @@
+<section class="checkout02" data-tema="claro">
+  <div class="fundoAnimado" aria-hidden="true">
+    <span class="orbe orbe1"></span>
+    <span class="orbe orbe2"></span>
+    <span class="orbe orbe3"></span>
+    <span class="particula p1"></span>
+    <span class="particula p2"></span>
+    <span class="particula p3"></span>
+    <span class="particula p4"></span>
+    <span class="particula p5"></span>
+    <span class="particula p6"></span>
+  </div>
+
+  <div class="conteudo">
+    <header class="topo" data-anima>
+      <a class="voltar" href="#" data-ir="carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>Sacola</a>
+      <h2 class="titulo">Finalização do pedido</h2>
+      <span class="seguro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Seguro</span>
+    </header>
+
+    <ol class="etapas" data-anima>
+      <li class="etapa atual"><span class="bolinha">1</span><span>Identificação</span></li>
+      <li class="etapa"><span class="bolinha">2</span><span>Entrega</span></li>
+      <li class="etapa"><span class="bolinha">3</span><span>Pagamento</span></li>
+    </ol>
+
+    <form class="formulario" action="#" novalidate>
+      <div class="passos">
+        <fieldset class="bloco" data-passo="0" data-anima>
+          <legend class="blocoTitulo"><span>1.</span> Identificação e envio</legend>
+          <div class="campos">
+            <label class="campo">
+              <span>Nome completo</span>
+              <input name="nome" autocomplete="name" placeholder="Como está no documento" required>
+            </label>
+            <label class="campo metade">
+              <span>CPF <em>(para a nota fiscal)</em></span>
+              <input name="cpf" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" required>
+            </label>
+            <label class="campo metade">
+              <span>WhatsApp</span>
+              <input name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(11) 99999-9999" maxlength="15" required>
+            </label>
+            <label class="campo metade">
+              <span>CEP</span>
+              <input name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" required>
+              <small class="dica">Teste com 01310-100</small>
+            </label>
+            <label class="campo metade">
+              <span>Número</span>
+              <input name="numero" inputmode="numeric" placeholder="123" required>
+            </label>
+            <label class="campo">
+              <span>Endereço completo</span>
+              <textarea name="endereco" rows="2" placeholder="Rua, complemento, bairro, cidade - UF" required></textarea>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="bloco" data-passo="1" data-anima>
+          <legend class="blocoTitulo"><span>2.</span> Entrega ou retirada</legend>
+          <div class="opcoes">
+          <label class="opcao">
+            <input type="radio" name="entrega" value="0" data-nome="Retirada no ateliê" checked>
+            <span class="opcaoIcone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v10h16V10"/><path d="M3 10l2-6h14l2 6"/><path d="M3 10c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3"/></svg></span>
+            <span class="opcaoTexto"><strong>Retirada no ateliê</strong><span>Pronta em 1 dia útil</span></span>
+            <span class="opcaoPreco">Grátis</span>
+          </label>
+          <label class="opcao">
+            <input type="radio" name="entrega" value="24.9" data-nome="Envio segurado">
+            <span class="opcaoIcone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></span>
+            <span class="opcaoTexto"><strong>Envio segurado</strong><span>5 a 8 dias úteis</span></span>
+            <span class="opcaoPreco">R$ 24,90</span>
+          </label>
+          <label class="opcao">
+            <input type="radio" name="entrega" value="42.9" data-nome="Expresso segurado">
+            <span class="opcaoIcone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></span>
+            <span class="opcaoTexto"><strong>Expresso segurado</strong><span>1 a 3 dias úteis</span></span>
+            <span class="opcaoPreco">R$ 42,90</span>
+          </label>
+          </div>
+          <label class="presente">
+            <input type="checkbox" name="presente">
+            <span class="caixinha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <span class="presenteTexto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="5" rx="1"/><path d="M5 13v8h14v-8"/><path d="M12 8v13"/><path d="M12 8c-2-4-6-4-6-1.5S9 8 12 8c3 0 6-.5 6-1.5S14 4 12 8z"/></svg><span><strong>Embalagem de presente</strong> com cartão escrito à mão</span></span>
+            <span class="opcaoPreco">+ R$ 15,00</span>
+          </label>
+          <label class="campo mensagem" hidden>
+            <span>Mensagem do cartão</span>
+            <textarea name="mensagem" rows="2" maxlength="140" placeholder="Escreva até 140 caracteres"></textarea>
+            <small class="dica"><span class="restantes">140</span> caracteres restantes</small>
+          </label>
+        </fieldset>
+
+        <fieldset class="bloco" data-passo="2" data-anima>
+          <legend class="blocoTitulo"><span>3.</span> Pagamento</legend>
+          <div class="opcoes">
+          <label class="opcao">
+            <input type="radio" name="pagamento" value="pix" data-nome="Pix" checked>
+            <span class="opcaoIcone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l4 4-4 4-4-4z"/><path d="M12 13l4 4-4 4-4-4z"/><path d="M3 12l4-4 4 4-4 4z"/><path d="M13 12l4-4 4 4-4 4z"/></svg></span>
+            <span class="opcaoTexto"><strong>Pix</strong><span>5% de desconto na hora</span></span>
+            <span class="opcaoPreco">− 5%</span>
+          </label>
+          <label class="opcao">
+            <input type="radio" name="pagamento" value="cartao" data-nome="Cartão">
+            <span class="opcaoIcone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg></span>
+            <span class="opcaoTexto"><strong>Cartão de crédito</strong><span>Até 10x sem juros</span></span>
+            <span class="opcaoPreco">10x</span>
+          </label>
+          </div>
+          <label class="campo parcelas" hidden>
+            <span>Parcelas</span>
+            <select name="parcelas"></select>
+          </label>
+        </fieldset>
+      </div>
+
+      <aside class="resumo" aria-label="Resumo do pedido" data-anima>
+        <h3 class="resumoTitulo">Seu pedido</h3>
+        <ul class="resumoItens">
+            <li><img src="data:image/webp;base64,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" alt="" width="112" height="112"><span class="resumoNome">Aliança Clássica Ouro 18k<small>Qtd. 1</small></span><span class="resumoValor">R$ 1.290,00</span></li>
+            <li><img src="data:image/webp;base64,UklGRjgFAABXRUJQVlA4ICwFAADwGwCdASpwAHAAPpE+mEglo6KhLxZLYLASCWMAzbjsyA3jx1Nurzs3o4/3O+yb0LP3+hO1uasw+1DjSZzuOqpA1Z9QatdM8+pNEDGFxGlhvPs8KdE3LRKolCeBHG/dDI02ZKyhDagezWdi84WHJhf+TX3+H+ho/tgbijo54gfhQcuTXeZ37ditUq4FCwVic6tcRoXM5S2f0gsSOWAVZBPaXNBOCNXZdeFxuWDjwbjf6oAeqphfI7Xgv/kv0xkAeKHzwIcfg4XCfo1+PD98NJAMQfKNsHhqc/jUPjfrBUpHFWwguvHIysQAAP79epAtZ+Y2MPG49GKtr1+QuhgX1qL+gLD3QafeKd62Q/1DHXWgXningw1aXK5GpCOc2LaDakab+XaSwr+eHhYAW9ToX3MbFsX+5Gmo/yjQeP1SSsMFnzPpM7nnqPUYzSKaRNG61UkxHf1U25/WzrtRBT6WiIpscw8ZoAY/ETscya94TaQk+AYTI+iEQe3zpZSfuvYKIxlhuld/N6ZkLfcdyHQUx8TM/28b9+WY+IPw7HUdoPq/THvxByBRqZboD/XGCRfyFV1BmqaiY9hI0buuhUohZPsM0F3zVJce3/jcV611YtBVNlGf7VO6spwBLJGBpC2dUsplxWNEGJZRQz/gX4Ax7IWvf/wOHaetyAyXDs+QfedepOIau1dPdY7I41ChRRWIbZaA9qQR0fuPz/W/5Bo36VR3iYCv9QXbEqTaZ6kogi/ilsdwLIFP+F0XqkGTz1l7NXO3O55YE6Dpr9UUgAOo8avNTVD8sIwEr1xCJj9qdp5HzeBHWS66mimiB1X+pQDTTkZRGdaZ086KWek8z/yMOp1Vs/MI8Kv7/SatptVX/vuEzJDOfWUsviBthIz39lHkRCJR+WWQjKCvy3Uhjz7geIySQHZ6a6Cg+zZvaCLOT1u53YgYxWQg4LCuyVQ6HsM/h8l2sW7LU82MKxw5gYqz/NQMPhlz3O/N2u06G8pKot9lDxNMDw60Jpcc0RKbh/Ci568+h/Hh0IS5gLDun/b1bViV6URPzWq0GZZop6TpeNrgPD1gYWWhV+tK5jV5/FlfCxtfkdxc8dGoHAmx4YNNPIOgvhKXzyOaiY0/BhanAkrIzNDQf6Enl3zSjIQJvDhL6anmBks3harAkxiuTucsxsQ8FOmBt9r8+/m/WU+3Ce5QOkXdzpHOUqHb95P9V24FrAlG8PBVZj1VM1Au0A/hHcehBLio4RHPXPyxNQEz6ER41CU2payvQcxmvSh27Cmm868UZr9Uflpa4MQaTW3xICKgpyhb4NtAfx34tF96DWZ1sMFWqdPrSmIxiYum6pM2YNgwhgyAGETQivsq8yS4uuQtIlzhm3ZpoGbmYl+T6vMynOMdoDd8xiHf82QHUBYGgavNGb+s+aSPokaX2lV3vYUDYrEPrj1wZkoKSfNNEI10Tu7McWgKe5cS2i/lwUY4oIQ0OkqI489ZFSYBGmgcnqRn5nk3+Wu2yfWXMMXYJqt71VAb/w9ghF/nAe/OkWAnIbAz9ZsvIdALQ+XgR5EhC9DaHtdbTWbXhnxXcU9enBr8PmuzYigTET6nxPPd63zlzg0XDHUk8E7GT6G4bzlNJqaaZ2ktKYeEXlu51/OZp13lo4WYptoCkE/UB8+R3ideShXFyQuHHf8X6AhAbv7nDghpym/gX3hHBNvptMzKBYCoyRr5vG0/56v92zwouJtNBM6XPF8pQiTrfdpF/rs9Vr0E3EY3iufERKJCwAAA" alt="" width="112" height="112"><span class="resumoNome">Colar Coração Dourado<small>Qtd. 1</small></span><span class="resumoValor">R$ 349,90</span></li>
+            <li><img src="data:image/webp;base64,UklGRmgEAABXRUJQVlA4IFwEAACwFwCdASpwAHAAPpFCnEslo6Kho1zLQLASCWkA1jipr7vpStex6FyIYvE7+JL89/2HsAfmH0AM730f+yvwCfrB1jfRsKWGFVFTCeoelesWGES4Y4v7c/Uu6TjuLCPwoxRoPqsCpmPTO4xkufEhdo4/UGIh9WRBBTGU7jrj5DMfWl4kUjkgRsMlmTL9KwldU4yG6VKy0GEDelWMgDfGwLMZEbGGeUp7HnCfvGOl25f6aHcZh9XuugGBHEOWCmjR0qeODinJOAAA/vuc0u9m58CdYYes6Jc7slZ/s+J9Nw7YHXP6sNxgyeuyhFjXRwszYXTTWfsjntQ7NDUVzZBVp1dmSWz8r7K/EytqapnZUydGCTlGLsKAKLWpbEmdfXMvcae7E1V6AP+peGlpMYXRAN/YU4ptBmsThjkT0Wn2Z/kiKb9IBWhRmJgtECl/Wwu9nUlFXJ+Lb6asW9nRZbT5jRO3dROQVKFQd1lXIamHdP2Asw227gLROEpJ2pxn9hM9HBp/8bqoUHZ9cGf0mYOqnrsWFokJGmBSv+/6n1jnv4ExAHMCH0aeAT83bVn+LW8KyzHlUVvjmKl1OMZp51WuHa13JK5Gxh6urVpUIVcbAWP7ZrTWoFf1UbftXLy/JAzdiQvrhHiAkh+PLp/ECAOjvEpKBsrG88pVzIaOc/QOD03prBvykg7wprFWHxH07PO6D+kGIFkJT6TSNg/nkJHv03NEJu3mHkUi3cVttecnCBw5TScXiPcJmNw/C6TT+1w3uVLmXxQ7oF3NUPXlBIDjZA4BXLpxI9xSLLO5XXRQinwfarYYS/m+j+JRq1Q1z0q5j1Kxsq/IiLccZnV2sH/nO677yy/LnuNI1hRue6T93ddDuXpQq91bz/3bn2tEb4XsoBJ7M0ZL0Jb73/3OR3P6wnllJ3nNXWAz3pWJaEuaGzyOSp7EgTuSizkXutiv/mJJP5Or4RIJtQ9NozSuotqbA/2FlIsQ9KduOxTTxMlf3j+cW3yPl5z09sSGNOubwVKshNJDh2RL8VyfRlYlnJj2EFQ+DUcf74b6ypLnn7j3Bx4CyBoXtGMdDyMeH9/TopDI4J24py0XPml8ZAukyDknVs2LnycjMTJ3r0vii+UjL0Xi0DOb6eWsvX9IsSE9bRTi6+T686qv2i35bnQU6z/b4dUBSCbP+Fnqzf6Rs6+X8+jC+99bHTaq3ZUIpyvha+/5vNQx/ppbGOPnu+eEGFwqLCZ8FrNgHzMcdfMAz/TW9mWbI89lJefdHqirAMITUHgYvB91rdXo+CRICd53AgJeYgVmPax5QjaMLPZ6trrPmY+ReKFbf1sYaXaxAMHE7jJUUIu399h5NIWfVI8MJnhIojqiIyie5L4qWfRZOjmov3Zi1Nzd5q2LP1j41b9RIQroUm460Km8SdSVHO7ApzEhNl1DeNDa5Vh7/aAlsMgtoc4WGusny+fwHHZUOaZpWnSWCN0Dqu5neRkKNaAAAAA=" alt="" width="112" height="112"><span class="resumoNome">Brincos Gota de Pérola<small>Qtd. 2</small></span><span class="resumoValor">R$ 918,00</span></li>
+        </ul>
+        <dl class="contas">
+          <div><dt>Subtotal</dt><dd class="subtotal">R$ 2.557,90</dd></div>
+          <div><dt>Entrega <span class="entregaNome">Retirada no ateliê</span></dt><dd class="entregaValor">Grátis</dd></div>
+          <div class="linhaPresente" hidden><dt>Embalagem de presente</dt><dd>R$ 15,00</dd></div>
+          <div class="linhaPix"><dt>Desconto Pix</dt><dd class="pixValor">− R$ 0,00</dd></div>
+          <div class="linhaTotal"><dt>Total</dt><dd class="total" aria-live="polite">R$ 0,00</dd></div>
+        </dl>
+        <p class="avisoPagamento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg><span><strong>Compra protegida.</strong> A confirmação chega por e-mail e WhatsApp, com o código de rastreio do envio segurado.</span></p>
+        <p class="erro" aria-live="polite"></p>
+        <button class="confirmar" type="submit">Confirmar pedido</button>
+      </aside>
+    </form>
+
+    <div class="sucesso" hidden tabindex="-1">
+      <span class="sucessoIcone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <h3>Pedido confirmado!</h3>
+      <p class="sucessoTexto">A confirmação chega por e-mail e WhatsApp.</p>
+      <div class="sucessoAcoes">
+        <a class="sucessoPrincipal" href="#" data-ir="pedidos">Ver minhas compras</a>
+        <a class="sucessoSecundario" href="#" data-ir="inicio">Voltar à loja</a>
+      </div>
+    </div>
+  </div>
+</section>

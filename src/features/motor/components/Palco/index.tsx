@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { prepararPalco } from '@/shared/utils/montarDocumento';
 import type { Dispositivo } from '../../types';
 import styles from './style.module.css';
 
@@ -103,7 +104,7 @@ export default function Palco({ documento, dispositivo, repeticao, titulo, dica,
               style={{ '--escala': escala } as CSSProperties}
               title={titulo}
               sandbox="allow-scripts"
-              srcDoc={quadro.documento}
+              srcDoc={prepararPalco(quadro.documento)}
               onLoad={() => revelar(quadro.chave)}
             />
           ))}

@@ -1,0 +1,6 @@
+{
+  "id": "produto-07",
+  "nome": "Moletom com cor, tamanho e estoque",
+  "categoria": "produto",
+  "descricao": "Página de roupa com galeria de fotos e miniaturas (arrastar troca a foto), cor que muda a foto, tamanho com estoque por numeração e esgotado riscado, aviso quando falta o tamanho, quantidade limitada ao estoque e botão que confirma e leva ao carrinho."
+}

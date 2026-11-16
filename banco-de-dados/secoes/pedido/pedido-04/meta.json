@@ -1,0 +1,6 @@
+{
+  "id": "pedido-04",
+  "nome": "Meus pedidos com situação e detalhe",
+  "categoria": "pedido",
+  "descricao": "Lista de pedidos de loja de roupas com filtro por situação, cartões com selo colorido (aguardando, enviado, entregue, cancelado), fotos dos itens e barra de etapas; o detalhe mostra pagamento, rastreio que se copia, endereço, itens com totais e linha do tempo."
+}

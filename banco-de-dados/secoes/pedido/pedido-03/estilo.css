@@ -1,0 +1,638 @@
+.pedido03 {
+  /* Paleta de joalheria tirada dos tokens: dourado, rubi e creme */
+  --dourado: color-mix(in srgb, var(--cor-alerta) 60%, var(--cor-texto-2));
+  --douradoClaro: color-mix(in srgb, var(--dourado) 55%, var(--cor-fundo));
+  --douradoEscuro: color-mix(in srgb, var(--dourado) 72%, var(--cor-texto));
+  --douradoBrilho: color-mix(in srgb, var(--dourado) 14%, transparent);
+  --gradienteDourado: linear-gradient(135deg, var(--douradoClaro) 0%, var(--dourado) 50%, var(--douradoEscuro) 100%);
+  --rubi: color-mix(in oklab, var(--cor-erro) 52%, var(--cor-texto));
+  --rubiForte: color-mix(in oklab, var(--cor-erro) 64%, var(--cor-texto));
+  --creme: color-mix(in srgb, var(--dourado) 6%, var(--cor-fundo));
+  --bordaFina: color-mix(in srgb, var(--dourado) 28%, transparent);
+  --serifa: "Didot", "Bodoni MT", Georgia, "Times New Roman", serif;
+  --raio-p: 4px;
+  --raio-m: 6px;
+  --oliva: color-mix(in srgb, color-mix(in srgb, var(--cor-destaque-3) 70%, var(--cor-alerta)) 70%, var(--cor-texto));
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+  padding: var(--espaco-2) var(--espaco-3) var(--espaco-7);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  background: var(--cor-fundo);
+
+  .somenteLeitor {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Orbes dourados desfocados e partículas que cintilam atrás de tudo */
+  .fundoAnimado {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .orbe {
+    position: absolute;
+    border-radius: var(--raio-total);
+    filter: blur(50px);
+    opacity: 0.22;
+    animation: pedido03Flutuar 20s var(--curva-padrao) infinite alternate;
+  }
+
+  .orbe1 {
+    top: calc(var(--espaco-8) * -1);
+    left: calc(var(--espaco-8) * -1);
+    width: calc(var(--espaco-9) * 3.2);
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--douradoClaro) 0%, var(--dourado) 50%, transparent 80%);
+    animation-duration: 16s;
+  }
+
+  .orbe2 {
+    right: calc(var(--espaco-9) * -0.8);
+    bottom: 10%;
+    width: calc(var(--espaco-9) * 4);
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--creme) 0%, var(--douradoClaro) 60%, transparent 80%);
+    animation-duration: 22s;
+  }
+
+  .orbe3 {
+    top: 45%;
+    left: 40%;
+    width: calc(var(--espaco-9) * 2.6);
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--douradoClaro) 0%, transparent 75%);
+    animation-duration: 18s;
+  }
+
+  .particula {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: var(--raio-total);
+    background: var(--dourado);
+    box-shadow: 0 0 6px var(--douradoClaro);
+    animation: pedido03Cintilar var(--duracao-ciclo) ease-in-out infinite;
+  }
+
+  .p1 { top: 15%; left: 20%; }
+  .p2 { top: 35%; left: 82%; animation-delay: 1.2s; }
+  .p3 { top: 62%; left: 12%; animation-delay: 2.4s; }
+  .p4 { top: 80%; left: 70%; animation-delay: 0.8s; }
+  .p5 { top: 46%; left: 92%; animation-delay: 1.8s; }
+  .p6 { top: 22%; left: 55%; animation-delay: 3s; }
+
+  .conteudo {
+    display: grid;
+    gap: var(--espaco-4);
+    max-width: calc(var(--largura-max) * 0.62);
+    margin-inline: auto;
+  }
+
+  .topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-3);
+    padding: var(--espaco-3) 0;
+    border-bottom: 1px solid var(--bordaFina);
+  }
+
+  .titulo {
+    margin: 0;
+    font-family: var(--serifa);
+    font-size: var(--titulo-3);
+    font-weight: var(--peso-normal);
+  }
+
+  .irLoja {
+    display: inline-grid;
+    place-items: center;
+    min-height: calc(var(--alvo-toque) - var(--espaco-2));
+    padding: 0 var(--espaco-3);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-p);
+    color: var(--cor-texto);
+    font-size: 0.75rem;
+    font-weight: var(--peso-medio);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color var(--duracao-rapida) var(--curva-padrao), border-color var(--duracao-rapida) var(--curva-padrao);
+
+    &:hover {
+      border-color: var(--dourado);
+      background: var(--douradoBrilho);
+    }
+  }
+
+  .chips {
+    display: flex;
+    gap: var(--espaco-2);
+    margin-inline: calc(var(--espaco-3) * -1);
+    padding: var(--espaco-1) var(--espaco-3);
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  .chip {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: var(--espaco-1);
+    min-height: calc(var(--alvo-toque) - var(--espaco-2));
+    padding: 0 var(--espaco-4);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-g);
+    color: var(--cor-texto-2);
+    background: var(--cor-fundo);
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: var(--peso-medio);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all var(--duracao-rapida) var(--curva-padrao);
+
+    &:hover {
+      border-color: var(--douradoClaro);
+      color: var(--douradoEscuro);
+    }
+
+    &[aria-pressed="true"] {
+      border-color: transparent;
+      color: var(--cor-destaque-contraste);
+      background: var(--gradienteDourado);
+      box-shadow: 0 3px 10px color-mix(in srgb, var(--dourado) 35%, transparent);
+      font-weight: var(--peso-forte);
+    }
+  }
+
+  .chipNumero {
+    min-width: var(--espaco-4);
+    padding: 0 var(--espaco-1);
+    border-radius: var(--raio-total);
+    background: var(--cor-preenchimento);
+    font-size: 0.65rem;
+    text-align: center;
+  }
+
+  .lista {
+    display: grid;
+    gap: var(--espaco-3);
+  }
+
+  .pedido {
+    display: grid;
+    gap: var(--espaco-3);
+    padding: var(--espaco-4);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-m);
+    background: color-mix(in srgb, var(--cor-fundo) 96%, transparent);
+    box-shadow: 0 4px 18px color-mix(in srgb, var(--cor-texto) 3%, transparent);
+    transition: border-color var(--duracao-media) var(--curva-padrao);
+
+    &:hover { border-color: var(--douradoClaro); }
+
+    &[hidden] { display: none; }
+  }
+
+  .pedidoTopo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--espaco-2);
+    border-bottom: 1px solid var(--bordaFina);
+  }
+
+  .numero {
+    color: var(--douradoEscuro);
+    font-weight: var(--peso-forte);
+  }
+
+  .data {
+    color: var(--cor-texto-3);
+    font-size: 0.75rem;
+  }
+
+  .pedidoItens {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-3);
+  }
+
+  .fotos {
+    display: flex;
+    flex-shrink: 0;
+
+    img {
+      width: calc(var(--espaco-7) + var(--espaco-1));
+      height: calc(var(--espaco-7) + var(--espaco-1));
+      border: 2px solid var(--cor-fundo);
+      border-radius: var(--raio-m);
+      object-fit: cover;
+      box-shadow: 0 0 0 1px var(--bordaFina);
+
+      & + img { margin-left: calc(var(--espaco-5) * -1); }
+    }
+  }
+
+  .nomes {
+    display: grid;
+    font-family: var(--serifa);
+    font-size: var(--texto-pequeno);
+    line-height: 1.3;
+
+    small {
+      color: var(--cor-texto-3);
+      font-family: var(--fonte-texto);
+      font-size: 0.72rem;
+    }
+  }
+
+  .pedidoLinha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-3);
+  }
+
+  .total {
+    color: var(--rubi);
+    font-size: var(--texto-grande);
+    font-weight: var(--peso-forte);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Badges de status, no estilo de etiqueta fina */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-1);
+    padding: 3px var(--espaco-2);
+    border: 1px solid;
+    border-radius: var(--raio-p);
+    font-size: 0.68rem;
+    font-weight: var(--peso-forte);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    &::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: var(--raio-total);
+      background: currentColor;
+    }
+
+    &.aguardando {
+      border-color: color-mix(in srgb, var(--dourado) 40%, transparent);
+      color: var(--douradoEscuro);
+      background: var(--douradoBrilho);
+
+      &::before { animation: pedido03Piscar 1.6s ease-in-out infinite; }
+    }
+
+    &.separacao {
+      border-color: var(--bordaFina);
+      color: var(--douradoEscuro);
+      background: var(--creme);
+    }
+
+    &.enviado {
+      border-color: color-mix(in srgb, var(--oliva) 30%, transparent);
+      color: var(--oliva);
+      background: color-mix(in srgb, var(--oliva) 8%, transparent);
+    }
+
+    &.entregue {
+      border-color: transparent;
+      color: var(--cor-destaque-contraste);
+      background: var(--oliva);
+    }
+
+    &.cancelado {
+      border-color: color-mix(in srgb, var(--cor-erro) 25%, transparent);
+      color: var(--cor-erro);
+      background: color-mix(in srgb, var(--cor-erro) 7%, transparent);
+    }
+
+    &.trocou { animation: pedido03Selo var(--duracao-lenta) var(--curva-mola); }
+  }
+
+  .pedidoBotoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-2);
+  }
+
+  .abrir,
+  .acao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    min-height: calc(var(--alvo-toque) - var(--espaco-1));
+    padding: 0 var(--espaco-3);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-p);
+    color: var(--cor-texto);
+    background: transparent;
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: var(--peso-medio);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color var(--duracao-rapida) var(--curva-padrao), border-color var(--duracao-rapida) var(--curva-padrao);
+
+    svg {
+      flex-shrink: 0;
+      width: var(--espaco-4);
+      height: var(--espaco-4);
+      transition: transform var(--duracao-media) var(--curva-padrao);
+    }
+
+    &:hover {
+      border-color: var(--dourado);
+      background: var(--douradoBrilho);
+    }
+  }
+
+  .abrir {
+    flex: 1;
+
+    &[aria-expanded="true"] svg { transform: rotate(180deg); }
+  }
+
+  .acao {
+    flex: 1;
+    border-color: var(--rubi);
+    color: var(--cor-destaque-contraste);
+    background: var(--rubi);
+
+    &:hover {
+      border-color: var(--rubiForte);
+      background: var(--rubiForte);
+    }
+
+    &.feito {
+      border-color: var(--dourado);
+      background: var(--gradienteDourado);
+    }
+
+    &[hidden] { display: none; }
+  }
+
+  /* Detalhe que abre deslizando */
+  .detalhe {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--duracao-media) var(--curva-padrao);
+
+    &.aberto { grid-template-rows: 1fr; }
+
+    &[hidden] { display: none; }
+  }
+
+  .detalheDentro {
+    display: grid;
+    gap: var(--espaco-4);
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .linhaTempo {
+    display: grid;
+    gap: 0;
+    margin: var(--espaco-2) 0 0;
+    padding: var(--espaco-4);
+    border: 1px solid var(--bordaFina);
+    border-radius: var(--raio-p);
+    background: var(--creme);
+    list-style: none;
+
+    li {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: var(--espaco-3);
+      min-height: var(--espaco-6);
+      color: var(--cor-texto-3);
+      font-size: var(--texto-pequeno);
+
+      &:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: calc(50% + 6px);
+        left: 5px;
+        width: 1px;
+        height: calc(100% - 12px);
+        background: var(--cor-borda);
+      }
+
+      &.feito {
+        color: var(--cor-texto);
+
+        &::after { background: var(--dourado); }
+
+        .ponto {
+          border-color: transparent;
+          background: var(--gradienteDourado);
+        }
+      }
+
+      &.agora {
+        color: var(--douradoEscuro);
+        font-weight: var(--peso-forte);
+
+        .ponto {
+          border-color: var(--dourado);
+          box-shadow: 0 0 0 4px var(--douradoBrilho);
+          animation: pedido03Halo 1.8s ease-in-out infinite;
+        }
+      }
+    }
+  }
+
+  .ponto {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    width: 11px;
+    height: 11px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-total);
+    background: var(--cor-fundo);
+  }
+
+  .avisoCancelado {
+    margin: var(--espaco-2) 0 0;
+    padding: var(--espaco-3);
+    border-radius: var(--raio-p);
+    color: var(--cor-erro);
+    background: color-mix(in srgb, var(--cor-erro) 6%, transparent);
+    font-size: var(--texto-pequeno);
+  }
+
+  .info {
+    display: grid;
+    gap: var(--espaco-2);
+    margin: 0;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--espaco-4);
+      font-size: var(--texto-pequeno);
+    }
+
+    dt { color: var(--cor-texto-3); }
+
+    dd {
+      margin: 0;
+      text-align: right;
+    }
+  }
+
+  .rastreio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-3);
+    padding: var(--espaco-3);
+    border: 1px dashed var(--dourado);
+    border-radius: var(--raio-p);
+    font-size: 0.75rem;
+
+    span { display: grid; color: var(--cor-texto-2); }
+  }
+
+  .codigo {
+    color: var(--cor-texto);
+    font-family: var(--fonte-mono);
+    font-size: var(--texto-pequeno);
+    letter-spacing: 0.06em;
+  }
+
+  .copiar {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-1);
+    min-height: calc(var(--alvo-toque) - var(--espaco-2));
+    padding: 0 var(--espaco-3);
+    border: 1px solid var(--bordaFina);
+    border-radius: var(--raio-p);
+    color: var(--douradoEscuro);
+    background: var(--cor-fundo);
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: var(--peso-forte);
+    cursor: pointer;
+
+    svg {
+      width: var(--espaco-4);
+      height: var(--espaco-4);
+    }
+
+    &.feito {
+      border-color: transparent;
+      color: var(--cor-destaque-contraste);
+      background: var(--oliva);
+    }
+  }
+
+  .vazio {
+    margin: 0;
+    padding: var(--espaco-7) var(--espaco-4);
+    border: 1px dashed var(--cor-borda);
+    border-radius: var(--raio-m);
+    color: var(--cor-texto-3);
+    text-align: center;
+
+    &[hidden] { display: none; }
+  }
+
+  @media (min-width: 768px) {
+    padding: var(--espaco-4) var(--margem-lateral) var(--espaco-8);
+
+    .titulo { font-size: var(--titulo-2); }
+
+    .chips { margin-inline: 0; padding-inline: 0; }
+
+    .pedido { padding: var(--espaco-5); }
+
+    .pedidoBotoes { justify-content: flex-end; }
+
+    .abrir,
+    .acao { flex: 0 0 auto; }
+
+    .linhaTempo {
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(0, 1fr);
+
+      li {
+        flex-direction: column;
+        gap: var(--espaco-2);
+        font-size: 0.72rem;
+        text-align: center;
+
+        &:not(:last-child)::after {
+          top: 5px;
+          left: calc(50% + 6px);
+          width: calc(100% - 12px);
+          height: 1px;
+        }
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orbe,
+    .particula,
+    .badge,
+    .badge::before,
+    .linhaTempo .ponto { animation: none; }
+
+    .detalhe,
+    .abrir svg,
+    .chip,
+    .pedido { transition: none; }
+  }
+}
+
+@keyframes pedido03Piscar {
+  50% { opacity: 0.25; }
+}
+
+@keyframes pedido03Halo {
+  50% { box-shadow: 0 0 0 7px transparent; }
+}
+
+@keyframes pedido03Selo {
+  from { transform: scale(0.6); opacity: 0; }
+}
+
+@keyframes pedido03Flutuar {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 60px) scale(1.15); }
+  100% { transform: translate(-30px, -40px) scale(0.95); }
+}
+
+@keyframes pedido03Cintilar {
+  0%, 100% { opacity: 0.08; transform: scale(0.6) translateY(0); }
+  50% { opacity: 0.6; transform: scale(1.3) translateY(-12px); }
+}

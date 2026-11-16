@@ -1,0 +1,6 @@
+{
+  "id": "conta-03",
+  "nome": "Minha conta com perfil, senha e entrar",
+  "categoria": "conta",
+  "descricao": "Área do cliente de loja de roupas com foto e saudação, menu de perfil, pedidos e favoritos, edição de dados com máscara de celular, troca de senha com medidor de força e validação, e botão Sair que abre o cartão de Entrar ou Criar conta (só visual)."
+}

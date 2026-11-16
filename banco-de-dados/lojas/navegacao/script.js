@@ -5,14 +5,22 @@ const contagem = raiz.querySelector('.contagem');
 const reduzir = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let itens = 0;
 
-// Páginas curtas não mostram o fundo escuro do tema: a página toda usa o fundo claro da loja
-document.body.style.background = getComputedStyle(raiz).getPropertyValue('--fundo-pagina');
+// Páginas curtas não mostram o fundo do tema por baixo: a página toda segue o fundo da seção aberta
+// (loja escura fica escura até o fim); sem cor própria na seção, vale o fundo claro da loja
+const fundoLoja = getComputedStyle(raiz).getPropertyValue('--fundo-pagina');
+function pintarFundo(pagina) {
+  const secao = pagina.querySelector('section');
+  const cor = secao ? getComputedStyle(secao).backgroundColor : '';
+  const temCor = cor && cor !== 'transparent' && !/^rgba\(.*,\s*0\)$/.test(cor);
+  document.body.style.background = temCor ? cor : fundoLoja;
+}
 
 // Mostra uma página da loja e marca o link dela; as outras ficam escondidas
 function mostrar(id, rolar) {
   const alvo = paginas.find((pagina) => pagina.dataset.pagina === id);
   if (!alvo) return;
   paginas.forEach((pagina) => { pagina.hidden = pagina !== alvo; });
+  pintarFundo(alvo);
   links.forEach((link) => {
     if (link.dataset.ir === id) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');

@@ -177,6 +177,15 @@ ${corpo}
 </html>`;
 }
 
+// Só no palco: a rolagem continua (rodinha, toque, teclado), mas sem a barra do sistema, como num celular.
+// O código copiado não leva isto, para não esconder a barra no site de quem copia.
+const ESTILO_SO_NO_PALCO = '<style>* { scrollbar-width: none; } *::-webkit-scrollbar { display: none; }</style>';
+
+export function prepararPalco(documento: string): string {
+  return documento.replace('</head>', `${ESTILO_SO_NO_PALCO}
+</head>`);
+}
+
 // O palco só acrescenta espaço para rolar quando o efeito depende da rolagem.
 export function montarPalco(entrada: EntradaDocumento): string {
   const documento = montarDocumento(entrada, 'documento');

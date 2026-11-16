@@ -1,0 +1,148 @@
+<section class="conta04">
+  <div class="conteudo">
+    <header class="cabeca" data-anima>
+      <h2 class="titulo">Minha <span>conta</span></h2>
+      <p class="subtitulo">Gerencie seus dados, endereços e acompanhe seus pedidos</p>
+    </header>
+
+    <div class="abas" role="tablist" aria-label="Áreas da conta" data-anima>
+      <button class="aba" type="button" role="tab" id="conta04-aba-perfil" aria-controls="conta04-perfil" aria-selected="true">Perfil</button>
+      <button class="aba" type="button" role="tab" id="conta04-aba-enderecos" aria-controls="conta04-enderecos" aria-selected="false" tabindex="-1">Endereços</button>
+      <button class="aba" type="button" role="tab" id="conta04-aba-entrar" aria-controls="conta04-entrar" aria-selected="false" tabindex="-1">Entrar</button>
+    </div>
+
+    <div class="cartao">
+      <!-- Perfil -->
+      <div class="painel" role="tabpanel" id="conta04-perfil" aria-labelledby="conta04-aba-perfil">
+        <div class="perfil" data-anima>
+          <span class="avatar" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <div class="perfilInfo">
+            <h3 class="perfilNome">Marina Souza</h3>
+            <p class="perfilTelefone">(11) 98765-4321</p>
+            <p class="perfilEmail">marina.souza@email.com</p>
+          </div>
+          <div class="pontos">
+            <strong class="pontosValor">320</strong>
+            <span>pontos</span>
+          </div>
+          <button class="botaoLinha editar" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+            Editar
+          </button>
+        </div>
+
+        <form class="formEditar" action="#" hidden>
+          <label class="campo"><span>Nome</span><input name="nome" type="text" autocomplete="name" required></label>
+          <label class="campo"><span>WhatsApp</span><input name="telefone" type="tel" autocomplete="tel" inputmode="numeric" required></label>
+          <label class="campo"><span>E-mail</span><input name="email" type="email" autocomplete="email" required></label>
+          <div class="botoes">
+            <button class="botaoOuro" type="submit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Salvar
+            </button>
+            <button class="botaoLinha cancelar" type="button">Cancelar</button>
+          </div>
+        </form>
+
+        <div class="premio" data-anima>
+          <p><strong>Faltam 180 pontos</strong> para um lanche grátis</p>
+          <div class="trilho" role="progressbar" aria-label="Pontos até o lanche grátis" aria-valuemin="0" aria-valuemax="500" aria-valuenow="320"><span class="barra"></span></div>
+        </div>
+
+        <div class="atalhos">
+          <button class="atalho irEnderecos" type="button" data-anima>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Meus endereços
+          </button>
+          <a class="atalho" href="#" data-ir="pedidos" data-anima>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l3-2 3 2 2-2 2 2 3-2 3 2V2l-3 2-3-2-2 2-2-2-3 2Z"/><path d="M8 9h8M8 13h6"/></svg>
+            Histórico de pedidos
+          </a>
+        </div>
+      </div>
+
+      <!-- Endereços -->
+      <div class="painel" role="tabpanel" id="conta04-enderecos" aria-labelledby="conta04-aba-enderecos" hidden>
+        <div class="painelTopo">
+          <h3 class="painelTitulo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Meus endereços
+          </h3>
+          <button class="botaoOuro adicionar" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Adicionar
+          </button>
+        </div>
+
+        <form class="formEndereco" action="#" hidden>
+          <div class="linhaCampos">
+            <label class="campo"><span>Rua</span><input name="rua" type="text" autocomplete="address-line1" required></label>
+            <label class="campo campoCurto"><span>Número</span><input name="numero" type="text" inputmode="numeric" required></label>
+          </div>
+          <label class="campo"><span>Complemento</span><input name="complemento" type="text"></label>
+          <div class="linhaCampos">
+            <label class="campo"><span>Bairro</span><input name="bairro" type="text" required></label>
+            <label class="campo"><span>Cidade</span><input name="cidade" type="text" autocomplete="address-level2" required></label>
+          </div>
+          <div class="botoes">
+            <button class="botaoOuro" type="submit">Salvar endereço</button>
+            <button class="botaoLinha cancelar" type="button">Cancelar</button>
+          </div>
+        </form>
+
+        <ul class="enderecos">
+          <li class="endereco principal" data-anima>
+            <div class="enderecoInfo">
+              <strong>Casa</strong>
+              <p>Rua das Acácias, 140</p>
+              <p>Jardim América · São Paulo</p>
+              <span class="selo">Principal</span>
+            </div>
+            <div class="enderecoAcoes">
+              <button class="textoBotao tornarPrincipal" type="button">Tornar principal</button>
+              <button class="textoBotao remover" type="button">Remover</button>
+            </div>
+          </li>
+          <li class="endereco" data-anima>
+            <div class="enderecoInfo">
+              <strong>Trabalho</strong>
+              <p>Av. Central, 88 · sala 3</p>
+              <p>Centro · São Paulo</p>
+              <span class="selo">Principal</span>
+            </div>
+            <div class="enderecoAcoes">
+              <button class="textoBotao tornarPrincipal" type="button">Tornar principal</button>
+              <button class="textoBotao remover" type="button">Remover</button>
+            </div>
+          </li>
+        </ul>
+        <p class="semEndereco" hidden>Nenhum endereço salvo ainda.</p>
+      </div>
+
+      <!-- Entrar -->
+      <div class="painel" role="tabpanel" id="conta04-entrar" aria-labelledby="conta04-aba-entrar" hidden>
+        <form class="formEntrar" action="#" novalidate>
+          <h3 class="painelTitulo entrarTitulo">Entre para juntar pontos</h3>
+          <label class="campo campoNome" hidden><span>Nome</span><input name="nome" type="text" autocomplete="name"></label>
+          <label class="campo"><span>WhatsApp ou e-mail</span><input name="usuario" type="text" autocomplete="username" required></label>
+          <label class="campo">
+            <span>Senha</span>
+            <span class="senha">
+              <input name="senha" type="password" autocomplete="current-password" minlength="6" required>
+              <button class="verSenha" type="button" aria-label="Mostrar senha" aria-pressed="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </span>
+          </label>
+          <p class="erro" role="alert" hidden>Preencha o usuário e uma senha com 6 caracteres ou mais.</p>
+          <button class="botaoOuro entrarBotao" type="submit">Entrar</button>
+          <p class="trocar"><span class="trocarTexto">Ainda não tem conta?</span> <button class="textoBotao trocarBotao" type="button">Criar conta</button></p>
+        </form>
+      </div>
+    </div>
+
+    <p class="aviso" role="status" aria-live="polite" hidden></p>
+  </div>
+</section>

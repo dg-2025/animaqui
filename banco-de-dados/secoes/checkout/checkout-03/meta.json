@@ -1,0 +1,6 @@
+{
+  "id": "checkout-03",
+  "nome": "Checkout em duas etapas com Pix e cartão",
+  "categoria": "checkout",
+  "descricao": "Pagamento de loja de roupas com etapas numeradas (endereço com CEP que preenche sozinho, depois pagamento), etapa atual com borda azul, escolha entre cartão com parcelas e Pix com 5% de desconto, resumo com fotos e total verde, validação dos campos e tela de pedido confirmado."
+}

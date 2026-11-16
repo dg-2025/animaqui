@@ -1,0 +1,198 @@
+<section class="pedido03" data-tema="claro">
+  <div class="fundoAnimado" aria-hidden="true">
+    <span class="orbe orbe1"></span>
+    <span class="orbe orbe2"></span>
+    <span class="orbe orbe3"></span>
+    <span class="particula p1"></span>
+    <span class="particula p2"></span>
+    <span class="particula p3"></span>
+    <span class="particula p4"></span>
+    <span class="particula p5"></span>
+    <span class="particula p6"></span>
+  </div>
+
+  <div class="conteudo">
+    <header class="topo" data-anima>
+      <h2 class="titulo">Minhas compras</h2>
+      <a class="irLoja" href="#" data-ir="inicio">Ir à loja</a>
+    </header>
+
+    <div class="chips" role="group" aria-label="Filtrar pedidos" data-anima>
+      <button class="chip" type="button" data-filtro="todos" aria-pressed="true">Todos<span class="chipNumero"></span></button>
+      <button class="chip" type="button" data-filtro="andamento" aria-pressed="false">Em andamento<span class="chipNumero"></span></button>
+      <button class="chip" type="button" data-filtro="entregue" aria-pressed="false">Entregues<span class="chipNumero"></span></button>
+      <button class="chip" type="button" data-filtro="cancelado" aria-pressed="false">Cancelados<span class="chipNumero"></span></button>
+    </div>
+
+    <div class="lista">
+      <article class="pedido" data-grupo="andamento" data-anima>
+        <header class="pedidoTopo">
+          <span class="numero">Pedido #2490</span>
+          <span class="data">16/11/2026</span>
+        </header>
+        <div class="pedidoItens">
+          <span class="fotos"><img src="data:image/webp;base64,UklGRjgFAABXRUJQVlA4ICwFAADwGwCdASpwAHAAPpE+mEglo6KhLxZLYLASCWMAzbjsyA3jx1Nurzs3o4/3O+yb0LP3+hO1uasw+1DjSZzuOqpA1Z9QatdM8+pNEDGFxGlhvPs8KdE3LRKolCeBHG/dDI02ZKyhDagezWdi84WHJhf+TX3+H+ho/tgbijo54gfhQcuTXeZ37ditUq4FCwVic6tcRoXM5S2f0gsSOWAVZBPaXNBOCNXZdeFxuWDjwbjf6oAeqphfI7Xgv/kv0xkAeKHzwIcfg4XCfo1+PD98NJAMQfKNsHhqc/jUPjfrBUpHFWwguvHIysQAAP79epAtZ+Y2MPG49GKtr1+QuhgX1qL+gLD3QafeKd62Q/1DHXWgXningw1aXK5GpCOc2LaDakab+XaSwr+eHhYAW9ToX3MbFsX+5Gmo/yjQeP1SSsMFnzPpM7nnqPUYzSKaRNG61UkxHf1U25/WzrtRBT6WiIpscw8ZoAY/ETscya94TaQk+AYTI+iEQe3zpZSfuvYKIxlhuld/N6ZkLfcdyHQUx8TM/28b9+WY+IPw7HUdoPq/THvxByBRqZboD/XGCRfyFV1BmqaiY9hI0buuhUohZPsM0F3zVJce3/jcV611YtBVNlGf7VO6spwBLJGBpC2dUsplxWNEGJZRQz/gX4Ax7IWvf/wOHaetyAyXDs+QfedepOIau1dPdY7I41ChRRWIbZaA9qQR0fuPz/W/5Bo36VR3iYCv9QXbEqTaZ6kogi/ilsdwLIFP+F0XqkGTz1l7NXO3O55YE6Dpr9UUgAOo8avNTVD8sIwEr1xCJj9qdp5HzeBHWS66mimiB1X+pQDTTkZRGdaZ086KWek8z/yMOp1Vs/MI8Kv7/SatptVX/vuEzJDOfWUsviBthIz39lHkRCJR+WWQjKCvy3Uhjz7geIySQHZ6a6Cg+zZvaCLOT1u53YgYxWQg4LCuyVQ6HsM/h8l2sW7LU82MKxw5gYqz/NQMPhlz3O/N2u06G8pKot9lDxNMDw60Jpcc0RKbh/Ci568+h/Hh0IS5gLDun/b1bViV6URPzWq0GZZop6TpeNrgPD1gYWWhV+tK5jV5/FlfCxtfkdxc8dGoHAmx4YNNPIOgvhKXzyOaiY0/BhanAkrIzNDQf6Enl3zSjIQJvDhL6anmBks3harAkxiuTucsxsQ8FOmBt9r8+/m/WU+3Ce5QOkXdzpHOUqHb95P9V24FrAlG8PBVZj1VM1Au0A/hHcehBLio4RHPXPyxNQEz6ER41CU2payvQcxmvSh27Cmm868UZr9Uflpa4MQaTW3xICKgpyhb4NtAfx34tF96DWZ1sMFWqdPrSmIxiYum6pM2YNgwhgyAGETQivsq8yS4uuQtIlzhm3ZpoGbmYl+T6vMynOMdoDd8xiHf82QHUBYGgavNGb+s+aSPokaX2lV3vYUDYrEPrj1wZkoKSfNNEI10Tu7McWgKe5cS2i/lwUY4oIQ0OkqI489ZFSYBGmgcnqRn5nk3+Wu2yfWXMMXYJqt71VAb/w9ghF/nAe/OkWAnIbAz9ZsvIdALQ+XgR5EhC9DaHtdbTWbXhnxXcU9enBr8PmuzYigTET6nxPPd63zlzg0XDHUk8E7GT6G4bzlNJqaaZ2ktKYeEXlu51/OZp13lo4WYptoCkE/UB8+R3ideShXFyQuHHf8X6AhAbv7nDghpym/gX3hHBNvptMzKBYCoyRr5vG0/56v92zwouJtNBM6XPF8pQiTrfdpF/rs9Vr0E3EY3iufERKJCwAAA" alt="" width="112" height="112"></span>
+          <span class="nomes">Colar Coração Dourado<small>1 item</small></span>
+        </div>
+        <div class="pedidoLinha">
+          <span class="badge aguardando">Aguardando pagamento</span>
+          <span class="total">R$ 349,90</span>
+        </div>
+        <div class="pedidoBotoes">
+          <button class="abrir" type="button" aria-expanded="false">Detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <button class="acao pagar" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l4 4-4 4-4-4z"/><path d="M12 13l4 4-4 4-4-4z"/><path d="M3 12l4-4 4 4-4 4z"/><path d="M13 12l4-4 4 4-4 4z"/></svg>Já paguei</button>
+        </div>
+        <div class="detalhe" hidden>
+          <div class="detalheDentro">
+            <ol class="linhaTempo">
+              <li class="feito"><span class="ponto" aria-hidden="true"></span>Pedido feito</li>
+              <li class="agora"><span class="ponto" aria-hidden="true"></span>Pagamento</li>
+              <li><span class="ponto" aria-hidden="true"></span>Em separação</li>
+              <li><span class="ponto" aria-hidden="true"></span>Enviado</li>
+              <li><span class="ponto" aria-hidden="true"></span>Entregue</li>
+            </ol>
+            <dl class="info">
+              <div><dt>Entrega</dt><dd>Envio segurado</dd></div>
+              <div><dt>Pagamento</dt><dd class="formaPagamento">Pix</dd></div>
+              <div><dt>Endereço</dt><dd>Rua das Acácias, 120, Belo Horizonte - MG</dd></div>
+            </dl>
+          </div>
+        </div>
+      </article>
+      <article class="pedido" data-grupo="andamento" data-anima>
+        <header class="pedidoTopo">
+          <span class="numero">Pedido #2481</span>
+          <span class="data">12/11/2026</span>
+        </header>
+        <div class="pedidoItens">
+          <span class="fotos"><img src="data:image/webp;base64,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" alt="" width="112" height="112"></span>
+          <span class="nomes">Choker Pérolas Noite<small>1 item</small></span>
+        </div>
+        <div class="pedidoLinha">
+          <span class="badge separacao">Em separação</span>
+          <span class="total">R$ 690,00</span>
+        </div>
+        <div class="pedidoBotoes">
+          <button class="abrir" type="button" aria-expanded="false">Detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+        <div class="detalhe" hidden>
+          <div class="detalheDentro">
+            <ol class="linhaTempo">
+              <li class="feito"><span class="ponto" aria-hidden="true"></span>Pedido feito</li>
+              <li class="feito"><span class="ponto" aria-hidden="true"></span>Pagamento</li>
+              <li class="agora"><span class="ponto" aria-hidden="true"></span>Em separação</li>
+              <li><span class="ponto" aria-hidden="true"></span>Enviado</li>
+              <li><span class="ponto" aria-hidden="true"></span>Entregue</li>
+            </ol>
+            <dl class="info">
+              <div><dt>Entrega</dt><dd>Expresso segurado</dd></div>
+              <div><dt>Pagamento</dt><dd class="formaPagamento">Cartão em 3x</dd></div>
+              <div><dt>Endereço</dt><dd>Rua das Acácias, 120, Belo Horizonte - MG</dd></div>
+            </dl>
+          </div>
+        </div>
+      </article>
+      <article class="pedido" data-grupo="andamento" data-anima>
+        <header class="pedidoTopo">
+          <span class="numero">Pedido #2465</span>
+          <span class="data">02/11/2026</span>
+        </header>
+        <div class="pedidoItens">
+          <span class="fotos"><img src="data:image/webp;base64,UklGRqYCAABXRUJQVlA4IJoCAABwFQCdASpwAHAAPpFAnUqlo6KkppTbELASCWkA0jgRRl5sBX69aWoX6QUDW5ewaQJaB/OzmAhBXXsMOWFkYFkdd8NOyVczCWyNTltF7x4oreMC45OlP1RknJ4pQtYiFdeitggJ/2g6npf9Xed7t6lcUlkXtfMpE3OPu23Ge4r9aAYCc/XS9s3yvRAjCtQVDslMYcRtwJvl/1ifHmMDjZCu7tZNWWpEMHxO0Rqte4mM0Dw03oAA/vwSkOBPMq06Eza42DCWDwkldYXE2sx/rGzbAxkj5xQu6P5XFvhECeFK/MoxBpLLAPZ4GK1M/5zYu8Y6Wuaeyo/gfyRp25QdX0u4RsiFs0x40aqG/tat7xFMzDo7TXE0SEuCtFXPbSNh7oDOxq6uWX5L9JsgC042spDCSN3LbcOlDowldfVu/hI2lbaXGqwFMkfpH2pxgnDmg56KLa98JCUOEsCIaI9YnldGyqFeOOgip8w8Q0I/HkPwhj5UMqB7A6xwxDbv/qNHKlnycN3UlClGse92fnIrTlV77ngVCvcWoz00W2shnzjRklOHRzv4tIETtAEMPA/BKJuWkf1RJB3FbqE4Dmt+N4lSadoHLuHgt1CdL2Zcdlsrqk5xOF8zNdSsnPWGPkinDMNnBtkxwdoUQhcs7lDlt2LCNxT2fxyufyIPtBUT6cwfFOOfDCEUAVlh7FdOEcdY6A6zsKy/iao3dD3/35ynM8Ep2aaaRGwQgEx4QbLMtqUK2bEbF+TjtQ4X7UR/cYI6L5HnmdaR3ZdJBMpKVAE0fhcCgiQ6ut1pXk8etbpn2LG3DSMXFVco8NxRnl6wCV2yKHmT0QiLrXy3YUa+6GWTVoZBJImocMceSjgZGrxu+e7nHIR5A6QL0shUwAA=" alt="" width="112" height="112"><img src="data:image/webp;base64,UklGRoIEAABXRUJQVlA4IHYEAADwGQCdASpwAHAAPpE8mkgloyKhKnMOSLASCWcAz2uHf6ebEE6g/G3B78l5wfXfYyTNOlT3CQl87cGxml3OQrUqcWY13r4vYqwnPo7HM4IJD2+b8p67+yKVGceatHnFP7yntirBnbyLPhJ3OzQdl2NIrxMkjWmNaZvz0CTq2z0eWyJyRsTWAGgMwFO8I7OY7MzUrNvJxXNI+G1Cf6310xt4khI8VIbbfgFFvX4BiVOHWpD481Wp5MqUaIRZHJ3knS8X5HC0zUCEPJk+u2DHs0ome8jo8bmCVEAA/sHEEfxG911GwvhL7sacaF0Jn0Lmt3DvXelVWBXXV6vP2aoCL/OWI9jHzc+kfQAly+dAx8EPkWqyqLMYp1T/+b9GROTVSKjJyp1g0n64/ItRPUOj0nRrnpC3kHIT62lJUaJspAUC6E+at5dZogsdlMPz39ZjXeq6ng3sE0x+3x8AV6nnDoXL9Uh3O4Zz1mzInpUC+ufSE5KEOHdiuOxHkiky7mjHTYdPG5Y5RK3i0cPvKlvGBVRix70KyhXbmhjmVoDoeqEKXL8oN8xtTW4UQaUiLlymaFqRYrWNEnS8mZMJndKSVukZsIjO5RSkW/VTB1t75cz8qzs5RWd6DPxDaspVvIKcrztnIOWaTuS7MEBdlGXoCg2LSdl4zYZ1ZhFNWARHDlzl7nqYLAYPSYNyxK/nXkEpQwzDXuXCSTvVmqWbZGR+o5ibJw4LoA/b0j+LnrTVFQqEm8gMUAVcAS4DMhnj6p3nHzuGSiYXpzcOGoTtAwRJT2yAWEIrgredujgA8bP0IAU5HuuDHoirWjeihIS+PImbHut5P3kANBMaT6B2TDaDPuHpIKSRSYnV7ExYCvDs7SnMIJv1+I92rjC/7qHIbKr9rLxjx/9TLONfVG+qj2dRxtRsJYTZj74R7uwzded1kXESMMH4AL6RdarA+WEsfn5rLYf8C2JzfMF88f2GQS472FHnItUIDx3qMEPBkFATS+I+vptGu/QrElXmFdG5eu1SgQ+WsVUNeJABnmCxhuHPkPPx7IFQDbR6zDHCFDH24Z46OrCaQKdcmIbfNSv/lkbhkyfyvTTKHfm36P0RdID01pJBfhvPRSK7U00kaF2Lo9P62NHIMcJdhMZmMXlkrbnrN6MKY3CbOuPEaKB299wH91n+mtrdo1Djx7Bpt2uZR8nwqtZQ2Izm0NXSgonEz3PHiv/X9TGKKhWWF0TBqo0CdbdaAgvV50Zf/XMAbs8NMpgNJ7PaxnWYUD87nj0FyapqsLW507Y4GCBCWF4EyjFObAasyJPuU5I1pIxAwrpsvXYMSbdS5Bm3SwCiXXn0gpIpmpLNEEbkyhy5chnawd8E+Y7ugB8+pejBlxqyD5kjfhtBKV53fOY0C2I3FDJJ+nNlOi8LYd8bbtpWvAg5DCdUQ2RvW46/gVgX99ybawaog39/tjgbvW3EdhKcuwJvcfWA7f4idzo+fstHlrzBLpiVysDyYV19bxnL5ddc5Fb8aJFqVDtcWQQAAA==" alt="" width="112" height="112"></span>
+          <span class="nomes">Pulseira Riviera Pérola + Brincos Cascata Cristal<small>2 itens</small></span>
+        </div>
+        <div class="pedidoLinha">
+          <span class="badge enviado">Enviado</span>
+          <span class="total">R$ 724,70</span>
+        </div>
+        <div class="pedidoBotoes">
+          <button class="abrir" type="button" aria-expanded="false">Detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+        <div class="detalhe" hidden>
+          <div class="detalheDentro">
+            <ol class="linhaTempo">
+              <li class="feito"><span class="ponto" aria-hidden="true"></span>Pedido feito</li>
+              <li class="feito"><span class="ponto" aria-hidden="true"></span>Pagamento</li>
+              <li class="feito"><span class="ponto" aria-hidden="true"></span>Em separação</li>
+              <li class="agora"><span class="ponto" aria-hidden="true"></span>Enviado</li>
+              <li><span class="ponto" aria-hidden="true"></span>Entregue</li>
+            </ol>
+            <dl class="info">
+              <div><dt>Entrega</dt><dd>Envio segurado</dd></div>
+              <div><dt>Pagamento</dt><dd class="formaPagamento">Pix</dd></div>
+              <div><dt>Endereço</dt><dd>Rua das Acácias, 120, Belo Horizonte - MG</dd></div>
+            </dl>
+            <div class="rastreio">
+              <span>Código de rastreio <strong class="codigo">QB482913275BR</strong></span>
+              <button class="copiar" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg><span>Copiar</span></button>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="pedido" data-grupo="entregue" data-anima>
+        <header class="pedidoTopo">
+          <span class="numero">Pedido #2430</span>
+          <span class="data">18/10/2026</span>
+        </header>
+        <div class="pedidoItens">
+          <span class="fotos"><img src="data:image/webp;base64,UklGRpwDAABXRUJQVlA4IJADAADwGACdASpwAHAAPpFAm0slo6InpfHMMPASCWVpH1osMk6C7oyYIwqnW8EEUZjjdE4j6lPLpd0DI+zR8+2749LCrEpLZNH+X3GDjbS51dCEXTUuWhZqNMRwO/j9LWzG8ZEA0NPzQLHLZMRevfnfh8VNKHr4J8BlMG38Onv1GLr1ctabDmR09zLQj01rh2uXpq9Xi4wQZOUmmbUgVFLWojYNUUG2h+rYd+hqC7cAlJFLS3uePmsvlxTF4YHIIe/LOdPVxVo0joNgh8WUDa6PIhQAAOzkSOqjA/qlc3y97Wv7d8CLYYUaQ/f8qgJzLLpCkFoHU3Pw6ef3P/DIq+5d5NZtia3aNqWEDL/kfTY/jIH4RUWXlPlMhRyYOoKMdJPhaO+5anwp6iUJSQGyB6KSGklYVWV0fS5m2nFTAJh7II7ZsWi+ORQajM8Ek3zZbfxw4R8dkTv5iw1yebD8x4tQLew80Yq9YJzygH/40sZP7ZMsejz7csp1q1e7a5Tdlw/HCaw6zpTO//rlQsYSFnHfxBbTkUdZyVQfRqjVyMjVRZRfI4ZxHaY1WbEVDLx3HZtvULgu6iSvX8fI7k4FSxunI9wjBPCUMHirXrz4KE/5ASnsLWIRjeTZFvIQmJObZscbKfLMt18JeaOYqZCHuRRIBopCoQuZEE7s4OYLq7z7H0avb1HXqSDBYNrzKHeRbmmVo5iJ75x5pVerA8B5f5NYq15fi2chQyo9AzdrJH92cdUulhS11DGzmEy7Zp39cYJ2tqIEdUzSX6c+XaodwgBW5xHFgjyax4I3Y1qhdeeiKey3socScm4f1HJN4GYeCE1A401csjdhuuKQtmbbvF484IGV4DCayZiY1q/9UsE7LCL+0030dO4M810GxQM/18u5MOeU4mvMeUy5G3dmGm5iZcguJ7VHFYGPfJug9x0vWrV3taRwG96FvWbe98JEMoIKOK+CXwVBahmae59IAyno9LhWLqgGi0Jqka0R6CxbMW+BKQCdZTo6POye+QWEfH6tDgUP/QDWw2X7gadP8nflZDA04Si14xL1InJArmByJJqtcEnoOR5hw0WqcvbROL+RiNBP+CpcHgpLRjI5A7F5ZOotJpNQ0BaGVyDm8AcMOFKMbVjm60PNyQ4WSdTNUx4D5BzIHaytfK+9xzYXMgeVQPZWjXTLokod3o1NS1kFEniqp6M9tYxBUt/BIC6pHzQAAAA=" alt="" width="112" height="112"></span>
+          <span class="nomes">Solitário Aurora<small>1 item</small></span>
+        </div>
+        <div class="pedidoLinha">
+          <span class="badge entregue">Entregue</span>
+          <span class="total">R$ 2.450,00</span>
+        </div>
+        <div class="pedidoBotoes">
+          <button class="abrir" type="button" aria-expanded="false">Detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <button class="acao repetir" type="button" data-quantidade="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg>Comprar de novo</button>
+        </div>
+        <div class="detalhe" hidden>
+          <div class="detalheDentro">
+            <ol class="linhaTempo">
+              <li class="feito"><span class="ponto" aria-hidden="true"></span>Pedido feito</li>
+              <li class="feito"><span class="ponto" aria-hidden="true"></span>Pagamento</li>
+              <li class="feito"><span class="ponto" aria-hidden="true"></span>Em separação</li>
+              <li class="feito"><span class="ponto" aria-hidden="true"></span>Enviado</li>
+              <li class="feito"><span class="ponto" aria-hidden="true"></span>Entregue</li>
+            </ol>
+            <dl class="info">
+              <div><dt>Entrega</dt><dd>Retirada no ateliê</dd></div>
+              <div><dt>Pagamento</dt><dd class="formaPagamento">Cartão em 10x</dd></div>
+              <div><dt>Endereço</dt><dd>Retirado no ateliê</dd></div>
+            </dl>
+          </div>
+        </div>
+      </article>
+      <article class="pedido" data-grupo="cancelado" data-anima>
+        <header class="pedidoTopo">
+          <span class="numero">Pedido #2398</span>
+          <span class="data">28/09/2026</span>
+        </header>
+        <div class="pedidoItens">
+          <span class="fotos"><img src="data:image/webp;base64,UklGRmgEAABXRUJQVlA4IFwEAACwFwCdASpwAHAAPpFCnEslo6Kho1zLQLASCWkA1jipr7vpStex6FyIYvE7+JL89/2HsAfmH0AM730f+yvwCfrB1jfRsKWGFVFTCeoelesWGES4Y4v7c/Uu6TjuLCPwoxRoPqsCpmPTO4xkufEhdo4/UGIh9WRBBTGU7jrj5DMfWl4kUjkgRsMlmTL9KwldU4yG6VKy0GEDelWMgDfGwLMZEbGGeUp7HnCfvGOl25f6aHcZh9XuugGBHEOWCmjR0qeODinJOAAA/vuc0u9m58CdYYes6Jc7slZ/s+J9Nw7YHXP6sNxgyeuyhFjXRwszYXTTWfsjntQ7NDUVzZBVp1dmSWz8r7K/EytqapnZUydGCTlGLsKAKLWpbEmdfXMvcae7E1V6AP+peGlpMYXRAN/YU4ptBmsThjkT0Wn2Z/kiKb9IBWhRmJgtECl/Wwu9nUlFXJ+Lb6asW9nRZbT5jRO3dROQVKFQd1lXIamHdP2Asw227gLROEpJ2pxn9hM9HBp/8bqoUHZ9cGf0mYOqnrsWFokJGmBSv+/6n1jnv4ExAHMCH0aeAT83bVn+LW8KyzHlUVvjmKl1OMZp51WuHa13JK5Gxh6urVpUIVcbAWP7ZrTWoFf1UbftXLy/JAzdiQvrhHiAkh+PLp/ECAOjvEpKBsrG88pVzIaOc/QOD03prBvykg7wprFWHxH07PO6D+kGIFkJT6TSNg/nkJHv03NEJu3mHkUi3cVttecnCBw5TScXiPcJmNw/C6TT+1w3uVLmXxQ7oF3NUPXlBIDjZA4BXLpxI9xSLLO5XXRQinwfarYYS/m+j+JRq1Q1z0q5j1Kxsq/IiLccZnV2sH/nO677yy/LnuNI1hRue6T93ddDuXpQq91bz/3bn2tEb4XsoBJ7M0ZL0Jb73/3OR3P6wnllJ3nNXWAz3pWJaEuaGzyOSp7EgTuSizkXutiv/mJJP5Or4RIJtQ9NozSuotqbA/2FlIsQ9KduOxTTxMlf3j+cW3yPl5z09sSGNOubwVKshNJDh2RL8VyfRlYlnJj2EFQ+DUcf74b6ypLnn7j3Bx4CyBoXtGMdDyMeH9/TopDI4J24py0XPml8ZAukyDknVs2LnycjMTJ3r0vii+UjL0Xi0DOb6eWsvX9IsSE9bRTi6+T686qv2i35bnQU6z/b4dUBSCbP+Fnqzf6Rs6+X8+jC+99bHTaq3ZUIpyvha+/5vNQx/ppbGOPnu+eEGFwqLCZ8FrNgHzMcdfMAz/TW9mWbI89lJefdHqirAMITUHgYvB91rdXo+CRICd53AgJeYgVmPax5QjaMLPZ6trrPmY+ReKFbf1sYaXaxAMHE7jJUUIu399h5NIWfVI8MJnhIojqiIyie5L4qWfRZOjmov3Zi1Nzd5q2LP1j41b9RIQroUm460Km8SdSVHO7ApzEhNl1DeNDa5Vh7/aAlsMgtoc4WGusny+fwHHZUOaZpWnSWCN0Dqu5neRkKNaAAAAA=" alt="" width="112" height="112"></span>
+          <span class="nomes">Brincos Gota de Pérola<small>1 item</small></span>
+        </div>
+        <div class="pedidoLinha">
+          <span class="badge cancelado">Cancelado</span>
+          <span class="total">R$ 459,00</span>
+        </div>
+        <div class="pedidoBotoes">
+          <button class="abrir" type="button" aria-expanded="false">Detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <button class="acao repetir" type="button" data-quantidade="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg>Comprar de novo</button>
+        </div>
+        <div class="detalhe" hidden>
+          <div class="detalheDentro">
+            <p class="avisoCancelado">O pagamento não foi confirmado no prazo e o pedido foi cancelado. Nenhum valor foi cobrado.</p>
+            <dl class="info">
+              <div><dt>Entrega</dt><dd>Envio segurado</dd></div>
+              <div><dt>Pagamento</dt><dd class="formaPagamento">Boleto não pago</dd></div>
+              <div><dt>Endereço</dt><dd>Rua das Acácias, 120, Belo Horizonte - MG</dd></div>
+            </dl>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="vazio" hidden>Nenhum pedido nesta lista.</p>
+  </div>
+</section>

@@ -1,0 +1,101 @@
+<section class="checkout03" data-tema="claro">
+  <header class="topoSimples" data-anima>
+    <div class="topoConteudo">
+      <a class="voltar" href="#" data-ir="carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg> Voltar ao carrinho</a>
+      <p class="selo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Pagamento seguro</p>
+    </div>
+  </header>
+
+  <div class="conteudo">
+    <div class="grade">
+      <div class="colunaForm">
+        <section class="caixa ativa" aria-labelledby="checkout03-titulo-endereco" data-anima>
+          <h2 class="caixaTitulo" id="checkout03-titulo-endereco"><span class="numero">1</span> Endereço de entrega</h2>
+          <form class="formEndereco" action="#" novalidate>
+            <div class="linhaCampos">
+              <label class="campo curto"><span class="somenteLeitor">CEP</span><input name="cep" inputmode="numeric" placeholder="CEP" autocomplete="postal-code"></label>
+              <p class="dicaCep">Teste com 01310-100</p>
+            </div>
+            <div class="linhaCampos">
+              <label class="campo longo"><span class="somenteLeitor">Rua ou avenida</span><input name="rua" placeholder="Rua / Avenida" autocomplete="address-line1"></label>
+              <label class="campo curto"><span class="somenteLeitor">Número</span><input name="numero" inputmode="numeric" placeholder="Número"></label>
+            </div>
+            <div class="linhaCampos">
+              <label class="campo"><span class="somenteLeitor">Bairro</span><input name="bairro" placeholder="Bairro"></label>
+              <label class="campo"><span class="somenteLeitor">Cidade</span><input name="cidade" placeholder="Cidade" autocomplete="address-level2"></label>
+              <label class="campo curto"><span class="somenteLeitor">Estado</span>
+                <select name="estado"><option>SP</option><option>RJ</option><option>MG</option><option>PR</option><option>SC</option><option>RS</option><option>BA</option><option>PE</option></select>
+              </label>
+            </div>
+            <p class="erro" role="alert"></p>
+            <button class="botaoAvancar" type="submit">Ir para pagamento</button>
+          </form>
+          <div class="resumoEtapa" hidden>
+            <p class="enderecoTexto"></p>
+            <button class="alterar" type="button">Alterar</button>
+          </div>
+        </section>
+
+        <section class="caixa" aria-labelledby="checkout03-titulo-pagamento" data-anima>
+          <h2 class="caixaTitulo" id="checkout03-titulo-pagamento"><span class="numero">2</span> Forma de pagamento</h2>
+          <form class="formPagamento" action="#" novalidate hidden>
+            <div class="opcoesPagamento">
+              <label class="opcao">
+                <input type="radio" name="forma" value="cartao" checked>
+                <span class="opcaoVisual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg> <span>Cartão de crédito</span></span>
+              </label>
+              <label class="opcao">
+                <input type="radio" name="forma" value="pix">
+                <span class="opcaoVisual"><strong>PIX</strong> <span>5% de desconto</span></span>
+              </label>
+            </div>
+            <div class="detalhes detalhesCartao">
+              <label class="campo"><span class="somenteLeitor">Número do cartão</span><input name="cartao" inputmode="numeric" placeholder="0000 0000 0000 0000" autocomplete="cc-number"></label>
+              <label class="campo"><span class="somenteLeitor">Nome impresso no cartão</span><input name="nome" placeholder="Nome como no cartão" autocomplete="cc-name"></label>
+              <div class="linhaCampos">
+                <label class="campo"><span class="somenteLeitor">Validade</span><input name="validade" inputmode="numeric" placeholder="MM/AA" autocomplete="cc-exp"></label>
+                <label class="campo"><span class="somenteLeitor">CVV</span><input name="cvv" type="password" inputmode="numeric" placeholder="CVV" maxlength="4" autocomplete="cc-csc"></label>
+              </div>
+              <label class="campo"><span class="somenteLeitor">Parcelas</span><select name="parcelas" class="parcelas"></select></label>
+            </div>
+            <div class="detalhes detalhesPix" hidden>
+              <p>O QR Code do Pix aparece depois da confirmação e vale por 30 minutos.</p>
+              <p class="pixDesconto">Desconto de 5% já aplicado no total.</p>
+            </div>
+            <p class="erro" role="alert"></p>
+            <button class="botaoFinalizar" type="submit">Finalizar compra · <span class="totalBotao">R$ 739,60</span></button>
+          </form>
+        </section>
+      </div>
+
+      <aside class="colunaResumo" data-anima>
+        <div class="resumoFixo">
+          <h3>Resumo da compra</h3>
+          <ul class="miniLista">
+            <li><img src="data:image/webp;base64,UklGRgoEAABXRUJQVlA4IP4DAAAQGACdASpgAGAAPtVYoUyoJSMiM5aOQQAaiWgAuoYm29qAREOc/SPtx+dZ04TeemB7PsSHbGhVgkTYkfhOtRukWY6vGeu+JCpzGogalNzvnw1REwZ+kq1OqHFM2cU/xyt2VUhFzbM1+7Iy36Lb2Sn9kGxAsv9UuNmZIqnlYKXMKuVt+oGBtcSrq4ZTU0kwXfmWLNVxBnkRP5TP/pyoEumGOhoakt6dZ3xhMvh1LVXSR+OA6K9ckeVaIxzoj++2oYdDdeeEtv97UgAA/vxEPqQHOYclvShnRiGstkRArsPU9W4ihnOtKZKUZISjfuSiiV0EK16w04bjz9D2YY+0nYYo/dHBdnsWhfKKgIJLhn7VfrlEJMi1IoKwkm5hqtqPViRz6P259gk6V2/2x1HBVIcblQhzTYc8CBSNwJBClBTq6ZnM7Ur/r9KBhP5rKNdmgsefnyWim6CmXjZX/TldWt9pSwveWmNV4yWJjafv1zURxzp6dy/2SJCYSYaV4zI2g8X4UJznt0u73imD4wV4fgQlL8M7Ir/jPcyxPUbvBJ1h3D6G18bcdMwYXymDp55VP0fViGZy+YbNLszHQlm0RW2H63cy5viV8RY7Oj/llOCN/Mi/baKETak53W8yn9gRjlc/xObRzphZrW710PvejZbO7Mz8aoJ61ToBwAN7Fuz7/VXdIUtEq2lq22vzdL+bW4P/ep00oaevPqWhVQTio8ox56ngMKNK28X777A/9Bv6hA/x7zG6RnOJCYSeCgy9Vx31KrtxiCpIVSh96CTrg1xtBmg3ZL9Rk01zg5UYFXeBO2uvuwktoZSeAyjkDwLuvihWGFkpRJpri83UL5+FFjKsS7J84xdAnR2bhXS0weuDo0BmwXDxZT270S4dI83bC6ENVWDO6fI2YgQzkx4gRWA13/YgYzcsxSkhxRM1SLebzzKAvmzZECSaqd+T/+Cf/P/mqz7df7MZsvcGn+gYCYVhXIUn2iKA0tz/NY30v1I+zeXfnWBR9VaijLZ66mVoleDtqpraF9LYskzeUknivKV498HJYaRWIQbSeUPiigvGFF0A8ncsOh3B99pW0KfoXFgo7eiUt+/VZXRpT/428rD7UEmhTraUZE6CGj5az3I9CpiSggWIWG9QKUyZfvyoavXDgIUr2LVm9BAysmfhEBulYHZgPTj6pm2SDqbywA3sgDp4yhxrSOkXPf9xXycQ0DqqVlv1sWUvn/IK6k6Pcj9hR6sBRYDR0YC0gWIXXyHh1YMYLfpPwZuYQI0KZXkuq5nGRNn1eWr5WDTOF3tS1v+f71svhIf4sWKTmVTRphKb5c52bUDH7YzO/Xm+1r5I3l6ldZwDdBxUBcoLS+1wAA==" alt="" width="40" height="40"><span>1x Moletom Canguru Musgo</span><span>R$ 289,90</span></li>
+            <li><img src="data:image/webp;base64,UklGRhYEAABXRUJQVlA4IAoEAABQFwCdASpgAGAAPt1ep02opSOjLxPMMRAbiWMAyyTEPqG4kgYIMnD5206LoeS+HXbsXjk6j+O7ZuAz6t4EhF/oNwod7/HOY+7at043Qz/U9aXEyEUrQ7AUFhhkbgBnzliaKKtmKp2GoG6AAkx6Hn6Jfr+F0S7e7SYdeDf3UDH8teC21vuaPX2PJrQu+jhTbJhKeSITY+qFjMij0UgUIdB9fcFx//f/1wzJ+3fjstS+of/3r5hoxgXgU0ROrv6duhEWUQAA/rH2bJ6z9yPHR/DUQzoN7705ivSn9ECIplR9eEDRAdoQ+zuBGUBgn0FTi9WkeZYCTtoyL6x0YDNFjUlAU8uYpKbTF5Khw9wuNbxQaCokO71pJcu7fSYxgma4nG10S4TyLEQaTwxliCDCPQ0m/jMxSneAnCIvX5px17YPFY0cWnnHd2fl57RqiKkFr/5PXWym8gqO7qyP4HhbB7CwVKelBHkaQ6XNhbT6q4Au3iLFKi3HuWoUTkwK1OdmDNk0YNvXgMw2QGJq8s0T0w2595E/+mMU/KYhiII2RPc4vB/iKjq8l3KGBOfvwcVao4AfnhlKJps90dKqH0Cag8ZpDumVRe472psytNg76QRMuOslNr6LyeI/HatTUIxzTLAShlKfpicKR6b/vfPnPHteZCsuyurLBSDsZDFKgiwhApExBkIYq7qFnIgoterlQrViUbs8MFcY16YgzwCXD3yVCnfqyVZZpcCDHKaSlrpZIJmUIz08ElKQ0Kn96K7eEN0VgOBdKBb9t2MXkhI+dJmCPLjX+LS94Rg/h2WVfYYkhbabex5X8RCgbKgAF4TbJy34j4BKdNyw2XJl0CbcVM0O9QCyz2wAzOdSLpXfuYsbnVYT/6WBLU9Rw8L2iAnShNzn1PclRKpx6qB/fvogxzkSVR8Dy7FwJUQ8ve+9CmTC0UtsDFoZXEiPINe/ovVbMbrSY5NRjoq7+rTZ7YtXjPt7TTl9jIyQ+97/CXiea7lSJlKTGtL2Q4WGOX9y7ucAeIwJHn4CrxMKnWHyyHoYXNsPGHb+npB3W2DC/6d/MlM8edL2OvEt9OWofv5D4yenSMF1815s2zvjRC5HUvK2ug6ld3pw6oj4oluRFdFhT4Kc5kX1R+3uJGoAEyhFjE+077JKbo02YvhKWcZeklkOfZ6VoBIgo5px2NSpgWSlno0Q98fJj1HenMYfxnPvjpeR8GIqyVxCTVtRYKYXzgr89yBvf5Mv8+XvDdPK65pv/tjWtgtc+2crrKn0EMPs0AdaykM4zoHf6uz4pyMlN1tYrHfK2AhgUOqhIzVjuD0ArOAiixUrFA0g6W/GANWjSuKyoSE8hxSnp4Vx3y5lpaUDILTuyy7TttHazgAAAA==" alt="" width="40" height="40"><span>1x Calça Cargo Preta</span><span>R$ 249,90</span></li>
+            <li><img src="data:image/webp;base64,UklGRpQCAABXRUJQVlA4IIgCAABwDwCdASpgAGAAPt1gqU2opaQmLxh5QRAbiUAYKZao5+LLdVh2AHy2eSZrqc6ANOe7xx8HxiadyKamhwPoAJAZZI0ZuFGZgR2gEHE53SuGePB5UOvckcvfpw5585E9VEdILr5ah42BJBUq2eRrNR0Cja+WIkJkU1fYVc6U4UH0BCYwjIAA/vAM/6qc1IE/I6R8i/OopGikJHRylWqCcp4vNtA7X9uGCnUlEX6YVB/uqPWJKYbJBNQxZzI+QrtliUrjbdDKRI9vF6VGhezKTcYsixIfKNAL3s2Z5CAxRTNK1OznRqJMVQTWAEMYs7K1jsdb4GKjxqm6sdoLk2GOiSFPOZRFgLtIm3ORQrDb4K/kIwQQVFpcTzbR2Iq4N3mrEF/bjo5TnL5g1f+AutBA/zSjYTPYI4BWbRnFvs6r0IrXzYF9WfdJrJR5rAGT+WphPNaVRigKDXuM6cHBz3OaxwT8YOLISWqEMamL3JljZUXGEut4kWg6g7sNLvNj00hCjSojhNP8+GG5AInqVCCEYKJF/qkQrGCY4UtDjvL0UPPIVhx7dId5dXHCx4/BQzrXYhDwqNJuSpEtnX5LjY+AffDjOKBvFVxN4vbd3cgKTsC/imNmx8lw8iisM6TigjSmhSX0VS1B5fgYXCjUuBuiwtnnn2GiHiAlkYyxwYiKCXInirCxpCRXyZWw9pt9X6TgvDOiQirbQbnc+PVNRpjpe/J0ilPycRLs0emGJwrBJN7IITi3W9/nGniB/00M0IJzgS0hp+e981npuwByPeZng/g7Wz1+WtB/r5VoAnjwbqCg9QmUNR4ClbwNdNxcJfjb2x5aJGG0F/jB08gkXPTQ5XUKPiA1mJ3gAAA=" alt="" width="40" height="40"><span>2x Boné Aba Curva Gelo</span><span>R$ 199,80</span></li>
+          </ul>
+          <div class="linhaResumo"><span>Frete</span><span class="textoVerde">Grátis</span></div>
+          <div class="linhaResumo linhaPix" hidden><span>Desconto Pix</span><span class="textoVerde valorPix"></span></div>
+          <div class="linhaTotal"><span>Total</span><span class="valorTotal">R$ 739,60</span></div>
+          <p class="seguranca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Pagamento criptografado</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="sucesso" hidden tabindex="-1">
+      <div class="cartaoSucesso">
+        <svg class="iconeSucesso" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+        <h2>Pedido confirmado!</h2>
+        <p class="numeroPedido">Pedido #TM-48213</p>
+        <p class="sucessoTexto">Obrigado pela compra! O andamento do pedido chega no seu e-mail.</p>
+        <div class="acoesSucesso">
+          <a class="botaoPrimario" href="#" data-ir="inicio">Voltar para a loja</a>
+          <a class="botaoContorno" href="#" data-ir="pedidos">Acompanhar meus pedidos</a>
+        </div>
+        <button class="recomecar" type="button">Fazer outro pedido de teste</button>
+      </div>
+    </div>
+  </div>
+</section>

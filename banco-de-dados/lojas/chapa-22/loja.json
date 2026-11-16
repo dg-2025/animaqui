@@ -1,0 +1,14 @@
+{
+  "id": "chapa-22",
+  "nome": "Chapa 22",
+  "segmento": "Hamburgueria",
+  "descricao": "Hamburgueria noturna em preto e dourado: cardápio com destaque, lanche com ponto e adicionais, carrinho com observação, delivery ou retirada com taxa por bairro, pedidos ao vivo e conta com endereços.",
+  "paginas": [
+    { "id": "cardapio", "nome": "Cardápio", "secoes": ["cardapio/cardapio-03"] },
+    { "id": "lanche", "nome": "Lanche", "secoes": ["produto/produto-08"] },
+    { "id": "carrinho", "nome": "Carrinho", "secoes": ["carrinho/carrinho-05"] },
+    { "id": "pagamento", "nome": "Pagamento", "secoes": ["checkout/checkout-04"] },
+    { "id": "pedidos", "nome": "Pedidos", "secoes": ["pedido/pedido-05"] },
+    { "id": "conta", "nome": "Conta", "secoes": ["conta/conta-04"] }
+  ]
+}

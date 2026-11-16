@@ -1,0 +1,16 @@
+{
+  "id": "trama",
+  "nome": "Trama Moda",
+  "segmento": "Moda",
+  "descricao": "Loja de moda de rua com destaques em carrossel, cartões de borda elétrica, busca com filtros, favoritos, moletom com cor e tamanho, carrinho com cupom, pagamento em duas etapas, meus pedidos e minha conta.",
+  "paginas": [
+    { "id": "inicio", "nome": "Início", "secoes": ["vitrine/vitrine-09"] },
+    { "id": "busca", "nome": "Busca", "secoes": ["vitrine/vitrine-10"] },
+    { "id": "favoritos", "nome": "Favoritos", "secoes": ["vitrine/vitrine-11"] },
+    { "id": "produto", "nome": "Moletom", "secoes": ["produto/produto-07"] },
+    { "id": "carrinho", "nome": "Carrinho", "secoes": ["carrinho/carrinho-04"] },
+    { "id": "pagamento", "nome": "Pagamento", "secoes": ["checkout/checkout-03"] },
+    { "id": "pedidos", "nome": "Pedidos", "secoes": ["pedido/pedido-04"] },
+    { "id": "conta", "nome": "Conta", "secoes": ["conta/conta-03"] }
+  ]
+}

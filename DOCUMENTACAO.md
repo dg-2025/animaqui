@@ -2,10 +2,10 @@
 
 | Campo | Valor |
 |---|---|
-| **Versão do documento** | 0.15 |
+| **Versão do documento** | 0.16 |
 | **Data** | 16/11/2026 |
 | **Autor(es)** | Daniel (responsável), Claude (redação) |
-| **Status** | Em revisão: E-02 (e-commerce) concluída (S09 a S13); S08 na fila (dados legais e publicação) |
+| **Status** | Em revisão: E-03 concluída (S14 a S17: palco sem barra e lojas Lume, Trama e Chapa 22); S08 na fila (dados legais e publicação) |
 | **Aprovado por** | Pendente |
 
 ## Histórico de Revisões
@@ -26,6 +26,7 @@
 | 0.13 | 16/11/2026 | Claude | E-02/S11: pacote Mercado e nicho com fotos do Pixabay: `vitrine-04` hortifruti, `vitrine-05` plantas, `vitrine-06` joalheria, `vitrine-07` luminárias editorial, `produto-04` anel com aro e `produto-05` suplemento (tema escuro). Testado: `tsc`, `eslint`, `build` e CT-607 no Edge, em 390 px e 1280 px. Snacks (531–535) e relógio (468–471) ficaram de fora: os padrões já estão cobertos pelas outras seções. SQL: nenhum |
 | 0.14 | 16/11/2026 | Claude | E-02/S12: fluxo de compra com 3 categorias novas (Checkout, Pedido, Conta) e 4 seções: `checkout-01` em três etapas com CEP, frete e Pix/cartão/boleto, `pedido-01` rastreio com linha do tempo, `pedido-02` Pix com QR de exemplo e prazo, `conta-01` perfil com clube de pontos. Seções com `id` geram sufixo único no script, para o mesmo bloco poder entrar duas vezes (RN-201). Testado: `tsc`, `eslint`, `build` e CT-608 no Edge, em 390 px e 1280 px. SQL: nenhum |
 | 0.15 | 16/11/2026 | Claude | E-02/S13: módulo **Lojas** (`/lojas/[loja]`) com 3 lojas prontas (Brasa Burger, ALMA, Feira Viva) em `banco-de-dados/lojas/`. `montarDocumento()` ganhou a opção `paginas` (D-31); a barra da loja troca de página pelo `#` e soma o carrinho de todas as páginas pelo evento `loja:item` (D-32), disparado pelas seções de loja; botões principais ganharam `data-ir`. Barra de módulos com 4 itens, sitemap e `llms.txt` com as lojas. Testado: `tsc`, `eslint`, `build`, rotas com 200 (loja inexistente: tela 404 com `noindex`, como na D-22), CT-609 a CT-611 no documento real de cada loja e no palco da plataforma, e o hero do Catálogo sem mudança. SQL: nenhum |
+| 0.16 | 16/11/2026 | Claude | E-03/S14 a S17, a pedido do Daniel: o palco esconde a barra de rolagem só na prévia (`prepararPalco`, D-33) e entram 3 lojas prontas com o visual dos projetos do Daniel, sem a marca e só a parte visual (D-34): **Lume Joias** (kjoias), **Trama Moda** (loja-roupas) e **Chapa 22** (burger-lab), com 20 seções novas no Catálogo. A navegação da loja pinta o fundo com a cor da seção aberta, para loja escura não ficar com faixa clara embaixo. Testado: `tsc`, `eslint`, `build` e CT-612/CT-613 no Edge em produção, em 390 px e 1280 px: sem erro de script nem rolagem lateral, todas as páginas abrem, todo `data-ir` aponta para página existente e o carrinho soma. A bateria completa dos CT anteriores não foi repetida. SQL: nenhum |
 
 ---
 
@@ -142,7 +143,7 @@ Levantados na análise de 02/11/2026; aguardam a avaliação do Daniel.
 
 ### 2.8 Evoluções planejadas
 
-**Em andamento:** nada. E-02 concluída (S09 a S13). Na fila: S08 (P-05, P-07 e a bateria completa dos CT). S01 a S07 entregues; S08 parcial (faltam P-05, P-07 e a bateria completa dos CT), na fila.
+**Em andamento:** nada. E-03 concluída (S14 a S17). E-02 concluída (S09 a S13). Na fila: S08 (P-05, P-07 e a bateria completa dos CT). S01 a S07 entregues; S08 parcial (faltam P-05, P-07 e a bateria completa dos CT), na fila.
 
 #### E-01 — Esqueleto e versão inicial (árvore e nomes aprovados em 02/11/2026)
 
@@ -224,6 +225,22 @@ Seções de loja (lanche, roupa, mercado e nicho) e o fluxo de compra, primeiro 
 | D-30 | A barra de navegação da loja fica em `banco-de-dados/lojas/navegacao/` (HTML, CSS e JS puros). O service preenche o nome e os links de cada loja, com texto escapado | — |
 | D-31 | `montarDocumento()` continua a única função de palco e cópia: ganha a opção `paginas`, que agrupa as seções em `<div class="lojaPagina" data-pagina>`. A troca de página é por `#` dentro do próprio documento, então "Copiar Loja" entrega um único HTML com todas as páginas funcionando | — |
 | D-32 | Carrinho entre páginas: as seções de loja disparam `loja:item` (com a quantidade) ao somar, e a navegação mostra o total. Botões que levam a outra página usam `data-ir="<pagina>"`. Fora de uma loja, o evento não faz nada | — |
+
+#### E-03 — Palco sem barra e lojas vindas dos projetos do Daniel (pedido do Daniel em 16/11/2026)
+
+Tirar a barra de rolagem de dentro do palco e trazer o visual das lojas que o Daniel já fez (kjoias, loja-roupas e burger-lab) como seções do Catálogo e lojas prontas, **sem a marca** e **só o visual**: nada de banco, login de verdade, admin ou PWA.
+
+| ID | Decisão | Bloqueia |
+|---|---|---|
+| D-33 | O palco esconde a barra de rolagem (a rolagem continua com rodinha, toque e teclado). Só no palco: `prepararPalco()`, em `montarDocumento.ts`, acrescenta o estilo; o código copiado não leva, para não esconder a barra no site de quem copia. Escolha do Daniel ("esconder só a barra") | — |
+| D-34 | Cada projeto vira loja pronta **e** seções soltas no Catálogo (escolha do Daniel). Nomes novos, sem marca: kjoias → **Lume Joias**, loja-roupas → **Trama Moda**, burger-lab → **Chapa 22**. Textos, produtos e preços são nossos; fotos do Pixabay (D-28). A área admin dos projetos fica de fora | — |
+
+| Sprint | Entrega | Depende de | Testes | Status |
+|---|---|---|---|---|
+| S14 | Palco sem barra de rolagem (D-33) | — | CT-612 | entregue |
+| S15 | Loja **Lume Joias** (visual do kjoias): `vitrine-08`, `produto-06`, `carrinho-03`, `checkout-02`, `pedido-03`, `conta-02` | S14 | CT-613 | entregue |
+| S16 | Loja **Trama Moda** (visual do loja-roupas): `vitrine-09` a `11`, `produto-07`, `carrinho-04`, `checkout-03`, `pedido-04`, `conta-03` | S14 | CT-613 | entregue |
+| S17 | Loja **Chapa 22** (visual do burger-lab): `cardapio-03`, `produto-08`, `carrinho-05`, `checkout-04`, `pedido-05`, `conta-04` | S14 | CT-613 | entregue |
 
 #### Ideias soltas (ainda sem conversa)
 
@@ -320,7 +337,7 @@ animaqui/
         └── shared/                 # NotFound, PaginaLegal
 ```
 
-Acervo atual: 75 seções em 20 categorias (`categorias.json`) e 14 animações.
+Acervo atual: 95 seções em 20 categorias (`categorias.json`), 14 animações e 6 lojas prontas.
 
 **Como crescer depois:**
 
@@ -368,6 +385,7 @@ Prioridade: todos A confirmar. RF-51 está limitado às 40 fontes padrão até e
 | RF-152 | Seção com tema claro: `data-tema="claro"` na raiz liga a variação clara dos tokens, no palco e no código copiado | A confirmar | `banco-de-dados/tema-padrao.css:75`, `src/shared/utils/montarDocumento.ts:46` | Implementado |
 | RF-350 | Módulo Lojas: escolher uma loja pronta, ver as páginas no palco, navegar e copiar a loja inteira num HTML só | A confirmar | `src/views/client/Lojas/index.tsx:22`, `src/features/lojas/services/lojasService.ts:90` | Implementado |
 | RF-351 | Carrinho e navegação entre as páginas da loja, no palco e no código copiado | A confirmar | `banco-de-dados/lojas/navegacao/script.js:1`, `src/shared/utils/montarDocumento.ts:135` | Implementado |
+| RF-352 | Palco sem barra de rolagem, com a rolagem funcionando (D-33) | A confirmar | `src/shared/utils/montarDocumento.ts:184`, `src/features/motor/components/Palco/index.tsx:107` | Implementado |
 | RF-300 | Seções de loja (Lanche e comida; Roupa e tênis com vitrine, cores, numeração, carrinho com arrastar e newsletter): cardápio com filtro, quantidade e sacola, produto com tamanho e adicionais, ofertas com cupom e sacola com cupom de desconto, cada uma com a conta feita na própria seção | A confirmar | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine`, `checkout`, `pedido`, `conta` | Implementado |
 
 ### 3.2 Detalhamento de Requisito
@@ -435,7 +453,7 @@ Todas com Status `Implementado` (fonte na matriz da seção 8).
 | RN-01 | O contador é calculado pelas variações existentes no acervo, nunca digitado | RF-01 |
 | RN-50 | O texto digitado sai escapado no palco e no código copiado | RF-50 |
 | RN-100 | A ordem do código copiado é a mesma ordem da pilha | RF-101, RF-103 |
-| RN-150 | O que é copiado e o que está no palco saem da mesma função. Única diferença: efeitos que dependem de rolagem ganham espaço para rolar só no palco (`montarPalco`) | RF-150, RF-151 |
+| RN-150 | O que é copiado e o que está no palco saem da mesma função. Únicas diferenças, só no palco: efeitos que dependem de rolagem ganham espaço para rolar (`montarPalco`) e a barra de rolagem fica escondida (`prepararPalco`, D-33) | RF-150, RF-151 |
 | RN-151 | O código copiado não depende de React, de biblioteca nem de arquivo da plataforma. Ícone é SVG embutido; imagem é SVG ou URI de dados. A única exceção é o `<link>` do Google Fonts | RF-151 |
 | RN-152 | O código copiado leva só os tokens, as animações e as fontes em uso | RF-151 |
 | RN-153 | Toda animação respeita `prefers-reduced-motion` e não usa biblioteca (Guia D-004) | RF-07, RF-53 |
@@ -580,6 +598,8 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | CT-609 | RF-350, RN-157 | Rotas e build | Abrir `/lojas`, as 3 lojas e `/lojas/nao-existe`; apontar uma loja para seção inexistente e rodar o build | `/lojas` leva à primeira; lojas com 200; tela 404 com `noindex`; build para citando o arquivo |
 | CT-610 | RF-351, RN-158 | Navegação e carrinho | Na Brasa: restaurante, cardápio, somar 2, Ver pedido, Finalizar, pagar com Pix, Ver o pedido, Já paguei, Voltar para a loja. Na Feira e na ALMA: somar em várias páginas | As páginas trocam na ordem; o número do carrinho na barra soma e subtrai entre páginas; `#/produto` abre direto a página |
 | CT-611 | RF-350, RN-150 | Mesma origem | Comparar o documento do palco com "Copiar Loja" e abrir o copiado como `.html` | Iguais; a loja copiada navega e conta o carrinho fora da plataforma |
+| CT-612 | RF-352, RN-150 | Palco sem barra | Abrir uma seção no palco, nos modos Celular e Computador, e rolar | A seção rola e não aparece barra de rolagem; o código copiado não leva o estilo que esconde a barra |
+| CT-613 | RF-300, RF-350, RF-351 | Lojas Lume, Trama e Chapa 22 | Abrir cada página das 3 lojas em 390 px e 1280 px, clicar num produto e pôr no carrinho | Sem erro de script nem rolagem lateral; o card leva ao produto; o número do carrinho sobe; nenhum nome das marcas originais aparece |
 | CT-603 | RF-300 | Sacola e cupom | Cupom inválido, `RAIZ10`, e zerar os itens | Aviso de erro; 10% de desconto no total; item some ao zerar e a sacola vazia esconde o botão de pagar |
 
 ---
@@ -606,7 +626,8 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | RNF-03 | Toque e teclado | CT-202 | `shared/ui` | Implementado |
 | RNF-04 | Crescer sem mudar código | CT-001 | `banco-de-dados/secoes` | Implementado |
 | RF-152, RN-154 | Tema claro de loja | CT-600 | `banco-de-dados/tema-padrao.css`, `shared/utils/montarDocumento.ts` | Implementado |
-| RF-350, RF-351, RN-157, RN-158 | Lojas prontas | CT-609 a CT-611 | `features/lojas`, `banco-de-dados/lojas`, `shared/utils/montarDocumento.ts` | Implementado |
+| RF-350, RF-351, RN-157, RN-158 | Lojas prontas | CT-609 a CT-611, CT-613 | `features/lojas`, `banco-de-dados/lojas`, `shared/utils/montarDocumento.ts` | Implementado |
+| RF-352, D-33 | Palco sem barra de rolagem | CT-612 | `shared/utils/montarDocumento.ts`, `features/motor/components/Palco` | Implementado |
 | RF-300, RN-155, D-28 | Seções de loja | CT-601 a CT-608 | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine`, `checkout`, `pedido`, `conta` | Implementado |
 
 ---
@@ -689,6 +710,50 @@ Licença Pixabay (uso comercial, sem crédito obrigatório). Ver R-04.
 | 4670893 | https://pixabay.com/photos/pear-light-energy-lightbulb-4670893/ |
 | 4243898 | https://pixabay.com/photos/plant-design-home-house-lamp-4243898/ |
 | 1079838 | https://pixabay.com/photos/capsules-pills-health-medicine-1079838/ |
+| 3611277 | https://pixabay.com/photos/wedding-rings-engagement-rings-3611277/ |
+| 7389356 | https://pixabay.com/photos/jewel-diamond-ring-fashion-jewelry-7389356/ |
+| 2093824 | https://pixabay.com/photos/engagement-ring-wedding-ring-jewelry-2093824/ |
+| 5644343 | https://pixabay.com/photos/accessories-necklace-earrings-5644343/ |
+| 967179 | https://pixabay.com/photos/pearls-jewellery-chain-necklace-967179/ |
+| 1875469 | https://pixabay.com/photos/rose-gold-jewellery-earring-1875469/ |
+| 791300 | https://pixabay.com/photos/silver-earrings-jewellery-wedding-791300/ |
+| 4396157 | https://pixabay.com/photos/pearl-bracelet-jewelry-close-up-4396157/ |
+| 1016724 | https://pixabay.com/photos/pearls-deco-decoration-1016724/ |
+| 1284225 | https://pixabay.com/photos/wedding-rings-marriage-wedding-1284225/ |
+| 3405972 | https://pixabay.com/photos/rings-wedding-engagement-ring-3405972/ |
+| 1236640 | https://pixabay.com/photos/wedding-ring-wedding-rings-gold-1236640/ |
+| 2412842 | https://pixabay.com/photos/jewellery-necklace-present-2412842/ |
+| 9912491 | https://pixabay.com/photos/autumn-nature-fall-leaves-leaf-9912491/ |
+| 9639853 | https://pixabay.com/photos/urban-fashion-denim-outfit-9639853/ |
+| 10453367 | https://pixabay.com/photos/woman-dj-music-headphones-jeans-10453367/ |
+| 7403432 | https://pixabay.com/photos/skate-skateboard-skateboarding-7403432/ |
+| 8155414 | https://pixabay.com/photos/wall-graffiti-art-street-art-8155414/ |
+| 5360306 | https://pixabay.com/photos/skater-skateboard-shoes-5360306/ |
+| 1278404 | https://pixabay.com/photos/t-shirt-white-clothes-rags-empty-1278404/ |
+| 1283576 | https://pixabay.com/photos/man-faceless-horror-anonymous-1283576/ |
+| 8501056 | https://pixabay.com/photos/man-young-people-skateboard-rolls-8501056/ |
+| 2564660 | https://pixabay.com/photos/woman-brunette-denim-jacket-fashion-2564660/ |
+| 9627845 | https://pixabay.com/photos/hats-snapback-cap-white-cap-9627845/ |
+| 5326930 | https://pixabay.com/photos/skateboard-shoes-active-in-the-free-5326930/ |
+| 2472101 | https://pixabay.com/photos/bag-yellow-fashion-bag-shoulder-bag-2472101/ |
+| 1063100 | https://pixabay.com/photos/woman-beauty-fashion-makeup-1063100/ |
+| 8880927 | https://pixabay.com/photos/girl-street-walking-casual-purse-8880927/ |
+| 4056729 | https://pixabay.com/photos/fashion-style-hair-t-shirt-outdoor-4056729/ |
+| 2562646 | https://pixabay.com/photos/beanie-guy-man-beard-jacket-grey-2562646/ |
+| 1869825 | https://pixabay.com/photos/ace-cards-hooded-hood-man-adult-1869825/ |
+| 9554464 | https://pixabay.com/photos/woman-hat-coat-japanese-style-9554464/ |
+| 4614022 | https://pixabay.com/photos/burger-patty-food-snack-party-4614022/ |
+| 2635035 | https://pixabay.com/photos/snack-hamburger-b-sandwich-2635035/ |
+| 5630646 | https://pixabay.com/photos/hamburger-sandwich-fast-food-5630646/ |
+| 5930496 | https://pixabay.com/photos/sandwich-food-hamburger-burger-5930496/ |
+| 4307719 | https://pixabay.com/photos/burger-spicy-healthy-food-chicken-4307719/ |
+| 5930490 | https://pixabay.com/photos/sandwich-food-hamburger-burger-5930490/ |
+| 5332766 | https://pixabay.com/photos/french-fries-potatoes-food-snack-5332766/ |
+| 5466249 | https://pixabay.com/photos/bowl-chicken-crunchy-brown-5466249/ |
+| 2199271 | https://pixabay.com/photos/dessert-drink-ice-cream-beverage-2199271/ |
+| 2769457 | https://pixabay.com/photos/ice-cubes-glass-coke-coca-cola-2769457/ |
+| 4020349 | https://pixabay.com/photos/brownie-cakes-pastries-4020349/ |
+| 907124 | https://pixabay.com/photos/lime-drink-glass-club-soda-907124/ |
 
 ### Achados
 

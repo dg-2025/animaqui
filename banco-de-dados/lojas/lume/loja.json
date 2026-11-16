@@ -1,0 +1,14 @@
+{
+  "id": "lume",
+  "nome": "Lume Joias",
+  "segmento": "Joalheria",
+  "descricao": "Joalheria em branco e dourado com hero que brilha, busca e filtro de joias, página com galeria de fotos, sacola com frete grátis e cupom, checkout com embalagem de presente, minhas compras com status e acesso de cliente.",
+  "paginas": [
+    { "id": "inicio", "nome": "Início", "secoes": ["vitrine/vitrine-08"] },
+    { "id": "produto", "nome": "Joia", "secoes": ["produto/produto-06"] },
+    { "id": "carrinho", "nome": "Sacola", "secoes": ["carrinho/carrinho-03"] },
+    { "id": "pagamento", "nome": "Pagamento", "secoes": ["checkout/checkout-02"] },
+    { "id": "pedidos", "nome": "Minhas compras", "secoes": ["pedido/pedido-03"] },
+    { "id": "conta", "nome": "Conta", "secoes": ["conta/conta-02"] }
+  ]
+}

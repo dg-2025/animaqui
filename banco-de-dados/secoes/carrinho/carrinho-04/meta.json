@@ -1,0 +1,6 @@
+{
+  "id": "carrinho-04",
+  "nome": "Carrinho de moda de rua com cupom e frete grátis",
+  "categoria": "carrinho",
+  "descricao": "Carrinho de loja de roupas com título em caixa alta e contador, itens com foto, tamanho, quantidade e remover (subtotal em coluna própria no computador), resumo fixo com cupom, aviso de quanto falta para o frete grátis, botão verde de finalizar e estado vazio."
+}

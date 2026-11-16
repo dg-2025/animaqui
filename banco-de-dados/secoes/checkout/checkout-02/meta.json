@@ -1,0 +1,6 @@
+{
+  "id": "checkout-02",
+  "nome": "Checkout de joalheria em uma página",
+  "categoria": "checkout",
+  "descricao": "Finalização em três blocos (identificação, entrega e pagamento) com etapas que acendem ao preencher, máscara de CPF, WhatsApp e CEP, embalagem de presente com mensagem, Pix com desconto ou cartão em até 10x e resumo fixo ao lado."
+}

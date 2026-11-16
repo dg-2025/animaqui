@@ -1,0 +1,625 @@
+.conta02 {
+  /* Paleta de joalheria tirada dos tokens: dourado, rubi e creme */
+  --dourado: color-mix(in srgb, var(--cor-alerta) 60%, var(--cor-texto-2));
+  --douradoClaro: color-mix(in srgb, var(--dourado) 55%, var(--cor-fundo));
+  --douradoEscuro: color-mix(in srgb, var(--dourado) 72%, var(--cor-texto));
+  --douradoBrilho: color-mix(in srgb, var(--dourado) 14%, transparent);
+  --gradienteDourado: linear-gradient(135deg, var(--douradoClaro) 0%, var(--dourado) 50%, var(--douradoEscuro) 100%);
+  --rubi: color-mix(in oklab, var(--cor-erro) 52%, var(--cor-texto));
+  --rubiForte: color-mix(in oklab, var(--cor-erro) 64%, var(--cor-texto));
+  --creme: color-mix(in srgb, var(--dourado) 6%, var(--cor-fundo));
+  --bordaFina: color-mix(in srgb, var(--dourado) 28%, transparent);
+  --serifa: "Didot", "Bodoni MT", Georgia, "Times New Roman", serif;
+  --raio-p: 4px;
+  --raio-m: 6px;
+  --oliva: color-mix(in srgb, color-mix(in srgb, var(--cor-destaque-3) 70%, var(--cor-alerta)) 70%, var(--cor-texto));
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+  padding: var(--espaco-5) var(--espaco-3) var(--espaco-7);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  background: var(--cor-fundo);
+
+  .somenteLeitor {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Orbes dourados desfocados e partículas que cintilam atrás de tudo */
+  .fundoAnimado {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .orbe {
+    position: absolute;
+    border-radius: var(--raio-total);
+    filter: blur(50px);
+    opacity: 0.22;
+    animation: conta02Flutuar 20s var(--curva-padrao) infinite alternate;
+  }
+
+  .orbe1 {
+    top: calc(var(--espaco-8) * -1);
+    left: calc(var(--espaco-8) * -1);
+    width: calc(var(--espaco-9) * 3.2);
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--douradoClaro) 0%, var(--dourado) 50%, transparent 80%);
+    animation-duration: 16s;
+  }
+
+  .orbe2 {
+    right: calc(var(--espaco-9) * -0.8);
+    bottom: 10%;
+    width: calc(var(--espaco-9) * 4);
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--creme) 0%, var(--douradoClaro) 60%, transparent 80%);
+    animation-duration: 22s;
+  }
+
+  .orbe3 {
+    top: 45%;
+    left: 40%;
+    width: calc(var(--espaco-9) * 2.6);
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--douradoClaro) 0%, transparent 75%);
+    animation-duration: 18s;
+  }
+
+  .particula {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: var(--raio-total);
+    background: var(--dourado);
+    box-shadow: 0 0 6px var(--douradoClaro);
+    animation: conta02Cintilar var(--duracao-ciclo) ease-in-out infinite;
+  }
+
+  .p1 { top: 15%; left: 20%; }
+  .p2 { top: 35%; left: 82%; animation-delay: 1.2s; }
+  .p3 { top: 62%; left: 12%; animation-delay: 2.4s; }
+  .p4 { top: 80%; left: 70%; animation-delay: 0.8s; }
+  .p5 { top: 46%; left: 92%; animation-delay: 1.8s; }
+  .p6 { top: 22%; left: 55%; animation-delay: 3s; }
+
+  .conteudo {
+    display: grid;
+    max-width: calc(var(--espaco-9) * 4.6);
+    margin-inline: auto;
+  }
+
+  /* Painel com foto: só no computador */
+  .vitrine { display: none; }
+
+  .cartao {
+    display: grid;
+    gap: var(--espaco-4);
+    padding: var(--espaco-5) var(--espaco-4);
+    border: 1px solid var(--bordaFina);
+    border-radius: var(--raio-m);
+    background: color-mix(in srgb, var(--cor-fundo) 94%, transparent);
+    box-shadow: 0 4px 18px color-mix(in srgb, var(--cor-texto) 3%, transparent);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Alternador com marcador dourado que desliza */
+  .alternar {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: var(--espaco-1);
+    border: 1px solid var(--bordaFina);
+    border-radius: var(--raio-p);
+    background: var(--creme);
+
+    &[hidden] { display: none; }
+  }
+
+  .marcador {
+    position: absolute;
+    top: var(--espaco-1);
+    bottom: var(--espaco-1);
+    left: var(--espaco-1);
+    width: calc(50% - var(--espaco-1));
+    border-radius: 3px;
+    background: var(--gradienteDourado);
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--dourado) 30%, transparent);
+    transition: transform var(--duracao-media) var(--curva-mola);
+  }
+
+  .alternar.criar .marcador { transform: translateX(100%); }
+
+  .opcaoModo {
+    position: relative;
+    min-height: calc(var(--alvo-toque) - var(--espaco-2));
+    border: 0;
+    color: var(--cor-texto-2);
+    background: transparent;
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: var(--peso-medio);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color var(--duracao-media) var(--curva-padrao);
+
+    &[aria-pressed="true"] {
+      color: var(--cor-destaque-contraste);
+      font-weight: var(--peso-forte);
+    }
+
+    &:focus-visible { outline: var(--espessura-linha) solid var(--dourado); outline-offset: 2px; }
+  }
+
+  .cabecalho {
+    text-align: center;
+  }
+
+  .titulo {
+    margin: 0;
+    color: var(--douradoEscuro);
+    font-family: var(--serifa);
+    font-size: var(--titulo-2);
+    font-weight: var(--peso-normal);
+    line-height: var(--altura-linha-titulo);
+  }
+
+  .subtitulo {
+    margin: var(--espaco-1) 0 0;
+    color: var(--cor-texto-3);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .painel {
+    display: grid;
+    gap: var(--espaco-3);
+    animation: conta02Entrar var(--duracao-media) var(--curva-entrada);
+
+    &[hidden] { display: none; }
+  }
+
+  .campo {
+    display: grid;
+    gap: var(--espaco-1);
+
+    > span:first-child {
+      font-size: var(--texto-pequeno);
+      font-weight: var(--peso-forte);
+    }
+  }
+
+  .entrada {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    > svg {
+      position: absolute;
+      left: var(--espaco-3);
+      width: var(--espaco-4);
+      height: var(--espaco-4);
+      color: var(--dourado);
+      pointer-events: none;
+    }
+
+    input {
+      width: 100%;
+      min-height: var(--alvo-toque);
+      padding: 0 var(--espaco-3) 0 calc(var(--espaco-6) + var(--espaco-2));
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-p);
+      color: var(--cor-texto);
+      background: var(--creme);
+      font: inherit;
+      font-size: var(--texto-base);
+      transition: border-color var(--duracao-rapida) var(--curva-padrao), box-shadow var(--duracao-rapida) var(--curva-padrao), background-color var(--duracao-rapida) var(--curva-padrao);
+
+      &::placeholder { color: var(--cor-texto-3); }
+
+      &:focus {
+        border-color: var(--dourado);
+        outline: none;
+        background: var(--cor-fundo);
+        box-shadow: 0 0 0 3px var(--douradoBrilho);
+      }
+
+      &[aria-invalid="true"] {
+        border-color: var(--cor-erro);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--cor-erro) 14%, transparent);
+      }
+    }
+
+    &:has(.mostrar) input { padding-right: var(--alvo-toque); }
+  }
+
+  .mostrar {
+    position: absolute;
+    right: 0;
+    display: grid;
+    place-items: center;
+    width: var(--alvo-toque);
+    height: var(--alvo-toque);
+    padding: 0;
+    border: 0;
+    color: var(--cor-texto-3);
+    background: transparent;
+    cursor: pointer;
+
+    svg {
+      width: var(--espaco-4);
+      height: var(--espaco-4);
+    }
+
+    &[aria-pressed="true"] { color: var(--douradoEscuro); }
+  }
+
+  /* Barra de força da senha */
+  .forca {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espaco-1);
+    margin-top: var(--espaco-1);
+
+    span {
+      height: 3px;
+      border-radius: var(--raio-total);
+      background: var(--cor-borda);
+      transition: background-color var(--duracao-media) var(--curva-padrao);
+    }
+
+    &[data-nivel="1"] span:nth-child(-n + 1) { background: var(--cor-erro); }
+    &[data-nivel="2"] span:nth-child(-n + 2) { background: var(--dourado); }
+    &[data-nivel="3"] span { background: var(--oliva); }
+  }
+
+  .forcaTexto {
+    color: var(--cor-texto-3);
+    font-size: 0.72rem;
+  }
+
+  .linha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-3);
+  }
+
+  .marcar {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-2);
+    min-height: var(--espaco-6);
+    color: var(--cor-texto-2);
+    font-size: var(--texto-pequeno);
+    cursor: pointer;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:has(input:focus-visible) .caixinha { outline: var(--espessura-linha) solid var(--dourado); outline-offset: 2px; }
+
+    &:has(input[aria-invalid="true"]) .caixinha { border-color: var(--cor-erro); }
+  }
+
+  .caixinha {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: var(--espaco-5);
+    height: var(--espaco-5);
+    border: 1px solid var(--dourado);
+    border-radius: var(--raio-p);
+    color: transparent;
+    background: var(--cor-fundo);
+    transition: background-color var(--duracao-rapida) var(--curva-padrao);
+
+    svg {
+      width: var(--espaco-4);
+      height: var(--espaco-4);
+      stroke-width: 2.5;
+    }
+  }
+
+  .marcar:has(input:checked) .caixinha {
+    color: var(--cor-destaque-contraste);
+    background: var(--gradienteDourado);
+  }
+
+  .esqueci,
+  .trocar {
+    padding: 0;
+    border: 0;
+    color: var(--rubi);
+    background: transparent;
+    font: inherit;
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .mensagem {
+    margin: 0;
+    font-size: var(--texto-pequeno);
+
+    &:empty { display: none; }
+
+    &.erro { color: var(--cor-erro); }
+
+    &.ok {
+      padding: var(--espaco-2) var(--espaco-3);
+      border: 1px solid var(--douradoClaro);
+      border-radius: var(--raio-p);
+      color: var(--douradoEscuro);
+      background: var(--creme);
+    }
+  }
+
+  .enviar {
+    min-height: calc(var(--alvo-toque) * 1.1);
+    margin-top: var(--espaco-1);
+    border: 1px solid var(--rubi);
+    border-radius: var(--raio-p);
+    color: var(--cor-destaque-contraste);
+    background: var(--rubi);
+    font: inherit;
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-medio);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color var(--duracao-rapida) var(--curva-padrao), box-shadow var(--duracao-rapida) var(--curva-padrao);
+
+    &:hover {
+      background: var(--rubiForte);
+      box-shadow: 0 3px 10px color-mix(in srgb, var(--rubi) 22%, transparent);
+    }
+
+    &.enviando {
+      pointer-events: none;
+      border-color: var(--dourado);
+      background: var(--gradienteDourado);
+    }
+  }
+
+  .rodape {
+    margin: 0;
+    padding-top: var(--espaco-3);
+    border-top: 1px solid var(--cor-borda);
+    color: var(--cor-texto-3);
+    font-size: var(--texto-pequeno);
+    text-align: center;
+
+    &[hidden] { display: none; }
+  }
+
+  .sucesso {
+    display: grid;
+    justify-items: center;
+    gap: var(--espaco-3);
+    padding: var(--espaco-4) 0;
+    text-align: center;
+    animation: conta02Entrar var(--duracao-lenta) var(--curva-entrada);
+
+    &[hidden] { display: none; }
+
+    &:focus { outline: none; }
+
+    a {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      min-height: var(--alvo-toque);
+      border-radius: var(--raio-p);
+      font-size: var(--texto-pequeno);
+      font-weight: var(--peso-medio);
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+
+  .sucessoIcone {
+    display: grid;
+    place-items: center;
+    width: calc(var(--espaco-8) + var(--espaco-2));
+    aspect-ratio: 1;
+    border-radius: var(--raio-total);
+    color: var(--cor-destaque-contraste);
+    background: var(--gradienteDourado);
+    box-shadow: 0 0 0 8px var(--douradoBrilho);
+    animation: conta02Selo var(--duracao-lenta) var(--curva-mola);
+
+    svg {
+      width: var(--espaco-7);
+      height: var(--espaco-7);
+      stroke-width: 2.4;
+    }
+  }
+
+  .sucessoTitulo {
+    margin: 0;
+    font-family: var(--serifa);
+    font-size: var(--titulo-2);
+    font-weight: var(--peso-normal);
+  }
+
+  .sucessoTexto {
+    margin: 0 0 var(--espaco-2);
+    color: var(--cor-texto-2);
+  }
+
+  .sucessoPrincipal {
+    color: var(--cor-destaque-contraste);
+    background: var(--rubi);
+  }
+
+  .sucessoSecundario {
+    border: 1px solid var(--cor-borda);
+    color: var(--cor-texto);
+
+    &:hover {
+      border-color: var(--dourado);
+      background: var(--douradoBrilho);
+    }
+  }
+
+  .sair {
+    padding: var(--espaco-2);
+    border: 0;
+    color: var(--cor-texto-3);
+    background: transparent;
+    font: inherit;
+    font-size: var(--texto-pequeno);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  @media (min-width: 900px) {
+    padding: var(--espaco-8) var(--margem-lateral);
+
+    .conteudo {
+      grid-template-columns: 1fr 1fr;
+      max-width: calc(var(--espaco-9) * 10);
+      overflow: hidden;
+      border: 1px solid var(--bordaFina);
+      border-radius: var(--raio-m);
+      background: var(--cor-fundo);
+      box-shadow: 0 8px 32px color-mix(in srgb, var(--dourado) 12%, transparent);
+      animation: conta02Borda 6s ease infinite;
+    }
+
+    .vitrine {
+      position: relative;
+      display: grid;
+      align-content: end;
+      min-height: 100%;
+
+      img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .vitrineTexto {
+      position: relative;
+      display: grid;
+      gap: var(--espaco-3);
+      padding: var(--espaco-9) var(--espaco-6) var(--espaco-6);
+      color: var(--cor-destaque-contraste);
+      background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--cor-texto) 78%, transparent) 45%);
+    }
+
+    .vitrineSelo {
+      display: inline-flex;
+      align-items: center;
+      justify-self: start;
+      gap: var(--espaco-1);
+      padding: 2px var(--espaco-2);
+      border: 1px solid var(--douradoClaro);
+      border-radius: var(--raio-p);
+      color: var(--douradoClaro);
+      font-size: 0.7rem;
+      font-weight: var(--peso-forte);
+      letter-spacing: var(--espaco-letra-rotulo);
+      text-transform: uppercase;
+
+      svg {
+        width: var(--espaco-4);
+        height: var(--espaco-4);
+      }
+    }
+
+    .vitrineTitulo {
+      margin: 0;
+      font-family: var(--serifa);
+      font-size: var(--titulo-2);
+      line-height: var(--altura-linha-titulo);
+    }
+
+    .vantagens {
+      display: grid;
+      gap: var(--espaco-2);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: var(--espaco-2);
+        font-size: var(--texto-pequeno);
+      }
+
+      svg {
+        width: var(--espaco-4);
+        height: var(--espaco-4);
+        color: var(--douradoClaro);
+      }
+    }
+
+    .cartao {
+      align-content: center;
+      padding: var(--espaco-7) var(--espaco-7);
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orbe,
+    .particula,
+    .painel,
+    .sucesso,
+    .sucessoIcone,
+    .conteudo { animation: none; }
+
+    .marcador,
+    .opcaoModo,
+    .forca span,
+    .caixinha,
+    .enviar { transition: none; }
+  }
+}
+
+@keyframes conta02Entrar {
+  from { opacity: 0; transform: translateY(var(--espaco-2)); }
+}
+
+@keyframes conta02Selo {
+  from { transform: scale(0.3) rotate(-30deg); opacity: 0; }
+}
+
+@keyframes conta02Borda {
+  0%, 100% { border-color: color-mix(in srgb, var(--dourado) 20%, transparent); }
+  50% { border-color: color-mix(in srgb, var(--douradoClaro) 80%, transparent); }
+}
+
+@keyframes conta02Flutuar {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 60px) scale(1.15); }
+  100% { transform: translate(-30px, -40px) scale(0.95); }
+}
+
+@keyframes conta02Cintilar {
+  0%, 100% { opacity: 0.08; transform: scale(0.6) translateY(0); }
+  50% { opacity: 0.6; transform: scale(1.3) translateY(-12px); }
+}

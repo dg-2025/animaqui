@@ -1,0 +1,476 @@
+.pedido05 {
+  /* Cores da referência (preto, vinho, dourado e laranja), tiradas dos tokens */
+  --dourado: color-mix(in srgb, var(--cor-alerta) 78%, var(--cor-texto));
+  --laranja: color-mix(in srgb, var(--cor-alerta) 72%, var(--cor-destaque-2));
+  --vermelho: color-mix(in srgb, var(--cor-erro) 82%, var(--cor-destaque-2));
+  --agua: color-mix(in srgb, color-mix(in srgb, var(--cor-sucesso) 50%, var(--cor-destaque-3)) 30%, var(--cor-texto));
+  --linha: color-mix(in srgb, var(--cor-texto) 6%, transparent);
+  --linha-forte: color-mix(in srgb, var(--cor-texto) 12%, transparent);
+  --ouro: linear-gradient(135deg, var(--dourado), var(--laranja));
+  padding: var(--espaco-6) var(--margem-lateral) var(--espaco-8);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  background:
+    radial-gradient(60% 30% at 50% 0%, color-mix(in srgb, var(--vermelho) 12%, transparent), transparent 70%),
+    var(--cor-fundo);
+
+  .conteudo {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+
+  .cabeca {
+    display: grid;
+    gap: var(--espaco-4);
+    margin-bottom: var(--espaco-5);
+  }
+
+  .cabecaTexto { text-align: center; }
+
+  .titulo {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--titulo-2);
+    font-weight: var(--peso-titulo);
+    line-height: var(--altura-linha-titulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+
+    span { color: var(--dourado); }
+  }
+
+  .subtitulo {
+    margin: var(--espaco-2) 0 0;
+    color: color-mix(in srgb, var(--cor-texto) 60%, transparent);
+    font-size: var(--texto-pequeno);
+  }
+
+  .barraTopo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-3);
+  }
+
+  .aoVivo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-2);
+    margin: 0;
+    padding: var(--espaco-1) var(--espaco-3);
+    border: 1px solid color-mix(in srgb, var(--cor-sucesso) 30%, transparent);
+    border-radius: var(--raio-total);
+    color: var(--cor-sucesso);
+    background: color-mix(in srgb, var(--cor-sucesso) 10%, transparent);
+    font-size: 0.75rem;
+    font-weight: var(--peso-forte);
+  }
+
+  .ponto {
+    width: var(--espaco-2);
+    height: var(--espaco-2);
+    border-radius: var(--raio-total);
+    background: currentColor;
+    animation: pedido05Pulso calc(var(--duracao-ciclo) / 2) ease-in-out infinite;
+  }
+
+  .botaoLinha {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    min-height: var(--alvo-toque);
+    padding: 0 var(--espaco-4);
+    border: 1px solid var(--linha-forte);
+    border-radius: var(--raio-m);
+    color: color-mix(in srgb, var(--cor-texto) 80%, transparent);
+    background: color-mix(in srgb, var(--cor-texto) 3%, transparent);
+    font: inherit;
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-medio);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color var(--duracao-rapida) var(--curva-padrao), color var(--duracao-rapida) var(--curva-padrao);
+
+    svg {
+      width: var(--espaco-4);
+      height: var(--espaco-4);
+    }
+
+    &:hover { border-color: var(--dourado); color: var(--dourado); }
+  }
+
+  .botaoOuro {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    min-height: var(--alvo-toque);
+    padding: 0 var(--espaco-4);
+    border: 0;
+    border-radius: var(--raio-m);
+    color: var(--cor-fundo);
+    background: var(--ouro);
+    font: inherit;
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform var(--duracao-rapida) var(--curva-padrao);
+
+    svg {
+      width: var(--espaco-4);
+      height: var(--espaco-4);
+    }
+
+    &:active { transform: scale(0.97); }
+  }
+
+  .lista {
+    display: grid;
+    gap: var(--espaco-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Cartão do pedido */
+  .pedido {
+    --cor-estado: var(--dourado);
+    overflow: hidden;
+    border: 1px solid var(--linha);
+    border-radius: var(--raio-m);
+    background: color-mix(in srgb, var(--cor-texto) 2%, var(--cor-fundo));
+    box-shadow: var(--sombra-1);
+    transition: border-color var(--duracao-media) var(--curva-padrao), box-shadow var(--duracao-media) var(--curva-padrao);
+
+    &:hover { border-color: var(--linha-forte); box-shadow: var(--sombra-2); }
+
+    &[data-status="preparando"] { --cor-estado: color-mix(in srgb, var(--cor-destaque-3) 60%, var(--cor-erro)); }
+    &[data-status="saiu"] { --cor-estado: var(--cor-sucesso); }
+    &[data-status="entregue"] { --cor-estado: color-mix(in srgb, var(--cor-destaque-3) 55%, var(--cor-sucesso)); }
+    &[data-status="cancelado"] { --cor-estado: var(--cor-erro); }
+
+    &.mudou { animation: pedido05Brilha var(--duracao-lenta) var(--curva-padrao); }
+  }
+
+  .pedidoTopo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-2) var(--espaco-3);
+    width: 100%;
+    padding: var(--espaco-4);
+    border: 0;
+    color: inherit;
+    background: none;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    &:focus-visible { outline: var(--espessura-linha) solid var(--dourado); outline-offset: -2px; }
+  }
+
+  .pedidoId {
+    display: grid;
+    gap: 2px;
+
+    strong {
+      font-size: var(--texto-base);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  .pedidoData {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-1);
+    color: color-mix(in srgb, var(--cor-texto) 50%, transparent);
+    font-size: 0.75rem;
+
+    svg {
+      width: var(--espaco-3);
+      height: var(--espaco-3);
+    }
+  }
+
+  .pedidoLado {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-2);
+  }
+
+  .estado {
+    padding: 2px var(--espaco-3);
+    border-radius: var(--raio-total);
+    color: var(--cor-estado);
+    background: color-mix(in srgb, var(--cor-estado) 15%, transparent);
+    font-size: 0.72rem;
+    font-weight: var(--peso-forte);
+    white-space: nowrap;
+  }
+
+  .pedidoTotal {
+    color: var(--dourado);
+    font-size: var(--texto-base);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .seta {
+    width: var(--espaco-6);
+    height: var(--espaco-6);
+    padding: var(--espaco-1);
+    border-radius: var(--raio-p);
+    color: color-mix(in srgb, var(--cor-texto) 50%, transparent);
+    background: color-mix(in srgb, var(--cor-texto) 4%, transparent);
+    transition: transform var(--duracao-media) var(--curva-padrao);
+  }
+
+  [aria-expanded="true"] .seta { transform: rotate(180deg); }
+
+  /* Barra de progresso em cinco etapas */
+  .progresso {
+    padding: 0 var(--espaco-4) var(--espaco-4);
+  }
+
+  .trilho {
+    height: 4px;
+    margin-bottom: var(--espaco-2);
+    overflow: hidden;
+    border-radius: var(--raio-total);
+    background: color-mix(in srgb, var(--cor-texto) 6%, transparent);
+  }
+
+  .barra {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--dourado), color-mix(in srgb, var(--dourado) 60%, var(--cor-brilho)));
+    transition: width var(--duracao-lenta) var(--curva-entrada);
+  }
+
+  .pedido[data-status="cancelado"] .barra { background: var(--cor-erro); }
+
+  .etapas {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    color: color-mix(in srgb, var(--cor-texto) 25%, transparent);
+    font-size: 0.62rem;
+    list-style: none;
+
+    li { transition: color var(--duracao-media) var(--curva-padrao); }
+    .feita { color: var(--dourado); font-weight: var(--peso-forte); }
+  }
+
+  .detalhes {
+    display: grid;
+    gap: var(--espaco-4);
+    padding: var(--espaco-4);
+    border-top: 1px solid var(--linha);
+    animation: pedido05Abre var(--duracao-media) var(--curva-entrada);
+
+    &[hidden] { display: none; }
+  }
+
+  .dados {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espaco-3);
+    margin: 0;
+
+    dt {
+      color: color-mix(in srgb, var(--cor-texto) 45%, transparent);
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    dd {
+      margin: 2px 0 0;
+      font-size: var(--texto-pequeno);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  .dadoLargo { grid-column: 1 / -1; }
+
+  .itens {
+    padding: var(--espaco-3);
+    border-radius: var(--raio-m);
+    background: color-mix(in srgb, var(--cor-texto) 3%, transparent);
+
+    ul {
+      display: grid;
+      gap: var(--espaco-2);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--espaco-3);
+      color: var(--cor-texto-2);
+      font-size: var(--texto-pequeno);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  .itensTitulo {
+    margin: 0 0 var(--espaco-2);
+    color: var(--dourado);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+  }
+
+  .acoes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espaco-2);
+  }
+
+  .aviso {
+    position: sticky;
+    bottom: var(--espaco-4);
+    margin: var(--espaco-4) auto 0;
+    padding: var(--espaco-3) var(--espaco-4);
+    border: 1px solid color-mix(in srgb, var(--cor-sucesso) 40%, transparent);
+    border-radius: var(--raio-m);
+    color: var(--cor-sucesso);
+    background: color-mix(in srgb, var(--cor-fundo) 92%, transparent);
+    box-shadow: var(--sombra-3);
+    font-size: var(--texto-pequeno);
+    font-weight: var(--peso-forte);
+    text-align: center;
+    animation: pedido05Abre var(--duracao-media) var(--curva-entrada);
+
+    &[hidden] { display: none; }
+  }
+
+  /* Recibo em papel de cupom */
+  .recibo {
+    width: min(100% - var(--espaco-6), 340px);
+    max-height: 90dvh;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    background: none;
+
+    &::backdrop {
+      background: var(--cor-sobreposicao);
+      backdrop-filter: blur(6px);
+    }
+
+    &[open] {
+      display: grid;
+      gap: var(--espaco-3);
+      animation: pedido05Abre var(--duracao-media) var(--curva-entrada);
+    }
+
+    hr {
+      margin: var(--espaco-2) 0;
+      border: 0;
+      border-top: 1px dashed currentColor;
+    }
+  }
+
+  .papel {
+    max-height: 70dvh;
+    padding: var(--espaco-5) var(--espaco-4);
+    overflow-y: auto;
+    color: var(--cor-fundo);
+    background: var(--cor-texto);
+    font-family: var(--fonte-mono);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    -webkit-mask: radial-gradient(circle 6px at 50% 100%, transparent 98%, var(--cor-texto)) 0 100% / 14px 100% repeat-x;
+    mask: radial-gradient(circle 6px at 50% 100%, transparent 98%, var(--cor-texto)) 0 100% / 14px 100% repeat-x;
+
+    p { margin: 0; text-align: center; }
+  }
+
+  .reciboTopo {
+    font-weight: var(--peso-forte);
+    letter-spacing: var(--espaco-letra-rotulo);
+    text-transform: uppercase;
+  }
+
+  .reciboItens {
+    display: grid;
+    gap: var(--espaco-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--espaco-2);
+    }
+  }
+
+  .reciboContas {
+    margin: 0;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    dd { margin: 0; }
+
+    .reciboTotal { font-weight: var(--peso-forte); }
+  }
+
+  .fecharRecibo { width: 100%; }
+
+  @media (min-width: 768px) {
+    .cabeca { margin-bottom: var(--espaco-6); }
+
+    .pedidoTopo,
+    .detalhes { padding: var(--espaco-5); }
+
+    .progresso { padding: 0 var(--espaco-5) var(--espaco-5); }
+
+    .etapas { font-size: 0.72rem; }
+
+    .dados { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .acoes {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ponto,
+    .pedido.mudou,
+    .detalhes,
+    .aviso,
+    .recibo[open] { animation: none; }
+
+    .pedido,
+    .seta,
+    .barra,
+    .etapas li,
+    .botaoLinha,
+    .botaoOuro { transition: none; }
+  }
+}
+
+@keyframes pedido05Pulso {
+  50% { opacity: 0.35; transform: scale(0.75); }
+}
+
+@keyframes pedido05Abre {
+  from { opacity: 0; transform: translateY(calc(var(--espaco-2) * -1)); }
+}
+
+@keyframes pedido05Brilha {
+  40% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--cor-sucesso) 45%, transparent); }
+}
