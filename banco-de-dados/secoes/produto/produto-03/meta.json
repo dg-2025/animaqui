@@ -1,0 +1,6 @@
+{
+  "id": "produto-03",
+  "nome": "Tênis com cor e numeração",
+  "categoria": "produto",
+  "descricao": "Página de tênis com galeria que desliza junto com a escolha de cor, preço com desconto, grade de numeração com tamanho esgotado e barra de compra que só libera com o número escolhido."
+}

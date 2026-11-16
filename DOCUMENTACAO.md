@@ -2,10 +2,10 @@
 
 | Campo | Valor |
 |---|---|
-| **Versão do documento** | 0.11 |
+| **Versão do documento** | 0.12 |
 | **Data** | 16/11/2026 |
 | **Autor(es)** | Daniel (responsável), Claude (redação) |
-| **Status** | Em revisão: E-02 (e-commerce) com a S09 entregue; S08 na fila (dados legais e publicação) |
+| **Status** | Em revisão: E-02 (e-commerce) com S09 e S10 entregues; S08 na fila (dados legais e publicação) |
 | **Aprovado por** | Pendente |
 
 ## Histórico de Revisões
@@ -22,6 +22,7 @@
 | 0.9 | 02/11/2026 | Claude | Otimização sem mudança visual e erro do modo dev corrigido. Palco troca sem recarga dupla nem tela vazia, palcos escondidos param, cópia só com tudo carregado, rotas GET sem `generateStaticParams`, com cache HTTP. Testado: `tsc`, `eslint`, `build` e 3 partidas a frio do modo dev. A rodada final no navegador foi interrompida por falta de memória na máquina e ainda precisa ser repetida. SQL: nenhum |
 | 0.10 | 02/11/2026 | Claude | E-01/S08 parcial, a pedido do Daniel ("obrigações do site"): `robots`, `sitemap`, canonical, Open Graph, ícones, JSON-LD, `llms.txt`, `/privacidade`, `/termos`, rodapé com os links e headers de segurança. README refeito. Testado: `tsc`, `eslint`, `build`, `npm audit` e CT-500 a CT-505 no Edge em produção. A bateria completa dos CT não foi repetida. SQL: nenhum |
 | 0.11 | 16/11/2026 | Claude | E-02 planejado (front-end de e-commerce, aprovado pelo Daniel) e S09 entregue: tema claro de loja em `tema-padrao.css` (D-25), `montarDocumento()` só leva a variação de tema quando alguma seção usa, 4 categorias novas (Cardápio, Produto, Ofertas, Carrinho) e 6 seções do pacote Lanche e comida. Testado: `tsc`, `eslint`, `build`, páginas e APIs novas com 200 no build de produção, documento do palco com e sem o tema claro e CT-600 a CT-603 no Edge, em 390 px e 1280 px. A bateria completa dos CT anteriores não foi repetida. SQL: nenhum |
+| 0.12 | 16/11/2026 | Claude | E-02/S10: pacote Roupa e tênis com fotos reais do Pixabay embutidas em WebP (D-28, decisão do Daniel): categoria Vitrine nova e 7 seções (`vitrine-01` a `03`, `produto-03`, `carrinho-02`, `chamada-04`). Origem das 21 fotos na seção 10. Testado: `tsc`, `eslint`, `build`, páginas e APIs com 200 no build de produção, CSP aceitando `data:` e CT-604 a CT-606 no Edge, em 390 px e 1280 px. O arrastar para excluir do `carrinho-02` não foi testado com o dedo, só o botão da lixeira. SQL: nenhum |
 
 ---
 
@@ -104,7 +105,7 @@ Não publicado.
 
 ### 2.2 In Scope (Dentro do escopo)
 
-Os três módulos, o motor de palco e exportação e 58 seções em 16 categorias, mais 14 animações, em `banco-de-dados/`. O E-02 acrescenta seções de loja (2.8).
+Os três módulos, o motor de palco e exportação e 65 seções em 17 categorias, mais 14 animações, em `banco-de-dados/`. O E-02 acrescenta seções de loja (2.8).
 
 ### 2.3 Out of Scope (Fora do escopo)
 
@@ -129,6 +130,7 @@ Levantados na análise de 02/11/2026; aguardam a avaliação do Daniel.
 | R-01 | Algumas seções vêm de trabalhos para clientes. Nome, texto e foto saíram, mas falta o Daniel confirmar se pode reaproveitar esses desenhos em público | A confirmar | A confirmar | Antes de abrir o projeto, retirar o que não puder ficar |
 | R-02 | O preview de fontes pede arquivos ao Google, que recebe o IP do visitante | Certa | A confirmar | Citado em `/privacidade` |
 | R-03 | Seções reunidas no Montador conflitam em CSS ou JS | Média | Alto | Contrato de escopo (RN-201), validado no build |
+| R-04 | As fotos do Pixabay vão dentro do código que a pessoa copia. A licença do Pixabay permite uso comercial sem crédito, mas proíbe redistribuir a foto sozinha e não cobre marca nem direito de imagem de quem aparece (os tênis de `produto-03` mostram a marca Brooks) | A confirmar | Médio | Daniel ler a licença; se necessário, trocar por fotos sem marca ou sem rosto |
 
 ### 2.7 Entregáveis
 
@@ -136,7 +138,7 @@ Levantados na análise de 02/11/2026; aguardam a avaliação do Daniel.
 
 ### 2.8 Evoluções planejadas
 
-**Em andamento:** E-02, próxima é a S10. S09 entregue. S01 a S07 entregues; S08 parcial (faltam P-05, P-07 e a bateria completa dos CT), na fila.
+**Em andamento:** E-02, próxima é a S11. S09 e S10 entregues. S01 a S07 entregues; S08 parcial (faltam P-05, P-07 e a bateria completa dos CT), na fila.
 
 #### E-01 — Esqueleto e versão inicial (árvore e nomes aprovados em 02/11/2026)
 
@@ -193,7 +195,7 @@ Seções de loja (lanche, roupa, mercado e nicho) e o fluxo de compra, primeiro 
 | D-25 | **Tema claro de loja:** `tema-padrao.css` ganha o bloco `[data-tema="claro"]`, que redefine os mesmos tokens (cores, sombras, fonte de título); a seção de loja liga com `data-tema="claro"` na raiz. É exceção ao contrato do Guia ("o bloco não sabe qual tema está ativo"), escolhida pelo Daniel em 16/11/2026 e registrada no `CLAUDE.md`. `montarDocumento()` só leva esse bloco quando alguma seção usa | — |
 | D-26 | Foto de produto vira ilustração em SVG embutido (RN-151), no lugar onde a pessoa põe a foto dela | — |
 | D-27 | Interação dentro da própria seção (filtro por categoria, quantidade, tamanho, adicionais, cupom). Carrinho que atravessa páginas só no módulo da S13 | — |
-| P-11 | Fotos reais: hoje são ilustrações. Usar banco de imagens livre no futuro? | — |
+| D-28 | **Fotos do Pixabay embutidas:** a busca usa a chave `PIXABAY_API_KEY` do `.env` do Social-Midia (a mesma do estudio-dg), a foto é cortada e reduzida para WebP e entra no HTML como `data:` (RN-151 continua valendo: o código copiado não depende de nada externo). Seção com foto pesa de 30 a 190 KB. A origem de cada foto fica na seção 10. Decisão do Daniel, 16/11/2026. Resolve a P-11 | — |
 
 **Triagem das referências** (número do arquivo `foto-trabalho-N.jpg`):
 
@@ -207,7 +209,7 @@ Seções de loja (lanche, roupa, mercado e nicho) e o fluxo de compra, primeiro 
 | Sprint | Entrega | Depende de | Testes | Status |
 |---|---|---|---|---|
 | S09 | Tema claro (D-25) e pacote **Lanche e comida**: categorias Cardápio, Produto, Ofertas e Carrinho, com 6 seções (`cardapio-01` cafeteria, `cardapio-02` hamburgueria, `produto-01` pizza, `produto-02` bowl, `oferta-01` delivery com cupom, `carrinho-01` sacola) | — | CT-600 a CT-603 | entregue |
-| S10 | Pacote **Roupa e tênis** (categoria Vitrine e novas variações) | S09 | A definir | planejado |
+| S10 | Pacote **Roupa e tênis** com fotos (D-28): categoria Vitrine e 7 seções (`vitrine-01` moda jeans, `vitrine-02` loja com categorias, `vitrine-03` cards com degradê, `produto-03` tênis, `carrinho-02` carrinho com arrastar para excluir, `chamada-04` newsletter) | S09 | CT-604 a CT-606 | entregue |
 | S11 | Pacote **Mercado e nicho** | S09 | A definir | planejado |
 | S12 | **Fluxo de compra:** checkout, conta e rastreio do pedido | S09 | A definir | planejado |
 | S13 | Módulo **Lojas prontas:** várias páginas ligadas e carrinho entre elas. Detalhar antes de começar | S10 a S12 | A definir | planejado |
@@ -298,7 +300,7 @@ animaqui/
         └── shared/                 # NotFound, PaginaLegal
 ```
 
-Acervo atual: 58 seções em 16 categorias (`categorias.json`) e 14 animações.
+Acervo atual: 65 seções em 17 categorias (`categorias.json`) e 14 animações.
 
 **Como crescer depois:**
 
@@ -343,7 +345,7 @@ Prioridade: todos A confirmar. RF-51 está limitado às 40 fontes padrão até e
 | RF-250 | Expor `robots.txt`, `sitemap.xml` e `llms.txt`; cada página com título, descrição, canonical e imagem de compartilhamento | A confirmar | `src/app/sitemap.ts:8`, `src/shared/lib/site.ts:17` | Implementado |
 | RF-251 | Páginas `/privacidade` e `/termos`, com links no rodapé | A confirmar | `src/app/(legal)/privacidade/page.tsx:10`, `src/app/(publico)/layout.tsx:13` | Implementado |
 | RF-152 | Seção com tema claro: `data-tema="claro"` na raiz liga a variação clara dos tokens, no palco e no código copiado | A confirmar | `banco-de-dados/tema-padrao.css:75`, `src/shared/utils/montarDocumento.ts:46` | Implementado |
-| RF-300 | Seções de loja (Lanche e comida): cardápio com filtro, quantidade e sacola, produto com tamanho e adicionais, ofertas com cupom e sacola com cupom de desconto, cada uma com a conta feita na própria seção | A confirmar | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho` | Implementado |
+| RF-300 | Seções de loja (Lanche e comida; Roupa e tênis com vitrine, cores, numeração, carrinho com arrastar e newsletter): cardápio com filtro, quantidade e sacola, produto com tamanho e adicionais, ofertas com cupom e sacola com cupom de desconto, cada uma com a conta feita na própria seção | A confirmar | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine` | Implementado |
 
 ### 3.2 Detalhamento de Requisito
 
@@ -509,7 +511,7 @@ Aplicado conforme a D-11 (ver P-02). Há dois conjuntos de tokens que não se mi
 
 ### 7.2 Casos de Teste
 
-CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-401 passaram em 02/11/2026. CT-001, CT-101 e CT-402 ainda não foram executados. A cópia foi conferida pelo texto enviado ao navegador; o teste não usou a área de transferência real, que o navegador automatizado bloqueia. CT-500 a CT-505 passaram em 02/11/2026, no Edge, com o build de produção. CT-600 a CT-603 passaram em 16/11/2026, no Edge (cliques simulados por script e prints em 390 px e 1280 px). Os CT anteriores não foram repetidos depois da CSP e do rodapé; o CT-505 cobre uma seção com script, a Tipografia e a abertura do Montador.
+CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-401 passaram em 02/11/2026. CT-001, CT-101 e CT-402 ainda não foram executados. A cópia foi conferida pelo texto enviado ao navegador; o teste não usou a área de transferência real, que o navegador automatizado bloqueia. CT-500 a CT-505 passaram em 02/11/2026, no Edge, com o build de produção. CT-600 a CT-606 passaram em 16/11/2026, no Edge (cliques simulados por script e prints em 390 px e 1280 px). Os CT anteriores não foram repetidos depois da CSP e do rodapé; o CT-505 cobre uma seção com script, a Tipografia e a abertura do Montador.
 
 | ID | Ref. | Cenário | Passos | Resultado Esperado |
 |---|---|---|---|---|
@@ -544,6 +546,9 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | CT-600 | RF-152, RN-154 | Tema claro só quando usado | Abrir `cardapio-01` e `hero-01` e inspecionar o documento do palco | No cardápio, o bloco `[data-tema="claro"]` aparece só com os tokens usados; no hero, não aparece |
 | CT-601 | RF-300, RN-155 | Celular e computador | Abrir as 6 seções de loja em 390 px e em 1280 px | No celular, o layout da referência, sem rolagem lateral; no computador, a expansão em colunas |
 | CT-602 | RF-300 | Contas do cardápio e do produto | Filtrar, somar itens, trocar tamanho e adicionais | Filtro esconde o que não é da categoria; sacola, barra e preço batem com a soma (ex.: pizza G + frango + queijo = R$ 72,90) |
+| CT-604 | RF-300, D-28 | Fotos embutidas | Abrir `vitrine-01` e copiar o código | As fotos aparecem no palco e no arquivo copiado, sem endereço externo |
+| CT-605 | RF-300 | Vitrine e produto de roupa | Filtrar categorias, somar na sacola, trocar cor e numeração do tênis | Filtro e aviso de categoria vazia; contagem da sacola; cor leva a galeria à foto; 41 esgotado; sem número o botão não compra |
+| CT-606 | RF-300 | Carrinho de roupa e newsletter | Somar item, cupom `ALMA10`, excluir; e-mail inválido e válido | Total com 10% de desconto; item sai; erro no e-mail incompleto e confirmação no válido |
 | CT-603 | RF-300 | Sacola e cupom | Cupom inválido, `RAIZ10`, e zerar os itens | Aviso de erro; 10% de desconto no total; item some ao zerar e a sacola vazia esconde o botão de pagar |
 
 ---
@@ -570,7 +575,7 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 | RNF-03 | Toque e teclado | CT-202 | `shared/ui` | Implementado |
 | RNF-04 | Crescer sem mudar código | CT-001 | `banco-de-dados/secoes` | Implementado |
 | RF-152, RN-154 | Tema claro de loja | CT-600 | `banco-de-dados/tema-padrao.css`, `shared/utils/montarDocumento.ts` | Implementado |
-| RF-300, RN-155 | Seções de loja | CT-601 a CT-603 | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho` | Implementado |
+| RF-300, RN-155, D-28 | Seções de loja | CT-601 a CT-606 | `banco-de-dados/secoes/cardapio`, `produto`, `oferta`, `carrinho`, `vitrine` | Implementado |
 
 ---
 
@@ -595,6 +600,34 @@ CT-002 a CT-007, CT-100 a CT-103, CT-200 a CT-203, CT-300 a CT-303, CT-400 e CT-
 - Next.js da versão instalada: `node_modules/next/dist/docs/`.
 - Repositório: https://github.com/dg-2025/animaqui.
 - Protótipos: A confirmar.
+
+### Fotos do Pixabay (D-28)
+
+Licença Pixabay (uso comercial, sem crédito obrigatório). Ver R-04.
+
+| ID | Página |
+|---|---|
+| 2223126 | https://pixabay.com/photos/positive-awesome-sun-happy-poster-2223126/ |
+| 8463184 | https://pixabay.com/photos/girl-sunset-sunset-glow-twilight-8463184/ |
+| 10104742 | https://pixabay.com/photos/woman-outdoor-young-portrait-10104742/ |
+| 2589566 | https://pixabay.com/photos/people-lady-woman-denim-jacket-2589566/ |
+| 4695475 | https://pixabay.com/photos/female-portrait-model-fashion-4695475/ |
+| 371624 | https://pixabay.com/photos/running-shoe-shoe-brooks-371624/ |
+| 371625 | https://pixabay.com/photos/running-shoe-shoe-brooks-371625/ |
+| 4973974 | https://pixabay.com/photos/yellow-sport-running-shoes-foot-4973974/ |
+| 1623086 | https://pixabay.com/photos/fashion-woman-clothing-female-1623086/ |
+| 3669209 | https://pixabay.com/photos/the-man-in-the-suit-costume-man-boy-3669209/ |
+| 1623091 | https://pixabay.com/photos/fashion-woman-clothing-female-1623091/ |
+| 1623090 | https://pixabay.com/photos/fashion-woman-clothing-female-1623090/ |
+| 1623084 | https://pixabay.com/photos/fashion-woman-clothing-female-1623084/ |
+| 9747618 | https://pixabay.com/photos/woman-model-pose-posing-female-9747618/ |
+| 8881740 | https://pixabay.com/photos/model-woman-skin-hair-makeup-8881740/ |
+| 1835871 | https://pixabay.com/photos/fashion-afro-american-black-man-1835871/ |
+| 9554464 | https://pixabay.com/photos/woman-hat-coat-japanese-style-9554464/ |
+| 515518 | https://pixabay.com/photos/man-hoodie-young-stylish-fashion-515518/ |
+| 9476524 | https://pixabay.com/photos/woman-young-fashion-sneakers-9476524/ |
+| 7082417 | https://pixabay.com/photos/woman-beauty-fashion-makeup-7082417/ |
+| 4643410 | https://pixabay.com/photos/lady-parisienne-woman-business-4643410/ |
 
 ### Achados
 

@@ -1,0 +1,6 @@
+{
+  "id": "carrinho-02",
+  "nome": "Carrinho de roupas com arrastar para excluir",
+  "categoria": "carrinho",
+  "descricao": "Carrinho de loja de roupas com foto, tamanho e quantidade, item que se arrasta para o lado e mostra a lixeira, cupom de desconto e total que se atualiza."
+}

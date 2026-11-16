@@ -23,6 +23,7 @@ Laboratório visual de componentes web: qualquer pessoa navega, testa e copia se
 
 - `banco-de-dados/` guarda o conteúdo do site em arquivos: não é um banco de verdade. Seção nova entra em `banco-de-dados/secoes/` e animação nova em `banco-de-dados/animacoes/`, em HTML, CSS e JS puros, nunca em React. Não precisa mudar código.
 - `montarDocumento()`, em `src/shared/utils/montarDocumento.ts`, é a única função que monta palco e cópia. Nunca criar outro caminho de exportação.
+- Foto em seção (D-28): buscar no Pixabay com a `PIXABAY_API_KEY` do `.env` do Social-Midia (nunca mostrar a chave), cortar, reduzir para WebP e embutir como `data:` no `secao.html`. Registrar a origem na tabela "Fotos do Pixabay" da seção 10 do `DOCUMENTACAO.md`.
 
 ## Interface
 

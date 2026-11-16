@@ -11,6 +11,7 @@
   {"id": "chamada", "nome": "Chamada"},
   {"id": "contato", "nome": "Contato"},
   {"id": "rodape", "nome": "Rodapé"},
+  {"id": "vitrine", "nome": "Vitrine"},
   {"id": "cardapio", "nome": "Cardápio"},
   {"id": "produto", "nome": "Produto"},
   {"id": "oferta", "nome": "Ofertas"},
